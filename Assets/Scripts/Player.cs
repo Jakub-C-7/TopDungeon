@@ -14,7 +14,12 @@ public class Player : Mover
         base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        DontDestroyOnLoad(this);
+    }
+
+    protected override void ReceiveDamage(Damage dmg)
+    {
+        base.ReceiveDamage(dmg);
+        GameManager.instance.OnHealthChange();
     }
 
     private void FixedUpdate()
@@ -30,7 +35,6 @@ public class Player : Mover
 
     public void SwapSprite(int skinId)
     {
-        Debug.Log(skinId);
         spriteRenderer.sprite = GameManager.instance.playerSprites[skinId];
         //Change the animation
         Animator animator = GameManager.instance.player.transform.gameObject.GetComponent<Animator>();
@@ -49,6 +53,23 @@ public class Player : Mover
         {
             OnLevelUp();
         }
+    }
+
+    public void Heal(int healingAmount)
+    {
+
+        if (hitPoints + healingAmount > maxHitpoints)
+        {
+            hitPoints = maxHitpoints;
+        }
+        else
+        {
+            hitPoints += healingAmount;
+        }
+
+        GameManager.instance.ShowText("+ " + healingAmount.ToString() + "hp", 25, Color.green, transform.position, Vector3.up * 30, 1.0f);
+        GameManager.instance.OnHealthChange();
+
     }
 
 

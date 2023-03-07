@@ -13,12 +13,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             Destroy(player.gameObject);
             Destroy(floatingTextManager.gameObject);
+            Destroy(hud);
+            Destroy(menu);
             return;
         }
 
         instance = this;
         SceneManager.sceneLoaded += LoadState;
-        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
     }
 
@@ -32,6 +34,9 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Weapon weapon;
     public FloatingTextManager floatingTextManager;
+    public RectTransform healthBar;
+    public GameObject hud;
+    public GameObject menu;
 
 
     //Logic
@@ -63,6 +68,13 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    //Health Bar
+    public void OnHealthChange()
+    {
+        float ratio = (float)player.hitPoints / (float)player.maxHitpoints;
+        healthBar.localScale = new Vector3(ratio, 1, 1);
     }
 
     //Experience System
@@ -112,6 +124,7 @@ public class GameManager : MonoBehaviour
     public void OnLevelUp() //Grant bonuses on level up
     {
         player.OnLevelUp();
+        OnHealthChange();
     }
 
     //Saving and Keeping Game State
@@ -135,6 +148,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadState(Scene s, LoadSceneMode mode)
     {
+        SceneManager.sceneLoaded -= LoadState;
 
         if (!PlayerPrefs.HasKey("SaveState"))
         {
@@ -163,6 +177,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Loading State");
         // Debug.Log("results" + coins + " / " + experience + " / " + currentCharacterSelection);
 
+    }
+
+    // On Scene Loaded
+    public void OnSceneLoaded(Scene s, LoadSceneMode mode)
+    {
+        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
     }
 
 }

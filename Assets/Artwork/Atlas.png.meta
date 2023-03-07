@@ -1524,7 +1524,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_34
+      name: door_open_0
       rect:
         serializedVersion: 2
         x: 432
@@ -1545,7 +1545,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_35
+      name: door_open_02
       rect:
         serializedVersion: 2
         x: 448
@@ -1902,7 +1902,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_54
+      name: door_open_01
       rect:
         serializedVersion: 2
         x: 432
@@ -1923,7 +1923,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_55
+      name: door_open_03
       rect:
         serializedVersion: 2
         x: 448
@@ -1944,7 +1944,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_56
+      name: skull_0
       rect:
         serializedVersion: 2
         x: 16
@@ -4758,111 +4758,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_191
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4516834f74132646aedd10c6609b5ba
-      internalID: 820326148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_192
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8311e193d9a0b0244804b2de74e18ca5
-      internalID: -2072870906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_193
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01d587b76c8d9154e891b31bdc3434c9
-      internalID: -411281763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_194
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f07ce1ccd23534e4fa4a5df4f7ffbe0a
-      internalID: 1993445402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_195
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 96
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48b00904c35c1bc4cb875bc3db650470
-      internalID: -1745586951
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Atlas_196
       rect:
         serializedVersion: 2
@@ -4989,34 +4884,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_202
+      name: torch_06
       rect:
         serializedVersion: 2
-        x: 176
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af075d3c9e85be249a6a464dfa1ecdc0
-      internalID: -380842607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_203
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 80
-        width: 16
-        height: 16
+        x: 196
+        y: 82
+        width: 8
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5031,13 +4905,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_204
+      name: torch_07
       rect:
         serializedVersion: 2
-        x: 208
-        y: 80
-        width: 16
-        height: 16
+        x: 212
+        y: 82
+        width: 8
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5052,13 +4926,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_205
+      name: torch_08
       rect:
         serializedVersion: 2
-        x: 224
-        y: 80
-        width: 16
-        height: 16
+        x: 228
+        y: 82
+        width: 8
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5073,13 +4947,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_206
+      name: torch_09
       rect:
         serializedVersion: 2
-        x: 240
-        y: 80
-        width: 16
-        height: 16
+        x: 244
+        y: 82
+        width: 8
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5220,13 +5094,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_213
+      name: boss_0
       rect:
         serializedVersion: 2
         x: 96
-        y: 64
-        width: 16
-        height: 16
+        y: 48
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5236,111 +5110,6 @@ TextureImporter:
       bones: []
       spriteID: f02c3755d1aae0b48bf180120500714e
       internalID: 807478838
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_214
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7231a2104417c7a4d9ca2c22b63727ef
-      internalID: 28967229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_215
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01af40787e5151f42a14cd0550ff542e
-      internalID: 1661583696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_216
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1724b75af9562de40b8f7e65b3e04d9a
-      internalID: -1583769799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_217
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e73237435d975314883527f3eb197450
-      internalID: 1902539437
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_218
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bbe8d29048e0cd641aaac2c609be52ca
-      internalID: 1037494294
       vertices: []
       indices: 
       edges: []
@@ -5535,55 +5304,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_228
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d652a9e4a279b948bb3c6ad7e106088
-      internalID: -1638995356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_229
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e39df325a36ddc43b2c91a1a6f97738
-      internalID: -1597161704
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_230
+      name: boss_02
       rect:
         serializedVersion: 2
         x: 128
         y: 48
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5598,34 +5325,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_231
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 082829b1b099bf44e891677a1bc6656f
-      internalID: -1284747716
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_232
+      name: boss_01
       rect:
         serializedVersion: 2
         x: 160
         y: 48
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5635,27 +5341,6 @@ TextureImporter:
       bones: []
       spriteID: 5223a6aaf2eddb149bd3718a8cc43a16
       internalID: 852826699
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_233
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de9c777131a64674faca4dfe6f4d76be
-      internalID: -323044049
       vertices: []
       indices: 
       edges: []
@@ -6521,6 +6206,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: torch_05
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 82
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de58e3e8b963a134a9ae457be56a6d3b
+      internalID: 572912366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -6644,18 +6350,12 @@ TextureImporter:
       Atlas_200: 121717064
       Atlas_201: 174183247
       Atlas_202: -380842607
-      Atlas_203: 191506003
-      Atlas_204: -1883902339
-      Atlas_205: -1313754254
-      Atlas_206: -2078673813
       Atlas_207: -1158412438
       Atlas_208: -532494162
       Atlas_209: 1683689871
       Atlas_210: 847106105
       Atlas_211: -1890809846
       Atlas_212: 1997723182
-      Atlas_213: 807478838
-      Atlas_214: 28967229
       Atlas_215: 1661583696
       Atlas_216: -1583769799
       Atlas_217: 1902539437
@@ -6669,12 +6369,8 @@ TextureImporter:
       Atlas_225: 16688665
       Atlas_226: 2090629153
       Atlas_227: -1491743163
-      Atlas_228: -1638995356
-      Atlas_229: -1597161704
       Atlas_23: -2068698805
-      Atlas_230: 1697667188
       Atlas_231: -1284747716
-      Atlas_232: 852826699
       Atlas_233: -323044049
       Atlas_234: 531014127
       Atlas_235: 1540900842
@@ -6715,8 +6411,6 @@ TextureImporter:
       Atlas_273: -1367507759
       Atlas_28: -1211575474
       Atlas_29: -1208436667
-      Atlas_34: 2007938094
-      Atlas_35: 102587446
       Atlas_36: 1273967683
       Atlas_37: -1796876417
       Atlas_38: -230988634
@@ -6729,9 +6423,6 @@ TextureImporter:
       Atlas_45: -1256734565
       Atlas_48: -1463234267
       Atlas_49: 554855475
-      Atlas_54: 159390860
-      Atlas_55: 173064365
-      Atlas_56: -1768584451
       Atlas_57: -1785580707
       Atlas_58: 1329088551
       Atlas_59: 911613509
@@ -6776,6 +6467,10 @@ TextureImporter:
       Atlas_97: 2011430822
       Atlas_98: -390027842
       Atlas_99: 892323861
+      boss_0: 807478838
+      boss_01: 852826699
+      boss_02: 1697667188
+      boss_03: -1597161704
       button_0: -1524989747
       chest_0: -512459568
       chest_01: -1244228216
@@ -6791,6 +6486,10 @@ TextureImporter:
       door_05: 838131335
       door_06: -1081834451
       door_07: -310621471
+      door_open_0: 2007938094
+      door_open_01: 159390860
+      door_open_02: 102587446
+      door_open_03: 173064365
       enemy_0: -928045674
       enemy_01: 1376202435
       floor_0: -1534659967
@@ -6819,6 +6518,7 @@ TextureImporter:
       side_wall_right__03: 1562001356
       side_wall_top_0: -631191577
       side_wall_top_01: 273483182
+      skull_0: -1768584451
       stairs_01: -561385277
       stairs_02: 671149502
       stairs_03: -1544773644
@@ -6836,6 +6536,11 @@ TextureImporter:
       torch_02: 909308699
       torch_03: -1597452049
       torch_04: 583875313
+      torch_05: 572912366
+      torch_06: 191506003
+      torch_07: -1883902339
+      torch_08: -1313754254
+      torch_09: -2078673813
       wall_0: 1298648292
       wall_01: -1270070915
       wall_02: -1803824607
