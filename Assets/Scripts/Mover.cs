@@ -7,11 +7,13 @@ public abstract class Mover : Fighter
     protected BoxCollider2D boxCollider;
     protected Vector3 moveDelta;
     protected RaycastHit2D hit;
+    private Vector3 originalSize;
     public float ySpeed = 0.75f;
     public float xSpeed = 1.0f;
 
     protected virtual void Start()
     {
+        originalSize = transform.localScale;
         boxCollider = GetComponent<BoxCollider2D>();
 
     }
@@ -24,11 +26,11 @@ public abstract class Mover : Fighter
         // Swap sprite direction, right or left -------------
         if (moveDelta.x > 0)
         {
-            transform.localScale = Vector3.one;
+            transform.localScale = originalSize;
         }
         else if (moveDelta.x < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.z);
         }
 
         //Add push vector, if any

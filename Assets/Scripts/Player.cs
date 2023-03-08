@@ -8,6 +8,7 @@ public class Player : Mover
     public Animator animator;
     private float horizontalMove;
     private float verticalMove;
+    private bool isAlive = true;
 
     protected override void Start()
     {
@@ -16,8 +17,19 @@ public class Player : Mover
 
     }
 
+    protected override void Death()
+    {
+        isAlive = false;
+        GameManager.instance.deathMenuAnimator.SetTrigger("Show");
+    }
+
     protected override void ReceiveDamage(Damage dmg)
     {
+        if (!isAlive)
+        {
+            return;
+
+        }
         base.ReceiveDamage(dmg);
         GameManager.instance.OnHealthChange();
     }
@@ -26,7 +38,12 @@ public class Player : Mover
     {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        UpdateMotor(new Vector3(x, y, 0));
+
+        if (isAlive)
+        {
+            UpdateMotor(new Vector3(x, y, 0));
+
+        }
 
         horizontalMove = x * xSpeed;
         verticalMove = y * ySpeed;
@@ -70,6 +87,14 @@ public class Player : Mover
         GameManager.instance.ShowText("+ " + healingAmount.ToString() + "hp", 25, Color.green, transform.position, Vector3.up * 30, 1.0f);
         GameManager.instance.OnHealthChange();
 
+    }
+
+    public void Respawn()
+    {
+        Heal(maxHitpoints);
+        isAlive = true;
+        lastImmune = Time.time;
+        pushDirection = Vector3.zero;
     }
 
 
