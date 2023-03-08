@@ -2,13 +2,11 @@ Library/*
 Logs/*
 obj/*
 Packages/*
-ProjectSettings/*
 Temp/*
 UserSettings/*
 .vsconfig
 *.csproj
 *.sln
-.meta
 .vscode/
 .vs/*
 *.htm
