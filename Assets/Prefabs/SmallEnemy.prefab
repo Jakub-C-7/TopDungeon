@@ -215,6 +215,8 @@ MonoBehaviour:
   hitPoints: 3
   maxHitpoints: 3
   pushRecoverySpeed: 0.2
+  onHitAudioSource: {fileID: 0}
+  part: {fileID: 0}
   ySpeed: 0.75
   xSpeed: 1
   xpValue: 1
