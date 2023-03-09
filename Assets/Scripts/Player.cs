@@ -10,6 +10,7 @@ public class Player : Mover
     private float verticalMove;
     public bool canMove = true;
 
+
     protected override void Start()
     {
         base.Start();
