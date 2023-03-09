@@ -11,6 +11,8 @@ public class Portal : Collidable
     {
         if (coll.name == "Player")
         {
+            GameManager.instance.player.SetReduceLight(true);
+
             GameManager.instance.player.canMove = false;
             Invoke("Teleport", 0.5f);
         }
@@ -20,10 +22,12 @@ public class Portal : Collidable
     {
         //Save the player's state
         GameManager.instance.SaveState();
-
+ 
         //Teleport the player
         string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        GameManager.instance.player.SetReduceLight(false);
+
     }
 
 }
