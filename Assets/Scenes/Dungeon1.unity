@@ -905,11 +905,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5772199103792194016, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
       propertyPath: hitPoints
-      value: 30
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5772199103792194016, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
       propertyPath: maxHitpoints
-      value: 30
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5772199103792194016, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
       propertyPath: onHitAudioSource

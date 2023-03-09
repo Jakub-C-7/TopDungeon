@@ -34,9 +34,7 @@ public class Fighter : MonoBehaviour
                     shape.rotation =  new Vector3(0,0, AngleDeg - 22.5f);
                     part.Play();
             }
-            //onHitAudioSource.Play();
-             AudioSource.PlayClipAtPoint(onHitAudioSource.clip,this.gameObject.transform.position);
-
+            AudioSource.PlayClipAtPoint(onHitAudioSource.clip,this.gameObject.transform.position);
             GameManager.instance.ShowText(dmg.damageAmount.ToString(), 30, Color.red, transform.position, Vector3.zero, 0.5f);
 
             if (hitPoints <= 0)
