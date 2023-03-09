@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
     public Animator deathMenuAnimator;
     public GameObject hud;
     public GameObject menu;
+
+    
 
 
     //Logic
@@ -194,5 +197,7 @@ public class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         player.Respawn();
     }
+
+    
 
 }

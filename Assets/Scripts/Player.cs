@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Player : Mover
 {
@@ -9,7 +10,11 @@ public class Player : Mover
     private float horizontalMove;
     private float verticalMove;
     public bool canMove = true;
+    public Light2D LightSource;
 
+    private float defaultLightOuterRadius = 1.5f;
+    private float lightOuterRadius = 1.5f;
+    private bool reduceLight = false;
 
     protected override void Start()
     {
@@ -49,6 +54,19 @@ public class Player : Mover
         horizontalMove = x * xSpeed;
         verticalMove = y * ySpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
+        float timeStep = 0.1f;
+        if(reduceLight){
+            if(lightOuterRadius > 0){
+                lightOuterRadius -= timeStep ;
+            }
+        }else{
+            if(lightOuterRadius < defaultLightOuterRadius){
+                lightOuterRadius += timeStep;
+            }else if(lightOuterRadius > defaultLightOuterRadius){
+                lightOuterRadius = defaultLightOuterRadius;
+            }
+        }
+        LightSource.pointLightOuterRadius = lightOuterRadius;
     }
 
     public void SwapSprite(int skinId)
@@ -96,6 +114,10 @@ public class Player : Mover
         canMove = true;
         lastImmune = Time.time;
         pushDirection = Vector3.zero;
+    }
+ 
+    public void SetReduceLight(bool reduceLight){
+        this.reduceLight = reduceLight;
     }
 
 
