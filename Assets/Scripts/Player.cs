@@ -53,6 +53,7 @@ public class Player : Mover
 
     public void SwapSprite(int skinId)
     {
+        GameManager.instance.currentCharacterSelection = skinId; //Set the current skin ID
         spriteRenderer.sprite = GameManager.instance.playerSprites[skinId];
         //Change the animation
         Animator animator = GameManager.instance.player.transform.gameObject.GetComponent<Animator>();

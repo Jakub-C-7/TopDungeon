@@ -9,10 +9,23 @@ public class CharacterMenu : MonoBehaviour
     public Text levelText, hitPointText, coinText, upgradeCostText, xpText;
 
     //Logic
-    public int currentCharacterSelection = 0;
+    public int currentCharacterSelection;
     public Image characterSelectionSprite, weaponSprite;
     public RectTransform xpBar;
 
+    //References
+    public Animator menuAnimator;
+
+    private void Update()
+    {
+        //Toggle menu screen on and off
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleBool("Showing");
+
+        }
+
+    }
 
     //Character Selection
     public void OnArrowClick(bool right)
@@ -68,7 +81,6 @@ public class CharacterMenu : MonoBehaviour
         //Weapon
         weaponSprite.sprite = GameManager.instance.weaponSprites[GameManager.instance.weapon.weaponLevel];
 
-
         if (GameManager.instance.weapon.weaponLevel == GameManager.instance.weaponPrices.Count) //Already on the max weapon
         {
             upgradeCostText.text = "MAX";
@@ -111,6 +123,15 @@ public class CharacterMenu : MonoBehaviour
 
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ToggleBool(string name)
+    {
+        menuAnimator.SetBool(name, !menuAnimator.GetBool(name));
+    }
 
 
 }
