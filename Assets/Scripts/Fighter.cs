@@ -7,7 +7,7 @@ public class Fighter : MonoBehaviour
     public int hitPoints = 10;
     public int maxHitpoints = 10;
     public float pushRecoverySpeed = 0.1f;
-
+    public AudioSource onHitAudioSource;
     //Immunity
     protected float immuneTime = 1.0f;
     protected float lastImmune;
@@ -34,7 +34,7 @@ public class Fighter : MonoBehaviour
                     shape.rotation =  new Vector3(0,0, AngleDeg - 22.5f);
                     part.Play();
             }
-
+            AudioSource.PlayClipAtPoint(onHitAudioSource.clip,this.gameObject.transform.position);
             GameManager.instance.ShowText(dmg.damageAmount.ToString(), 30, Color.red, transform.position, Vector3.zero, 0.5f);
 
             if (hitPoints <= 0)
