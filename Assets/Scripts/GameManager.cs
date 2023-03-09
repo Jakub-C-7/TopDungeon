@@ -184,6 +184,7 @@ public class GameManager : MonoBehaviour
     public void OnSceneLoaded(Scene s, LoadSceneMode mode)
     {
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+        player.canMove = true;
     }
 
     //Death menu and Respawn
