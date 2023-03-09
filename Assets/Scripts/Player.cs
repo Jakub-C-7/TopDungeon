@@ -10,6 +10,7 @@ public class Player : Mover
     private float verticalMove;
     private bool isAlive = true;
 
+
     protected override void Start()
     {
         base.Start();
