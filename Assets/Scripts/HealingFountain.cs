@@ -8,6 +8,8 @@ public class HealingFountain : Collidable
 
     public float healCooldown = 1.0f;
     private float lastHeal;
+    public AudioSource onHealAudioSource;
+
 
     protected override void OnCollide(Collider2D coll)
     {
@@ -17,6 +19,9 @@ public class HealingFountain : Collidable
         }
         if (Time.time - lastHeal > healCooldown)
         {
+            if(onHealAudioSource){
+                onHealAudioSource.Play();
+            }
             lastHeal = Time.time;
             GameManager.instance.player.Heal(healingAmount);
         }
