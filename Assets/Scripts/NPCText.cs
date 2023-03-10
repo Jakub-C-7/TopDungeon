@@ -12,8 +12,15 @@ public class NPCText : Collidable
     {
         if (Time.time - lastShout > cooldown)
         {
-            lastShout = Time.time;
-            GameManager.instance.ShowText(message, 20, Color.white, transform.position + new Vector3(0, 0.16f, 0), Vector3.zero, cooldown);
+            // NPC is available to interact with
+            GameManager.instance.ShowText("E", 25, Color.white, transform.position + new Vector3(0, 0.16f, 0), Vector3.zero, 0);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                lastShout = Time.time;
+                GameManager.instance.ShowText(message, 20, Color.white, transform.position + new Vector3(0, 0.16f, 0), Vector3.zero, cooldown);
+
+            }
         }
     }
 }
