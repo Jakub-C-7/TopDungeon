@@ -8,7 +8,13 @@ public class Collectable : Collidable
 
     protected override void OnCollide(Collider2D coll)
     {
-        if (coll.name == "Player")
+        if (!collected)
+        {
+            GameManager.instance.ShowText("E", 25, Color.white, transform.position + new Vector3(0, 0.08f, 0), Vector3.zero, 0);
+
+        }
+
+        if (coll.name == "Player" && Input.GetKeyDown(KeyCode.E))
         {
             onCollect();
         }
