@@ -54,8 +54,8 @@ public class GameManager : MonoBehaviour
     {
         floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
     }
-    public void SetSpeechBannerText(string msg, Vector3 position){
-        speechBanner.SetText(msg, position);
+    public void SetSpeechBannerText(List<string> conversationList, Vector3 position){
+        speechBanner.SetText(conversationList, position);
     }
 
     //Upgrade Weapon

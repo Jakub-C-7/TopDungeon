@@ -4,16 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SpeechBanner : MonoBehaviour
 {
-    public Text speechText;
+    public Text displayedText;
     public bool inConversation;
     public Animator speechAnimator;
+    public List<string> conversationList;
+    private int currentTextDisplayed;
     
     private float conversationRange = 5f;
     private Vector3 originatorPosition;
 
-     public void SetText(string text, Vector3 originatorPosition){
+    public void ChangeText(){
+        Debug.Log(conversationList.Count);
+        Debug.Log(currentTextDisplayed);
+        if(currentTextDisplayed + 1 <= conversationList.Count){
+            displayedText.text = conversationList[currentTextDisplayed];
+            currentTextDisplayed +=1;
+        }else{
+            speechAnimator.SetBool("showing", false);
+            inConversation = false;
+        }
+    }
+
+    public void SetText(List<string> conversationList, Vector3 originatorPosition){
         inConversation = true;
-        speechText.text = text;
+        this.conversationList = conversationList;
+        currentTextDisplayed = 0;
+        ChangeText();
         this.originatorPosition = originatorPosition;
 
      }
@@ -21,12 +37,16 @@ public class SpeechBanner : MonoBehaviour
      protected void Update(){
         if(inConversation){
             Vector3 distanceFromOriginator =  GameManager.instance.player.transform.position - originatorPosition;
-            Debug.Log(distanceFromOriginator.magnitude);
-            if(Input.GetKeyDown(KeyCode.E) || distanceFromOriginator.magnitude > (0.16 * conversationRange) ){
-                    speechAnimator.SetBool("showing", false);
-                    inConversation = false;
+            if(distanceFromOriginator.magnitude > (0.16 * conversationRange) ){
+                speechAnimator.SetBool("showing", false);
+                inConversation = false;
+            }else if(Input.GetKeyDown(KeyCode.E)){
+                ChangeText();
             }
+
         }
-     }
+       
+    }
+     
 
 }

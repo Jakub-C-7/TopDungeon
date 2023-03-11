@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCText : Collidable
 {
-    public string message;
+    public List<string> conversationList;
     public float cooldown = 4.0f;
     private float lastShout = -4.0f;
     public Animator speechAnimator;
@@ -24,7 +24,7 @@ public class NPCText : Collidable
                 {
                 
                     lastShout = Time.time;
-                    GameManager.instance.SetSpeechBannerText(message, gameObject.transform.position);
+                    GameManager.instance.SetSpeechBannerText(conversationList, gameObject.transform.position);
                     speechAnimator.SetBool("showing", true);
                     inConversation = true;
                     
