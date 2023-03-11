@@ -3453,7 +3453,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  message: You'd be a fool to continue..
+  conversationList: []
   cooldown: 4
   speechAnimator: {fileID: 1014119301}
   inConversation: 0
@@ -4759,9 +4759,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5095e096dba313c4db1beb7a176707b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speechText: {fileID: 1624402024}
+  displayedText: {fileID: 1624402024}
   inConversation: 0
   speechAnimator: {fileID: 1014119301}
+  conversationList: []
 --- !u!1 &1024060998
 GameObject:
   m_ObjectHideFlags: 0
@@ -5291,7 +5292,10 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  message: You shouldn't have come..
+  conversationList:
+  - You'd be a fool to continue
+  - ...what did I say
+  - A fool
   cooldown: 0
   speechAnimator: {fileID: 1014119301}
   inConversation: 0
