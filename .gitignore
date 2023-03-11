@@ -10,3 +10,5 @@ UserSettings/*
 .vscode/
 .vs/*
 *.htm
+Assets/Resources/BillingMode.json
+Assets/Resources/BillingMode.json.meta
