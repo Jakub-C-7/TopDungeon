@@ -16,6 +16,7 @@ public class Weapon : Collidable
     private Animator animator;
     private float cooldown = 0.5f;
     private float lastSwing;
+    public AudioSource audioOnUse;
 
 
     protected override void Start()
@@ -34,6 +35,7 @@ public class Weapon : Collidable
         {
             if (Time.time - lastSwing > cooldown)
             {
+                audioOnUse.Play();
                 lastSwing = Time.time;
                 Swing();
             }
