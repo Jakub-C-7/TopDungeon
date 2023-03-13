@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class SpeechBanner : MonoBehaviour
 {
     public Text displayedText;
+    public Text displayedName;
+    public Image displayedPortrait;
+
     public bool inConversation;
     public Animator speechAnimator;
     public List<string> conversationList;
@@ -14,6 +17,7 @@ public class SpeechBanner : MonoBehaviour
     private Vector3 originatorPosition;
     private float cooldown = 0.5f;
     private float lastInteraction;
+
 
 
     public void ChangeText(){
@@ -26,7 +30,9 @@ public class SpeechBanner : MonoBehaviour
         }
     }
 
-    public void SetText(List<string> conversationList, Vector3 originatorPosition){
+    public void SetText(List<string> conversationList, Vector3 originatorPosition, string npcName, Sprite portrait){
+        displayedPortrait.sprite = portrait;
+        displayedName.text = npcName;
         inConversation = true;
         this.conversationList = conversationList;
         currentTextDisplayed = 0;

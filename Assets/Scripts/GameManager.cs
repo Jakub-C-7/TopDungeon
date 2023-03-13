@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -54,8 +55,9 @@ public class GameManager : MonoBehaviour
     {
         floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
     }
-    public void SetSpeechBannerText(List<string> conversationList, Vector3 position){
-        speechBanner.SetText(conversationList, position);
+    public void SetSpeechBannerText(List<string> conversationList, Vector3 position, string npcName, Sprite portrait){
+    
+        speechBanner.SetText(conversationList, position, npcName, portrait);
     }
     public bool GetSpeechBannerShowing(){
         return speechBanner.GetSpeechBannerShowing();
