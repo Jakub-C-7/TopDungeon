@@ -42647,7 +42647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
       propertyPath: responseToConversation
-      value: 1,2;2,3
+      value: 1,1;2,2
       objectReference: {fileID: 0}
     - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
       propertyPath: responseList.Array.size

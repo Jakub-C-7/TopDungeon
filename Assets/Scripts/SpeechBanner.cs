@@ -27,7 +27,7 @@ public class SpeechBanner : MonoBehaviour
 
 
     public void ChangeText(){
-        if(currentTextDisplayed + 1 <= conversationList.Count){
+        if(currentTextDisplayed  < conversationList.Count){
             displayedText.text = conversationList[currentTextDisplayed];
             if(conversationToResponseVertices.ContainsKey(currentTextDisplayed)){
                 int count = 0;
@@ -78,12 +78,11 @@ public class SpeechBanner : MonoBehaviour
                     }
                 }else{
                    int key = GetPressedNumber();
-                   Debug.Log("this key was pressed " + key);
                    if(!(key == -1)){
 
                         int nextConversationIndex = returnNextConversationIndex(key);
                         if(!(nextConversationIndex == -1)){
-                            currentTextDisplayed = nextConversationIndex - 1;
+                            currentTextDisplayed = nextConversationIndex;
                             ChangeText();
                         }
                         
@@ -101,16 +100,15 @@ public class SpeechBanner : MonoBehaviour
         return -1;
     }
 
-    private int returnNextConversationIndex(int selectedNumber){
-        Debug.Log("selected number = " + selectedNumber);
-        Debug.Log("currentTextDisplayed = " + currentTextDisplayed);
-        Debug.Log(currentTextDisplayed);
 
+    private int returnNextConversationIndex(int selectedNumber){
+        //ensure number is a possible dialogue response (-1 because currentTextDisplayed has been moved on in changeText())
         if(selectedNumber > conversationToResponseVertices[currentTextDisplayed - 1].Count){
             return -1;
         }else{
+            //convert the relative index of the response to the actual repsonse index in the map
             int responseValue = conversationToResponseVertices[currentTextDisplayed - 1][selectedNumber];
-            Debug.Log("the value of the response found was " + responseValue);
+            //find what dialogue option that response points to in the map
             return responseToConversationVertices[responseValue][0];
         }
 

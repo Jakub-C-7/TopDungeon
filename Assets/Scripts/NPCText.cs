@@ -29,6 +29,7 @@ public class NPCText : Collidable
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    //create a vertice map for the directed dialgoue graph
                     Dictionary<int,List<int>> conversationToResponseVertices = CreateVertices(conversationToResponse);
                     Dictionary<int,List<int>> responseToConversationVertices = CreateVertices(responseToConversation);
 
@@ -47,13 +48,13 @@ public class NPCText : Collidable
         
     }
 
+
     private Dictionary<int, List<int>> CreateVertices(string stringToSplit){
         Dictionary<int, List<int>> tempDict = new Dictionary<int, List<int>>();
   
         string[] words = stringToSplit.Split(';');
-        Debug.Log($"{words.Length} pairs in text:");
         foreach (string i in words){
-            if(i == ""){
+            if(i == ""){ //if there are no dialogue options
                 return tempDict;
             }
             string[] vertices = i.Split(',');
