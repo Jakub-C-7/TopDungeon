@@ -55,9 +55,9 @@ public class GameManager : MonoBehaviour
     {
         floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
     }
-    public void SetSpeechBannerText(List<string> conversationList, Vector3 position, string npcName, Sprite portrait){
+    public void SetSpeechBannerText(List<string> conversationList, List<string> responseList, Dictionary<int, List<int>> conversationToResponseVertices,Dictionary<int, List<int>> responseToConversationVertices, Vector3 position, string npcName, Sprite portrait){
     
-        speechBanner.SetText(conversationList, position, npcName, portrait);
+        speechBanner.SetText(conversationList, responseList, conversationToResponseVertices, responseToConversationVertices,position, npcName, portrait);
     }
     public bool GetSpeechBannerShowing(){
         return speechBanner.GetSpeechBannerShowing();

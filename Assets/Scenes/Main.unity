@@ -359,13 +359,13 @@ MonoBehaviour:
   - {fileID: -2127929151, guid: c3f981aea827bce428fb95c870409bc0, type: 3}
   - {fileID: 1616727666, guid: c3f981aea827bce428fb95c870409bc0, type: 3}
   weaponSprites:
-  - {fileID: 761094287, guid: aa40b52018f7965418ae443c6a30912a, type: 3}
-  - {fileID: 1108977197, guid: aa40b52018f7965418ae443c6a30912a, type: 3}
-  - {fileID: 1698343871, guid: aa40b52018f7965418ae443c6a30912a, type: 3}
-  - {fileID: 1971907436, guid: aa40b52018f7965418ae443c6a30912a, type: 3}
-  - {fileID: 333098158, guid: aa40b52018f7965418ae443c6a30912a, type: 3}
-  - {fileID: 714760627, guid: aa40b52018f7965418ae443c6a30912a, type: 3}
-  - {fileID: 357356111, guid: aa40b52018f7965418ae443c6a30912a, type: 3}
+  - {fileID: 343679953, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
+  - {fileID: 343679953, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
+  - {fileID: 724459946, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
+  - {fileID: 724459946, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
+  - {fileID: 724459946, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
+  - {fileID: 724459946, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
+  - {fileID: -1942962493, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
   weaponPrices: 1e000000320000004b000000640000009600000090010000
   xpTable: 050000000a00000014000000230000003c0000005500000082000000b4000000fa00000090010000
   player: {fileID: 1683999403}
@@ -4618,9 +4618,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayedText: {fileID: 1624402024}
+  displayedName: {fileID: 730142012}
+  displayedPortrait: {fileID: 383171525}
   inConversation: 0
   speechAnimator: {fileID: 1014119301}
   conversationList: []
+  responseList: []
+  playerTurn: 0
 --- !u!1 &1024060998
 GameObject:
   m_ObjectHideFlags: 0
@@ -39551,6 +39555,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 969394ddfbe6cc347bcd14bf1e8ff587, type: 3}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
       propertyPath: speechAnimator
       value: 
       objectReference: {fileID: 1014119301}
@@ -42622,9 +42630,53 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: npcName
+      value: Intro Wizard
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 206be04c8e0cb894195abbc714bd345d, type: 3}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
       propertyPath: speechAnimator
       value: 
       objectReference: {fileID: 1014119301}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: conversationToResponse
+      value: 0,1;0,2;1,1;1,2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: responseToConversation
+      value: 1,2;2,3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: responseList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: responseList.Array.data[0]
+      value: Sure
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: responseList.Array.data[1]
+      value: But
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: responseList.Array.data[2]
+      value: Okay
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: conversationToResponse.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: conversationToResponse.Array.data[0]
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709263582321166744, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
+      propertyPath: conversationToResponse.Array.data[1]
+      value: 44
+      objectReference: {fileID: 0}
     - target: {fileID: 2709263582321166747, guid: 728d5f9a1e471bb40949118da99cc295, type: 3}
       propertyPath: m_RootOrder
       value: 19

@@ -11,6 +11,8 @@ public class SpeechBanner : MonoBehaviour
     public bool inConversation;
     public Animator speechAnimator;
     public List<string> conversationList;
+    public List<string> responseList;
+
     private int currentTextDisplayed;
     
     private float conversationRange = 5f;
@@ -18,11 +20,26 @@ public class SpeechBanner : MonoBehaviour
     private float cooldown = 0.5f;
     private float lastInteraction;
 
+    private Dictionary<int, List<int>> conversationToResponseVertices;
+    private Dictionary<int, List<int>> responseToConversationVertices;
+
+    public bool playerTurn;
 
 
     public void ChangeText(){
         if(currentTextDisplayed + 1 <= conversationList.Count){
             displayedText.text = conversationList[currentTextDisplayed];
+            if(conversationToResponseVertices.ContainsKey(currentTextDisplayed)){
+                int count = 0;
+                foreach(int response in conversationToResponseVertices[currentTextDisplayed]){
+                    displayedText.text += "\n" + count.ToString() + ": " + responseList[response];
+                    count+=1;
+                    playerTurn = true;
+                }
+            }else{
+                playerTurn = false;
+            }
+            
             currentTextDisplayed +=1;
         }else{
             speechAnimator.SetBool("showing", false);
@@ -30,7 +47,10 @@ public class SpeechBanner : MonoBehaviour
         }
     }
 
-    public void SetText(List<string> conversationList, Vector3 originatorPosition, string npcName, Sprite portrait){
+    public void SetText(List<string> conversationList,List<string> responseList, Dictionary<int, List<int>> conversationToResponseVertices,Dictionary<int, List<int>> responseToConversationVertices, Vector3 originatorPosition, string npcName, Sprite portrait ){
+        this.conversationToResponseVertices = conversationToResponseVertices;
+        this.responseToConversationVertices = responseToConversationVertices;
+        this.responseList = responseList;
         displayedPortrait.sprite = portrait;
         displayedName.text = npcName;
         inConversation = true;
@@ -48,13 +68,58 @@ public class SpeechBanner : MonoBehaviour
             if(distanceFromOriginator.magnitude > (0.16 * conversationRange) ){
                 speechAnimator.SetBool("showing", false);
                 inConversation = false;
-            }else if(Input.GetKeyDown(KeyCode.E)){
-                ChangeText();
+            // }else if(Input.GetKeyDown(KeyCode.E)){
+            //     ChangeText();
+            // }
+            }else if(Input.anyKeyDown){
+                if(playerTurn == false){
+                    if(Input.GetKeyDown(KeyCode.E)){
+                        ChangeText();
+                    }
+                }else{
+                   int key = GetPressedNumber();
+                   Debug.Log("this key was pressed " + key);
+                   if(!(key == -1)){
+
+                        int nextConversationIndex = returnNextConversationIndex(key);
+                        if(!(nextConversationIndex == -1)){
+                            currentTextDisplayed = nextConversationIndex - 1;
+                            ChangeText();
+                        }
+                        
+                   }
+                }
             }
         }
     }
 
+    private int GetPressedNumber() {
+        for (int number = 0; number <= 9; number++) {
+            if (Input.GetKeyDown(number.ToString()))
+                return number;
+        }
+        return -1;
+    }
+
+    private int returnNextConversationIndex(int selectedNumber){
+        Debug.Log("selected number = " + selectedNumber);
+        Debug.Log("currentTextDisplayed = " + currentTextDisplayed);
+        Debug.Log(currentTextDisplayed);
+
+        if(selectedNumber > conversationToResponseVertices[currentTextDisplayed - 1].Count){
+            return -1;
+        }else{
+            int responseValue = conversationToResponseVertices[currentTextDisplayed - 1][selectedNumber];
+            Debug.Log("the value of the response found was " + responseValue);
+            return responseToConversationVertices[responseValue][0];
+        }
+
+    }
+
+
     public bool GetSpeechBannerShowing(){
         return speechAnimator.GetBool("showing");
     }
+
+   
 }
