@@ -12,10 +12,11 @@ public class SpeechBanner : MonoBehaviour
     
     private float conversationRange = 5f;
     private Vector3 originatorPosition;
+    private float cooldown = 0.5f;
+    private float lastInteraction;
+
 
     public void ChangeText(){
-        Debug.Log(conversationList.Count);
-        Debug.Log(currentTextDisplayed);
         if(currentTextDisplayed + 1 <= conversationList.Count){
             displayedText.text = conversationList[currentTextDisplayed];
             currentTextDisplayed +=1;
@@ -31,11 +32,11 @@ public class SpeechBanner : MonoBehaviour
         currentTextDisplayed = 0;
         ChangeText();
         this.originatorPosition = originatorPosition;
-
+        lastInteraction = Time.time;
      }
 
      protected void Update(){
-        if(inConversation){
+        if(inConversation && Time.time - lastInteraction > cooldown){
             Vector3 distanceFromOriginator =  GameManager.instance.player.transform.position - originatorPosition;
             if(distanceFromOriginator.magnitude > (0.16 * conversationRange) ){
                 speechAnimator.SetBool("showing", false);
@@ -43,10 +44,6 @@ public class SpeechBanner : MonoBehaviour
             }else if(Input.GetKeyDown(KeyCode.E)){
                 ChangeText();
             }
-
         }
-       
     }
-     
-
 }
