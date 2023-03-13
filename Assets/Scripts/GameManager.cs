@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
     public void SetSpeechBannerText(List<string> conversationList, Vector3 position){
         speechBanner.SetText(conversationList, position);
     }
+    public bool GetSpeechBannerShowing(){
+        return speechBanner.GetSpeechBannerShowing();
+    }
 
     //Upgrade Weapon
     public bool TryUpgradeWeapon()

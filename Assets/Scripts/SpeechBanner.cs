@@ -33,6 +33,7 @@ public class SpeechBanner : MonoBehaviour
         ChangeText();
         this.originatorPosition = originatorPosition;
         lastInteraction = Time.time;
+        speechAnimator.SetBool("showing", true);
      }
 
      protected void Update(){
@@ -45,5 +46,9 @@ public class SpeechBanner : MonoBehaviour
                 ChangeText();
             }
         }
+    }
+
+    public bool GetSpeechBannerShowing(){
+        return speechAnimator.GetBool("showing");
     }
 }
