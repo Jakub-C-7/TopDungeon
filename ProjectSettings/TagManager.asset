@@ -14,7 +14,7 @@ TagManager:
   - UI
   - Blocking
   - Actor
-  - 
+  - Minimap
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Minimap
+    uniqueID: 340140975
     locked: 0
   - name: Floor
     uniqueID: 965615663
