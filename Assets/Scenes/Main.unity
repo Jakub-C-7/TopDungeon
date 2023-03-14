@@ -43300,6 +43300,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 685434505, guid: 833f071c1fb435948b87ba9f052bb06b, type: 3}
+      propertyPath: itemType
+      value: Consumable
+      objectReference: {fileID: 0}
+    - target: {fileID: 685434505, guid: 833f071c1fb435948b87ba9f052bb06b, type: 3}
+      propertyPath: spriteName
+      value: new sprite
+      objectReference: {fileID: 0}
     - target: {fileID: 4247423461987685597, guid: 833f071c1fb435948b87ba9f052bb06b, type: 3}
       propertyPath: m_RootOrder
       value: 1

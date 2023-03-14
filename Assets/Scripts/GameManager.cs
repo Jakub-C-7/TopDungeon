@@ -42,9 +42,6 @@ public class GameManager : MonoBehaviour
     public GameObject menu;
     public SpeechBanner speechBanner;
 
-
-
-
     //Logic
     public int coins;
     public int experience;
@@ -143,55 +140,119 @@ public class GameManager : MonoBehaviour
     }
 
     //Saving and Keeping Game State
+    // public void SaveState()
+    // {
+    //     //Creating the 'saving' string containing details to save in state
+    //     string saving = "";
+    //     saving += "0" + "|";
+    //     saving += coins.ToString() + "|";
+    //     saving += experience.ToString() + "|";
+    //     saving += weapon.weaponLevel.ToString() + "|";
+    //     saving += currentCharacterSelection.ToString();
+
+    //     PlayerPrefs.SetString("SaveState", saving);
+
+    //     Debug.Log("saveState");
+
+    // }
+
+    // public void LoadState(Scene s, LoadSceneMode mode)
+    // {
+    //     SceneManager.sceneLoaded -= LoadState;
+
+    //     if (!PlayerPrefs.HasKey("SaveState"))
+    //     {
+    //         return;
+    //     }
+    //     string[] data = PlayerPrefs.GetString("SaveState").Split('|');
+
+    //     coins = int.Parse(data[1]);
+
+    //     experience = int.Parse(data[2]);
+
+    //     if (GetCurrentLevel() != 1)
+    //     {
+    //         player.SetLevel(GetCurrentLevel());
+
+    //     }
+
+    //     weapon.SetWeaponLevel(int.Parse(data[3]));
+
+    //     //Record current character selection and choose correct sprite
+    //     currentCharacterSelection = int.Parse(data[4]);
+    //     player.SwapSprite(currentCharacterSelection);
+
+    //     player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+
+    //     Debug.Log("Loading State");
+    //     // Debug.Log("results" + coins + " / " + experience + " / " + currentCharacterSelection);
+
+    // }
+
     public void SaveState()
     {
-        //Creating the 'saving' string containing details to save in state
-        string saving = "";
-        saving += "0" + "|";
-        saving += coins.ToString() + "|";
-        saving += experience.ToString() + "|";
-        saving += weapon.weaponLevel.ToString() + "|";
-        saving += currentCharacterSelection.ToString();
+        Debug.Log("saving state");
 
-        PlayerPrefs.SetString("SaveState", saving);
-
-        Debug.Log("saveState");
-
-        // Debug.Log(saving);
-
+        SaveSystem.SavePlayer(this.player);
     }
 
     public void LoadState(Scene s, LoadSceneMode mode)
     {
+        Debug.Log("loading state");
         SceneManager.sceneLoaded -= LoadState;
 
-        if (!PlayerPrefs.HasKey("SaveState"))
-        {
-            return;
-        }
-        string[] data = PlayerPrefs.GetString("SaveState").Split('|');
+        PlayerData data = SaveSystem.LoadPlayer();
 
-        coins = int.Parse(data[1]);
+        //Loading player details
+        this.player.hitPoints = data.health;
+        this.player.maxHitpoints = data.maxHitpoints;
+        experience = data.experience;
+        coins = data.coins;
+        currentCharacterSelection = data.currentCharacterSelection;
+        weapon.weaponLevel = data.weaponLevel;
 
-        experience = int.Parse(data[2]);
+        //Loading inventory details
+        LoopOverInventoryList(data.consumableInventoryContents, this.player.inventory.consumableInventoryContents);
+        LoopOverInventoryList(data.resourceInventoryContents, this.player.inventory.resourceInventoryContents);
+        LoopOverInventoryList(data.weaponGearInventoryContents, this.player.inventory.weaponGearInventoryContents);
+        LoopOverInventoryList(data.armourGearInventoryContents, this.player.inventory.armourGearInventoryContents);
 
+        this.player.inventory.consumableMaxCapacity = data.consumableMaxCapacity;
+        this.player.inventory.resourceMaxCapacity = data.resourceMaxCapacity;
+        this.player.inventory.weaponGearMaxCapacity = data.weaponGearMaxCapacity;
+        this.player.inventory.armourGearMaxCapacity = data.armourGearMaxCapacity;
+
+        //Set the player's current progress / levels again
         if (GetCurrentLevel() != 1)
         {
             player.SetLevel(GetCurrentLevel());
 
         }
 
-        weapon.SetWeaponLevel(int.Parse(data[3]));
-
-        //Record current character selection and choose correct sprite
-        currentCharacterSelection = int.Parse(data[4]);
+        weapon.SetWeaponLevel(data.weaponLevel);
         player.SwapSprite(currentCharacterSelection);
 
-        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+    }
 
-        Debug.Log("Loading State");
-        // Debug.Log("results" + coins + " / " + experience + " / " + currentCharacterSelection);
+    public void LoopOverInventoryList(List<CollectableItemStruct> inventoryList, List<CollectableItem> targetList)
+    {
+        //Loading inventory details
+        foreach (CollectableItemStruct i in inventoryList)
+        {
+            GameObject objToSpawn = new GameObject(i.itemName); // Spawn a new object
+            objToSpawn.transform.parent = this.player.inventory.transform; // Transfer ownership of object
+            CollectableItem item = objToSpawn.AddComponent<CollectableItem>();
 
+            //Assign data to item
+            item.itemName = i.itemName;
+            item.quantity = i.quantity;
+            item.itemType = i.itemType;
+            item.spriteName = i.spriteName;
+
+            // Add the item into the correct inventory list
+            targetList.Add(item);
+
+        }
     }
 
     // On Scene Loaded
@@ -199,6 +260,7 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;
         player.canMove = true;
+
     }
 
     //Death menu and Respawn
@@ -212,8 +274,10 @@ public class GameManager : MonoBehaviour
     // Inventory and Item system
     public void CollectItem(CollectableItem item)
     {
-        player.inventory.AddItemToInventory(item);
-        // Debug.Log(player.inventory.);
+        item.transform.parent = player.inventory.transform; //Transfer ownership of item to player's inventory
+
+        item.name = item.itemName;
+        player.inventory.AddItemToInventory(item); // Add the item to the correct inventory list
     }
 
 
