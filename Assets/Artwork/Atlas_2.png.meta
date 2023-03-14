@@ -239,7 +239,7 @@ TextureImporter:
         width: 16
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,7 +260,7 @@ TextureImporter:
         width: 16
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -6405,7 +6405,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_2_327
+      name: potion_0
       rect:
         serializedVersion: 2
         x: 288
@@ -10781,7 +10781,6 @@ TextureImporter:
       Atlas_2_324: 660661943
       Atlas_2_325: -1050410628
       Atlas_2_326: -1226692941
-      Atlas_2_327: -970083491
       Atlas_2_328: 1176478
       Atlas_2_329: -486815044
       Atlas_2_33: -1182392064
@@ -11057,6 +11056,7 @@ TextureImporter:
       player_1_run_2: -2050197069
       player_1_run_3: 730966479
       player_1_run_4: 394710679
+      potion_0: -970083491
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

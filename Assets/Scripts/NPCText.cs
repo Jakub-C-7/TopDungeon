@@ -36,8 +36,7 @@ public class NPCText : Collidable
                     lastShout = Time.time;
                     GameManager.instance.SetSpeechBannerText(conversationList, responseList, conversationToResponseVertices,responseToConversationVertices, gameObject.transform.position, npcName, portrait);  
                     inConversation = true;
-                    //GameManager.instance.ShowText(message, 20, Color.white, transform.position + new Vector3(0, 0.16f, 0), Vector3.zero, cooldown);
-                
+                    //GameManager.instance.ShowText(message, 20, Color.white, transform.position + new Vector3(0, 0.16f, 0), Vector3.zero, cooldown);  
                 }
 
             }
