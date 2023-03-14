@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
     public Animator deathMenuAnimator;
     public GameObject hud;
     public GameObject menu;
+    public SpeechBanner speechBanner;
 
     
 
@@ -52,6 +54,13 @@ public class GameManager : MonoBehaviour
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
     {
         floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
+    }
+    public void SetSpeechBannerText(List<string> conversationList, List<string> responseList, Dictionary<int, List<int>> conversationToResponseVertices,Dictionary<int, List<int>> responseToConversationVertices, Vector3 position, string npcName, Sprite portrait){
+    
+        speechBanner.SetText(conversationList, responseList, conversationToResponseVertices, responseToConversationVertices,position, npcName, portrait);
+    }
+    public bool GetSpeechBannerShowing(){
+        return speechBanner.GetSpeechBannerShowing();
     }
 
     //Upgrade Weapon
