@@ -7,11 +7,12 @@ public class Player : Mover
 {
     public SpriteRenderer spriteRenderer;
     public Animator animator;
+    public Light2D LightSource;
+    public Inventory inventory;
     private float horizontalMove;
     private float verticalMove;
-    public bool canMove = true;
-    public Light2D LightSource;
 
+    public bool canMove = true;
     private float defaultLightOuterRadius = 1.5f;
     private float lightOuterRadius = 1.5f;
     private bool reduceLight = false;
@@ -55,14 +56,21 @@ public class Player : Mover
         verticalMove = y * ySpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
         float timeStep = 0.1f;
-        if(reduceLight){
-            if(lightOuterRadius > 0){
-                lightOuterRadius -= timeStep ;
+        if (reduceLight)
+        {
+            if (lightOuterRadius > 0)
+            {
+                lightOuterRadius -= timeStep;
             }
-        }else{
-            if(lightOuterRadius < defaultLightOuterRadius){
+        }
+        else
+        {
+            if (lightOuterRadius < defaultLightOuterRadius)
+            {
                 lightOuterRadius += timeStep;
-            }else if(lightOuterRadius > defaultLightOuterRadius){
+            }
+            else if (lightOuterRadius > defaultLightOuterRadius)
+            {
                 lightOuterRadius = defaultLightOuterRadius;
             }
         }
@@ -73,8 +81,7 @@ public class Player : Mover
     {
         GameManager.instance.currentCharacterSelection = skinId; //Set the current skin ID
         spriteRenderer.sprite = GameManager.instance.playerSprites[skinId];
-        //Change the animation
-        Animator animator = GameManager.instance.player.transform.gameObject.GetComponent<Animator>();
+        Animator animator = GameManager.instance.player.transform.gameObject.GetComponent<Animator>(); //Change the animation
         animator.runtimeAnimatorController = Resources.Load("Animations/Player_" + skinId) as RuntimeAnimatorController;
     }
 
@@ -116,8 +123,9 @@ public class Player : Mover
         lastImmune = Time.time;
         pushDirection = Vector3.zero;
     }
- 
-    public void SetReduceLight(bool reduceLight){
+
+    public void SetReduceLight(bool reduceLight)
+    {
         this.reduceLight = reduceLight;
     }
 

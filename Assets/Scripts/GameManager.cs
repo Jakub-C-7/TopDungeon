@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public GameObject menu;
     public SpeechBanner speechBanner;
 
-    
+
 
 
     //Logic
@@ -55,11 +55,13 @@ public class GameManager : MonoBehaviour
     {
         floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
     }
-    public void SetSpeechBannerText(List<string> conversationList, List<string> responseList, Dictionary<int, List<int>> conversationToResponseVertices,Dictionary<int, List<int>> responseToConversationVertices, Vector3 position, string npcName, Sprite portrait){
-    
-        speechBanner.SetText(conversationList, responseList, conversationToResponseVertices, responseToConversationVertices,position, npcName, portrait);
+    public void SetSpeechBannerText(List<string> conversationList, List<string> responseList, Dictionary<int, List<int>> conversationToResponseVertices, Dictionary<int, List<int>> responseToConversationVertices, Vector3 position, string npcName, Sprite portrait)
+    {
+
+        speechBanner.SetText(conversationList, responseList, conversationToResponseVertices, responseToConversationVertices, position, npcName, portrait);
     }
-    public bool GetSpeechBannerShowing(){
+    public bool GetSpeechBannerShowing()
+    {
         return speechBanner.GetSpeechBannerShowing();
     }
 
@@ -207,6 +209,13 @@ public class GameManager : MonoBehaviour
         player.Respawn();
     }
 
-    
+    // Inventory and Item system
+    public void CollectItem(CollectableItem item)
+    {
+        player.inventory.AddItemToInventory(item);
+        // Debug.Log(player.inventory.);
+    }
+
+
 
 }

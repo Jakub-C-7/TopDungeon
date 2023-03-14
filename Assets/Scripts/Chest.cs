@@ -6,9 +6,10 @@ public class Chest : Collectable
 {
     public Sprite emptyChest;
     public int coinAmount;
+    public CollectableItem item;
     protected override void onCollect()
     {
-        if (!collected)
+        if (!collected && coinAmount > 0)
         {
             collected = true;
             GetComponent<SpriteRenderer>().sprite = emptyChest;
@@ -16,7 +17,15 @@ public class Chest : Collectable
             GameManager.instance.coins += coinAmount;
             GameManager.instance.ShowText("+ " + coinAmount + " coins!", 25, Color.yellow, transform.position, Vector3.up * 50, 2.0f);
         }
+        else //TODO: Check if the item exists
+        {
+            collected = true;
+            GetComponent<SpriteRenderer>().sprite = emptyChest;
+            GameManager.instance.CollectItem(item); //Add the item to the player's inventory
+            GameManager.instance.ShowText(item.name + " acquired!", 20, Color.cyan, transform.position, Vector3.up * 50, 2.0f);
 
+        }
 
     }
+
 }
