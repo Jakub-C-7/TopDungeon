@@ -19,11 +19,13 @@ public class Chest : Collectable
         }
         else // If it is an item chest
         {
-            collected = true;
-            GetComponent<SpriteRenderer>().sprite = emptyChest;
-            GameManager.instance.CollectItem(item); //Add the item to the player's inventory
-            GameManager.instance.ShowText(item.itemName + " acquired!", 20, Color.cyan, transform.position, Vector3.up * 50, 2.0f);
+            // Try to add the item to the player's inventory
+            if (GameManager.instance.TryCollectItem(item))
+            {
+                collected = true;
+                GetComponent<SpriteRenderer>().sprite = emptyChest;
 
+            }
         }
 
     }

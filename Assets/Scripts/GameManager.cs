@@ -272,12 +272,24 @@ public class GameManager : MonoBehaviour
     }
 
     // Inventory and Item system
-    public void CollectItem(CollectableItem item)
+    public bool TryCollectItem(CollectableItem item)
     {
-        item.transform.parent = player.inventory.transform; //Transfer ownership of item to player's inventory
+        bool spaceInInventory = player.inventory.TryAddItemToInventory(item); // Add the item to the correct inventory list
 
-        item.name = item.itemName;
-        player.inventory.AddItemToInventory(item); // Add the item to the correct inventory list
+        if (spaceInInventory)
+        {
+            item.transform.parent = player.inventory.transform; //Transfer ownership of item to player's inventory
+            item.name = item.itemName;
+
+            return true;
+
+        }
+        else
+        {
+            return false;
+
+        }
+
     }
 
 

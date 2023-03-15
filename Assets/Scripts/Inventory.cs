@@ -14,43 +14,46 @@ public class Inventory : MonoBehaviour
     public List<CollectableItem> weaponGearInventoryContents;
     public List<CollectableItem> armourGearInventoryContents;
 
-
-    private void Start()
-    {
-        //Initialise the size of inventory for each section
-        // consumableInventoryContents = new List<CollectableItem>(new CollectableItem[consumableMaxCapacity]);
-        // resourceInventoryContents = new List<CollectableItem>(new CollectableItem[resourceMaxCapacity]);
-        // gearInventoryContents = new List<CollectableItem>(new CollectableItem[gearMaxCapacity]);
-
-    }
-
-    public void AddItemToInventory(CollectableItem item)
+    public bool TryAddItemToInventory(CollectableItem item)
     {
 
         // Check which inventory the item needs to be added to based on type
         if (item.itemType == "Consumable" && consumableInventoryContents.Count < consumableMaxCapacity)
         {
             consumableInventoryContents.Add(item);
+            GameManager.instance.ShowText(item.itemName + " acquired!", 20, Color.cyan, transform.position, Vector3.up * 50, 2.0f);
+
+            return true;
         }
         else if (item.itemType == "Weapon" && weaponGearInventoryContents.Count < weaponGearMaxCapacity)
         {
             weaponGearInventoryContents.Add(item);
+            GameManager.instance.ShowText(item.itemName + " acquired!", 20, Color.cyan, transform.position, Vector3.up * 50, 2.0f);
+
+            return true;
 
         }
         else if (item.itemType == "Armour" && armourGearInventoryContents.Count < armourGearMaxCapacity)
         {
             armourGearInventoryContents.Add(item);
+            GameManager.instance.ShowText(item.itemName + " acquired!", 20, Color.cyan, transform.position, Vector3.up * 50, 2.0f);
+
+            return true;
 
         }
         else if (item.itemType == "Resource" && resourceInventoryContents.Count < resourceMaxCapacity)
         {
             resourceInventoryContents.Add(item);
+            GameManager.instance.ShowText(item.itemName + " acquired!", 20, Color.cyan, transform.position, Vector3.up * 50, 2.0f);
+
+            return true;
 
         }
         else
         {
             GameManager.instance.ShowText("Inventory Full!", 20, Color.red, transform.position, Vector3.up * 50, 2.0f);
 
+            return false;
         }
     }
 
