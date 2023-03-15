@@ -61,7 +61,7 @@ public class PlayerData
             targetList.Add(new CollectableItemStruct
             {
                 itemName = i.itemName,
-                spriteName = i.spriteName,
+                itemImage = SpriteData.FromSprite(i.itemImage),
                 quantity = i.quantity,
                 itemType = i.itemType
             }

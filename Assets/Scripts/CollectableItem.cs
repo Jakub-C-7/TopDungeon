@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollectableItem : MonoBehaviour
 {
     public string itemName;
-    public string spriteName;
+    public Sprite itemImage;
     public int quantity;
     public string itemType;
 

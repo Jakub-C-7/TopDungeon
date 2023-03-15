@@ -247,7 +247,7 @@ public class GameManager : MonoBehaviour
             item.itemName = i.itemName;
             item.quantity = i.quantity;
             item.itemType = i.itemType;
-            item.spriteName = i.spriteName;
+            item.itemImage = SpriteData.ToSprite(i.itemImage);
 
             // Add the item into the correct inventory list
             targetList.Add(item);
