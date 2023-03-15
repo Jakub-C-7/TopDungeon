@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
             Destroy(floatingTextManager.gameObject);
             Destroy(hud);
             Destroy(menu);
+            Destroy(inventoryMenu);
             return;
         }
 
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     public GameObject hud;
     public GameObject menu;
     public SpeechBanner speechBanner;
+    public InventoryMenu inventoryMenu;
 
     //Logic
     public int coins;
