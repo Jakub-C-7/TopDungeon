@@ -6,7 +6,7 @@ using UnityEngine;
 public struct CollectableItemStruct
 {
     public string itemName;
-    public string spriteName;
+    public SpriteData itemImage;
     public int quantity;
     public string itemType;
 }
