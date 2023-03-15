@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class InventoryMenu : MonoBehaviour
 {
-   
     public Animator inventoryMenuAnimator;
+
+    void Start()
+    {
+        // Populate inventory with current items
+        // CleanUp();
+        // PopulateInventory("Weapon");
+        ResetAndRepopulate("Weapon");
+    }
 
     void Update()
     {
-        //Toggle map on and off
         if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleBool("Showing");
@@ -18,14 +24,93 @@ public class InventoryMenu : MonoBehaviour
         }
     }
 
+    public void ResetAndRepopulate(string itemType)
+    {
+        CleanUp();
+        PopulateInventory(itemType);
+    }
 
-    
- 
+    // Calls the LoopOverList function to populate the inventory bag by taking in a string which declares the itemType
+    public void PopulateInventory(string itemType)
+    {
+        switch (itemType)
+        {
+            case "Weapon":
+                LoopOverList(GameManager.instance.player.inventory.weaponGearInventoryContents);
+                break;
+            case "Armour":
+                LoopOverList(GameManager.instance.player.inventory.armourGearInventoryContents);
+                break;
+            case "Consumable":
+                LoopOverList(GameManager.instance.player.inventory.consumableInventoryContents);
+                break;
+            case "Resource":
+                LoopOverList(GameManager.instance.player.inventory.resourceInventoryContents);
+                break;
+            default:
+                break;
+        }
 
+    }
 
-  
+    // Loops over a Player's inventory list of CollectableItems and populates the bag 
+    private void LoopOverList(List<CollectableItem> playerInventory)
+    {
+        //Loading inventory details
+        foreach (CollectableItem i in playerInventory)
+        {
+            int currentIndex = playerInventory.IndexOf(i); // Get slot of item
 
-    public void ToggleBool(string name)
+            GameObject objToSpawn = new GameObject(i.itemName); // Spawn a new object
+
+            // objToSpawn.transform.parent = backpackInventory.transform; // Transfer ownership of object
+            objToSpawn.transform.parent = GameObject.Find("BagPanel").transform.GetChild(currentIndex); // Transfer ownership of object
+
+            // Create image and assign its data
+            objToSpawn.AddComponent<Image>().sprite = i.itemImage;
+
+            // Create CollectableItem instance and assign its data
+            objToSpawn.AddComponent<CollectableItem>();
+            objToSpawn.GetComponent<CollectableItem>().itemName = i.itemName;
+            objToSpawn.GetComponent<CollectableItem>().itemType = i.itemType;
+            objToSpawn.GetComponent<CollectableItem>().itemName = i.itemName;
+            objToSpawn.GetComponent<CollectableItem>().quantity = i.quantity;
+            objToSpawn.GetComponent<CollectableItem>().itemImage = i.itemImage;
+
+            //Scale the object to each slot
+            objToSpawn.transform.localPosition = Vector3.zero;
+            objToSpawn.transform.localScale = new Vector3(0.64f, 0.64f, 0);
+
+        }
+    }
+
+    // Clean up the backpack by removing existing objects
+    public void CleanUp()
+    {
+        foreach (Transform i in GameObject.Find("BagPanel").transform)
+        {
+
+            // There should only be one item in each inventory slot
+            if (i.childCount == 1)
+            {
+                //Destroy the one item within the slot.
+                GameObject.Destroy(i.GetChild(0).gameObject);
+
+            }
+            //Below else if can be used as a contingency if clean up of multiple collectableItems in one inventory slot is needed
+            // else if (i.childCount > 0)
+            // {
+            //     for (int n = 0; n < i.childCount; n++)
+            //     {
+            //         GameObject.Destroy(i.GetChild(n).gameObject);
+
+            //     }
+            // }
+
+        }
+    }
+
+    private void ToggleBool(string name)
     {
         inventoryMenuAnimator.SetBool(name, !inventoryMenuAnimator.GetBool(name));
     }

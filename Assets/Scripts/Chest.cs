@@ -32,6 +32,8 @@ public class Chest : Collectable
                 collected = true;
                 GetComponent<SpriteRenderer>().sprite = emptyChest;
 
+                GameManager.instance.inventoryMenu.ResetAndRepopulate(item.itemType);
+
             }
         }
 
