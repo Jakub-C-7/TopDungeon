@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     public InventoryMenu inventoryMenu;
 
     //Logic
-    public int coins;
+    // public int coins;
     public int experience;
     public int currentCharacterSelection;
 
@@ -74,9 +74,9 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (coins >= weaponPrices[weapon.weaponLevel]) // Try to upgrade if enough coins
+        if (player.inventory.coins >= weaponPrices[weapon.weaponLevel]) // Try to upgrade if enough coins
         {
-            coins -= weaponPrices[weapon.weaponLevel];
+            player.inventory.coins -= weaponPrices[weapon.weaponLevel];
             weapon.UpgradeWeapon();
             return true;
         }
@@ -208,8 +208,8 @@ public class GameManager : MonoBehaviour
         //Loading player details
         this.player.hitPoints = data.health;
         this.player.maxHitpoints = data.maxHitpoints;
-        experience = data.experience;
-        coins = data.coins;
+        this.experience = data.experience;
+        this.player.inventory.coins = data.coins;
         currentCharacterSelection = data.currentCharacterSelection;
         weapon.weaponLevel = data.weaponLevel;
 

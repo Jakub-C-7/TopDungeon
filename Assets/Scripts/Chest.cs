@@ -15,9 +15,10 @@ public class Chest : Collectable
             collected = true;
             GetComponent<SpriteRenderer>().sprite = emptyChest;
             coinAmount = Random.Range(10, 20);
-            GameManager.instance.coins += coinAmount;
+            GameManager.instance.player.inventory.coins += coinAmount;
             GameManager.instance.ShowText("+ " + coinAmount + " coins!", 25, Color.yellow, transform.position, Vector3.up * 50, 2.0f);
-            if(chestAudio){
+            if (chestAudio)
+            {
                 chestAudio.Play();
             }
         }
@@ -26,7 +27,8 @@ public class Chest : Collectable
             // Try to add the item to the player's inventory
             if (GameManager.instance.TryCollectItem(item))
             {
-                if(chestAudio){
+                if (chestAudio)
+                {
                     chestAudio.Play();
                 }
                 collected = true;

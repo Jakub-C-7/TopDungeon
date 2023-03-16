@@ -31,7 +31,7 @@ public class PlayerData
         health = player.hitPoints;
         maxHitpoints = player.maxHitpoints;
         experience = GameManager.instance.experience;
-        coins = GameManager.instance.coins;
+        coins = GameManager.instance.player.inventory.coins;
         currentCharacterSelection = GameManager.instance.currentCharacterSelection;
         weaponLevel = GameManager.instance.weapon.weaponLevel;
 
