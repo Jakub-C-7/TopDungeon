@@ -80,9 +80,12 @@ public class InventoryMenu : MonoBehaviour
             objToSpawn.AddComponent<CollectableItem>();
             objToSpawn.GetComponent<CollectableItem>().itemName = i.itemName;
             objToSpawn.GetComponent<CollectableItem>().itemType = i.itemType;
-            objToSpawn.GetComponent<CollectableItem>().itemName = i.itemName;
             objToSpawn.GetComponent<CollectableItem>().quantity = i.quantity;
             objToSpawn.GetComponent<CollectableItem>().itemImage = i.itemImage;
+
+            // Attach hovertip to item
+            objToSpawn.AddComponent<HoverTip>().tipToShow = i.itemName + "\nType: " + i.itemType;
+
 
             //Scale the object to each slot
             objToSpawn.transform.localPosition = Vector3.zero;
