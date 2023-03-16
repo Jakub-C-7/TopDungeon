@@ -36,7 +36,7 @@ public class Enemy : Mover
         GameManager.instance.ShowText("+ " + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         //Collision work
         boxCollider.OverlapCollider(filter, hits);
