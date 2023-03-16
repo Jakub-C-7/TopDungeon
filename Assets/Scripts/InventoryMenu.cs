@@ -9,9 +9,7 @@ public class InventoryMenu : MonoBehaviour
 
     void Start()
     {
-        // Populate inventory with current items
-        // CleanUp();
-        // PopulateInventory("Weapon");
+        RefreshCoins();
         ResetAndRepopulate("Weapon");
     }
 
@@ -54,13 +52,10 @@ public class InventoryMenu : MonoBehaviour
 
     }
 
-    private void RefreshCoins()
+    public void RefreshCoins()
     {
-        // objToSpawn.transform.parent = GameObject.Find("BagPanel").transform.GetChild(currentIndex); // Transfer ownership of object
-        // objToSpawn.GetComponent<CollectableItem>().itemName = i.itemName;
 
         Text currentCoins = GameObject.Find("CoinPanel").transform.GetChild(0).GetComponent<Text>();
-        // objToSpawn.transform.GetChild(0).GetComponent<Text>();
         currentCoins.text = GameManager.instance.player.inventory.coins.ToString();
 
     }

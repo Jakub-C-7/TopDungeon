@@ -12,15 +12,20 @@ public class Chest : Collectable
     {
         if (!collected && coinAmount > 0) // If it is a coin chest
         {
+            // Play chest audio if it has been assigned
+            if (chestAudio)
+            {
+                chestAudio.Play();
+            }
+
             collected = true;
             GetComponent<SpriteRenderer>().sprite = emptyChest;
             coinAmount = Random.Range(10, 20);
             GameManager.instance.player.inventory.coins += coinAmount;
             GameManager.instance.ShowText("+ " + coinAmount + " coins!", 25, Color.yellow, transform.position, Vector3.up * 50, 2.0f);
-            if (chestAudio)
-            {
-                chestAudio.Play();
-            }
+
+            //Refresh the number of coins in inventory
+            GameManager.instance.inventoryMenu.RefreshCoins();
         }
         else // If it is an item chest
         {
