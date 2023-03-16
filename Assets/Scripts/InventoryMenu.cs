@@ -9,9 +9,7 @@ public class InventoryMenu : MonoBehaviour
 
     void Start()
     {
-        // Populate inventory with current items
-        // CleanUp();
-        // PopulateInventory("Weapon");
+        RefreshCoins();
         ResetAndRepopulate("Weapon");
     }
 
@@ -19,6 +17,7 @@ public class InventoryMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
+            RefreshCoins();
             ToggleBool("Showing");
 
         }
@@ -50,6 +49,14 @@ public class InventoryMenu : MonoBehaviour
             default:
                 break;
         }
+
+    }
+
+    public void RefreshCoins()
+    {
+
+        Text currentCoins = GameObject.Find("CoinPanel").transform.GetChild(0).GetComponent<Text>();
+        currentCoins.text = GameManager.instance.player.inventory.coins.ToString();
 
     }
 
