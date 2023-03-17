@@ -7,6 +7,10 @@ public class BombEnemy : Enemy
     public ParticleSystem explosionParticleSystem;
     private bool exploded = false;
 
+
+
+
+
     new protected void FixedUpdate(){
     
         if(!animator.GetBool("Exploding")){
@@ -28,5 +32,9 @@ public class BombEnemy : Enemy
     }
 
     
-    
+
 }
+
+    
+    
+
