@@ -6,7 +6,6 @@ using UnityEngine.Rendering.Universal;
 public class Player : Mover
 {
     public SpriteRenderer spriteRenderer;
-    public Animator animator;
     public Light2D LightSource;
     public Inventory inventory;
     private float horizontalMove;
@@ -52,9 +51,6 @@ public class Player : Mover
 
         }
 
-        horizontalMove = x * xSpeed;
-        verticalMove = y * ySpeed;
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
         float timeStep = 0.1f;
         if (reduceLight)
         {

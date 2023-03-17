@@ -10,6 +10,7 @@ public abstract class Mover : Fighter
     private Vector3 originalSize;
     public float ySpeed = 0.75f;
     public float xSpeed = 1.0f;
+    public Animator animator;
 
     protected virtual void Start()
     {
@@ -39,7 +40,12 @@ public abstract class Mover : Fighter
         // Reduce push force every frame, base off of recovery speed
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushRecoverySpeed);
 
-
+        if(animator){
+            float horizontalMove = input.x * xSpeed;
+            float verticalMove = input.y * ySpeed;
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
+        }
+        
 
         //Movement Blocking-------------
         //Make sure we can move in this direction by casting a box there first. If the box returns null, we're free to move
