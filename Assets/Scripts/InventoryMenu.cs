@@ -63,6 +63,10 @@ public class InventoryMenu : MonoBehaviour
     // Loops over a Player's inventory list of CollectableItems and populates the bag 
     private void LoopOverList(List<CollectableItem> playerInventory)
     {
+        //References
+        GameObject inventoryMenu = GameObject.Find("InventoryMenu");
+        GameObject bagPanel = GameObject.Find("BagPanel");
+
         //Loading inventory details
         foreach (CollectableItem i in playerInventory)
         {
@@ -70,8 +74,7 @@ public class InventoryMenu : MonoBehaviour
 
             GameObject objToSpawn = new GameObject(i.itemName); // Spawn a new object
 
-            // objToSpawn.transform.parent = backpackInventory.transform; // Transfer ownership of object
-            objToSpawn.transform.parent = GameObject.Find("BagPanel").transform.GetChild(currentIndex); // Transfer ownership of object
+            objToSpawn.transform.parent = bagPanel.transform.GetChild(currentIndex); // Transfer ownership of object
 
             // Create image and assign its data
             objToSpawn.AddComponent<Image>().sprite = i.itemImage;
@@ -85,6 +88,10 @@ public class InventoryMenu : MonoBehaviour
 
             // Attach hovertip to item
             objToSpawn.AddComponent<HoverTip>().tipToShow = i.itemName + "\nType: " + i.itemType;
+
+            // Enable Drag and drop
+            objToSpawn.AddComponent<DragDrop>().canvas = inventoryMenu.GetComponent<Canvas>();
+            objToSpawn.AddComponent<CanvasGroup>();
 
 
             //Scale the object to each slot
