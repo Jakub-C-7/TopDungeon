@@ -5,7 +5,6 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public int coins;
-
     public int consumableMaxCapacity = 10;
     public int resourceMaxCapacity = 10;
     public int weaponGearMaxCapacity = 10;

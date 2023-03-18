@@ -58,14 +58,47 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             eventData.pointerCurrentRaycast.gameObject.transform.localPosition = Vector3.zero;
 
         }
-        // If the item has not been dropped onto an item slot or another item
-        else if (!eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>())
+        // If the item has been dropped onto an item slot
+        else if (eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>())
         {
-            eventData.pointerDrag.transform.SetParent(originalParent);
-            eventData.pointerDrag.GetComponent<RectTransform>().transform.localPosition = Vector3.zero;
+            // Checks to ensure that the correct type of item has been dropped onto the correct slot
+            switch (eventData.pointerCurrentRaycast.gameObject.name)
+            {
+
+                case "WeaponHolster" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType != "Weapon":
+
+                    returnDraggedItemToOrigin(eventData);
+                    break;
+
+                case "ArmourHolster" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType != "Armour":
+
+                    returnDraggedItemToOrigin(eventData);
+                    break;
+
+                case "ConsumableHolsterOne" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType != "Consumable":
+
+                    returnDraggedItemToOrigin(eventData);
+                    break;
+
+                case "ConsumableHolsterTwo" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType != "Consumable":
+
+                    returnDraggedItemToOrigin(eventData);
+                    break;
+
+            }
 
         }
+        else
+        {
+            returnDraggedItemToOrigin(eventData);
+        }
 
+    }
+
+    public void returnDraggedItemToOrigin(PointerEventData eventData)
+    {
+        eventData.pointerDrag.transform.SetParent(originalParent);
+        eventData.pointerDrag.GetComponent<RectTransform>().transform.localPosition = Vector3.zero;
     }
 
 

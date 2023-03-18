@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
+
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
@@ -19,7 +20,12 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             // Centralise the item image in the item slot
             eventData.pointerDrag.GetComponent<RectTransform>().transform.localPosition = Vector3.zero;
 
+            //TODO: Check if the item is being equipped.
 
+            //If being equipped, remove from inventory,
+
+            // Refresh the currently equipped items
+            GameManager.instance.player.equippedInventory.RefreshEquippedItems();
         }
     }
 }

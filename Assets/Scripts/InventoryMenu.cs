@@ -37,17 +37,19 @@ public class InventoryMenu : MonoBehaviour
             case "Weapon":
                 LoopOverList(GameManager.instance.player.inventory.weaponGearInventoryContents);
                 break;
+
             case "Armour":
                 LoopOverList(GameManager.instance.player.inventory.armourGearInventoryContents);
                 break;
+
             case "Consumable":
                 LoopOverList(GameManager.instance.player.inventory.consumableInventoryContents);
                 break;
+
             case "Resource":
                 LoopOverList(GameManager.instance.player.inventory.resourceInventoryContents);
                 break;
-            default:
-                break;
+
         }
 
     }
@@ -130,6 +132,30 @@ public class InventoryMenu : MonoBehaviour
     private void ToggleBool(string name)
     {
         inventoryMenuAnimator.SetBool(name, !inventoryMenuAnimator.GetBool(name));
+    }
+
+    // Retrieve Weapon slot item
+    public CollectableItem getEquippedWeapon()
+    {
+        return GameObject.Find("WeaponHolster").transform.GetComponentInChildren<CollectableItem>();
+    }
+
+    // Retrieve Armour slot item
+    public CollectableItem getEquippedArmour()
+    {
+        return GameObject.Find("ArmourHolster").transform.GetComponentInChildren<CollectableItem>();
+    }
+
+    // Retrieve Consumable 1 slot item
+    public CollectableItem getEquippedConsumableOne()
+    {
+        return GameObject.Find("ConsumableHolsterOne").transform.GetComponentInChildren<CollectableItem>();
+    }
+
+    // Retrieve Consumable 2 slot item
+    public CollectableItem getEquippedConsumableTwo()
+    {
+        return GameObject.Find("ConsumableHolsterTwo").transform.GetComponentInChildren<CollectableItem>();
     }
 
 
