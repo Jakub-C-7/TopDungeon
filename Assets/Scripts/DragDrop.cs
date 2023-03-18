@@ -78,7 +78,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         }
         // Item being dragged is currently equipped
-        else if (originalParent.name == "WeaponHolster" || originalParent.name == "ArmourHolster" || originalParent.name == "ConsumableHolsterOne" || originalParent.name == "ConsumableHolsterTwo")
+        else if ((originalParent.name == "WeaponHolster" || originalParent.name == "ArmourHolster" || originalParent.name == "ConsumableHolsterOne" || originalParent.name == "ConsumableHolsterTwo") && eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>())
         {
             Debug.Log("We are unequipping an equipped object onto an empty bag slot");
 
