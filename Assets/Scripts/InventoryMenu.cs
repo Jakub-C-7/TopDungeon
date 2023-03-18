@@ -32,6 +32,7 @@ public class InventoryMenu : MonoBehaviour
     // Calls the LoopOverList function to populate the inventory bag by taking in a string which declares the itemType
     public void PopulateInventory(string itemType)
     {
+        Debug.Log("Populate Inventory has been called");
         switch (itemType)
         {
             case "Weapon":

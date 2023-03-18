@@ -21,8 +21,8 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
 
-        // set the original position / parent of the item
-        // originalPosition = rectTransform.anchoredPosition;
+        // set the original position and parent of the item
+        // originalPosition = rectTransform.anchoredPosition; // Not needed anymore
         originalParent = eventData.pointerDrag.transform.parent;
 
         canvasGroup.alpha = .6f;
@@ -46,9 +46,28 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        // If the item has been dropped onto another item
-        if (eventData.pointerCurrentRaycast.gameObject.GetComponent<CollectableItem>())
+        // References
+        GameObject itemBeingDragged = eventData.pointerDrag.gameObject;
+        GameObject itemBeingDraggedOnto = eventData.pointerCurrentRaycast.gameObject;
+        string raycastParentName = itemBeingDraggedOnto.transform.parent.name;
+
+        //  Dropped onto another item and it is the same type of item
+        if (itemBeingDraggedOnto.GetComponent<CollectableItem>() && itemBeingDraggedOnto.GetComponent<CollectableItem>().itemType == itemBeingDragged.GetComponent<CollectableItem>().itemType)
         {
+
+            //If the item being dropped on is equipped, swap the two items around
+            if (raycastParentName == "WeaponHolster" || raycastParentName == "ArmourHolster" || raycastParentName == "ConsumableHolsterOne" || raycastParentName == "ConsumableHolsterTwo")
+            {
+                Debug.Log("An item is already equipped but we are trying to equip a new one!");
+
+                // Un-equip currently equipped item
+                GameManager.instance.player.equippedInventory.UnEquipItem(itemBeingDraggedOnto.transform.parent, itemBeingDraggedOnto.GetComponent<CollectableItem>());
+
+                // Equip new item
+                GameManager.instance.player.equippedInventory.EquipItem(itemBeingDragged.GetComponent<CollectableItem>());
+
+            }
+
             // Switch the parents of the two items
             eventData.pointerDrag.transform.SetParent(eventData.pointerCurrentRaycast.gameObject.transform.parent);
             eventData.pointerCurrentRaycast.gameObject.transform.SetParent(originalParent);
@@ -58,34 +77,44 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             eventData.pointerCurrentRaycast.gameObject.transform.localPosition = Vector3.zero;
 
         }
-        // If the item has been dropped onto an item slot
+        // Item being dragged is currently equipped
+        else if (originalParent.name == "WeaponHolster" || originalParent.name == "ArmourHolster" || originalParent.name == "ConsumableHolsterOne" || originalParent.name == "ConsumableHolsterTwo")
+        {
+            Debug.Log("We are unequipping an equipped object onto an empty bag slot");
+
+            // Un-equip currently equipped item
+            GameManager.instance.player.equippedInventory.UnEquipItem(originalParent, itemBeingDragged.GetComponent<CollectableItem>());
+
+        }
+        // Item has been dropped onto an item slot
         else if (eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>())
         {
             // Checks to ensure that the correct type of item has been dropped onto the correct slot
             switch (eventData.pointerCurrentRaycast.gameObject.name)
             {
 
-                case "WeaponHolster" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType != "Weapon":
+                case "WeaponHolster" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType == "Weapon":
 
-                    returnDraggedItemToOrigin(eventData);
+                    GameManager.instance.player.equippedInventory.EquipItem(eventData.pointerDrag.GetComponent<CollectableItem>());
                     break;
 
-                case "ArmourHolster" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType != "Armour":
+                case "ArmourHolster" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType == "Armour":
 
-                    returnDraggedItemToOrigin(eventData);
+                    GameManager.instance.player.equippedInventory.EquipItem(eventData.pointerDrag.GetComponent<CollectableItem>());
                     break;
 
-                case "ConsumableHolsterOne" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType != "Consumable":
+                case "ConsumableHolsterOne" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType == "Consumable":
 
-                    returnDraggedItemToOrigin(eventData);
+                    GameManager.instance.player.equippedInventory.EquipItem(eventData.pointerDrag.GetComponent<CollectableItem>());
                     break;
 
-                case "ConsumableHolsterTwo" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType != "Consumable":
+                case "ConsumableHolsterTwo" when eventData.pointerDrag.GetComponent<CollectableItem>().itemType == "Consumable":
 
-                    returnDraggedItemToOrigin(eventData);
+                    GameManager.instance.player.equippedInventory.EquipItem(eventData.pointerDrag.GetComponent<CollectableItem>());
                     break;
 
             }
+
 
         }
         else
