@@ -212,6 +212,8 @@ public class GameManager : MonoBehaviour
         //Loading player details
         this.player.hitPoints = data.health;
         this.player.maxHitpoints = data.maxHitpoints;
+        //Refresh health on HUD
+        OnHealthChange(); 
         this.experience = data.experience;
         this.player.inventory.coins = data.coins;
         currentCharacterSelection = data.currentCharacterSelection;
