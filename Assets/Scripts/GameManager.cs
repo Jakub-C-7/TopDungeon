@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
             Destroy(hud);
             Destroy(menu);
             Destroy(inventoryMenu);
-            Destroy(adventurerDiary);
+            Destroy(adventurerDiary.gameObject);
             return;
         }
 
@@ -217,6 +217,12 @@ public class GameManager : MonoBehaviour
         currentCharacterSelection = data.currentCharacterSelection;
         weapon.weaponLevel = data.weaponLevel;
 
+        //Load defeated enemies 
+        List<Sprite> defeatedEnemies = new List<Sprite>(); 
+        Debug.Log("defeated enemies: " + data.defeatedEnemies);
+        LoopOverSpriteList(data.defeatedEnemies, defeatedEnemies);
+        GameManager.instance.adventurerDiary.SetDefeatedEnemies(defeatedEnemies);
+
         // Loading inventory details
         LoopOverInventoryList(data.consumableInventoryContents, this.player.inventory.consumableInventoryContents);
         LoopOverInventoryList(data.resourceInventoryContents, this.player.inventory.resourceInventoryContents);
@@ -264,6 +270,13 @@ public class GameManager : MonoBehaviour
             // Add the item into the correct inventory list
             targetList.Add(item);
 
+        }
+    }
+
+    public void LoopOverSpriteList(List<SpriteData> spriteList, List<Sprite> targetList){
+        Debug.Log(spriteList);
+        foreach(SpriteData i in spriteList){
+            targetList.Add(SpriteData.ToSprite(i));
         }
     }
 
