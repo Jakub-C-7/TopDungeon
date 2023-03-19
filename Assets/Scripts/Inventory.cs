@@ -5,7 +5,6 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public int coins;
-
     public int consumableMaxCapacity = 10;
     public int resourceMaxCapacity = 10;
     public int weaponGearMaxCapacity = 10;
@@ -57,6 +56,36 @@ public class Inventory : MonoBehaviour
 
             return false;
         }
+    }
+
+    public void ReAddItem(CollectableItem item)
+    {
+
+        // Check which inventory the item needs to be added to based on type
+        if (item.itemType == "Consumable" && consumableInventoryContents.Count < consumableMaxCapacity)
+        {
+            consumableInventoryContents.Add(item);
+
+        }
+        else if (item.itemType == "Weapon" && weaponGearInventoryContents.Count < weaponGearMaxCapacity)
+        {
+            weaponGearInventoryContents.Add(item);
+
+
+        }
+        else if (item.itemType == "Armour" && armourGearInventoryContents.Count < armourGearMaxCapacity)
+        {
+            armourGearInventoryContents.Add(item);
+
+
+        }
+        else if (item.itemType == "Resource" && resourceInventoryContents.Count < resourceMaxCapacity)
+        {
+            resourceInventoryContents.Add(item);
+
+
+        }
+
     }
 
 

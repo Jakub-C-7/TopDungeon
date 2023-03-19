@@ -32,22 +32,25 @@ public class InventoryMenu : MonoBehaviour
     // Calls the LoopOverList function to populate the inventory bag by taking in a string which declares the itemType
     public void PopulateInventory(string itemType)
     {
+        Debug.Log("Populate Inventory has been called");
         switch (itemType)
         {
             case "Weapon":
                 LoopOverList(GameManager.instance.player.inventory.weaponGearInventoryContents);
                 break;
+
             case "Armour":
                 LoopOverList(GameManager.instance.player.inventory.armourGearInventoryContents);
                 break;
+
             case "Consumable":
                 LoopOverList(GameManager.instance.player.inventory.consumableInventoryContents);
                 break;
+
             case "Resource":
                 LoopOverList(GameManager.instance.player.inventory.resourceInventoryContents);
                 break;
-            default:
-                break;
+
         }
 
     }
@@ -63,6 +66,10 @@ public class InventoryMenu : MonoBehaviour
     // Loops over a Player's inventory list of CollectableItems and populates the bag 
     private void LoopOverList(List<CollectableItem> playerInventory)
     {
+        //References
+        GameObject inventoryMenu = GameObject.Find("InventoryMenu");
+        GameObject bagPanel = GameObject.Find("BagPanel");
+
         //Loading inventory details
         foreach (CollectableItem i in playerInventory)
         {
@@ -70,8 +77,7 @@ public class InventoryMenu : MonoBehaviour
 
             GameObject objToSpawn = new GameObject(i.itemName); // Spawn a new object
 
-            // objToSpawn.transform.parent = backpackInventory.transform; // Transfer ownership of object
-            objToSpawn.transform.parent = GameObject.Find("BagPanel").transform.GetChild(currentIndex); // Transfer ownership of object
+            objToSpawn.transform.parent = bagPanel.transform.GetChild(currentIndex); // Transfer ownership of object
 
             // Create image and assign its data
             objToSpawn.AddComponent<Image>().sprite = i.itemImage;
@@ -85,6 +91,10 @@ public class InventoryMenu : MonoBehaviour
 
             // Attach hovertip to item
             objToSpawn.AddComponent<HoverTip>().tipToShow = i.itemName + "\nType: " + i.itemType;
+
+            // Enable Drag and drop
+            objToSpawn.AddComponent<DragDrop>().canvas = inventoryMenu.GetComponent<Canvas>();
+            objToSpawn.AddComponent<CanvasGroup>();
 
 
             //Scale the object to each slot
@@ -123,6 +133,30 @@ public class InventoryMenu : MonoBehaviour
     private void ToggleBool(string name)
     {
         inventoryMenuAnimator.SetBool(name, !inventoryMenuAnimator.GetBool(name));
+    }
+
+    // Retrieve Weapon slot item
+    public CollectableItem getEquippedWeapon()
+    {
+        return GameObject.Find("WeaponHolster").transform.GetComponentInChildren<CollectableItem>();
+    }
+
+    // Retrieve Armour slot item
+    public CollectableItem getEquippedArmour()
+    {
+        return GameObject.Find("ArmourHolster").transform.GetComponentInChildren<CollectableItem>();
+    }
+
+    // Retrieve Consumable 1 slot item
+    public CollectableItem getEquippedConsumableOne()
+    {
+        return GameObject.Find("ConsumableHolsterOne").transform.GetComponentInChildren<CollectableItem>();
+    }
+
+    // Retrieve Consumable 2 slot item
+    public CollectableItem getEquippedConsumableTwo()
+    {
+        return GameObject.Find("ConsumableHolsterTwo").transform.GetComponentInChildren<CollectableItem>();
     }
 
 

@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 69444672}
   - component: {fileID: 69444674}
   - component: {fileID: 69444673}
+  - component: {fileID: 69444675}
   m_Layer: 5
   m_Name: ItemHolster (14)
   m_TagString: Untagged
@@ -477,6 +478,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69444671}
   m_CullTransparentMesh: 1
+--- !u!114 &69444675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69444671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &116065338
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +501,7 @@ GameObject:
   - component: {fileID: 116065339}
   - component: {fileID: 116065341}
   - component: {fileID: 116065340}
+  - component: {fileID: 116065342}
   m_Layer: 5
   m_Name: ItemHolster (8)
   m_TagString: Untagged
@@ -553,6 +567,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116065338}
   m_CullTransparentMesh: 1
+--- !u!114 &116065342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116065338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &138216008
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +670,8 @@ GameObject:
   - component: {fileID: 153801533}
   - component: {fileID: 153801535}
   - component: {fileID: 153801534}
+  - component: {fileID: 153801536}
+  - component: {fileID: 153801537}
   m_Layer: 5
   m_Name: ArmourSprite
   m_TagString: Untagged
@@ -709,6 +737,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153801532}
   m_CullTransparentMesh: 1
+--- !u!114 &153801536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153801532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2869409de316ad741860190104a891f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 1946167416}
+--- !u!225 &153801537
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153801532}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &170491060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,6 +1107,7 @@ GameObject:
   - component: {fileID: 218740292}
   - component: {fileID: 218740294}
   - component: {fileID: 218740293}
+  - component: {fileID: 218740295}
   m_Layer: 5
   m_Name: ItemHolster (20)
   m_TagString: Untagged
@@ -1119,6 +1173,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218740291}
   m_CullTransparentMesh: 1
+--- !u!114 &218740295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218740291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &222826730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1766,8 @@ GameObject:
   - component: {fileID: 280707485}
   - component: {fileID: 280707484}
   - component: {fileID: 280707486}
+  - component: {fileID: 280707487}
+  - component: {fileID: 280707488}
   m_Layer: 5
   m_Name: ConsumableSprite
   m_TagString: Untagged
@@ -1782,6 +1850,31 @@ MonoBehaviour:
     Effect: Unknown
 
     Quantity: Unknown'
+--- !u!114 &280707487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280707482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2869409de316ad741860190104a891f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 1946167416}
+--- !u!225 &280707488
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280707482}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &303292777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,6 +2154,7 @@ GameObject:
   - component: {fileID: 367509717}
   - component: {fileID: 367509719}
   - component: {fileID: 367509718}
+  - component: {fileID: 367509720}
   m_Layer: 5
   m_Name: ItemHolster (21)
   m_TagString: Untagged
@@ -2126,6 +2220,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367509716}
   m_CullTransparentMesh: 1
+--- !u!114 &367509720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367509716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &368336999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2775,6 +2881,7 @@ GameObject:
   - component: {fileID: 479770853}
   - component: {fileID: 479770855}
   - component: {fileID: 479770854}
+  - component: {fileID: 479770856}
   m_Layer: 5
   m_Name: ItemHolster (12)
   m_TagString: Untagged
@@ -2840,6 +2947,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479770852}
   m_CullTransparentMesh: 1
+--- !u!114 &479770856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479770852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &497483184
 GameObject:
   m_ObjectHideFlags: 0
@@ -5223,6 +5342,7 @@ GameObject:
   - component: {fileID: 587231652}
   - component: {fileID: 587231654}
   - component: {fileID: 587231653}
+  - component: {fileID: 587231655}
   m_Layer: 5
   m_Name: ItemHolster (13)
   m_TagString: Untagged
@@ -5288,6 +5408,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587231651}
   m_CullTransparentMesh: 1
+--- !u!114 &587231655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587231651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &686165786
 GameObject:
   m_ObjectHideFlags: 0
@@ -5300,6 +5432,8 @@ GameObject:
   - component: {fileID: 686165789}
   - component: {fileID: 686165788}
   - component: {fileID: 686165790}
+  - component: {fileID: 686165791}
+  - component: {fileID: 686165792}
   m_Layer: 5
   m_Name: ConsumableSprite
   m_TagString: Untagged
@@ -5382,6 +5516,31 @@ MonoBehaviour:
     Effect: Unknown
 
     Quantity: Unknown'
+--- !u!114 &686165791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686165786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2869409de316ad741860190104a891f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 1946167416}
+--- !u!225 &686165792
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686165786}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &715861835
 GameObject:
   m_ObjectHideFlags: 0
@@ -5393,6 +5552,7 @@ GameObject:
   - component: {fileID: 715861836}
   - component: {fileID: 715861838}
   - component: {fileID: 715861837}
+  - component: {fileID: 715861839}
   m_Layer: 5
   m_Name: ItemHolster (4)
   m_TagString: Untagged
@@ -5458,6 +5618,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715861835}
   m_CullTransparentMesh: 1
+--- !u!114 &715861839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715861835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &721723410
 GameObject:
   m_ObjectHideFlags: 0
@@ -5618,6 +5790,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730142010}
   m_CullTransparentMesh: 1
+--- !u!1 &737021896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 737021897}
+  - component: {fileID: 737021898}
+  m_Layer: 7
+  m_Name: EquippedInventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &737021897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737021896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1683999405}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &737021898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737021896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d40598734099344980687ab7536e28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  armour: {fileID: 0}
+  consumableOne: {fileID: 0}
+  consumableTwo: {fileID: 0}
+  inventoryMenu: {fileID: 1946167418}
 --- !u!1001 &741030784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6255,6 +6476,7 @@ GameObject:
   - component: {fileID: 792141559}
   - component: {fileID: 792141561}
   - component: {fileID: 792141560}
+  - component: {fileID: 792141562}
   m_Layer: 5
   m_Name: ConsumableHolsterTwo
   m_TagString: Untagged
@@ -6322,6 +6544,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792141558}
   m_CullTransparentMesh: 1
+--- !u!114 &792141562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792141558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &810287350
 GameObject:
   m_ObjectHideFlags: 0
@@ -6333,6 +6567,7 @@ GameObject:
   - component: {fileID: 810287351}
   - component: {fileID: 810287353}
   - component: {fileID: 810287352}
+  - component: {fileID: 810287354}
   m_Layer: 5
   m_Name: ItemHolster (3)
   m_TagString: Untagged
@@ -6398,6 +6633,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810287350}
   m_CullTransparentMesh: 1
+--- !u!114 &810287354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810287350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &834172192
 GameObject:
   m_ObjectHideFlags: 0
@@ -6730,6 +6977,7 @@ GameObject:
   - component: {fileID: 875782290}
   - component: {fileID: 875782292}
   - component: {fileID: 875782291}
+  - component: {fileID: 875782293}
   m_Layer: 5
   m_Name: ArmourHolster
   m_TagString: Untagged
@@ -6748,8 +6996,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2119059796}
+  m_Children: []
   m_Father: {fileID: 1459923115}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6796,6 +7043,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875782289}
   m_CullTransparentMesh: 1
+--- !u!114 &875782293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875782289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &883732807
 GameObject:
   m_ObjectHideFlags: 0
@@ -6911,6 +7170,7 @@ GameObject:
   - component: {fileID: 934351582}
   - component: {fileID: 934351584}
   - component: {fileID: 934351583}
+  - component: {fileID: 934351585}
   m_Layer: 5
   m_Name: ItemHolster (16)
   m_TagString: Untagged
@@ -6976,6 +7236,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934351581}
   m_CullTransparentMesh: 1
+--- !u!114 &934351585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934351581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &943878185
 GameObject:
   m_ObjectHideFlags: 0
@@ -7313,6 +7585,7 @@ GameObject:
   - component: {fileID: 998518592}
   - component: {fileID: 998518594}
   - component: {fileID: 998518593}
+  - component: {fileID: 998518595}
   m_Layer: 5
   m_Name: ItemHolster (7)
   m_TagString: Untagged
@@ -7378,6 +7651,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998518591}
   m_CullTransparentMesh: 1
+--- !u!114 &998518595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998518591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1001363475
 GameObject:
   m_ObjectHideFlags: 0
@@ -7974,6 +8259,7 @@ GameObject:
   - component: {fileID: 1097251366}
   - component: {fileID: 1097251368}
   - component: {fileID: 1097251367}
+  - component: {fileID: 1097251369}
   m_Layer: 5
   m_Name: ItemHolster (2)
   m_TagString: Untagged
@@ -8039,6 +8325,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097251365}
   m_CullTransparentMesh: 1
+--- !u!114 &1097251369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097251365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1104881529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8048,7 +8346,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 685434505, guid: 833f071c1fb435948b87ba9f052bb06b, type: 3}
       propertyPath: itemName
-      value: Test Sword
+      value: Great Sword
       objectReference: {fileID: 0}
     - target: {fileID: 685434505, guid: 833f071c1fb435948b87ba9f052bb06b, type: 3}
       propertyPath: itemType
@@ -8230,6 +8528,7 @@ GameObject:
   - component: {fileID: 1168543678}
   - component: {fileID: 1168543680}
   - component: {fileID: 1168543679}
+  - component: {fileID: 1168543681}
   m_Layer: 5
   m_Name: ItemHolster (6)
   m_TagString: Untagged
@@ -8295,6 +8594,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168543677}
   m_CullTransparentMesh: 1
+--- !u!114 &1168543681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168543677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1226580773
 GameObject:
   m_ObjectHideFlags: 0
@@ -8795,6 +9106,7 @@ GameObject:
   - component: {fileID: 1286462341}
   - component: {fileID: 1286462343}
   - component: {fileID: 1286462342}
+  - component: {fileID: 1286462344}
   m_Layer: 5
   m_Name: ItemHolster (1)
   m_TagString: Untagged
@@ -8860,6 +9172,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1286462340}
   m_CullTransparentMesh: 1
+--- !u!114 &1286462344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286462340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &1303780381 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 3598932563878329089, guid: 392e080401bdc554389e9070771d526e, type: 3}
@@ -43444,100 +43768,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404329713}
   m_CullTransparentMesh: 1
---- !u!1 &1425808157
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1425808158}
-  - component: {fileID: 1425808160}
-  - component: {fileID: 1425808159}
-  - component: {fileID: 1425808161}
-  m_Layer: 5
-  m_Name: WeaponSprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1425808158
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425808157}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1947509713}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 36, y: 90}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1425808159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425808157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c0c996371f4695a44a01857d4dab8614, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1425808160
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425808157}
-  m_CullTransparentMesh: 1
---- !u!114 &1425808161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1425808157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dadc1da3ac03a184cb2c46614a70cf40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tipToShow: 'Your Weapon Name
-
-    Damage: Unknown
-
-    Rarity: Unknown'
 --- !u!1 &1459923114
 GameObject:
   m_ObjectHideFlags: 0
@@ -43570,7 +43800,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2015131857}
-  - {fileID: 1947509713}
+  - {fileID: 1808361115}
   - {fileID: 875782290}
   - {fileID: 1763260969}
   - {fileID: 792141559}
@@ -43722,6 +43952,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 685434505, guid: 833f071c1fb435948b87ba9f052bb06b, type: 3}
+      propertyPath: itemName
+      value: Short Sword
+      objectReference: {fileID: 0}
     - target: {fileID: 4247423461987685597, guid: 833f071c1fb435948b87ba9f052bb06b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -49033,6 +49267,7 @@ GameObject:
   - component: {fileID: 1543541742}
   - component: {fileID: 1543541744}
   - component: {fileID: 1543541743}
+  - component: {fileID: 1543541745}
   m_Layer: 5
   m_Name: ItemHolster (18)
   m_TagString: Untagged
@@ -49098,6 +49333,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543541741}
   m_CullTransparentMesh: 1
+--- !u!114 &1543541745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543541741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1547672234
 GameObject:
   m_ObjectHideFlags: 0
@@ -49186,6 +49433,7 @@ GameObject:
   - component: {fileID: 1550109606}
   - component: {fileID: 1550109608}
   - component: {fileID: 1550109607}
+  - component: {fileID: 1550109609}
   m_Layer: 5
   m_Name: ItemHolster (15)
   m_TagString: Untagged
@@ -49251,6 +49499,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550109605}
   m_CullTransparentMesh: 1
+--- !u!114 &1550109609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550109605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1554464298
 GameObject:
   m_ObjectHideFlags: 0
@@ -50924,6 +51184,7 @@ GameObject:
   - component: {fileID: 1601030316}
   - component: {fileID: 1601030318}
   - component: {fileID: 1601030317}
+  - component: {fileID: 1601030319}
   m_Layer: 5
   m_Name: ItemHolster (9)
   m_TagString: Untagged
@@ -50989,6 +51250,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601030315}
   m_CullTransparentMesh: 1
+--- !u!114 &1601030319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601030315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1606567656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51377,6 +51650,7 @@ GameObject:
   - component: {fileID: 1668356592}
   - component: {fileID: 1668356594}
   - component: {fileID: 1668356593}
+  - component: {fileID: 1668356595}
   m_Layer: 5
   m_Name: ItemHolster (19)
   m_TagString: Untagged
@@ -51442,6 +51716,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668356591}
   m_CullTransparentMesh: 1
+--- !u!114 &1668356595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668356591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1668529782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4987140466367960933, guid: 027d08b1561bb4b46840959f434e149f, type: 3}
@@ -51578,6 +51864,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1683999404}
   LightSource: {fileID: 311375429}
   inventory: {fileID: 956309670}
+  equippedInventory: {fileID: 737021898}
   canMove: 1
 --- !u!212 &1683999404
 SpriteRenderer:
@@ -51649,6 +51936,7 @@ Transform:
   - {fileID: 61615096}
   - {fileID: 1353335827}
   - {fileID: 956309669}
+  - {fileID: 737021897}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51722,6 +52010,7 @@ GameObject:
   - component: {fileID: 1686862005}
   - component: {fileID: 1686862007}
   - component: {fileID: 1686862006}
+  - component: {fileID: 1686862008}
   m_Layer: 5
   m_Name: ItemHolster (22)
   m_TagString: Untagged
@@ -51787,6 +52076,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686862004}
   m_CullTransparentMesh: 1
+--- !u!114 &1686862008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686862004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1700650163
 GameObject:
   m_ObjectHideFlags: 0
@@ -52146,6 +52447,7 @@ GameObject:
   - component: {fileID: 1763260969}
   - component: {fileID: 1763260971}
   - component: {fileID: 1763260970}
+  - component: {fileID: 1763260972}
   m_Layer: 5
   m_Name: ConsumableHolsterOne
   m_TagString: Untagged
@@ -52212,6 +52514,107 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763260968}
+  m_CullTransparentMesh: 1
+--- !u!114 &1763260972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763260968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1808361114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1808361115}
+  - component: {fileID: 1808361118}
+  - component: {fileID: 1808361117}
+  - component: {fileID: 1808361116}
+  m_Layer: 5
+  m_Name: WeaponHolster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1808361115
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808361114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1459923115}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 80, y: 74}
+  m_SizeDelta: {x: 64, y: 64}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1808361116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808361114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1808361117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808361114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6431373, g: 0.4745098, b: 0.32156864, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1808361118
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808361114}
   m_CullTransparentMesh: 1
 --- !u!1 &1867972519
 GameObject:
@@ -52549,83 +52952,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipText: {fileID: 1700650165}
   tipWindow: {fileID: 1622104732}
---- !u!1 &1947509712
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1947509713}
-  - component: {fileID: 1947509715}
-  - component: {fileID: 1947509714}
-  m_Layer: 5
-  m_Name: WeaponHolster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1947509713
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947509712}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1425808158}
-  m_Father: {fileID: 1459923115}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: 92}
-  m_SizeDelta: {x: 50, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1947509714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947509712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.6415094, g: 0.4745098, b: 0.32156864, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1947509715
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947509712}
-  m_CullTransparentMesh: 1
 --- !u!1 &1952004120
 GameObject:
   m_ObjectHideFlags: 0
@@ -52770,6 +53096,7 @@ GameObject:
   - component: {fileID: 1958686515}
   - component: {fileID: 1958686517}
   - component: {fileID: 1958686516}
+  - component: {fileID: 1958686518}
   m_Layer: 5
   m_Name: ItemHolster (5)
   m_TagString: Untagged
@@ -52835,6 +53162,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958686514}
   m_CullTransparentMesh: 1
+--- !u!114 &1958686518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958686514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1978841588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52844,7 +53183,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 685434505, guid: 833f071c1fb435948b87ba9f052bb06b, type: 3}
       propertyPath: itemName
-      value: Test Armour
+      value: Chain mail
       objectReference: {fileID: 0}
     - target: {fileID: 685434505, guid: 833f071c1fb435948b87ba9f052bb06b, type: 3}
       propertyPath: itemType
@@ -53770,100 +54109,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094936635}
   m_CullTransparentMesh: 1
---- !u!1 &2119059795
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2119059796}
-  - component: {fileID: 2119059798}
-  - component: {fileID: 2119059797}
-  - component: {fileID: 2119059799}
-  m_Layer: 5
-  m_Name: ArmourSprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2119059796
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119059795}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 875782290}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 64, y: 64}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2119059797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119059795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 1608781162, guid: 313c8cee83a2cf84f8fd58bdb51596c9, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2119059798
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119059795}
-  m_CullTransparentMesh: 1
---- !u!114 &2119059799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119059795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dadc1da3ac03a184cb2c46614a70cf40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tipToShow: 'Your Armour Name
-
-    Attribute: Unknown
-
-    Rarity: Unknown'
 --- !u!1 &2127429301
 GameObject:
   m_ObjectHideFlags: 0
@@ -54028,6 +54273,7 @@ GameObject:
   - component: {fileID: 2134913930}
   - component: {fileID: 2134913932}
   - component: {fileID: 2134913931}
+  - component: {fileID: 2134913933}
   m_Layer: 5
   m_Name: ItemHolster (10)
   m_TagString: Untagged
@@ -54094,6 +54340,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134913929}
   m_CullTransparentMesh: 1
+--- !u!114 &2134913933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134913929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2135329688
 PrefabInstance:
   m_ObjectHideFlags: 0

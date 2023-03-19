@@ -8,6 +8,7 @@ public class Player : Mover
     public SpriteRenderer spriteRenderer;
     public Light2D LightSource;
     public Inventory inventory;
+    public EquippedInventory equippedInventory;
     private float horizontalMove;
     private float verticalMove;
 
