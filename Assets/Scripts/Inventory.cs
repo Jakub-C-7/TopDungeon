@@ -71,18 +71,15 @@ public class Inventory : MonoBehaviour
         {
             weaponGearInventoryContents.Add(item);
 
-
         }
         else if (item.itemType == "Armour" && armourGearInventoryContents.Count < armourGearMaxCapacity)
         {
             armourGearInventoryContents.Add(item);
 
-
         }
         else if (item.itemType == "Resource" && resourceInventoryContents.Count < resourceMaxCapacity)
         {
             resourceInventoryContents.Add(item);
-
 
         }
 

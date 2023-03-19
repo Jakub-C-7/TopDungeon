@@ -46,7 +46,8 @@ public class EquippedInventory : MonoBehaviour
                 // Remove the item being equipped from it's list within the 'Inventory'
                 GameManager.instance.player.inventory.weaponGearInventoryContents.Remove(GameManager.instance.player.inventory.weaponGearInventoryContents.Find(x => x.name == collectableItem.itemName));
 
-                this.weapon = collectableItem;
+                // this.weapon = collectableItem;
+                RefreshEquippedItems();
 
                 break;
 
@@ -56,9 +57,10 @@ public class EquippedInventory : MonoBehaviour
                 itemInInventory.transform.SetParent(this.gameObject.transform);
 
                 // Remove the item being equipped from it's list within the 'Inventory'
-                GameManager.instance.player.inventory.weaponGearInventoryContents.Remove(GameManager.instance.player.inventory.armourGearInventoryContents.Find(x => x.name == collectableItem.itemName));
+                GameManager.instance.player.inventory.armourGearInventoryContents.Remove(GameManager.instance.player.inventory.armourGearInventoryContents.Find(x => x.name == collectableItem.itemName));
 
-                this.armour = collectableItem;
+                // this.armour = collectableItem;
+                RefreshEquippedItems();
 
                 break;
 
@@ -89,28 +91,32 @@ public class EquippedInventory : MonoBehaviour
         switch (itemSlot.name)
         {
             case "WeaponHolster":
-                this.weapon = null;
+                // this.weapon = null;
+                RefreshEquippedItems();
                 this.gameObject.transform.Find(currentlyEquipped.name).SetParent(GameManager.instance.player.inventory.transform);
                 GameManager.instance.player.inventory.ReAddItem(currentlyEquipped);
 
                 break;
 
             case "ArmourHolster":
-                this.armour = null;
+
+                RefreshEquippedItems();
                 this.gameObject.transform.Find(currentlyEquipped.name).SetParent(GameManager.instance.player.inventory.transform);
                 GameManager.instance.player.inventory.ReAddItem(currentlyEquipped);
 
                 break;
 
             case "ConsumableOneHolster":
-                this.consumableOne = null;
+
+                RefreshEquippedItems();
                 this.gameObject.transform.Find(currentlyEquipped.name).SetParent(GameManager.instance.player.inventory.transform);
                 GameManager.instance.player.inventory.ReAddItem(currentlyEquipped);
 
                 break;
 
             case "ConsumableTwoHolster":
-                this.consumableTwo = null;
+
+                RefreshEquippedItems();
                 this.gameObject.transform.Find(currentlyEquipped.name).SetParent(GameManager.instance.player.inventory.transform);
                 GameManager.instance.player.inventory.ReAddItem(currentlyEquipped);
 
