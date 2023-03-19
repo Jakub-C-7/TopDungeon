@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [System.Serializable]
 public class PlayerData
@@ -24,6 +25,12 @@ public class PlayerData
     public int resourceMaxCapacity;
     public int weaponGearMaxCapacity;
     public int armourGearMaxCapacity;
+
+    // Currently Equipped
+    public List<CollectableItemStruct> equippedItems;
+
+    public CollectableItemStruct weapon;
+    public CollectableItemStruct armour;
 
     public PlayerData(Player player)
     {
@@ -50,6 +57,11 @@ public class PlayerData
         LoopOverInventoryList(player.inventory.resourceInventoryContents, resourceInventoryContents);
         LoopOverInventoryList(player.inventory.weaponGearInventoryContents, weaponGearInventoryContents);
         LoopOverInventoryList(player.inventory.armourGearInventoryContents, armourGearInventoryContents);
+
+        // Currently Equipped
+        equippedItems = new List<CollectableItemStruct>();
+
+        LoopOverInventoryList(player.equippedInventory.GetComponentsInChildren<CollectableItem>().ToList(), equippedItems);
 
     }
 

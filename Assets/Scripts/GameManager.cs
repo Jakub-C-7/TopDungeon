@@ -213,7 +213,7 @@ public class GameManager : MonoBehaviour
         currentCharacterSelection = data.currentCharacterSelection;
         weapon.weaponLevel = data.weaponLevel;
 
-        //Loading inventory details
+        // Loading inventory details
         LoopOverInventoryList(data.consumableInventoryContents, this.player.inventory.consumableInventoryContents);
         LoopOverInventoryList(data.resourceInventoryContents, this.player.inventory.resourceInventoryContents);
         LoopOverInventoryList(data.weaponGearInventoryContents, this.player.inventory.weaponGearInventoryContents);
@@ -223,6 +223,12 @@ public class GameManager : MonoBehaviour
         this.player.inventory.resourceMaxCapacity = data.resourceMaxCapacity;
         this.player.inventory.weaponGearMaxCapacity = data.weaponGearMaxCapacity;
         this.player.inventory.armourGearMaxCapacity = data.armourGearMaxCapacity;
+
+        // Loading currently equipped
+        List<CollectableItem> equippedItems = new List<CollectableItem>();
+        LoopOverInventoryList(data.equippedItems, equippedItems);
+        this.player.equippedInventory.weapon = equippedItems.Find(x => x.itemType.Contains("Weapon"));
+        this.player.equippedInventory.armour = equippedItems.Find(x => x.itemType.Contains("Armour"));
 
         //Set the player's current progress / levels again
         if (GetCurrentLevel() != 1)
