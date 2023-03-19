@@ -15,6 +15,8 @@ public class PlayerData
     public int coins;
     public int currentCharacterSelection;
     public int weaponLevel;
+    //DefeatedEnemies
+    public List<SpriteData> defeatedEnemies;
 
     // Inventory
     public List<CollectableItemStruct> consumableInventoryContents;
@@ -32,6 +34,7 @@ public class PlayerData
     public CollectableItemStruct weapon;
     public CollectableItemStruct armour;
 
+
     public PlayerData(Player player)
     {
         //Player Data
@@ -41,6 +44,7 @@ public class PlayerData
         coins = GameManager.instance.player.inventory.coins;
         currentCharacterSelection = GameManager.instance.currentCharacterSelection;
         weaponLevel = GameManager.instance.weapon.weaponLevel;
+        defeatedEnemies = new List<SpriteData>();
 
         // Inventory data
         consumableInventoryContents = new List<CollectableItemStruct>();
@@ -63,6 +67,8 @@ public class PlayerData
 
         LoopOverInventoryList(player.equippedInventory.GetComponentsInChildren<CollectableItem>().ToList(), equippedItems);
 
+        LoopOverSpriteList(GameManager.instance.adventurerDiary.defeatedEnemies,defeatedEnemies);
+
     }
 
     private void LoopOverInventoryList(List<CollectableItem> inventoryList, List<CollectableItemStruct> targetList)
@@ -79,5 +85,12 @@ public class PlayerData
             }
         );
         }
+    }
+
+    private void LoopOverSpriteList(List<Sprite> spriteList, List<SpriteData> targetList){
+        foreach(Sprite i in spriteList){
+            targetList.Add(SpriteData.FromSprite(i));
+        }
+
     }
 }

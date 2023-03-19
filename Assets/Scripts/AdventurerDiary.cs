@@ -8,7 +8,7 @@ public class AdventurerDiary : MonoBehaviour
     public List<GameObject> characterLorePages;
     public List<GameObject> recipeCollectionPages;
     public List<GameObject> recordsPages;
-    public List<Sprite> spritesOfDefeated;
+    public List<Sprite> defeatedEnemies;
     public List<GameObject> activeList;
     public GameObject activePage;
     public GameObject displayKilledEnemiesSpriteList;
@@ -26,7 +26,7 @@ public class AdventurerDiary : MonoBehaviour
         recipeCollectionButton.onClick.AddListener(() => SetActiveTab(recipeCollectionPages));
         characterLoreButton.onClick.AddListener(() => SetActiveTab(characterLorePages));
         activeList = characterLorePages;
-        spritesOfDefeated = new List<Sprite>();
+        defeatedEnemies = new List<Sprite>();
     }
 
     private void Update()
@@ -84,7 +84,7 @@ public class AdventurerDiary : MonoBehaviour
     }
 
     public void RegisterDeath(Sprite recentEnemy){
-        spritesOfDefeated.Add(recentEnemy);
+        defeatedEnemies.Add(recentEnemy);
         GameObject recentEnemyObject = new GameObject();
         Image im = recentEnemyObject.AddComponent<Image>();
         recentEnemyObject.transform.SetParent(displayKilledEnemiesSpriteList.transform);
@@ -104,15 +104,22 @@ public class AdventurerDiary : MonoBehaviour
 
     private Vector3 CalculateLatestPositionDefeatedEnemy(){
         int maxPerRow = 14;
-        float y = (float)System.Math.Floor((double)(spritesOfDefeated.Count - 1) / (double)maxPerRow) * -60;
+        float y = (float)System.Math.Floor((double)(defeatedEnemies.Count - 1) / (double)maxPerRow) * -60;
         //find x position by taking position in list (base 0), remainder in current row, * gap size
-        float x = ((spritesOfDefeated.Count - 1) % maxPerRow) * 15;
+        float x = ((defeatedEnemies.Count - 1) % maxPerRow) * 15;
         //set height of view so we can scroll to see enemies.
         RectTransform killedEnemiesViewPortRect = killedEnemiesViewPort.GetComponent<RectTransform>();
         killedEnemiesViewPortRect.sizeDelta = new Vector2(killedEnemiesViewPortRect.rect.x, System.Math.Abs(y));
         return new Vector3(x,y,0);
         
     
+    }
+
+    public void SetDefeatedEnemies(List<Sprite> defeatedEnemies){
+        foreach (Sprite defeatedEnemy in defeatedEnemies){
+            RegisterDeath(defeatedEnemy);
+        }
+
     }
 
 
