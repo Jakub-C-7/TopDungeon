@@ -51,8 +51,13 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         GameObject itemBeingDraggedOnto = eventData.pointerCurrentRaycast.gameObject;
         string raycastParentName = itemBeingDraggedOnto.transform.parent.name;
 
+        // If dragged onto the same slot, Do nothing
+        if (originalParent.name == eventData.pointerCurrentRaycast.gameObject.name)
+        {
+            returnDraggedItemToOrigin(eventData);
+        }
         //  Dropped onto another item and it is the same type of item
-        if (itemBeingDraggedOnto.GetComponent<CollectableItem>() && itemBeingDraggedOnto.GetComponent<CollectableItem>().itemType == itemBeingDragged.GetComponent<CollectableItem>().itemType)
+        else if (itemBeingDraggedOnto.GetComponent<CollectableItem>() && itemBeingDraggedOnto.GetComponent<CollectableItem>().itemType == itemBeingDragged.GetComponent<CollectableItem>().itemType)
         {
 
             //If the item being dropped on is equipped, swap the two items around
