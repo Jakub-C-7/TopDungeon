@@ -33,6 +33,7 @@ public class Enemy : Mover
     {
         Destroy(gameObject);
         GameManager.instance.GrantXp(xpValue);
+        GameManager.instance.RegisterDeath(this.gameObject.GetComponent<SpriteRenderer>().sprite);
         GameManager.instance.ShowText("+ " + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
     }
 

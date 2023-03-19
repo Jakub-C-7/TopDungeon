@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
             Destroy(hud);
             Destroy(menu);
             Destroy(inventoryMenu);
+            Destroy(adventurerDiary);
             return;
         }
 
@@ -42,6 +43,9 @@ public class GameManager : MonoBehaviour
     public GameObject hud;
     public GameObject menu;
     public SpeechBanner speechBanner;
+
+    public AdventurerDiary adventurerDiary;
+
     public GameObject inventoryMenu;
 
     //Logic
@@ -298,6 +302,10 @@ public class GameManager : MonoBehaviour
 
         }
 
+    }
+
+    public void RegisterDeath(Sprite sprite){
+        adventurerDiary.RegisterDeath(sprite);
     }
 
 
