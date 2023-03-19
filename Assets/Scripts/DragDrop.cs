@@ -84,7 +84,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         }
         // Item has been dragged onto an empty item slot and the currently selected tab is the same as the item's type
-        else if ((emptyBagSlot && eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>()) && GameManager.instance.inventoryMenu.currentlySelectedTab == eventData.pointerDrag.GetComponent<CollectableItem>().itemType)
+        else if ((emptyBagSlot && eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>()) && GameManager.instance.inventoryMenu.GetComponent<InventoryMenu>().currentlySelectedTab == eventData.pointerDrag.GetComponent<CollectableItem>().itemType)
         {
 
             // If item was equipped, unequip it
