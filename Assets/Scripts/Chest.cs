@@ -25,7 +25,7 @@ public class Chest : Collectable
             GameManager.instance.ShowText("+ " + coinAmount + " coins!", 25, Color.yellow, transform.position, Vector3.up * 50, 2.0f);
 
             //Refresh the number of coins in inventory
-            GameManager.instance.inventoryMenu.RefreshCoins();
+            GameManager.instance.inventoryMenu.GetComponent<InventoryMenu>().RefreshCoins();
         }
         else if (!collected) // If it is an item chest
         {
@@ -41,7 +41,7 @@ public class Chest : Collectable
 
                 GetComponent<SpriteRenderer>().sprite = emptyChest;
 
-                GameManager.instance.inventoryMenu.ResetAndRepopulate(item.itemType);
+                GameManager.instance.inventoryMenu.GetComponent<InventoryMenu>().ResetAndRepopulate(item.itemType);
 
             }
         }

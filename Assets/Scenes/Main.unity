@@ -938,7 +938,7 @@ MonoBehaviour:
   hud: {fileID: 1024060998}
   menu: {fileID: 2041083050}
   speechBanner: {fileID: 1014119302}
-  inventoryMenu: {fileID: 1946167418}
+  inventoryMenu: {fileID: 1946167409}
   experience: 0
   currentCharacterSelection: 0
 --- !u!4 &181901516
@@ -54459,6 +54459,7 @@ PrefabInstance:
     - target: {fileID: 4461131356084511022, guid: 392e080401bdc554389e9070771d526e, type: 3}
       propertyPath: chestAudio
       value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 392e080401bdc554389e9070771d526e, type: 3}
 --- !u!1001 &2141216239

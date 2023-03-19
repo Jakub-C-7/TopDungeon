@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public GameObject hud;
     public GameObject menu;
     public SpeechBanner speechBanner;
-    public InventoryMenu inventoryMenu;
+    public GameObject inventoryMenu;
 
     //Logic
     // public int coins;
