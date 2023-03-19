@@ -15,22 +15,35 @@ public class EquippedInventory : MonoBehaviour
     private void Start()
     {
         // Update currently equipped items
-        RefreshEquippedItems();
+        // RefreshEquippedItems();
     }
 
-    public void RefreshEquippedItems()
+    public void ReloadEquippedItem(CollectableItem itemToReload)
     {
-        // Get currently equipped items from slots in the Inventory Menu
-        weapon = inventoryMenu.getEquippedWeapon();
-        armour = inventoryMenu.getEquippedArmour();
-        consumableOne = inventoryMenu.getEquippedConsumableOne();
-        consumableTwo = inventoryMenu.getEquippedConsumableTwo();
 
+        switch (itemToReload.itemType)
+        {
+            case "Weapon":
+                weapon = itemToReload;
+
+                break;
+
+            case "Armour":
+                armour = itemToReload;
+
+                break;
+
+            case "Consumable":
+                //TODO: Determine if consumable1 slot or 2 are being used
+                break;
+
+
+        }
     }
 
+    // Equip a new item into an equippable slot
     public void EquipItem(CollectableItem collectableItem)
     {
-        Debug.Log("Item is being equipped: " + collectableItem.name);
 
         // Reference to the item in the Player's 'Inventory'
         GameObject itemInInventory = GameManager.instance.player.inventory.transform.Find(collectableItem.name).gameObject;
@@ -46,8 +59,7 @@ public class EquippedInventory : MonoBehaviour
                 // Remove the item being equipped from it's list within the 'Inventory'
                 GameManager.instance.player.inventory.weaponGearInventoryContents.Remove(GameManager.instance.player.inventory.weaponGearInventoryContents.Find(x => x.name == collectableItem.itemName));
 
-                // this.weapon = collectableItem;
-                RefreshEquippedItems();
+                weapon = this.gameObject.transform.Find(collectableItem.gameObject.name).GetComponent<CollectableItem>();
 
                 break;
 
@@ -59,66 +71,59 @@ public class EquippedInventory : MonoBehaviour
                 // Remove the item being equipped from it's list within the 'Inventory'
                 GameManager.instance.player.inventory.armourGearInventoryContents.Remove(GameManager.instance.player.inventory.armourGearInventoryContents.Find(x => x.name == collectableItem.itemName));
 
-                // this.armour = collectableItem;
-                RefreshEquippedItems();
+                armour = this.gameObject.transform.Find(collectableItem.gameObject.name).GetComponent<CollectableItem>();
 
                 break;
 
-                // case "Consumable": //TODO: Determine if consumable1 slot or 2 are being used
+            case "Consumable":
+                //TODO: Determine if consumable1 slot or 2 are being used
+                break;
 
-                //     // Set parent of the item from 'Inventory' to the 'EquippedInventory'
-                //     itemInInventory.transform.SetParent(this.gameObject.transform);
-
-                //     // Remove the item being equipped from it's list within the 'Inventory'
-                //     GameManager.instance.player.inventory.consumableInventoryContents.Remove(GameManager.instance.player.inventory.consumableInventoryContents.Find(x => x.name == collectableItem.itemName));
-
-                //     this.consumableOne = collectableItem;
-
-                //     break;
 
         }
 
     }
 
+    // Remove an already equipped item and return it back into the Inventory
     public void UnEquipItem(Transform itemSlot, CollectableItem currentlyEquipped)
     {
 
-        Debug.Log("Item is being unequipped: " + currentlyEquipped.name + "From slot: " + itemSlot.name);
-
         // Un-equip the equipped item - return it back into inventory
-        // CollectableItem equippedItem = itemSlot.GetChild(0).gameObject.GetComponent<CollectableItem>();
-
         switch (itemSlot.name)
         {
             case "WeaponHolster":
-                // this.weapon = null;
-                RefreshEquippedItems();
+
+                GameManager.instance.player.inventory.ReAddItem(this.gameObject.transform.Find(currentlyEquipped.name).gameObject.GetComponent<CollectableItem>());
                 this.gameObject.transform.Find(currentlyEquipped.name).SetParent(GameManager.instance.player.inventory.transform);
-                GameManager.instance.player.inventory.ReAddItem(currentlyEquipped);
+
+                weapon = null;
 
                 break;
 
             case "ArmourHolster":
 
-                RefreshEquippedItems();
+                GameManager.instance.player.inventory.ReAddItem(this.gameObject.transform.Find(currentlyEquipped.name).gameObject.GetComponent<CollectableItem>());
                 this.gameObject.transform.Find(currentlyEquipped.name).SetParent(GameManager.instance.player.inventory.transform);
-                GameManager.instance.player.inventory.ReAddItem(currentlyEquipped);
+
+                armour = null;
 
                 break;
 
             case "ConsumableOneHolster":
 
-                RefreshEquippedItems();
+                GameManager.instance.player.inventory.ReAddItem(this.gameObject.transform.Find(currentlyEquipped.name).gameObject.GetComponent<CollectableItem>());
                 this.gameObject.transform.Find(currentlyEquipped.name).SetParent(GameManager.instance.player.inventory.transform);
-                GameManager.instance.player.inventory.ReAddItem(currentlyEquipped);
+
+                consumableOne = null;
 
                 break;
 
             case "ConsumableTwoHolster":
 
-                RefreshEquippedItems();
+                GameManager.instance.player.inventory.ReAddItem(this.gameObject.transform.Find(currentlyEquipped.name).gameObject.GetComponent<CollectableItem>());
                 this.gameObject.transform.Find(currentlyEquipped.name).SetParent(GameManager.instance.player.inventory.transform);
-                GameManager.instance.player.inventory.ReAddItem(currentlyEquipped);
+
+                consumableTwo = null;
 
                 break;
 

@@ -21,7 +21,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<RectTransform>().transform.localPosition = Vector3.zero;
 
             // Refresh the currently equipped items
-            GameManager.instance.player.equippedInventory.RefreshEquippedItems();
+            // GameManager.instance.player.equippedInventory.RefreshEquippedItems();
         }
     }
 }

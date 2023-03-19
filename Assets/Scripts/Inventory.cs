@@ -60,6 +60,7 @@ public class Inventory : MonoBehaviour
 
     public void ReAddItem(CollectableItem item)
     {
+        Debug.Log("This is the item in ReAddItem: " + item.name);
 
         // Check which inventory the item needs to be added to based on type
         if (item.itemType == "Consumable" && consumableInventoryContents.Count < consumableMaxCapacity)
