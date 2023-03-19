@@ -1078,8 +1078,8 @@ MonoBehaviour:
   hud: {fileID: 1024060998}
   menu: {fileID: 2041083050}
   speechBanner: {fileID: 1014119302}
-  inventoryMenu: {fileID: 1946167418}
   adventurerDiary: {fileID: 616221920}
+  inventoryMenu: {fileID: 1946167409}
   experience: 0
   currentCharacterSelection: 0
 --- !u!4 &181901516
@@ -8816,6 +8816,18 @@ MonoBehaviour:
           m_StringArgument: Consumable
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1946167418}
+        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
+        m_MethodName: ChangeCurrentTab
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Consumable
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &843149555
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9000,6 +9012,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1946167418}
         m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
         m_MethodName: ResetAndRepopulate
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Resource
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1946167418}
+        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
+        m_MethodName: ChangeCurrentTab
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10379,6 +10403,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1946167418}
         m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
         m_MethodName: ResetAndRepopulate
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Weapon
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1946167418}
+        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
+        m_MethodName: ChangeCurrentTab
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -57475,6 +57511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryMenuAnimator: {fileID: 1946167419}
+  currentlySelectedTab: 
 --- !u!95 &1946167419
 Animator:
   serializedVersion: 5
@@ -58659,6 +58696,18 @@ MonoBehaviour:
           m_StringArgument: Armour
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1946167418}
+        m_TargetAssemblyTypeName: InventoryMenu, Assembly-CSharp
+        m_MethodName: ChangeCurrentTab
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Armour
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &2091933386
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -59130,7 +59179,7 @@ PrefabInstance:
     - target: {fileID: 4461131356084511022, guid: 392e080401bdc554389e9070771d526e, type: 3}
       propertyPath: chestAudio
       value: 
-      objectReference: {fileID: 671346816}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 392e080401bdc554389e9070771d526e, type: 3}
 --- !u!1001 &2141216239
