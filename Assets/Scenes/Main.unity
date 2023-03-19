@@ -54410,7 +54410,6 @@ PrefabInstance:
     - target: {fileID: 4461131356084511022, guid: 392e080401bdc554389e9070771d526e, type: 3}
       propertyPath: chestAudio
       value: 
-      objectReference: {fileID: 671346816}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 392e080401bdc554389e9070771d526e, type: 3}
 --- !u!1001 &2141216239
