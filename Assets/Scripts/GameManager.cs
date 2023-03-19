@@ -226,9 +226,22 @@ public class GameManager : MonoBehaviour
 
         // Loading currently equipped
         List<CollectableItem> equippedItems = new List<CollectableItem>();
-        LoopOverInventoryList(data.equippedItems, equippedItems);
+
+        LoopOverInventoryList(data.equippedItems, equippedItems); // Populate list
+
+        Debug.Log(equippedItems.ToString());
+
         this.player.equippedInventory.weapon = equippedItems.Find(x => x.itemType.Contains("Weapon"));
         this.player.equippedInventory.armour = equippedItems.Find(x => x.itemType.Contains("Armour"));
+
+        GameObject weaponInInventory = GameManager.instance.player.inventory.transform.Find(this.player.equippedInventory.weapon.name).gameObject;
+        GameObject armourInInventory = GameManager.instance.player.inventory.transform.Find(this.player.equippedInventory.armour.name).gameObject;
+        //TODO: Currently equipped Consumables
+
+        weaponInInventory.transform.SetParent(this.player.equippedInventory.gameObject.transform);
+        armourInInventory.transform.SetParent(this.player.equippedInventory.gameObject.transform);
+        //TODO: Currently equipped Consumables
+
 
         //Set the player's current progress / levels again
         if (GetCurrentLevel() != 1)
