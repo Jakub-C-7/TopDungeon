@@ -100,6 +100,7 @@ public class Enemy : Mover
         }
         else
         {
+            healthBar.SetActive(false);
             UpdateMotor(startingPosition - transform.position); // Go back 
             chasing = false;
 
