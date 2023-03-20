@@ -82,29 +82,39 @@ public class PlayerData
 
     private void GetCurrentlyEquippedWeaponData(Player player)
     {
-        CollectableWeapon currentWeapon = player.equippedInventory.weapon.GetComponent<CollectableWeapon>();
-        equippedWeapon.itemName = currentWeapon.itemName;
-        equippedWeapon.itemImage = SpriteData.FromSprite(currentWeapon.itemImage);
-        equippedWeapon.quantity = currentWeapon.quantity;
-        equippedWeapon.itemType = currentWeapon.itemType;
 
-        equippedWeapon.weaponLevel = currentWeapon.weaponLevel;
-        equippedWeapon.damageAmount = currentWeapon.damageAmount;
-        equippedWeapon.pushForce = currentWeapon.pushForce;
+        if (player.equippedInventory.weapon)
+        {
+
+            CollectableWeapon currentWeapon = player.equippedInventory.weapon.GetComponent<CollectableWeapon>();
+            equippedWeapon.itemName = currentWeapon.itemName;
+            equippedWeapon.quantity = currentWeapon.quantity;
+            equippedWeapon.itemType = currentWeapon.itemType;
+            equippedWeapon.itemImage = SpriteData.FromSprite(currentWeapon.itemImage);
+
+            equippedWeapon.weaponLevel = currentWeapon.weaponLevel;
+            equippedWeapon.damageAmount = currentWeapon.damageAmount;
+            equippedWeapon.pushForce = currentWeapon.pushForce;
+        }
 
     }
 
     private void GetCurrentlyEquippedArmourData(Player player)
     {
-        CollectableArmour currentArmour = player.equippedInventory.armour.GetComponent<CollectableArmour>();
-        equippedArmour.itemName = currentArmour.itemName;
-        equippedArmour.itemImage = SpriteData.FromSprite(currentArmour.itemImage);
-        equippedArmour.quantity = currentArmour.quantity;
-        equippedArmour.itemType = currentArmour.itemType;
 
-        equippedArmour.armourLevel = currentArmour.armourLevel;
-        equippedArmour.protectionAmount = currentArmour.protectionAmount;
-        equippedArmour.specialEffect = currentArmour.specialEffect;
+        if (player.equippedInventory.armour)
+        {
+            CollectableArmour currentArmour = player.equippedInventory.armour.GetComponent<CollectableArmour>();
+            equippedArmour.itemName = currentArmour.itemName;
+            equippedArmour.itemImage = SpriteData.FromSprite(currentArmour.itemImage);
+            equippedArmour.quantity = currentArmour.quantity;
+            equippedArmour.itemType = currentArmour.itemType;
+
+            equippedArmour.armourLevel = currentArmour.armourLevel;
+            equippedArmour.protectionAmount = currentArmour.protectionAmount;
+            equippedArmour.specialEffect = currentArmour.specialEffect;
+
+        }
 
     }
 }

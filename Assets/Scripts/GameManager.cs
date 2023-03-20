@@ -205,40 +205,49 @@ public class GameManager : MonoBehaviour
 
         PlayerData data = SaveSystem.LoadPlayer();
 
-        //Loading player details
-        this.player.hitPoints = data.health;
-        this.player.maxHitpoints = data.maxHitpoints;
-        this.experience = data.experience;
-        this.player.inventory.coins = data.coins;
-        currentCharacterSelection = data.currentCharacterSelection;
-        weapon.weaponLevel = data.weaponLevel;
-
-        // Loading inventory details
-        LoopOverInventoryList(data.consumableInventoryContents, this.player.inventory.consumableInventoryContents);
-        LoopOverInventoryList(data.resourceInventoryContents, this.player.inventory.resourceInventoryContents);
-        LoopOverInventoryList(data.weaponGearInventoryContents, this.player.inventory.weaponGearInventoryContents);
-        LoopOverInventoryList(data.armourGearInventoryContents, this.player.inventory.armourGearInventoryContents);
-
-        this.player.inventory.consumableMaxCapacity = data.consumableMaxCapacity;
-        this.player.inventory.resourceMaxCapacity = data.resourceMaxCapacity;
-        this.player.inventory.weaponGearMaxCapacity = data.weaponGearMaxCapacity;
-        this.player.inventory.armourGearMaxCapacity = data.armourGearMaxCapacity;
-
-        // Loading currently equipped
-        SetCurrentlyEquippedWeaponData(data.equippedWeapon);
-        SetCurrentlyEquippedArmourData(data.equippedArmour);
-
-        //TODO: Currently equipped Consumables!
-
-        // Current Levels and Sprite selection 
-        if (GetCurrentLevel() != 1)
+        if (data != null) // If there was a save file to read
         {
-            player.SetLevel(GetCurrentLevel());
 
+            //Loading player details
+            this.player.hitPoints = data.health;
+            this.player.maxHitpoints = data.maxHitpoints;
+            this.experience = data.experience;
+            this.player.inventory.coins = data.coins;
+            currentCharacterSelection = data.currentCharacterSelection;
+            // weapon.weaponLevel = data.weaponLevel;
+
+            // Loading inventory details
+            LoopOverInventoryList(data.consumableInventoryContents, this.player.inventory.consumableInventoryContents);
+            LoopOverInventoryList(data.resourceInventoryContents, this.player.inventory.resourceInventoryContents);
+            LoopOverInventoryList(data.weaponGearInventoryContents, this.player.inventory.weaponGearInventoryContents);
+            LoopOverInventoryList(data.armourGearInventoryContents, this.player.inventory.armourGearInventoryContents);
+
+            this.player.inventory.consumableMaxCapacity = data.consumableMaxCapacity;
+            this.player.inventory.resourceMaxCapacity = data.resourceMaxCapacity;
+            this.player.inventory.weaponGearMaxCapacity = data.weaponGearMaxCapacity;
+            this.player.inventory.armourGearMaxCapacity = data.armourGearMaxCapacity;
+
+            // Loading currently equipped
+            SetCurrentlyEquippedWeaponData(data.equippedWeapon);
+            SetCurrentlyEquippedArmourData(data.equippedArmour);
+
+
+            //TODO: Currently equipped Consumables!
+
+            // Current Levels and Sprite selection 
+            if (GetCurrentLevel() != 1)
+            {
+                player.SetLevel(GetCurrentLevel());
+
+            }
+
+            // weapon.SetWeaponLevel(data.weaponLevel); 
+            player.SwapSprite(currentCharacterSelection);
+
+            player.ClearEquippedWeapon();
+            player.RefreshEquippedWeapon();
         }
 
-        weapon.SetWeaponLevel(data.weaponLevel);
-        player.SwapSprite(currentCharacterSelection);
 
     }
 
@@ -265,39 +274,48 @@ public class GameManager : MonoBehaviour
 
     private void SetCurrentlyEquippedWeaponData(CollectableWeaponStruct weaponStruct)
     {
-        GameObject objToSpawn = new GameObject(weaponStruct.itemName); // Spawn a new object
-        objToSpawn.transform.parent = this.player.equippedInventory.transform; // Transfer ownership of object
-        CollectableWeapon weaponItem = objToSpawn.AddComponent<CollectableWeapon>();
+        if (!default(CollectableWeaponStruct).Equals(weaponStruct))
+        {
 
-        weaponItem.itemName = weaponStruct.itemName;
-        weaponItem.itemImage = SpriteData.ToSprite(weaponStruct.itemImage);
-        weaponItem.quantity = weaponStruct.quantity;
-        weaponItem.itemType = weaponStruct.itemType;
+            GameObject objToSpawn = new GameObject(weaponStruct.itemName); // Spawn a new object
+            objToSpawn.transform.parent = this.player.equippedInventory.transform; // Transfer ownership of object
+            CollectableWeapon weaponItem = objToSpawn.AddComponent<CollectableWeapon>();
 
-        weaponItem.weaponLevel = weaponStruct.weaponLevel;
-        weaponItem.damageAmount = weaponStruct.damageAmount;
-        weaponItem.pushForce = weaponStruct.pushForce;
+            weaponItem.itemName = weaponStruct.itemName;
+            weaponItem.itemImage = SpriteData.ToSprite(weaponStruct.itemImage);
+            weaponItem.quantity = weaponStruct.quantity;
+            weaponItem.itemType = weaponStruct.itemType;
 
-        this.player.equippedInventory.weapon = weaponItem;
+            weaponItem.weaponLevel = weaponStruct.weaponLevel;
+            weaponItem.damageAmount = weaponStruct.damageAmount;
+            weaponItem.pushForce = weaponStruct.pushForce;
+
+            this.player.equippedInventory.weapon = weaponItem;
+        }
 
     }
 
     private void SetCurrentlyEquippedArmourData(CollectableArmourStruct armourStruct)
     {
-        GameObject objToSpawn = new GameObject(armourStruct.itemName); // Spawn a new object
-        objToSpawn.transform.parent = this.player.equippedInventory.transform; // Transfer ownership of object
-        CollectableArmour armourItem = objToSpawn.AddComponent<CollectableArmour>();
+        if (!default(CollectableArmourStruct).Equals(armourStruct))
+        {
+            GameObject objToSpawn = new GameObject(armourStruct.itemName); // Spawn a new object
+            objToSpawn.transform.parent = this.player.equippedInventory.transform; // Transfer ownership of object
+            CollectableArmour armourItem = objToSpawn.AddComponent<CollectableArmour>();
 
-        armourItem.itemName = armourStruct.itemName;
-        armourItem.itemImage = SpriteData.ToSprite(armourStruct.itemImage);
-        armourItem.quantity = armourStruct.quantity;
-        armourItem.itemType = armourStruct.itemType;
+            armourItem.itemName = armourStruct.itemName;
+            armourItem.itemImage = SpriteData.ToSprite(armourStruct.itemImage);
+            armourItem.quantity = armourStruct.quantity;
+            armourItem.itemType = armourStruct.itemType;
 
-        armourItem.armourLevel = armourStruct.armourLevel;
-        armourItem.protectionAmount = armourStruct.protectionAmount;
-        armourItem.specialEffect = armourStruct.specialEffect;
+            armourItem.armourLevel = armourStruct.armourLevel;
+            armourItem.protectionAmount = armourStruct.protectionAmount;
+            armourItem.specialEffect = armourStruct.specialEffect;
 
-        this.player.equippedInventory.armour = armourItem;
+            this.player.equippedInventory.armour = armourItem;
+
+        }
+
 
     }
 

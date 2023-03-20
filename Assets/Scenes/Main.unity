@@ -5990,7 +5990,7 @@ GameObject:
   - component: {fileID: 746197234}
   - component: {fileID: 746197235}
   m_Layer: 0
-  m_Name: sword_0
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43434,6 +43434,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360081746}
   m_CullTransparentMesh: 1
+--- !u!1001 &1372523109
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 703937440079377831, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_Name
+      value: WeaponItemChest Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.292
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440079377832, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440767229703, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: itemName
+      value: Wooden Greatsword  +4
+      objectReference: {fileID: 0}
+    - target: {fileID: 703937440767229703, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: itemImage
+      value: 
+      objectReference: {fileID: 1322329375, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
+    - target: {fileID: 703937440767229703, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
+      propertyPath: weaponLevel
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f53ae2f80d0b6f40a5f71a13c03329a, type: 3}
 --- !u!1 &1390054465
 GameObject:
   m_ObjectHideFlags: 0

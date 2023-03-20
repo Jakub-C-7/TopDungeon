@@ -22,6 +22,9 @@ public class Player : Mover
         base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        ClearEquippedWeapon();
+        RefreshEquippedWeapon();
+
     }
 
     protected override void Death()
@@ -124,6 +127,37 @@ public class Player : Mover
     public void SetReduceLight(bool reduceLight)
     {
         this.reduceLight = reduceLight;
+    }
+
+    public void RefreshEquippedWeapon()
+    {
+        // Weapon currentWeapon = this.transform.Find("Weapon").GetComponent<Weapon>();
+        Weapon currentWeapon = GameManager.instance.weapon;
+
+        if (equippedInventory.weapon != null)
+        {
+            Debug.Log("RefreshEquippedWeapon");
+            CollectableWeapon weaponToUpdateTo = equippedInventory.transform.Find(equippedInventory.weapon.itemName).GetComponent<CollectableWeapon>();
+            currentWeapon.weaponLevel = weaponToUpdateTo.weaponLevel;
+            currentWeapon.damageAmount = weaponToUpdateTo.damageAmount;
+            currentWeapon.pushForce = weaponToUpdateTo.pushForce;
+            currentWeapon.SetWeaponImage(weaponToUpdateTo.itemImage);
+
+        }
+
+    }
+
+    public void ClearEquippedWeapon()
+    {
+        Weapon currentWeapon = this.transform.Find("Weapon").GetComponent<Weapon>();
+
+        if (equippedInventory.weapon != null)
+        {
+
+            currentWeapon.gameObject.GetComponent<SpriteRenderer>().sprite = null;
+
+
+        }
     }
 
 
