@@ -26,6 +26,9 @@ public abstract class Mover : Fighter
         if (moveDelta.x > 0)
         {
             transform.localScale = originalSize;
+            if(transform.Find("HealthBar")){
+                transform.Find("HealthBar").localScale = new Vector3(originalSize.x, originalSize.y, originalSize.z);
+            }
         }
         else if (moveDelta.x < 0)
         {
@@ -33,7 +36,7 @@ public abstract class Mover : Fighter
     
 
             if(transform.Find("HealthBar")){
-              //  transform.Find("HealthBar").localScale = new Vector3();
+                transform.Find("HealthBar").localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.z);
             }
         }
 
