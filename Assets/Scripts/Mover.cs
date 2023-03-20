@@ -11,12 +11,10 @@ public abstract class Mover : Fighter
     public float ySpeed = 0.75f;
     public float xSpeed = 1.0f;
     public Animator animator;
-
     protected virtual void Start()
     {
         originalSize = transform.localScale;
         boxCollider = GetComponent<BoxCollider2D>();
-
     }
 
     protected virtual void UpdateMotor(Vector3 input)
@@ -32,6 +30,11 @@ public abstract class Mover : Fighter
         else if (moveDelta.x < 0)
         {
             transform.localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.z);
+    
+
+            if(transform.Find("HealthBar")){
+              //  transform.Find("HealthBar").localScale = new Vector3();
+            }
         }
 
         //Add push vector, if any
