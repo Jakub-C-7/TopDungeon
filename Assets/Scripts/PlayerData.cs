@@ -27,10 +27,8 @@ public class PlayerData
     public int armourGearMaxCapacity;
 
     // Currently Equipped
-    public List<CollectableItemStruct> equippedItems;
-
-    public CollectableItemStruct weapon;
-    public CollectableItemStruct armour;
+    public CollectableWeaponStruct equippedWeapon;
+    public CollectableArmourStruct equippedArmour;
 
     public PlayerData(Player player)
     {
@@ -58,10 +56,11 @@ public class PlayerData
         LoopOverInventoryList(player.inventory.weaponGearInventoryContents, weaponGearInventoryContents);
         LoopOverInventoryList(player.inventory.armourGearInventoryContents, armourGearInventoryContents);
 
-        // Currently Equipped
-        equippedItems = new List<CollectableItemStruct>();
+        // Currently Equipped Inventory
+        GetCurrentlyEquippedWeaponData(player);
+        GetCurrentlyEquippedArmourData(player);
 
-        LoopOverInventoryList(player.equippedInventory.GetComponentsInChildren<CollectableItem>().ToList(), equippedItems);
+        // TODO: EQUIPPED CONSUMABLE SAVING
 
     }
 
@@ -79,5 +78,33 @@ public class PlayerData
             }
         );
         }
+    }
+
+    private void GetCurrentlyEquippedWeaponData(Player player)
+    {
+        CollectableWeapon currentWeapon = player.equippedInventory.weapon.GetComponent<CollectableWeapon>();
+        equippedWeapon.itemName = currentWeapon.itemName;
+        equippedWeapon.itemImage = SpriteData.FromSprite(currentWeapon.itemImage);
+        equippedWeapon.quantity = currentWeapon.quantity;
+        equippedWeapon.itemType = currentWeapon.itemType;
+
+        equippedWeapon.weaponLevel = currentWeapon.weaponLevel;
+        equippedWeapon.damageAmount = currentWeapon.damageAmount;
+        equippedWeapon.pushForce = currentWeapon.pushForce;
+
+    }
+
+    private void GetCurrentlyEquippedArmourData(Player player)
+    {
+        CollectableArmour currentArmour = player.equippedInventory.armour.GetComponent<CollectableArmour>();
+        equippedArmour.itemName = currentArmour.itemName;
+        equippedArmour.itemImage = SpriteData.FromSprite(currentArmour.itemImage);
+        equippedArmour.quantity = currentArmour.quantity;
+        equippedArmour.itemType = currentArmour.itemType;
+
+        equippedArmour.armourLevel = currentArmour.armourLevel;
+        equippedArmour.protectionAmount = currentArmour.protectionAmount;
+        equippedArmour.specialEffect = currentArmour.specialEffect;
+
     }
 }
