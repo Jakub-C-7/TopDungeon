@@ -95,16 +95,17 @@ public class EquippedInventory : MonoBehaviour
         {
             case "WeaponHolster":
 
-                GameManager.instance.player.inventory.ReAddItem(this.gameObject.transform.Find(currentlyEquipped.name).gameObject.GetComponent<CollectableItem>());
+                GameManager.instance.player.inventory.ReAddWeapon(this.gameObject.transform.Find(currentlyEquipped.name).gameObject.GetComponent<CollectableWeapon>());
                 this.gameObject.transform.Find(currentlyEquipped.name).SetParent(GameManager.instance.player.inventory.transform);
 
+                GameManager.instance.player.ClearEquippedWeapon();
                 weapon = null;
 
                 break;
 
             case "ArmourHolster":
 
-                GameManager.instance.player.inventory.ReAddItem(this.gameObject.transform.Find(currentlyEquipped.name).gameObject.GetComponent<CollectableItem>());
+                GameManager.instance.player.inventory.ReAddArmour(this.gameObject.transform.Find(currentlyEquipped.name).gameObject.GetComponent<CollectableArmour>());
                 this.gameObject.transform.Find(currentlyEquipped.name).SetParent(GameManager.instance.player.inventory.transform);
 
                 armour = null;
@@ -130,7 +131,6 @@ public class EquippedInventory : MonoBehaviour
                 break;
 
         }
-
 
     }
 
