@@ -218,13 +218,13 @@ public class GameManager : MonoBehaviour
             this.experience = data.experience;
             this.player.inventory.coins = data.coins;
             currentCharacterSelection = data.currentCharacterSelection;
-            weapon.weaponLevel = data.weaponLevel;
+            // weapon.weaponLevel = data.weaponLevel;
 
             // Loading inventory details
             LoopOverInventoryList(data.consumableInventoryContents, this.player.inventory.consumableInventoryContents);
             LoopOverInventoryList(data.resourceInventoryContents, this.player.inventory.resourceInventoryContents);
-            LoopOverInventoryList(data.weaponGearInventoryContents, this.player.inventory.weaponGearInventoryContents);
-            LoopOverInventoryList(data.armourGearInventoryContents, this.player.inventory.armourGearInventoryContents);
+            LoopOverWeaponsInInventoryList(data.weaponGearInventoryContents, this.player.inventory.weaponGearInventoryContents);
+            LoopOverArmourInInventoryList(data.armourGearInventoryContents, this.player.inventory.armourGearInventoryContents);
 
             this.player.inventory.consumableMaxCapacity = data.consumableMaxCapacity;
             this.player.inventory.resourceMaxCapacity = data.resourceMaxCapacity;
@@ -269,6 +269,56 @@ public class GameManager : MonoBehaviour
             item.quantity = i.quantity;
             item.itemType = i.itemType;
             item.itemImage = SpriteData.ToSprite(i.itemImage);
+
+            // Add the item into the correct inventory list
+            targetList.Add(item);
+
+        }
+    }
+
+    public void LoopOverWeaponsInInventoryList(List<CollectableWeaponStruct> inventoryList, List<CollectableWeapon> targetList)
+    {
+        //Loading weapons in inventory details
+        foreach (CollectableWeaponStruct i in inventoryList)
+        {
+            GameObject objToSpawn = new GameObject(i.itemName); // Spawn a new object
+            objToSpawn.transform.parent = this.player.inventory.transform; // Transfer ownership of object
+            CollectableWeapon item = objToSpawn.AddComponent<CollectableWeapon>();
+
+            //Assign data to item
+            item.itemName = i.itemName;
+            item.quantity = i.quantity;
+            item.itemType = i.itemType;
+            item.itemImage = SpriteData.ToSprite(i.itemImage);
+
+            item.pushForce = i.pushForce;
+            item.weaponLevel = i.weaponLevel;
+            item.damageAmount = i.damageAmount;
+
+            // Add the item into the correct inventory list
+            targetList.Add(item);
+
+        }
+    }
+
+    public void LoopOverArmourInInventoryList(List<CollectableArmourStruct> inventoryList, List<CollectableArmour> targetList)
+    {
+        //Loading weapons in inventory details
+        foreach (CollectableArmourStruct i in inventoryList)
+        {
+            GameObject objToSpawn = new GameObject(i.itemName); // Spawn a new object
+            objToSpawn.transform.parent = this.player.inventory.transform; // Transfer ownership of object
+            CollectableArmour item = objToSpawn.AddComponent<CollectableArmour>();
+
+            //Assign data to item
+            item.itemName = i.itemName;
+            item.quantity = i.quantity;
+            item.itemType = i.itemType;
+            item.itemImage = SpriteData.ToSprite(i.itemImage);
+
+            item.protectionAmount = i.protectionAmount;
+            item.specialEffect = i.specialEffect;
+            item.armourLevel = i.armourLevel;
 
             // Add the item into the correct inventory list
             targetList.Add(item);
@@ -351,6 +401,46 @@ public class GameManager : MonoBehaviour
     public bool TryCollectItem(CollectableItem item)
     {
         bool spaceInInventory = player.inventory.TryAddItemToInventory(item); // Add the item to the correct inventory list
+
+        if (spaceInInventory)
+        {
+            item.transform.parent = player.inventory.transform; //Transfer ownership of item to player's inventory
+            item.name = item.itemName;
+
+            return true;
+
+        }
+        else
+        {
+            return false;
+
+        }
+
+    }
+
+    public bool TryCollectWeapon(CollectableWeapon item)
+    {
+        bool spaceInInventory = player.inventory.TryAddWeaponToInventory(item); // Add the item to the correct inventory list
+
+        if (spaceInInventory)
+        {
+            item.transform.parent = player.inventory.transform; //Transfer ownership of item to player's inventory
+            item.name = item.itemName;
+
+            return true;
+
+        }
+        else
+        {
+            return false;
+
+        }
+
+    }
+
+    public bool TryCollectArmour(CollectableArmour item)
+    {
+        bool spaceInInventory = player.inventory.TryAddArmourToInventory(item); // Add the item to the correct inventory list
 
         if (spaceInInventory)
         {

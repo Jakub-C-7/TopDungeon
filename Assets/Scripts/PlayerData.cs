@@ -21,8 +21,8 @@ public class PlayerData
     // Inventory
     public List<CollectableItemStruct> consumableInventoryContents;
     public List<CollectableItemStruct> resourceInventoryContents;
-    public List<CollectableItemStruct> weaponGearInventoryContents;
-    public List<CollectableItemStruct> armourGearInventoryContents;
+    public List<CollectableWeaponStruct> weaponGearInventoryContents;
+    public List<CollectableArmourStruct> armourGearInventoryContents;
     public int consumableMaxCapacity;
     public int resourceMaxCapacity;
     public int weaponGearMaxCapacity;
@@ -47,8 +47,8 @@ public class PlayerData
         // Inventory data
         consumableInventoryContents = new List<CollectableItemStruct>();
         resourceInventoryContents = new List<CollectableItemStruct>();
-        weaponGearInventoryContents = new List<CollectableItemStruct>();
-        armourGearInventoryContents = new List<CollectableItemStruct>();
+        weaponGearInventoryContents = new List<CollectableWeaponStruct>();
+        armourGearInventoryContents = new List<CollectableArmourStruct>();
 
         consumableMaxCapacity = player.inventory.consumableMaxCapacity;
         resourceMaxCapacity = player.inventory.resourceMaxCapacity;
@@ -57,8 +57,8 @@ public class PlayerData
 
         LoopOverInventoryList(player.inventory.consumableInventoryContents, consumableInventoryContents);
         LoopOverInventoryList(player.inventory.resourceInventoryContents, resourceInventoryContents);
-        LoopOverInventoryList(player.inventory.weaponGearInventoryContents, weaponGearInventoryContents);
-        LoopOverInventoryList(player.inventory.armourGearInventoryContents, armourGearInventoryContents);
+        LoopOverWeaponsInInventoryList(player.inventory.weaponGearInventoryContents, weaponGearInventoryContents);
+        LoopOverArmourInInventoryList(player.inventory.armourGearInventoryContents, armourGearInventoryContents);
 
         // Currently Equipped Inventory
         GetCurrentlyEquippedWeaponData(player);
@@ -83,6 +83,46 @@ public class PlayerData
                 itemType = i.itemType
             }
         );
+        }
+    }
+
+    public void LoopOverWeaponsInInventoryList(List<CollectableWeapon> inventoryList, List<CollectableWeaponStruct> targetList)
+    {
+        //Loading weapons in inventory details
+        foreach (CollectableWeapon i in inventoryList)
+        {
+            targetList.Add(new CollectableWeaponStruct
+            {
+                itemName = i.itemName,
+                itemImage = SpriteData.FromSprite(i.itemImage),
+                quantity = i.quantity,
+                itemType = i.itemType,
+
+                pushForce = i.pushForce,
+                weaponLevel = i.weaponLevel,
+                damageAmount = i.damageAmount
+            });
+
+        }
+    }
+
+    public void LoopOverArmourInInventoryList(List<CollectableArmour> inventoryList, List<CollectableArmourStruct> targetList)
+    {
+        //Loading weapons in inventory details
+        foreach (CollectableArmour i in inventoryList)
+        {
+            targetList.Add(new CollectableArmourStruct
+            {
+                itemName = i.itemName,
+                itemImage = SpriteData.FromSprite(i.itemImage),
+                quantity = i.quantity,
+                itemType = i.itemType,
+
+                protectionAmount = i.protectionAmount,
+                armourLevel = i.armourLevel,
+                specialEffect = i.specialEffect
+            });
+
         }
     }
 

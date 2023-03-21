@@ -30,7 +30,7 @@ public class Chest : Collectable
         else if (!collected) // If it is an item chest
         {
             // Try to add the item to the player's inventory
-            if (GameManager.instance.TryCollectItem(item))
+            if (OpenChest())
             {
                 collected = true;
 
@@ -41,10 +41,21 @@ public class Chest : Collectable
 
                 GetComponent<SpriteRenderer>().sprite = emptyChest;
 
-                GameManager.instance.inventoryMenu.GetComponent<InventoryMenu>().ResetAndRepopulate(item.itemType);
+                RefreshInventory();
 
             }
         }
+
+    }
+
+    protected virtual bool OpenChest()
+    {
+        return GameManager.instance.TryCollectItem(item);
+    }
+
+    protected virtual void RefreshInventory()
+    {
+        GameManager.instance.inventoryMenu.GetComponent<InventoryMenu>().ResetAndRepopulate(item.itemType);
 
     }
 
