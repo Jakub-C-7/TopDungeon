@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kuba-Sprite-Sheet_0
+      name: Kuba
       rect:
         serializedVersion: 2
         x: 0
@@ -1333,7 +1333,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Kuba-Sprite-Sheet_0: 780227126
+      Kuba: 780227126
       Kuba-Sprite-Sheet_10: -1930138179
       Kuba-Sprite-Sheet_11: -1910905489
       Kuba-Sprite-Sheet_12: 1107174009
