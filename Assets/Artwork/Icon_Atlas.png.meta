@@ -2772,7 +2772,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Icon_Atlas_127
+      name: Icon_Records
       rect:
         serializedVersion: 2
         x: 240
@@ -5817,7 +5817,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Icon_Atlas_272
+      name: Icon_Recipes
       rect:
         serializedVersion: 2
         x: 0
@@ -6300,7 +6300,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Icon_Atlas_295
+      name: Icon_Lore
       rect:
         serializedVersion: 2
         x: 112
@@ -7495,7 +7495,6 @@ TextureImporter:
       Icon_Atlas_124: -1799313408
       Icon_Atlas_125: 1006572707
       Icon_Atlas_126: 1825321312
-      Icon_Atlas_127: 1923593612
       Icon_Atlas_128: 1992982500
       Icon_Atlas_129: -627158548
       Icon_Atlas_13: -1373985384
@@ -7655,7 +7654,6 @@ TextureImporter:
       Icon_Atlas_27: -1100969252
       Icon_Atlas_270: 974270459
       Icon_Atlas_271: -811135222
-      Icon_Atlas_272: 1443967993
       Icon_Atlas_273: -1424625865
       Icon_Atlas_274: 1668070881
       Icon_Atlas_275: -93637937
@@ -7680,7 +7678,6 @@ TextureImporter:
       Icon_Atlas_292: 765267873
       Icon_Atlas_293: 700024140
       Icon_Atlas_294: 267838979
-      Icon_Atlas_295: -248000018
       Icon_Atlas_296: 1928327313
       Icon_Atlas_297: -2070107615
       Icon_Atlas_298: 283286105
@@ -7809,6 +7806,9 @@ TextureImporter:
       Icon_Atlas_97: -1256397407
       Icon_Atlas_98: -743217014
       Icon_Atlas_99: 822210084
+      Icon_Lore: -248000018
+      Icon_Recipes: 1443967993
+      Icon_Records: 1923593612
       Icon_resources_0: 1018451824
       icon_armour_0: 455965884
       icon_book_0: 2103752031

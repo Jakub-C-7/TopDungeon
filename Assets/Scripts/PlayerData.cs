@@ -15,6 +15,8 @@ public class PlayerData
     public int coins;
     public int currentCharacterSelection;
     public int weaponLevel;
+    //DefeatedEnemies
+    public List<SpriteData> defeatedEnemies;
 
     // Inventory
     public List<CollectableItemStruct> consumableInventoryContents;
@@ -30,6 +32,7 @@ public class PlayerData
     public CollectableWeaponStruct equippedWeapon;
     public CollectableArmourStruct equippedArmour;
 
+
     public PlayerData(Player player)
     {
         //Player Data
@@ -39,6 +42,7 @@ public class PlayerData
         coins = GameManager.instance.player.inventory.coins;
         currentCharacterSelection = GameManager.instance.currentCharacterSelection;
         weaponLevel = GameManager.instance.weapon.weaponLevel;
+        defeatedEnemies = new List<SpriteData>();
 
         // Inventory data
         consumableInventoryContents = new List<CollectableItemStruct>();
@@ -61,6 +65,8 @@ public class PlayerData
         GetCurrentlyEquippedArmourData(player);
 
         // TODO: EQUIPPED CONSUMABLE SAVING
+
+        LoopOverSpriteList(GameManager.instance.adventurerDiary.defeatedEnemies, defeatedEnemies);
 
     }
 
@@ -113,7 +119,14 @@ public class PlayerData
             equippedArmour.armourLevel = currentArmour.armourLevel;
             equippedArmour.protectionAmount = currentArmour.protectionAmount;
             equippedArmour.specialEffect = currentArmour.specialEffect;
+        }
+    }
 
+    private void LoopOverSpriteList(List<Sprite> spriteList, List<SpriteData> targetList)
+    {
+        foreach (Sprite i in spriteList)
+        {
+            targetList.Add(SpriteData.FromSprite(i));
         }
 
     }

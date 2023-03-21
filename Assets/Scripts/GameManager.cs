@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
             Destroy(hud);
             Destroy(menu);
             Destroy(inventoryMenu);
+            Destroy(adventurerDiary.gameObject);
             return;
         }
 
@@ -42,6 +43,9 @@ public class GameManager : MonoBehaviour
     public GameObject hud;
     public GameObject menu;
     public SpeechBanner speechBanner;
+
+    public AdventurerDiary adventurerDiary;
+
     public GameObject inventoryMenu;
 
     //Logic
@@ -214,7 +218,7 @@ public class GameManager : MonoBehaviour
             this.experience = data.experience;
             this.player.inventory.coins = data.coins;
             currentCharacterSelection = data.currentCharacterSelection;
-            // weapon.weaponLevel = data.weaponLevel;
+            weapon.weaponLevel = data.weaponLevel;
 
             // Loading inventory details
             LoopOverInventoryList(data.consumableInventoryContents, this.player.inventory.consumableInventoryContents);
@@ -244,10 +248,10 @@ public class GameManager : MonoBehaviour
             // weapon.SetWeaponLevel(data.weaponLevel); 
             player.SwapSprite(currentCharacterSelection);
 
-            player.ClearEquippedWeapon();
+            // player.ClearEquippedWeapon();
             player.RefreshEquippedWeapon();
-        }
 
+        }
 
     }
 
@@ -315,8 +319,16 @@ public class GameManager : MonoBehaviour
             this.player.equippedInventory.armour = armourItem;
 
         }
+    }
 
 
+    public void LoopOverSpriteList(List<SpriteData> spriteList, List<Sprite> targetList)
+    {
+        Debug.Log(spriteList);
+        foreach (SpriteData i in spriteList)
+        {
+            targetList.Add(SpriteData.ToSprite(i));
+        }
     }
 
     // On Scene Loaded
@@ -354,6 +366,11 @@ public class GameManager : MonoBehaviour
 
         }
 
+    }
+
+    public void RegisterDeath(Sprite sprite)
+    {
+        adventurerDiary.RegisterDeath(sprite);
     }
 
 

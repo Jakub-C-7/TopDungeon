@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Mover
 {
@@ -15,6 +16,8 @@ public class Enemy : Mover
     private Transform playerTransform;
     private Vector3 startingPosition;
 
+    public Image health;
+    public GameObject healthBar;
     // Hitbox
     public ContactFilter2D filter;
     private BoxCollider2D hitBox;
@@ -29,13 +32,25 @@ public class Enemy : Mover
 
     }
 
+    protected override void ReceiveDamage(Damage dmg)
+    {
+        base.ReceiveDamage(dmg);
+        OnHealthChange();
+    }
+
+    private void OnHealthChange(){
+        float ratio = (float)this.hitPoints / (float)this.maxHitpoints;
+        health.fillAmount = ratio;
+    }
     protected override void Death()
     {
         Destroy(gameObject);
         GameManager.instance.GrantXp(xpValue);
+        GameManager.instance.RegisterDeath(this.gameObject.GetComponent<SpriteRenderer>().sprite);
         GameManager.instance.ShowText("+ " + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
     }
 
+   
     protected void FixedUpdate()
     {
         //Collision work
@@ -64,10 +79,12 @@ public class Enemy : Mover
             if (Vector3.Distance(playerTransform.position, startingPosition) < triggerLength)
             {
                 chasing = true;
+
             }
 
             if (chasing)
             {
+                healthBar.SetActive(true);
                 if (!collidingWithPlayer)
                 {
                     UpdateMotor((playerTransform.position - transform.position).normalized); // Run towards the player
@@ -76,12 +93,14 @@ public class Enemy : Mover
             }
             else
             {
+                healthBar.SetActive(false);
                 UpdateMotor(startingPosition - transform.position); // Go back
             }
 
         }
         else
         {
+            healthBar.SetActive(false);
             UpdateMotor(startingPosition - transform.position); // Go back 
             chasing = false;
 
