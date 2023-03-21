@@ -13,7 +13,6 @@ public class InventoryMenu : MonoBehaviour
     {
         RefreshCoins();
         ResetAndRepopulate("Weapon");
-        ChangeCurrentTab("Weapon");
     }
 
     void Update()
@@ -30,6 +29,7 @@ public class InventoryMenu : MonoBehaviour
     {
         CleanUp();
         PopulateInventory(itemType);
+        ChangeCurrentTab(itemType);
         PopulateEquippedInventory();
     }
 
@@ -321,30 +321,5 @@ public class InventoryMenu : MonoBehaviour
     {
         inventoryMenuAnimator.SetBool(name, !inventoryMenuAnimator.GetBool(name));
     }
-
-    // Retrieve Weapon slot item
-    // public CollectableItem getEquippedWeapon()
-    // {
-    //     return GameObject.Find("WeaponHolster").transform.GetComponentInChildren<CollectableItem>();
-    // }
-
-    // // Retrieve Armour slot item
-    // public CollectableItem getEquippedArmour()
-    // {
-    //     return GameObject.Find("ArmourHolster").transform.GetComponentInChildren<CollectableItem>();
-    // }
-
-    // // Retrieve Consumable 1 slot item
-    // public CollectableItem getEquippedConsumableOne()
-    // {
-    //     return GameObject.Find("ConsumableHolsterOne").transform.GetComponentInChildren<CollectableItem>();
-    // }
-
-    // // Retrieve Consumable 2 slot item
-    // public CollectableItem getEquippedConsumableTwo()
-    // {
-    //     return GameObject.Find("ConsumableHolsterTwo").transform.GetComponentInChildren<CollectableItem>();
-    // }
-
 
 }
