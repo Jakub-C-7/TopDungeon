@@ -11,7 +11,7 @@ public class Fighter : MonoBehaviour
     //Immunity
     protected float immuneTime = 1.0f;
     protected float lastImmune;
-    
+
     public ParticleSystem part;
     //Push
     protected Vector3 pushDirection;
@@ -25,18 +25,20 @@ public class Fighter : MonoBehaviour
             hitPoints -= dmg.damageAmount;
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
 
-            float AngleRad = Mathf. Atan2(pushDirection.y, pushDirection.x);
-         
-            float AngleDeg = (180 / Mathf. PI) * AngleRad;
-            if(part){
-                    var shape = part.shape;
+            float AngleRad = Mathf.Atan2(pushDirection.y, pushDirection.x);
+
+            float AngleDeg = (180 / Mathf.PI) * AngleRad;
+            if (part)
+            {
+                var shape = part.shape;
                 // shape.rotation =  new Vector3(xAngle,yAngle, 0f);
-                    shape.rotation =  new Vector3(0,0, AngleDeg - 22.5f);
-                    part.Play();
+                shape.rotation = new Vector3(0, 0, AngleDeg - 22.5f);
+                part.Play();
             }
             //Sound on hit optional 
-            if(onHitAudioSource){
-                AudioSource.PlayClipAtPoint(onHitAudioSource.clip,Camera.main.transform.position);
+            if (onHitAudioSource)
+            {
+                AudioSource.PlayClipAtPoint(onHitAudioSource.clip, Camera.main.transform.position);
             }
             GameManager.instance.ShowText(dmg.damageAmount.ToString(), 30, Color.red, transform.position, Vector3.zero, 0.5f);
 
