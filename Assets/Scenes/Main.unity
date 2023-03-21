@@ -11900,7 +11900,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4042358662247836565, guid: 2f9900a2917192d4189b90d74af27b79, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2f9900a2917192d4189b90d74af27b79, type: 3}
 --- !u!1 &1286462340
 GameObject:
@@ -46355,6 +46356,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360081746}
   m_CullTransparentMesh: 1
+--- !u!1 &1369550321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4042358662247836563, guid: 2f9900a2917192d4189b90d74af27b79, type: 3}
+  m_PrefabInstance: {fileID: 1263389115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1369550324 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4042358662247836560, guid: 2f9900a2917192d4189b90d74af27b79, type: 3}
+  m_PrefabInstance: {fileID: 1263389115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1369550329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369550321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9792fb0ce61d11e4691099379c5cd0c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  sceneNames:
+  - Dungeon1
+  portalAnimator: {fileID: 1369550324}
 --- !u!1 &1390054465
 GameObject:
   m_ObjectHideFlags: 0
