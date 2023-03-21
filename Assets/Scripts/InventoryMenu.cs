@@ -12,7 +12,7 @@ public class InventoryMenu : MonoBehaviour
     void Start()
     {
         RefreshCoins();
-        ResetAndRepopulate("Weapon");
+        ResetAndRepopulate("Armour"); // Default tab for Backpack on game start
     }
 
     void Update()
@@ -82,15 +82,18 @@ public class InventoryMenu : MonoBehaviour
                 case "Weapon":
                     itemSlot = "WeaponHolster";
                     break;
+
                 case "Armour":
                     itemSlot = "ArmourHolster";
                     break;
+
                 case "Consumable":
                     itemSlot = "ConsumableHolsterOne";
                     Debug.Log("Consumable PopulateEquippedInventory not yet implemented");
                     break;
+
                 default:
-                    itemSlot = "empty";
+                    itemSlot = "empty"; // Should never hit this case
                     break;
             }
 
@@ -153,30 +156,12 @@ public class InventoryMenu : MonoBehaviour
             // Create image and assign its data
             objToSpawn.AddComponent<Image>().sprite = i.itemImage;
 
-            if (i.gameObject.GetComponent<CollectableWeapon>())
-            {
-                // Create CollectableWeapon instance and assign its data
-                objToSpawn.AddComponent<CollectableWeapon>();
-                objToSpawn.GetComponent<CollectableWeapon>().itemName = i.gameObject.GetComponent<CollectableWeapon>().itemName;
-                objToSpawn.GetComponent<CollectableWeapon>().itemType = i.gameObject.GetComponent<CollectableWeapon>().itemType;
-                objToSpawn.GetComponent<CollectableWeapon>().quantity = i.gameObject.GetComponent<CollectableWeapon>().quantity;
-                objToSpawn.GetComponent<CollectableWeapon>().itemImage = i.gameObject.GetComponent<CollectableWeapon>().itemImage;
-                objToSpawn.GetComponent<CollectableWeapon>().damageAmount = i.gameObject.GetComponent<CollectableWeapon>().damageAmount;
-                objToSpawn.GetComponent<CollectableWeapon>().pushForce = i.gameObject.GetComponent<CollectableWeapon>().pushForce;
-                objToSpawn.GetComponent<CollectableWeapon>().weaponLevel = i.gameObject.GetComponent<CollectableWeapon>().weaponLevel;
-
-            }
-            else
-            {
-                // Create CollectableItem instance and assign its data
-                objToSpawn.AddComponent<CollectableItem>();
-                objToSpawn.GetComponent<CollectableItem>().itemName = i.itemName;
-                objToSpawn.GetComponent<CollectableItem>().itemType = i.itemType;
-                objToSpawn.GetComponent<CollectableItem>().quantity = i.quantity;
-                objToSpawn.GetComponent<CollectableItem>().itemImage = i.itemImage;
-
-            }
-
+            // Create CollectableItem instance and assign its data
+            objToSpawn.AddComponent<CollectableItem>();
+            objToSpawn.GetComponent<CollectableItem>().itemName = i.itemName;
+            objToSpawn.GetComponent<CollectableItem>().itemType = i.itemType;
+            objToSpawn.GetComponent<CollectableItem>().quantity = i.quantity;
+            objToSpawn.GetComponent<CollectableItem>().itemImage = i.itemImage;
 
             // Attach hovertip to item
             objToSpawn.AddComponent<HoverTip>().tipToShow = i.itemName + "\nType: " + i.itemType;
