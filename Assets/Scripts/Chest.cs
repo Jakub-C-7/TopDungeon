@@ -27,7 +27,7 @@ public class Chest : Collectable
             //Refresh the number of coins in inventory
             GameManager.instance.inventoryMenu.GetComponent<InventoryMenu>().RefreshCoins();
         }
-        else if (!collected) // If it is an item chest
+        else if (!collected) // It is an item chest
         {
             // Try to add the item to the player's inventory
             if (OpenChest())
