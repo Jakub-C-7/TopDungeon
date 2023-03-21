@@ -67,6 +67,7 @@ public class Weapon : Collidable
     private void Swing()
     {
         animator.SetTrigger("Swing");
+        GameManager.instance.player.Swing();
 
     }
 

@@ -17,6 +17,8 @@ public class Player : Mover
     private float lightOuterRadius = 1.5f;
     private bool reduceLight = false;
 
+    public Animator handsAnimator;
+
     protected override void Start()
     {
         base.Start();
@@ -160,6 +162,11 @@ public class Player : Mover
 
         currentWeapon.gameObject.SetActive(false);
 
+    }
+
+    public void Swing(){
+        animator.SetTrigger("Swing");
+        handsAnimator.SetTrigger("Swing");
     }
 
 
