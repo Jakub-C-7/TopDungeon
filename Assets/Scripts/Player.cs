@@ -131,16 +131,25 @@ public class Player : Mover
 
     public void RefreshEquippedWeapon()
     {
-        // Weapon currentWeapon = this.transform.Find("Weapon").GetComponent<Weapon>();
         Weapon currentWeapon = GameManager.instance.weapon;
 
         if (equippedInventory.weapon != null)
         {
             Debug.Log("RefreshEquippedWeapon");
+
             CollectableWeapon weaponToUpdateTo = equippedInventory.transform.Find(equippedInventory.weapon.itemName).GetComponent<CollectableWeapon>();
             currentWeapon.weaponLevel = weaponToUpdateTo.weaponLevel;
             currentWeapon.damageAmount = weaponToUpdateTo.damageAmount;
             currentWeapon.pushForce = weaponToUpdateTo.pushForce;
+
+            // SpriteData spriteData = SpriteData.FromSprite(weaponToUpdateTo.itemImage);
+
+            // // Centre the weapon sprite into the middle of the parent
+            // spriteData.pivotX = 0.5f;
+            // spriteData.pivotY = 0.5f;
+
+            // Sprite weaponSprite = SpriteData.ToSprite(spriteData);
+
             currentWeapon.SetWeaponImage(weaponToUpdateTo.itemImage);
 
         }
@@ -155,7 +164,6 @@ public class Player : Mover
         {
 
             currentWeapon.gameObject.GetComponent<SpriteRenderer>().sprite = null;
-
 
         }
     }

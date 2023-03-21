@@ -87,6 +87,6 @@ public class Weapon : Collidable
 
     public void SetWeaponImage(Sprite sprite)
     {
-        spriteRenderer.sprite = sprite;
+        spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.textureRect, new Vector2(0.5f, 0.5f));
     }
 }
