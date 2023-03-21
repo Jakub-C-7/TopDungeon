@@ -61,6 +61,8 @@ public class EquippedInventory : MonoBehaviour
 
                 weapon = this.gameObject.transform.Find(collectableItem.gameObject.name).GetComponent<CollectableItem>();
 
+                GameManager.instance.player.RefreshEquippedWeapon();
+
                 break;
 
             case "Armour":

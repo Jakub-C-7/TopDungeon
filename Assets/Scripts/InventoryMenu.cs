@@ -30,6 +30,7 @@ public class InventoryMenu : MonoBehaviour
     {
         CleanUp();
         PopulateInventory(itemType);
+        PopulateEquippedInventory();
     }
 
     public void ChangeCurrentTab(string tabToChangeTo)
@@ -44,11 +45,11 @@ public class InventoryMenu : MonoBehaviour
         switch (itemType)
         {
             case "Weapon":
-                LoopOverList(GameManager.instance.player.inventory.weaponGearInventoryContents);
+                LoopOverWeaponList(GameManager.instance.player.inventory.weaponGearInventoryContents);
                 break;
 
             case "Armour":
-                LoopOverList(GameManager.instance.player.inventory.armourGearInventoryContents);
+                LoopOverArmourList(GameManager.instance.player.inventory.armourGearInventoryContents);
                 break;
 
             case "Consumable":
@@ -58,6 +59,67 @@ public class InventoryMenu : MonoBehaviour
             case "Resource":
                 LoopOverList(GameManager.instance.player.inventory.resourceInventoryContents);
                 break;
+
+        }
+
+    }
+
+
+    public void PopulateEquippedInventory()
+    {
+        //References
+        GameObject inventoryMenu = GameObject.Find("InventoryMenu");
+        GameObject characterPanel = GameObject.Find("CharacterPanel");
+        GameObject equippedInventory = GameObject.Find("EquippedInventory");
+        string itemSlot;
+
+        //Loading equipped inventory details
+        foreach (CollectableItem i in equippedInventory.GetComponentsInChildren<CollectableItem>())
+        {
+
+            switch (i.itemType)
+            {
+                case "Weapon":
+                    itemSlot = "WeaponHolster";
+                    break;
+                case "Armour":
+                    itemSlot = "ArmourHolster";
+                    break;
+                case "Consumable":
+                    itemSlot = "ConsumableHolsterOne";
+                    Debug.Log("Consumable PopulateEquippedInventory not yet implemented");
+                    break;
+                default:
+                    itemSlot = "empty";
+                    break;
+            }
+
+            GameObject gearSlot = characterPanel.transform.Find(itemSlot).gameObject; // Get the gear slot to add an item to
+
+            GameObject objToSpawn = new GameObject(i.itemName); // Spawn a new object
+
+            objToSpawn.transform.SetParent(gearSlot.transform); // Transfer ownership of object
+
+            // Create image and assign its data
+            objToSpawn.AddComponent<Image>().sprite = i.itemImage;
+
+            // Create CollectableItem instance and assign its data
+            objToSpawn.AddComponent<CollectableItem>();
+            objToSpawn.GetComponent<CollectableItem>().itemName = i.itemName;
+            objToSpawn.GetComponent<CollectableItem>().itemType = i.itemType;
+            objToSpawn.GetComponent<CollectableItem>().quantity = i.quantity;
+            objToSpawn.GetComponent<CollectableItem>().itemImage = i.itemImage;
+
+            // Attach hovertip to item
+            objToSpawn.AddComponent<HoverTip>().tipToShow = i.itemName + "\nType: " + i.itemType;
+
+            // Enable Drag and drop
+            objToSpawn.AddComponent<DragDrop>().canvas = inventoryMenu.GetComponent<Canvas>();
+            objToSpawn.AddComponent<CanvasGroup>();
+
+            //Scale the object to each slot
+            objToSpawn.transform.localPosition = Vector3.zero;
+            objToSpawn.transform.localScale = new Vector3(0.64f, 0.64f, 0);
 
         }
 
@@ -81,6 +143,7 @@ public class InventoryMenu : MonoBehaviour
         //Loading inventory details
         foreach (CollectableItem i in playerInventory)
         {
+
             int currentIndex = playerInventory.IndexOf(i); // Get slot of item
 
             GameObject objToSpawn = new GameObject(i.itemName); // Spawn a new object
@@ -90,12 +153,30 @@ public class InventoryMenu : MonoBehaviour
             // Create image and assign its data
             objToSpawn.AddComponent<Image>().sprite = i.itemImage;
 
-            // Create CollectableItem instance and assign its data
-            objToSpawn.AddComponent<CollectableItem>();
-            objToSpawn.GetComponent<CollectableItem>().itemName = i.itemName;
-            objToSpawn.GetComponent<CollectableItem>().itemType = i.itemType;
-            objToSpawn.GetComponent<CollectableItem>().quantity = i.quantity;
-            objToSpawn.GetComponent<CollectableItem>().itemImage = i.itemImage;
+            if (i.gameObject.GetComponent<CollectableWeapon>())
+            {
+                // Create CollectableWeapon instance and assign its data
+                objToSpawn.AddComponent<CollectableWeapon>();
+                objToSpawn.GetComponent<CollectableWeapon>().itemName = i.gameObject.GetComponent<CollectableWeapon>().itemName;
+                objToSpawn.GetComponent<CollectableWeapon>().itemType = i.gameObject.GetComponent<CollectableWeapon>().itemType;
+                objToSpawn.GetComponent<CollectableWeapon>().quantity = i.gameObject.GetComponent<CollectableWeapon>().quantity;
+                objToSpawn.GetComponent<CollectableWeapon>().itemImage = i.gameObject.GetComponent<CollectableWeapon>().itemImage;
+                objToSpawn.GetComponent<CollectableWeapon>().damageAmount = i.gameObject.GetComponent<CollectableWeapon>().damageAmount;
+                objToSpawn.GetComponent<CollectableWeapon>().pushForce = i.gameObject.GetComponent<CollectableWeapon>().pushForce;
+                objToSpawn.GetComponent<CollectableWeapon>().weaponLevel = i.gameObject.GetComponent<CollectableWeapon>().weaponLevel;
+
+            }
+            else
+            {
+                // Create CollectableItem instance and assign its data
+                objToSpawn.AddComponent<CollectableItem>();
+                objToSpawn.GetComponent<CollectableItem>().itemName = i.itemName;
+                objToSpawn.GetComponent<CollectableItem>().itemType = i.itemType;
+                objToSpawn.GetComponent<CollectableItem>().quantity = i.quantity;
+                objToSpawn.GetComponent<CollectableItem>().itemImage = i.itemImage;
+
+            }
+
 
             // Attach hovertip to item
             objToSpawn.AddComponent<HoverTip>().tipToShow = i.itemName + "\nType: " + i.itemType;
@@ -111,6 +192,91 @@ public class InventoryMenu : MonoBehaviour
 
         }
     }
+
+    private void LoopOverWeaponList(List<CollectableWeapon> playerInventory)
+    {
+        GameObject inventoryMenu = GameObject.Find("InventoryMenu");
+        GameObject bagPanel = GameObject.Find("BagPanel");
+
+        //Loading inventory details
+        foreach (CollectableWeapon i in playerInventory)
+        {
+
+            int currentIndex = playerInventory.IndexOf(i); // Get slot of item
+
+            GameObject objToSpawn = new GameObject(i.itemName); // Spawn a new object
+
+            objToSpawn.transform.parent = bagPanel.transform.GetChild(currentIndex); // Transfer ownership of object
+
+            // Create image and assign its data
+            objToSpawn.AddComponent<Image>().sprite = i.itemImage;
+
+            // Create CollectableWeapon instance and assign its data
+            objToSpawn.AddComponent<CollectableWeapon>();
+            objToSpawn.GetComponent<CollectableWeapon>().itemName = i.gameObject.GetComponent<CollectableWeapon>().itemName;
+            objToSpawn.GetComponent<CollectableWeapon>().itemType = i.gameObject.GetComponent<CollectableWeapon>().itemType;
+            objToSpawn.GetComponent<CollectableWeapon>().quantity = i.gameObject.GetComponent<CollectableWeapon>().quantity;
+            objToSpawn.GetComponent<CollectableWeapon>().itemImage = i.gameObject.GetComponent<CollectableWeapon>().itemImage;
+            objToSpawn.GetComponent<CollectableWeapon>().damageAmount = i.gameObject.GetComponent<CollectableWeapon>().damageAmount;
+            objToSpawn.GetComponent<CollectableWeapon>().pushForce = i.gameObject.GetComponent<CollectableWeapon>().pushForce;
+            objToSpawn.GetComponent<CollectableWeapon>().weaponLevel = i.gameObject.GetComponent<CollectableWeapon>().weaponLevel;
+
+            // Attach hovertip to item
+            objToSpawn.AddComponent<HoverTip>().tipToShow = i.itemName + "\nType: " + i.itemType;
+
+            // Enable Drag and drop
+            objToSpawn.AddComponent<DragDrop>().canvas = inventoryMenu.GetComponent<Canvas>();
+            objToSpawn.AddComponent<CanvasGroup>();
+
+
+            //Scale the object to each slot
+            objToSpawn.transform.localPosition = Vector3.zero;
+            objToSpawn.transform.localScale = new Vector3(0.64f, 0.64f, 0);
+        }
+    }
+
+    private void LoopOverArmourList(List<CollectableArmour> playerInventory)
+    {
+        GameObject inventoryMenu = GameObject.Find("InventoryMenu");
+        GameObject bagPanel = GameObject.Find("BagPanel");
+
+        //Loading inventory details
+        foreach (CollectableArmour i in playerInventory)
+        {
+
+            int currentIndex = playerInventory.IndexOf(i); // Get slot of item
+
+            GameObject objToSpawn = new GameObject(i.itemName); // Spawn a new object
+
+            objToSpawn.transform.parent = bagPanel.transform.GetChild(currentIndex); // Transfer ownership of object
+
+            // Create image and assign its data
+            objToSpawn.AddComponent<Image>().sprite = i.itemImage;
+
+            // Create CollectableWeapon instance and assign its data
+            objToSpawn.AddComponent<CollectableArmour>();
+            objToSpawn.GetComponent<CollectableArmour>().itemName = i.gameObject.GetComponent<CollectableArmour>().itemName;
+            objToSpawn.GetComponent<CollectableArmour>().itemType = i.gameObject.GetComponent<CollectableArmour>().itemType;
+            objToSpawn.GetComponent<CollectableArmour>().quantity = i.gameObject.GetComponent<CollectableArmour>().quantity;
+            objToSpawn.GetComponent<CollectableArmour>().itemImage = i.gameObject.GetComponent<CollectableArmour>().itemImage;
+            objToSpawn.GetComponent<CollectableArmour>().protectionAmount = i.gameObject.GetComponent<CollectableArmour>().protectionAmount;
+            objToSpawn.GetComponent<CollectableArmour>().specialEffect = i.gameObject.GetComponent<CollectableArmour>().specialEffect;
+            objToSpawn.GetComponent<CollectableArmour>().armourLevel = i.gameObject.GetComponent<CollectableArmour>().armourLevel;
+
+            // Attach hovertip to item
+            objToSpawn.AddComponent<HoverTip>().tipToShow = i.itemName + "\nType: " + i.itemType;
+
+            // Enable Drag and drop
+            objToSpawn.AddComponent<DragDrop>().canvas = inventoryMenu.GetComponent<Canvas>();
+            objToSpawn.AddComponent<CanvasGroup>();
+
+
+            //Scale the object to each slot
+            objToSpawn.transform.localPosition = Vector3.zero;
+            objToSpawn.transform.localScale = new Vector3(0.64f, 0.64f, 0);
+        }
+    }
+
 
     // Clean up the backpack by removing existing objects
     public void CleanUp()
@@ -134,6 +300,19 @@ public class InventoryMenu : MonoBehaviour
 
             //     }
             // }
+
+        }
+
+        foreach (Transform i in GameObject.Find("CharacterPanel").transform)
+        {
+
+            // There should only be one item in each inventory slot
+            if (i.childCount == 1)
+            {
+                //Destroy the one item within the slot.
+                GameObject.Destroy(i.GetChild(0).gameObject);
+
+            }
 
         }
     }

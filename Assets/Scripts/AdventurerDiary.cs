@@ -14,15 +14,16 @@ public class AdventurerDiary : MonoBehaviour
     public GameObject displayKilledEnemiesSpriteList;
     public GameObject killedEnemiesViewPort;
 
-    private int currentPage; 
-    public Button recipeCollectionButton,characterLoreButton, recordsButton; 
+    private int currentPage;
+    public Button recipeCollectionButton, characterLoreButton, recordsButton;
 
     public Text levelText, hitPointText, expText, nextExpText;
     //References
     public Animator adventurerDiaryAnimator;
 
 
-    void Start(){
+    void Start()
+    {
         recipeCollectionButton.onClick.AddListener(() => SetActiveTab(recipeCollectionPages));
         characterLoreButton.onClick.AddListener(() => SetActiveTab(characterLorePages));
         activeList = characterLorePages;
@@ -39,16 +40,18 @@ public class AdventurerDiary : MonoBehaviour
         }
     }
 
-    private void SetActiveTab(List<GameObject> activeList){
+    private void SetActiveTab(List<GameObject> activeList)
+    {
         this.activeList = activeList;
         currentPage = 0;
         SetActivePage();
     }
 
-    public void updateDiary(){
+    public void updateDiary()
+    {
         int experience = GameManager.instance.experience;
         int level = GameManager.instance.GetCurrentLevel();
-        
+
         hitPointText.text = GameManager.instance.player.hitPoints.ToString() + "/" + GameManager.instance.player.maxHitpoints;
         levelText.text = level.ToString();
         expText.text = experience.ToString();
@@ -57,52 +60,61 @@ public class AdventurerDiary : MonoBehaviour
 
     }
 
-    public void SetActivePage(){
-         activePage.SetActive(false);
-         activePage = activeList[currentPage];
-         activePage.SetActive(true);
+    public void SetActivePage()
+    {
+        activePage.SetActive(false);
+        activePage = activeList[currentPage];
+        activePage.SetActive(true);
     }
 
-    public void ChangePage(bool next){
-        if(next){
-            if(currentPage + 1 < activeList.Count){
+    public void ChangePage(bool next)
+    {
+        if (next)
+        {
+            if (currentPage + 1 < activeList.Count)
+            {
                 currentPage++;
             }
-        }else{
-            if(currentPage > 0){
+        }
+        else
+        {
+            if (currentPage > 0)
+            {
                 currentPage--;
             }
         }
         SetActivePage();
     }
-  
-   
+
+
 
     public void ToggleBool(string name)
     {
         adventurerDiaryAnimator.SetBool(name, !adventurerDiaryAnimator.GetBool(name));
     }
 
-    public void RegisterDeath(Sprite recentEnemy){
+    public void RegisterDeath(Sprite recentEnemy)
+    {
         defeatedEnemies.Add(recentEnemy);
         GameObject recentEnemyObject = new GameObject();
         Image im = recentEnemyObject.AddComponent<Image>();
         recentEnemyObject.transform.SetParent(displayKilledEnemiesSpriteList.transform);
 
         RectTransform recentEnemyObjectRect = recentEnemyObject.GetComponent<RectTransform>();
-        recentEnemyObject.transform.localScale = new Vector3(0.5f, 0.5f, 0f );
-        recentEnemyObjectRect.anchorMin = new Vector2(0,1);
-        recentEnemyObjectRect.anchorMax = new Vector2(0,1);
-        recentEnemyObjectRect.pivot = new Vector2(0,1);
+        recentEnemyObject.transform.localScale = new Vector3(0.5f, 0.5f, 0f);
+        recentEnemyObjectRect.anchorMin = new Vector2(0, 1);
+        recentEnemyObjectRect.anchorMax = new Vector2(0, 1);
+        recentEnemyObjectRect.pivot = new Vector2(0, 1);
 
         recentEnemyObject.transform.localPosition = CalculateLatestPositionDefeatedEnemy();
-        
+
         //recentEnemyObject.transform.localPosition = Vector3.zero;
         im.sprite = recentEnemy;
 
     }
 
-    private Vector3 CalculateLatestPositionDefeatedEnemy(){
+    private Vector3 CalculateLatestPositionDefeatedEnemy()
+    {
         int maxPerRow = 14;
         float y = (float)System.Math.Floor((double)(defeatedEnemies.Count - 1) / (double)maxPerRow) * -60;
         //find x position by taking position in list (base 0), remainder in current row, * gap size
@@ -110,13 +122,15 @@ public class AdventurerDiary : MonoBehaviour
         //set height of view so we can scroll to see enemies.
         RectTransform killedEnemiesViewPortRect = killedEnemiesViewPort.GetComponent<RectTransform>();
         killedEnemiesViewPortRect.sizeDelta = new Vector2(killedEnemiesViewPortRect.rect.x, System.Math.Abs(y));
-        return new Vector3(x,y,0);
-        
-    
+        return new Vector3(x, y, 0);
+
+
     }
 
-    public void SetDefeatedEnemies(List<Sprite> defeatedEnemies){
-        foreach (Sprite defeatedEnemy in defeatedEnemies){
+    public void SetDefeatedEnemies(List<Sprite> defeatedEnemies)
+    {
+        foreach (Sprite defeatedEnemy in defeatedEnemies)
+        {
             RegisterDeath(defeatedEnemy);
         }
 

@@ -21,18 +21,16 @@ public class PlayerData
     // Inventory
     public List<CollectableItemStruct> consumableInventoryContents;
     public List<CollectableItemStruct> resourceInventoryContents;
-    public List<CollectableItemStruct> weaponGearInventoryContents;
-    public List<CollectableItemStruct> armourGearInventoryContents;
+    public List<CollectableWeaponStruct> weaponGearInventoryContents;
+    public List<CollectableArmourStruct> armourGearInventoryContents;
     public int consumableMaxCapacity;
     public int resourceMaxCapacity;
     public int weaponGearMaxCapacity;
     public int armourGearMaxCapacity;
 
     // Currently Equipped
-    public List<CollectableItemStruct> equippedItems;
-
-    public CollectableItemStruct weapon;
-    public CollectableItemStruct armour;
+    public CollectableWeaponStruct equippedWeapon;
+    public CollectableArmourStruct equippedArmour;
 
 
     public PlayerData(Player player)
@@ -49,8 +47,8 @@ public class PlayerData
         // Inventory data
         consumableInventoryContents = new List<CollectableItemStruct>();
         resourceInventoryContents = new List<CollectableItemStruct>();
-        weaponGearInventoryContents = new List<CollectableItemStruct>();
-        armourGearInventoryContents = new List<CollectableItemStruct>();
+        weaponGearInventoryContents = new List<CollectableWeaponStruct>();
+        armourGearInventoryContents = new List<CollectableArmourStruct>();
 
         consumableMaxCapacity = player.inventory.consumableMaxCapacity;
         resourceMaxCapacity = player.inventory.resourceMaxCapacity;
@@ -59,15 +57,16 @@ public class PlayerData
 
         LoopOverInventoryList(player.inventory.consumableInventoryContents, consumableInventoryContents);
         LoopOverInventoryList(player.inventory.resourceInventoryContents, resourceInventoryContents);
-        LoopOverInventoryList(player.inventory.weaponGearInventoryContents, weaponGearInventoryContents);
-        LoopOverInventoryList(player.inventory.armourGearInventoryContents, armourGearInventoryContents);
+        LoopOverWeaponsInInventoryList(player.inventory.weaponGearInventoryContents, weaponGearInventoryContents);
+        LoopOverArmourInInventoryList(player.inventory.armourGearInventoryContents, armourGearInventoryContents);
 
-        // Currently Equipped
-        equippedItems = new List<CollectableItemStruct>();
+        // Currently Equipped Inventory
+        GetCurrentlyEquippedWeaponData(player);
+        GetCurrentlyEquippedArmourData(player);
 
-        LoopOverInventoryList(player.equippedInventory.GetComponentsInChildren<CollectableItem>().ToList(), equippedItems);
+        // TODO: EQUIPPED CONSUMABLE SAVING
 
-        LoopOverSpriteList(GameManager.instance.adventurerDiary.defeatedEnemies,defeatedEnemies);
+        LoopOverSpriteList(GameManager.instance.adventurerDiary.defeatedEnemies, defeatedEnemies);
 
     }
 
@@ -87,8 +86,86 @@ public class PlayerData
         }
     }
 
-    private void LoopOverSpriteList(List<Sprite> spriteList, List<SpriteData> targetList){
-        foreach(Sprite i in spriteList){
+    public void LoopOverWeaponsInInventoryList(List<CollectableWeapon> inventoryList, List<CollectableWeaponStruct> targetList)
+    {
+        //Loading weapons in inventory details
+        foreach (CollectableWeapon i in inventoryList)
+        {
+            targetList.Add(new CollectableWeaponStruct
+            {
+                itemName = i.itemName,
+                itemImage = SpriteData.FromSprite(i.itemImage),
+                quantity = i.quantity,
+                itemType = i.itemType,
+
+                pushForce = i.pushForce,
+                weaponLevel = i.weaponLevel,
+                damageAmount = i.damageAmount
+            });
+
+        }
+    }
+
+    public void LoopOverArmourInInventoryList(List<CollectableArmour> inventoryList, List<CollectableArmourStruct> targetList)
+    {
+        //Loading weapons in inventory details
+        foreach (CollectableArmour i in inventoryList)
+        {
+            targetList.Add(new CollectableArmourStruct
+            {
+                itemName = i.itemName,
+                itemImage = SpriteData.FromSprite(i.itemImage),
+                quantity = i.quantity,
+                itemType = i.itemType,
+
+                protectionAmount = i.protectionAmount,
+                armourLevel = i.armourLevel,
+                specialEffect = i.specialEffect
+            });
+
+        }
+    }
+
+    private void GetCurrentlyEquippedWeaponData(Player player)
+    {
+
+        if (player.equippedInventory.weapon)
+        {
+
+            CollectableWeapon currentWeapon = player.equippedInventory.weapon.GetComponent<CollectableWeapon>();
+            equippedWeapon.itemName = currentWeapon.itemName;
+            equippedWeapon.quantity = currentWeapon.quantity;
+            equippedWeapon.itemType = currentWeapon.itemType;
+            equippedWeapon.itemImage = SpriteData.FromSprite(currentWeapon.itemImage);
+
+            equippedWeapon.weaponLevel = currentWeapon.weaponLevel;
+            equippedWeapon.damageAmount = currentWeapon.damageAmount;
+            equippedWeapon.pushForce = currentWeapon.pushForce;
+        }
+
+    }
+
+    private void GetCurrentlyEquippedArmourData(Player player)
+    {
+
+        if (player.equippedInventory.armour)
+        {
+            CollectableArmour currentArmour = player.equippedInventory.armour.GetComponent<CollectableArmour>();
+            equippedArmour.itemName = currentArmour.itemName;
+            equippedArmour.itemImage = SpriteData.FromSprite(currentArmour.itemImage);
+            equippedArmour.quantity = currentArmour.quantity;
+            equippedArmour.itemType = currentArmour.itemType;
+
+            equippedArmour.armourLevel = currentArmour.armourLevel;
+            equippedArmour.protectionAmount = currentArmour.protectionAmount;
+            equippedArmour.specialEffect = currentArmour.specialEffect;
+        }
+    }
+
+    private void LoopOverSpriteList(List<Sprite> spriteList, List<SpriteData> targetList)
+    {
+        foreach (Sprite i in spriteList)
+        {
             targetList.Add(SpriteData.FromSprite(i));
         }
 

@@ -84,4 +84,9 @@ public class Weapon : Collidable
         weaponLevel = level;
         spriteRenderer.sprite = GameManager.instance.weaponSprites[weaponLevel];
     }
+
+    public void SetWeaponImage(Sprite sprite)
+    {
+        spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.textureRect, new Vector2(0.5f, 0.5f));
+    }
 }
