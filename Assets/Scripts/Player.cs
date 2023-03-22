@@ -122,7 +122,6 @@ public class Player : Mover
     {
         Heal(maxHitpoints);
         canMove = true;
-        lastImmune = Time.time;
         pushDirection = Vector3.zero;
     }
 
@@ -164,7 +163,8 @@ public class Player : Mover
 
     }
 
-    public void Swing(){
+    public void Swing()
+    {
         animator.SetTrigger("Swing");
         handsAnimator.SetTrigger("Swing");
     }
