@@ -1060,6 +1060,7 @@ MonoBehaviour:
   playerSprites:
   - {fileID: -2127929151, guid: c3f981aea827bce428fb95c870409bc0, type: 3}
   - {fileID: 1616727666, guid: c3f981aea827bce428fb95c870409bc0, type: 3}
+  - {fileID: 780227126, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
   weaponSprites:
   - {fileID: 343679953, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
   - {fileID: 343679953, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
@@ -1081,7 +1082,7 @@ MonoBehaviour:
   adventurerDiary: {fileID: 616221920}
   inventoryMenu: {fileID: 1946167409}
   experience: 0
-  currentCharacterSelection: 0
+  currentCharacterSelection: 2
 --- !u!4 &181901516
 Transform:
   m_ObjectHideFlags: 0
@@ -55460,13 +55461,13 @@ MonoBehaviour:
   ySpeed: 0.75
   xSpeed: 1
   animator: {fileID: 1683999407}
+  handsAnimator: {fileID: 546352708}
   canMove: 1
   staggered: 0
   spriteRenderer: {fileID: 1683999404}
   LightSource: {fileID: 311375429}
   inventory: {fileID: 956309670}
   equippedInventory: {fileID: 737021898}
-  handsAnimator: {fileID: 546352708}
 --- !u!212 &1683999404
 SpriteRenderer:
   m_ObjectHideFlags: 0

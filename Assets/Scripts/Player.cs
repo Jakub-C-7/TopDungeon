@@ -15,7 +15,9 @@ public class Player : Mover
     private float lightOuterRadius = 1.5f;
     private bool reduceLight = false;
 
-    public Animator handsAnimator;
+    private float lastBattleAction;
+    private float battleModeDuration = 10f;
+
 
     protected override void Start()
     {
@@ -24,6 +26,8 @@ public class Player : Mover
 
         ClearEquippedWeapon();
         RefreshEquippedWeapon();
+        lastBattleAction = Time.time - battleModeDuration;
+        
 
     }
 
@@ -31,6 +35,13 @@ public class Player : Mover
     {
         canMove = false;
         GameManager.instance.deathMenuAnimator.SetTrigger("Show");
+    }
+
+    public void RegisterBattleAction(){
+        lastBattleAction = Time.time;
+        animator.SetBool("BattleMode", true);
+        handsAnimator.SetBool("BattleMode", true);
+
     }
 
     protected override void ReceiveDamage(Damage dmg)
@@ -42,10 +53,16 @@ public class Player : Mover
         }
         base.ReceiveDamage(dmg);
         GameManager.instance.OnHealthChange();
+        RegisterBattleAction();
     }
 
     private void FixedUpdate()
     {
+        if(Time.time - lastBattleAction > battleModeDuration){
+            animator.SetBool("BattleMode", false);
+            handsAnimator.SetBool("BattleMode", false);
+            GameManager.instance.weapon.setAnimatorBool("BattleMode", false);
+        }
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
@@ -165,6 +182,7 @@ public class Player : Mover
     {
         animator.SetTrigger("Swing");
         handsAnimator.SetTrigger("Swing");
+        RegisterBattleAction();
     }
 
 

@@ -11,6 +11,7 @@ public abstract class Mover : Fighter
     public float ySpeed = 0.75f;
     public float xSpeed = 1.0f;
     public Animator animator;
+    public Animator handsAnimator;
     public bool canMove = true;
     public bool staggered = false;
 
@@ -56,6 +57,9 @@ public abstract class Mover : Fighter
             float horizontalMove = input.x * xSpeed;
             float verticalMove = input.y * ySpeed;
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
+            if(handsAnimator){
+                handsAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
+            }
         }
 
 
