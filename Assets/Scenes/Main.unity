@@ -2782,6 +2782,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346339396}
   m_CullTransparentMesh: 1
+--- !u!114 &365821020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3994061047636780288, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
+  m_PrefabInstance: {fileID: 3994061049601363907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e1dc80d969e064ba1df51aa18a346a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &367509716
 GameObject:
   m_ObjectHideFlags: 0
@@ -6181,6 +6192,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &559744876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3994061047636780288, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
+  m_PrefabInstance: {fileID: 1206900671}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e1dc80d969e064ba1df51aa18a346a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &568243302
 GameObject:
   m_ObjectHideFlags: 0
@@ -11520,6 +11542,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3994061048916057425, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 559744876}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
 --- !u!1 &1226580773
@@ -55434,11 +55460,12 @@ MonoBehaviour:
   ySpeed: 0.75
   xSpeed: 1
   animator: {fileID: 1683999407}
+  canMove: 1
+  staggered: 0
   spriteRenderer: {fileID: 1683999404}
   LightSource: {fileID: 311375429}
   inventory: {fileID: 956309670}
   equippedInventory: {fileID: 737021898}
-  canMove: 1
   handsAnimator: {fileID: 546352708}
 --- !u!212 &1683999404
 SpriteRenderer:
@@ -59201,6 +59228,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3994061048916057425, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 365821020}
     - target: {fileID: 3994061049536362785, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.1

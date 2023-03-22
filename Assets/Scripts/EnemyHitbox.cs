@@ -9,10 +9,11 @@ public class EnemyHitbox : Collidable
     public float pushForce = 3;
     public float attackCooldown = 1.5f;
     public float lastAttack;
+    public Enemy enemy;
 
     protected override void OnCollide(Collider2D coll)
     {
-        if ((coll.tag == "Fighter" && coll.name == "Player") && Time.time - lastAttack > attackCooldown)
+        if (((coll.tag == "Fighter" && coll.name == "Player") && Time.time - lastAttack > attackCooldown) && !enemy.staggered)
         {
             lastAttack = Time.time;
 

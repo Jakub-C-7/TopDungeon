@@ -11,8 +11,6 @@ public class Player : Mover
     public EquippedInventory equippedInventory;
     private float horizontalMove;
     private float verticalMove;
-
-    public bool canMove = true;
     private float defaultLightOuterRadius = 1.5f;
     private float lightOuterRadius = 1.5f;
     private bool reduceLight = false;

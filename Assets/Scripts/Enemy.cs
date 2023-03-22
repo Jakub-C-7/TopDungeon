@@ -15,7 +15,6 @@ public class Enemy : Mover
     private bool collidingWithPlayer;
     private Transform playerTransform;
     private Vector3 startingPosition;
-
     public Image health;
     public GameObject healthBar;
     // Hitbox
@@ -36,9 +35,13 @@ public class Enemy : Mover
     {
         base.ReceiveDamage(dmg);
         OnHealthChange();
+
+        // Stagger(); // initiate Stagger
+        // Invoke("RecoverFromStagger", 2f); // Initiate recovery from stagger
     }
 
-    private void OnHealthChange(){
+    private void OnHealthChange()
+    {
         float ratio = (float)this.hitPoints / (float)this.maxHitpoints;
         health.fillAmount = ratio;
     }
@@ -50,7 +53,7 @@ public class Enemy : Mover
         GameManager.instance.ShowText("+ " + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
     }
 
-   
+
     protected void FixedUpdate()
     {
         //Collision work
@@ -73,18 +76,30 @@ public class Enemy : Mover
 
         }
 
+
+
+
         // Is the player in range?
         if (Vector3.Distance(playerTransform.position, startingPosition) < chaseLength)
         {
             if (Vector3.Distance(playerTransform.position, startingPosition) < triggerLength)
             {
-                chasing = true;
+                if (canMove)
+                {
+                    chasing = true;
+
+                }
+                else
+                {
+                    chasing = false;
+                }
+
+                healthBar.SetActive(true);
 
             }
 
             if (chasing)
             {
-                healthBar.SetActive(true);
                 if (!collidingWithPlayer)
                 {
                     UpdateMotor((playerTransform.position - transform.position).normalized); // Run towards the player
@@ -93,12 +108,11 @@ public class Enemy : Mover
             }
             else
             {
-                healthBar.SetActive(false);
-                UpdateMotor(startingPosition - transform.position); // Go back
+                UpdateMotor(startingPosition - transform.position); // Go back to starting point
             }
 
         }
-        else
+        else // The player is out of range
         {
             healthBar.SetActive(false);
             UpdateMotor(startingPosition - transform.position); // Go back 
@@ -109,10 +123,7 @@ public class Enemy : Mover
         //Check for overlaps
         collidingWithPlayer = false;
 
-
     }
-
-
 
 
 }
