@@ -43,10 +43,10 @@ public class GameManager : MonoBehaviour
     public GameObject hud;
     public GameObject menu;
     public SpeechBanner speechBanner;
-
     public AdventurerDiary adventurerDiary;
-
     public GameObject inventoryMenu;
+    public List<GameObject> prefabList;
+
 
     //Logic
     // public int coins;

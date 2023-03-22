@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -5229,13 +5229,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_2_263
+      name: javelin_01
       rect:
         serializedVersion: 2
         x: 288
-        y: 320
+        y: 304
         width: 16
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5250,13 +5250,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_2_264
+      name: arrow_01
       rect:
         serializedVersion: 2
         x: 304
-        y: 320
+        y: 304
         width: 16
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5266,27 +5266,6 @@ TextureImporter:
       bones: []
       spriteID: be030825983c887418f5ee37d6871d40
       internalID: -1184028530
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_2_265
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 320
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4ed767ac4dbb4242b848f47179f9389
-      internalID: -1473924384
       vertices: []
       indices: 
       edges: []
@@ -5754,55 +5733,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_2_288
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 304
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55a742c963bf2d64693684cba383f838
-      internalID: 108562291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_2_289
-      rect:
-        serializedVersion: 2
-        x: 304
-        y: 304
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fdf12e4d06349b348a6e9530d4caaf7f
-      internalID: 1365920766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas_2_290
+      name: bow_01
       rect:
         serializedVersion: 2
         x: 320
         y: 304
         width: 16
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -10713,8 +10650,6 @@ TextureImporter:
       Atlas_2_260: -737407769
       Atlas_2_261: -188472513
       Atlas_2_262: 2065597953
-      Atlas_2_263: 1930590289
-      Atlas_2_264: -1184028530
       Atlas_2_265: -1473924384
       Atlas_2_266: 1142376479
       Atlas_2_267: 1072502042
@@ -10742,7 +10677,6 @@ TextureImporter:
       Atlas_2_288: 108562291
       Atlas_2_289: 1365920766
       Atlas_2_29: 707440543
-      Atlas_2_290: -92318977
       Atlas_2_291: 196786221
       Atlas_2_292: -1140742941
       Atlas_2_293: -1878333268
@@ -11034,6 +10968,9 @@ TextureImporter:
       Atlas_2_97: -376834310
       Atlas_2_98: 1336524492
       Atlas_2_99: 1686908373
+      arrow_01: -1184028530
+      bow_01: -92318977
+      javelin_01: 1930590289
       player_0: -2127929151
       player_02_1: 1745800685
       player_02_2: -869026427
