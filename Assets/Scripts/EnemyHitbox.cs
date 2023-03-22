@@ -7,11 +7,15 @@ public class EnemyHitbox : Collidable
     // Damage
     public int damageAmount = 1;
     public float pushForce = 3;
+    public float attackCooldown = 1.5f;
+    public float lastAttack;
 
     protected override void OnCollide(Collider2D coll)
     {
-        if (coll.tag == "Fighter" && coll.name == "Player")
+        if ((coll.tag == "Fighter" && coll.name == "Player") && Time.time - lastAttack > attackCooldown)
         {
+            lastAttack = Time.time;
+
             // Create a new damage object, before sending it to the player
             Damage damage = new Damage
             {
