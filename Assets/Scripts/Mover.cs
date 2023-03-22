@@ -12,6 +12,9 @@ public abstract class Mover : Fighter
     public float xSpeed = 1.0f;
     public Animator animator;
     public Animator handsAnimator;
+    public bool canMove = true;
+    public bool staggered = false;
+
     protected virtual void Start()
     {
         originalSize = transform.localScale;
@@ -27,15 +30,18 @@ public abstract class Mover : Fighter
         if (moveDelta.x > 0)
         {
             transform.localScale = originalSize;
-            if(transform.Find("HealthBar")){
+            if (transform.Find("HealthBar"))
+            {
                 transform.Find("HealthBar").localScale = new Vector3(originalSize.x, originalSize.y, originalSize.z);
             }
         }
         else if (moveDelta.x < 0)
         {
             transform.localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.z);
-    
-            if(transform.Find("HealthBar")){
+
+
+            if (transform.Find("HealthBar"))
+            {
                 transform.Find("HealthBar").localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.z);
             }
         }
@@ -46,7 +52,8 @@ public abstract class Mover : Fighter
         // Reduce push force every frame, base off of recovery speed
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushRecoverySpeed);
 
-        if(animator){
+        if (animator)
+        {
             float horizontalMove = input.x * xSpeed;
             float verticalMove = input.y * ySpeed;
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
@@ -54,7 +61,7 @@ public abstract class Mover : Fighter
                 handsAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
             }
         }
-        
+
 
         //Movement Blocking-------------
         //Make sure we can move in this direction by casting a box there first. If the box returns null, we're free to move
@@ -73,6 +80,24 @@ public abstract class Mover : Fighter
             //Make this sucker move ACROSS!
             transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
         }
+
+    }
+
+    protected virtual void Stagger()
+    {
+        canMove = false;
+
+        // cannot attack
+        staggered = true;
+
+    }
+
+    protected virtual void RecoverFromStagger()
+    {
+        canMove = true;
+
+        // can attack attack
+        staggered = false;
 
     }
 
