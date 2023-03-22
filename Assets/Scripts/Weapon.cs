@@ -67,8 +67,13 @@ public class Weapon : Collidable
     private void Swing()
     {
         animator.SetTrigger("Swing");
+        setAnimatorBool("BattleMode", true);
         GameManager.instance.player.Swing();
 
+    }
+
+    public void setAnimatorBool(string name, bool value){
+        animator.SetBool(name,value);
     }
 
     // Upgrade player's weapon level
