@@ -168,7 +168,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Top-Bottom-Swing-Sprite-Sheet_3
+      name: Kuba_Up_Swing_0
       rect:
         serializedVersion: 2
         x: 144
@@ -189,7 +189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Top-Bottom-Swing-Sprite-Sheet_4
+      name: Kuba_Up_Swing_1
       rect:
         serializedVersion: 2
         x: 192
@@ -210,7 +210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Top-Bottom-Swing-Sprite-Sheet_5
+      name: Kuba_Up_Swing_2
       rect:
         serializedVersion: 2
         x: 240
@@ -294,7 +294,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Top-Bottom-Swing-Sprite-Sheet_9
+      name: Hands_Up_Swing_0
       rect:
         serializedVersion: 2
         x: 144
@@ -315,7 +315,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Top-Bottom-Swing-Sprite-Sheet_10
+      name: Hands_Up_Swing_1
       rect:
         serializedVersion: 2
         x: 192
@@ -336,7 +336,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Top-Bottom-Swing-Sprite-Sheet_11
+      name: Hands_Up_Swing_2
       rect:
         serializedVersion: 2
         x: 240
@@ -370,15 +370,15 @@ TextureImporter:
       Hands_Down_Swing_0: -1217184290
       Hands_Down_Swing_1: 1582976342
       Hands_Down_Swing_2: 898716779
-      Kuba-Top-Bottom-Swing-Sprite-Sheet_10: -176246985
-      Kuba-Top-Bottom-Swing-Sprite-Sheet_11: -1434641756
-      Kuba-Top-Bottom-Swing-Sprite-Sheet_3: -1846610931
-      Kuba-Top-Bottom-Swing-Sprite-Sheet_4: -1625124180
-      Kuba-Top-Bottom-Swing-Sprite-Sheet_5: -1174636468
-      Kuba-Top-Bottom-Swing-Sprite-Sheet_9: -737470359
+      Hands_Up_Swing_0: -737470359
+      Hands_Up_Swing_1: -176246985
+      Hands_Up_Swing_2: -1434641756
       Kuba_Down_Swing_0: -1173668229
       Kuba_Down_Swing_1: 2081038111
       Kuba_Down_Swing_2: 809378549
+      Kuba_Up_Swing_0: -1846610931
+      Kuba_Up_Swing_1: -1625124180
+      Kuba_Up_Swing_2: -1174636468
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
