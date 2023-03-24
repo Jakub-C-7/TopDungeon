@@ -48,27 +48,24 @@ public class EquippedInventory : MonoBehaviour
         // Reference to the item in the Player's 'Inventory'
         GameObject itemInInventory = GameManager.instance.player.inventory.transform.Find(collectableItem.name).gameObject;
 
+        // Set parent of the item from 'Inventory' to the 'EquippedInventory'
+        itemInInventory.transform.SetParent(this.gameObject.transform);
+
         switch (collectableItem.itemType)
         {
 
             case "Weapon":
-
-                // Set parent of the item from 'Inventory' to the 'EquippedInventory'
-                itemInInventory.transform.SetParent(this.gameObject.transform);
 
                 // Remove the item being equipped from it's list within the 'Inventory'
                 GameManager.instance.player.inventory.weaponGearInventoryContents.Remove(GameManager.instance.player.inventory.weaponGearInventoryContents.Find(x => x.name == collectableItem.itemName));
 
                 weapon = this.gameObject.transform.Find(collectableItem.gameObject.name).GetComponent<CollectableItem>();
 
-                GameManager.instance.player.RefreshEquippedWeapon();
+                GameManager.instance.player.RefreshEquippedWeapon(); // Refresh currently visible weapon
 
                 break;
 
             case "Armour":
-
-                // Set parent of the item from 'Inventory' to the 'EquippedInventory'
-                itemInInventory.transform.SetParent(this.gameObject.transform);
 
                 // Remove the item being equipped from it's list within the 'Inventory'
                 GameManager.instance.player.inventory.armourGearInventoryContents.Remove(GameManager.instance.player.inventory.armourGearInventoryContents.Find(x => x.name == collectableItem.itemName));
