@@ -29,7 +29,7 @@ public class Player : Mover
     private void Update()
     {
 
-        attackController();
+        // attackController();
 
         movePlayer();
     }
@@ -52,45 +52,6 @@ public class Player : Mover
         GameManager.instance.OnHealthChange();
     }
 
-
-    private void attackController()
-    {
-        GameObject projectile = GameManager.instance.prefabList.Find(x => x.name.Equals("arrow_01"));
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
-            arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 2.0f);
-            arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(0, 1.0f) * Mathf.Rad2Deg);
-            Destroy(arrow, 0.5f);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
-            arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, -2.0f);
-            arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(0, -1.0f) * Mathf.Rad2Deg);
-            Destroy(arrow, 0.5f);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
-            arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(2.0f, 0.0f);
-            arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(-1.0f, 0) * Mathf.Rad2Deg);
-            Destroy(arrow, 0.5f);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
-            arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(-2.0f, 0.0f);
-            arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(1.0f, 0) * Mathf.Rad2Deg);
-            Destroy(arrow, 0.5f);
-
-        }
-
-    }
 
     private void movePlayer()
     {

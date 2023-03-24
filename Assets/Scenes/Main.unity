@@ -1081,7 +1081,7 @@ MonoBehaviour:
   adventurerDiary: {fileID: 616221920}
   inventoryMenu: {fileID: 1946167409}
   prefabList:
-  - {fileID: 7447612879680063577, guid: 00173c89e301fdc40a3c08834576e704, type: 3}
+  - {fileID: 8687593053797168862, guid: 00173c89e301fdc40a3c08834576e704, type: 3}
   experience: 0
   currentCharacterSelection: 0
 --- !u!4 &181901516

@@ -18,6 +18,7 @@ public class Collidable : MonoBehaviour
     {
         //Collision work
         boxCollider.OverlapCollider(filter, hits);
+
         for (int i = 0; i < hits.Length; i++)
         {
             if (hits[i] == null)

@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
 
 
     //Logic
-    // public int coins;
     public int experience;
     public int currentCharacterSelection;
 
