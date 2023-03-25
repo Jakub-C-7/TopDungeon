@@ -102,6 +102,7 @@ public class Player : Mover
             }
         }
         LightSource.pointLightOuterRadius = lightOuterRadius;
+
     }
 
     public void SwapSprite(int skinId)
@@ -246,10 +247,10 @@ public class Player : Mover
 
     }
 
-    public void Swing()
+    public void Swing(string triggerName)
     {
-        animator.SetTrigger("Swing");
-        handsAnimator.SetTrigger("Swing");
+        animator.SetTrigger(triggerName);
+        handsAnimator.SetTrigger(triggerName);
         RegisterBattleAction();
     }
 

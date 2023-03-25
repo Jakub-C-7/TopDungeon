@@ -66,7 +66,7 @@ public class Weapon : Collidable
 
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                Swing();
+                Swing("SwingUp");
 
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -74,7 +74,7 @@ public class Weapon : Collidable
 
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                Swing();
+                Swing("SwingDown");
 
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -82,7 +82,7 @@ public class Weapon : Collidable
 
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                Swing();
+                Swing("Swing");
 
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -90,22 +90,23 @@ public class Weapon : Collidable
 
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                Swing();
+                Swing("Swing");
 
             }
         }
     }
 
-    private void Swing()
+    private void Swing(string triggerName)
     {
-        animator.SetTrigger("Swing");
+        animator.SetTrigger(triggerName);
         setAnimatorBool("BattleMode", true);
-        GameManager.instance.player.Swing();
+        GameManager.instance.player.Swing(triggerName);
 
     }
 
-    public void setAnimatorBool(string name, bool value){
-        animator.SetBool(name,value);
+    public void setAnimatorBool(string name, bool value)
+    {
+        animator.SetBool(name, value);
     }
 
     // Upgrade player's weapon level

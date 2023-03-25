@@ -56,8 +56,34 @@ public abstract class Mover : Fighter
         {
             float horizontalMove = input.x * xSpeed;
             float verticalMove = input.y * ySpeed;
+
+
+            // If the mover is moving up.
+            if (moveDelta.y > 0)
+            {
+                animator.SetBool("MovingUp", true);
+            }
+            else
+            {
+                animator.SetBool("MovingUp", false);
+
+            }
+            // If the mover is moving down
+            if (moveDelta.y < 0)
+            {
+                animator.SetBool("MovingDown", true);
+
+            }
+            else
+            {
+                animator.SetBool("MovingDown", false);
+
+            }
+
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
-            if(handsAnimator){
+
+            if (handsAnimator)
+            {
                 handsAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
             }
         }
