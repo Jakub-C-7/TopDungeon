@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     //References
     public Player player;
     public Weapon weapon;
+    public GameObject weaponObject;
     public FloatingTextManager floatingTextManager;
     public RectTransform healthBar;
     public Animator deathMenuAnimator;
@@ -289,6 +290,7 @@ public class GameManager : MonoBehaviour
             item.quantity = i.quantity;
             item.itemType = i.itemType;
             item.itemImage = SpriteData.ToSprite(i.itemImage);
+            item.weaponType = i.weaponType;
 
             item.pushForce = i.pushForce;
             item.weaponLevel = i.weaponLevel;
@@ -338,6 +340,7 @@ public class GameManager : MonoBehaviour
             weaponItem.itemImage = SpriteData.ToSprite(weaponStruct.itemImage);
             weaponItem.quantity = weaponStruct.quantity;
             weaponItem.itemType = weaponStruct.itemType;
+            weaponItem.weaponType = weaponStruct.weaponType;
 
             weaponItem.weaponLevel = weaponStruct.weaponLevel;
             weaponItem.damageAmount = weaponStruct.damageAmount;

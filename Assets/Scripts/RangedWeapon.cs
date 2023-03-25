@@ -28,23 +28,21 @@ public class RangedWeapon : Weapon
 
         GameObject projectile = GameManager.instance.prefabList.Find(x => x.name.Equals("arrow_01"));
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Time.time - lastAttack > cooldown)
         {
-            if (Time.time - lastAttack > cooldown)
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+
                 lastAttack = Time.time;
 
                 GameObject arrow = Instantiate(projectile, transform.position, Quaternion.identity);
                 arrow.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 2.0f);
                 arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(0, 1.0f) * Mathf.Rad2Deg);
                 Destroy(arrow, 0.5f);
+
             }
-
-
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (Time.time - lastAttack > cooldown)
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 lastAttack = Time.time;
 
@@ -54,11 +52,7 @@ public class RangedWeapon : Weapon
                 Destroy(arrow, 0.5f);
 
             }
-
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (Time.time - lastAttack > cooldown)
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 lastAttack = Time.time;
 
@@ -68,11 +62,7 @@ public class RangedWeapon : Weapon
                 Destroy(arrow, 0.5f);
 
             }
-
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (Time.time - lastAttack > cooldown)
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 lastAttack = Time.time;
 
@@ -82,7 +72,6 @@ public class RangedWeapon : Weapon
                 Destroy(arrow, 0.5f);
 
             }
-
         }
 
     }

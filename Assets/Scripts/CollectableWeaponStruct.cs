@@ -10,6 +10,7 @@ public struct CollectableWeaponStruct
     public SpriteData itemImage;
     public int quantity;
     public string itemType;
+    public string weaponType;
 
     // Damage structure
     public int[] damageAmount;

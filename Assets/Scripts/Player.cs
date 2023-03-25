@@ -140,33 +140,91 @@ public class Player : Mover
     public void RefreshEquippedWeapon()
     {
         Weapon currentWeapon = GameManager.instance.weapon;
+        GameObject weaponObject = GameManager.instance.weaponObject;
 
-        currentWeapon.gameObject.SetActive(true);
+        CollectableWeapon weaponToUpdateTo;
 
-        if (equippedInventory.weapon != null)
+        if (equippedInventory.weapon)
         {
-            Debug.Log("RefreshEquippedWeapon");
+            weaponToUpdateTo = equippedInventory.transform.Find(equippedInventory.weapon.itemName).GetComponent<CollectableWeapon>();
 
-            CollectableWeapon weaponToUpdateTo = equippedInventory.transform.Find(equippedInventory.weapon.itemName).GetComponent<CollectableWeapon>();
-            currentWeapon.weaponLevel = weaponToUpdateTo.weaponLevel;
-            currentWeapon.damageAmount = weaponToUpdateTo.damageAmount;
-            currentWeapon.pushForce = weaponToUpdateTo.pushForce;
+            if (weaponToUpdateTo.weaponType == "Ranged")
+            {
 
-            currentWeapon.SetWeaponImage(weaponToUpdateTo.itemImage);
+                // If ranged weapon state is disabled, enable it 
+                if (weaponObject.GetComponent<RangedWeapon>().enabled == false)
+                {
+                    weaponObject.GetComponent<RangedWeapon>().enabled = true;
 
-        }
-        else
-        {
-            ClearEquippedWeapon();
+                }
+
+                // If melee weapon state is enabled, disable it 
+                if (weaponObject.GetComponent<Weapon>().enabled == true)
+                {
+                    weaponObject.GetComponent<Weapon>().enabled = false;
+
+                }
+
+                RangedWeapon rangedWeapon = weaponObject.GetComponent<RangedWeapon>();
+
+                rangedWeapon.weaponLevel = weaponToUpdateTo.weaponLevel;
+                rangedWeapon.damageAmount = weaponToUpdateTo.damageAmount;
+                rangedWeapon.pushForce = weaponToUpdateTo.pushForce;
+
+                rangedWeapon.SetWeaponImage(weaponToUpdateTo.itemImage);
+
+                GameManager.instance.weapon = rangedWeapon; // Setting current weapon to Ranged
+
+            }
+            else if (weaponToUpdateTo.weaponType == "Melee")
+            {
+
+                // If melee weapon state is disabled, enable it 
+                if (weaponObject.GetComponent<Weapon>().enabled == false)
+                {
+                    weaponObject.GetComponent<Weapon>().enabled = true;
+
+                }
+
+
+                // If ranged weapon state is enabled, disable it 
+                if (weaponObject.GetComponent<RangedWeapon>().enabled == true)
+                {
+                    weaponObject.GetComponent<RangedWeapon>().enabled = false;
+
+                }
+
+                Weapon weapon = weaponObject.GetComponent<RangedWeapon>();
+
+                weapon.weaponLevel = weaponToUpdateTo.weaponLevel;
+                weapon.damageAmount = weaponToUpdateTo.damageAmount;
+                weapon.pushForce = weaponToUpdateTo.pushForce;
+
+                weapon.SetWeaponImage(weaponToUpdateTo.itemImage);
+
+                GameManager.instance.weapon = weapon; // Setting current weapon to Melee
+
+            }
+
+            else
+            {
+                ClearEquippedWeapon();
+            }
+
+            weaponObject.SetActive(true);
+
         }
 
     }
 
     public void ClearEquippedWeapon()
     {
-        GameObject currentWeapon = GameManager.instance.weapon.gameObject;
+        GameObject weaponObject = GameManager.instance.weaponObject;
 
-        currentWeapon.gameObject.SetActive(false);
+        weaponObject.gameObject.SetActive(false);
+
+        weaponObject.gameObject.GetComponent<Weapon>().enabled = false;
+        weaponObject.gameObject.GetComponent<RangedWeapon>().enabled = false;
 
     }
 

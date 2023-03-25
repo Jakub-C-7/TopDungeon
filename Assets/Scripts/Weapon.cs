@@ -16,6 +16,7 @@ public class Weapon : Collidable
     // Weapon Attacks
     public float cooldown = 0.5f;
     protected float lastAttack;
+    // public string weaponType;
 
 
     protected override void Start()
@@ -57,55 +58,41 @@ public class Weapon : Collidable
 
     protected virtual void AttackController()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Time.time - lastAttack > cooldown)
         {
-            if (Time.time - lastAttack > cooldown)
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+
                 audioOnUse.Play();
                 lastAttack = Time.time;
                 Swing();
+
             }
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (Time.time - lastAttack > cooldown)
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
+
                 audioOnUse.Play();
                 lastAttack = Time.time;
                 Swing();
-            }
 
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (Time.time - lastAttack > cooldown)
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
+
                 audioOnUse.Play();
                 lastAttack = Time.time;
                 Swing();
-            }
 
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (Time.time - lastAttack > cooldown)
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
+
                 audioOnUse.Play();
                 lastAttack = Time.time;
                 Swing();
-            }
 
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (Time.time - lastAttack > cooldown)
-            {
-                audioOnUse.Play();
-                lastAttack = Time.time;
-                Swing();
             }
-
         }
     }
 
