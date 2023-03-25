@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: kuba_walking
+  m_Name: player_hands_battle_walk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1853162816, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
+      value: {fileID: 186198152, guid: 7b6c9ad9ba82dbd45ba29ee91f0c61bc, type: 3}
     - time: 0.2
-      value: {fileID: -249633937, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
+      value: {fileID: -11677215, guid: 7b6c9ad9ba82dbd45ba29ee91f0c61bc, type: 3}
     - time: 0.4
-      value: {fileID: -1938876068, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
+      value: {fileID: -604626707, guid: 7b6c9ad9ba82dbd45ba29ee91f0c61bc, type: 3}
     - time: 0.6
-      value: {fileID: 920857269, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
+      value: {fileID: -1785310981, guid: 7b6c9ad9ba82dbd45ba29ee91f0c61bc, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,10 +46,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1853162816, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
-    - {fileID: -249633937, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
-    - {fileID: -1938876068, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
-    - {fileID: 920857269, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
+    - {fileID: 186198152, guid: 7b6c9ad9ba82dbd45ba29ee91f0c61bc, type: 3}
+    - {fileID: -11677215, guid: 7b6c9ad9ba82dbd45ba29ee91f0c61bc, type: 3}
+    - {fileID: -604626707, guid: 7b6c9ad9ba82dbd45ba29ee91f0c61bc, type: 3}
+    - {fileID: -1785310981, guid: 7b6c9ad9ba82dbd45ba29ee91f0c61bc, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public abstract class Mover : Fighter
 {
-    protected BoxCollider2D boxCollider;
+    public BoxCollider2D boxCollider;
     protected Vector3 moveDelta;
     protected RaycastHit2D hit;
     private Vector3 originalSize;
     public float ySpeed = 0.75f;
     public float xSpeed = 1.0f;
     public Animator animator;
+    public Animator handsAnimator;
     public bool canMove = true;
     public bool staggered = false;
 
@@ -20,7 +21,7 @@ public abstract class Mover : Fighter
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    protected virtual void UpdateMotor(Vector3 input)
+    public virtual void UpdateMotor(Vector3 input)
     {
         // Resetting moveDelta
         moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed, 0);
@@ -56,6 +57,9 @@ public abstract class Mover : Fighter
             float horizontalMove = input.x * xSpeed;
             float verticalMove = input.y * ySpeed;
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
+            if(handsAnimator){
+                handsAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
+            }
         }
 
 
