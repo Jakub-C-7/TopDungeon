@@ -25,13 +25,18 @@ public class Enemy : Mover
     
     public ParticleSystem explosionParticleSystem;
 
+
+    public float distanceToPlayer; 
+
     protected override void Start()
     {
         base.Start();
         stateMachine = new StateMachine(this);
        
         startingPosition = transform.position;
-        hitBox = transform.GetChild(0).GetComponent<BoxCollider2D>();
+        
+        hitBox = transform.GetChild(0).GetComponent<BoxCollider2D>(); //Need to move into specific type of enemy 
+
         stateMachine.ChangeState(new IdleState());
 
     }

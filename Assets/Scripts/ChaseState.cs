@@ -34,6 +34,7 @@ public class ChaseState : IState
         hits[i] = null;
 
         }
+        enemy.distanceToPlayer = Vector3.Distance(playerTransform.position, enemy.startingPosition);
 
          
         
@@ -41,11 +42,12 @@ public class ChaseState : IState
             enemy.UpdateMotor((playerTransform.position - enemy.transform.position).normalized); // Run towards the player
         }
     
-        if (Vector3.Distance(playerTransform.position, enemy.startingPosition) > enemy.chaseLength)
+        if (enemy.distanceToPlayer > enemy.chaseLength)
         {
                 stateMachine.ChangeState(new IdleState());
             
         }
+        enemy.collidingWithPlayer = false;
         
     }
 
