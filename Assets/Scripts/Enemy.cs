@@ -21,7 +21,9 @@ public class Enemy : Mover
     public BoxCollider2D hitBox;
    // public Collider2D[] hits = new Collider2D[10];
 
-    StateMachine stateMachine;
+    protected StateMachine stateMachine;
+    
+    public ParticleSystem explosionParticleSystem;
 
     protected override void Start()
     {
