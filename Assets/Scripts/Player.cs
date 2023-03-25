@@ -25,14 +25,12 @@ public class Player : Mover
         ClearEquippedWeapon();
         RefreshEquippedWeapon();
         lastBattleAction = Time.time - battleModeDuration;
-        
+
 
     }
 
     private void Update()
     {
-
-        // attackController();
 
         movePlayer();
     }
@@ -43,7 +41,8 @@ public class Player : Mover
         GameManager.instance.deathMenuAnimator.SetTrigger("Show");
     }
 
-    public void RegisterBattleAction(){
+    public void RegisterBattleAction()
+    {
         lastBattleAction = Time.time;
         animator.SetBool("BattleMode", true);
         handsAnimator.SetBool("BattleMode", true);
@@ -66,11 +65,13 @@ public class Player : Mover
 
     private void movePlayer()
     {
-        if(Time.time - lastBattleAction > battleModeDuration){
+        if (Time.time - lastBattleAction > battleModeDuration)
+        {
             animator.SetBool("BattleMode", false);
             handsAnimator.SetBool("BattleMode", false);
             GameManager.instance.weapon.setAnimatorBool("BattleMode", false);
         }
+
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
@@ -81,6 +82,7 @@ public class Player : Mover
         }
 
         float timeStep = 0.1f;
+
         if (reduceLight)
         {
             if (lightOuterRadius > 0)
