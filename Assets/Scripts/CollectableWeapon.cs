@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CollectableWeapon : CollectableItem
 {
+    public string weaponType;
+
     // Damage structure
     public int[] damageAmount;
     public float[] pushForce;

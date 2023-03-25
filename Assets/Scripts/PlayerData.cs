@@ -137,6 +137,7 @@ public class PlayerData
             equippedWeapon.quantity = currentWeapon.quantity;
             equippedWeapon.itemType = currentWeapon.itemType;
             equippedWeapon.itemImage = SpriteData.FromSprite(currentWeapon.itemImage);
+            equippedWeapon.weaponType = currentWeapon.weaponType;
 
             equippedWeapon.weaponLevel = currentWeapon.weaponLevel;
             equippedWeapon.damageAmount = currentWeapon.damageAmount;

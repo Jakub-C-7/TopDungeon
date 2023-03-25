@@ -7,16 +7,16 @@ public class Weapon : Collidable
     // Damage structure
     public int[] damageAmount = { 1, 2, 3, 4, 5, 6, 7 };
     public float[] pushForce = { 2.0f, 2.2f, 2.5f, 3f, 3.2f, 3.6f, 4f };
-
     // Weapon Upgrade
     public int weaponLevel = 0;
     public SpriteRenderer spriteRenderer;
-
-    // Swing
+    // Visual Feedback
     private Animator animator;
-    private float cooldown = 0.5f;
-    private float lastSwing;
     public AudioSource audioOnUse;
+    // Weapon Attacks
+    public float cooldown = 0.5f;
+    protected float lastAttack;
+    // public string weaponType;
 
 
     protected override void Start()
@@ -31,15 +31,7 @@ public class Weapon : Collidable
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (Time.time - lastSwing > cooldown)
-            {
-                audioOnUse.Play();
-                lastSwing = Time.time;
-                Swing();
-            }
-        }
+        AttackController();
     }
 
     // Do damage to enemies with the sword
@@ -61,6 +53,46 @@ public class Weapon : Collidable
             };
 
             coll.SendMessage("ReceiveDamage", damage);
+        }
+    }
+
+    protected virtual void AttackController()
+    {
+        if (Time.time - lastAttack > cooldown)
+        {
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+
+                audioOnUse.Play();
+                lastAttack = Time.time;
+                Swing();
+
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+
+                audioOnUse.Play();
+                lastAttack = Time.time;
+                Swing();
+
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+
+                audioOnUse.Play();
+                lastAttack = Time.time;
+                Swing();
+
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+
+                audioOnUse.Play();
+                lastAttack = Time.time;
+                Swing();
+
+            }
         }
     }
 
