@@ -2058,7 +2058,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Icon_Atlas_93
+      name: blue_sweet
       rect:
         serializedVersion: 2
         x: 208
@@ -7799,7 +7799,6 @@ TextureImporter:
       Icon_Atlas_90: -249407265
       Icon_Atlas_91: 1615679504
       Icon_Atlas_92: -182381277
-      Icon_Atlas_93: 265231167
       Icon_Atlas_94: 967200121
       Icon_Atlas_95: -2072816961
       Icon_Atlas_96: 1359899584
@@ -7810,6 +7809,7 @@ TextureImporter:
       Icon_Recipes: 1443967993
       Icon_Records: 1923593612
       Icon_resources_0: 1018451824
+      blue_sweet: 265231167
       icon_armour_0: 455965884
       icon_book_0: 2103752031
       icon_coins_0: 1560285730

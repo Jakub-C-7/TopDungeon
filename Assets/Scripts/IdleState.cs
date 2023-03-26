@@ -16,7 +16,7 @@ public class IdleState : IState
         {
             if (Vector3.Distance(playerTransform.position, enemy.startingPosition) < enemy.triggerLength)
             {
-               stateMachine.ChangeState(new ChaseState());
+               stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Pathing]);
 
             }else{
                  enemy.UpdateMotor(enemy.startingPosition - enemy.transform.position);

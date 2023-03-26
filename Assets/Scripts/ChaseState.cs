@@ -15,6 +15,8 @@ public class ChaseState : IState
 
     public void Execute(StateMachine stateMachine, Enemy enemy)
     {
+        enemy.collidingWithPlayer = false;
+
 
         enemy.boxCollider.OverlapCollider(enemy.filter, hits);
         for (int i = 0; i < hits.Length; i++)
@@ -34,6 +36,7 @@ public class ChaseState : IState
         hits[i] = null;
 
         }
+       // enemy.distanceToPlayer = Vector3.Distance(playerTransform.position, enemy.startingPosition);
 
          
         
@@ -43,8 +46,7 @@ public class ChaseState : IState
     
         if (Vector3.Distance(playerTransform.position, enemy.startingPosition) > enemy.chaseLength)
         {
-                stateMachine.ChangeState(new IdleState());
-            
+               stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Idle]);      
         }
         
     }
