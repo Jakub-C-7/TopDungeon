@@ -26,7 +26,7 @@ public class Enemy : Mover
     public ParticleSystem explosionParticleSystem;
 
 
-    public float distanceToPlayer; 
+    //public float distanceToPlayer; 
 
     protected override void Start()
     {
@@ -35,9 +35,13 @@ public class Enemy : Mover
        
         startingPosition = transform.position;
         
-        hitBox = transform.GetChild(0).GetComponent<BoxCollider2D>(); //Need to move into specific type of enemy 
+         
 
-        stateMachine.ChangeState(new IdleState());
+        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IState>{
+            [EnemyStatePhases.Idle] = new IdleState(),
+            [EnemyStatePhases.Pathing] = new ChaseState()
+        };
+        stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Idle]);
 
     }
 
@@ -67,6 +71,7 @@ public class Enemy : Mover
         stateMachine.Update();
     }
 
+    public virtual void LaunchProjectile(){}
   
 
 }
