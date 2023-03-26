@@ -52,31 +52,32 @@ public abstract class Mover : Fighter
         // Reduce push force every frame, base off of recovery speed
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushRecoverySpeed);
 
-        if (animator)
+        if (animator && this.name == "Player")
         {
             float horizontalMove = input.x * xSpeed;
             float verticalMove = input.y * ySpeed;
 
-
             // If the mover is moving up.
             if (moveDelta.y > 0)
             {
-                animator.SetBool("MovingUp", true);
+                SetMoverAnimators("MovingUp", true);
+
             }
             else
             {
-                animator.SetBool("MovingUp", false);
+                SetMoverAnimators("MovingUp", false);
 
             }
+
             // If the mover is moving down
             if (moveDelta.y < 0)
             {
-                animator.SetBool("MovingDown", true);
+                SetMoverAnimators("MovingDown", true);
 
             }
             else
             {
-                animator.SetBool("MovingDown", false);
+                SetMoverAnimators("MovingDown", false);
 
             }
 
@@ -85,6 +86,11 @@ public abstract class Mover : Fighter
             if (handsAnimator)
             {
                 handsAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
+            }
+
+            if (GameManager.instance.weapon.animator)
+            {
+                GameManager.instance.weapon.animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
             }
         }
 
@@ -105,6 +111,27 @@ public abstract class Mover : Fighter
         {
             //Make this sucker move ACROSS!
             transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
+        }
+
+    }
+
+    private void SetMoverAnimators(string paramName, bool toggled)
+    {
+        if (animator)
+        {
+            animator.SetBool(paramName, toggled);
+
+        }
+
+        if (handsAnimator)
+        {
+            handsAnimator.SetBool(paramName, toggled);
+
+        }
+
+        if (GameManager.instance.weapon.animator)
+        {
+            GameManager.instance.weapon.setAnimatorBool(paramName, toggled);
         }
 
     }

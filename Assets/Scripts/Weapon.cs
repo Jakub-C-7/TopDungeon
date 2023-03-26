@@ -11,7 +11,7 @@ public class Weapon : Collidable
     public int weaponLevel = 0;
     public SpriteRenderer spriteRenderer;
     // Visual Feedback
-    private Animator animator;
+    public Animator animator;
     public AudioSource audioOnUse;
     // Weapon Attacks
     public float cooldown = 0.5f;
@@ -100,7 +100,7 @@ public class Weapon : Collidable
     {
         animator.SetTrigger(triggerName);
         setAnimatorBool("BattleMode", true);
-        GameManager.instance.player.Swing(triggerName);
+        GameManager.instance.player.Swing(triggerName); // Trigger Mover and hands animators
 
     }
 

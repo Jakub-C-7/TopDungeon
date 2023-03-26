@@ -249,8 +249,9 @@ public class Player : Mover
 
     public void Swing(string triggerName)
     {
-        animator.SetTrigger(triggerName);
-        handsAnimator.SetTrigger(triggerName);
+        animator.SetTrigger(triggerName); // trigger Mover animator
+        handsAnimator.SetTrigger(triggerName); // trigger Player hands animator
+
         RegisterBattleAction();
     }
 
