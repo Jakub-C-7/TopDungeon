@@ -1084,6 +1084,7 @@ MonoBehaviour:
   inventoryMenu: {fileID: 1946167409}
   prefabList:
   - {fileID: 8687593053797168862, guid: 00173c89e301fdc40a3c08834576e704, type: 3}
+  - {fileID: 1189442862988889657, guid: 988926b31033f7c41a87d09efdcb678a, type: 3}
   experience: 0
   currentCharacterSelection: 2
 --- !u!4 &181901516
@@ -58947,6 +58948,11 @@ MonoBehaviour:
     maxNormalAngle: 0
   hitBox: {fileID: 0}
   explosionParticleSystem: {fileID: 0}
+  attackCooldown: 1.5
+  lastAttack: 0
+  damageAmount: 1
+  pushForce: 0.5
+  range: 1
 --- !u!1 &2087241412
 GameObject:
   m_ObjectHideFlags: 0
