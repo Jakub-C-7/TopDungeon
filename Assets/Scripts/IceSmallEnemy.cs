@@ -15,7 +15,7 @@ public class IceSmallEnemy : Enemy
     protected override void Start()
     {
         base.Start();
-        projectile = GameManager.instance.prefabList.Find(x => x.name.Equals("blue_sweet"));
+        projectile = GameManager.instance.prefabList.Find(x => x.name.Equals("ice_shard"));
         Projectile projectileComponent = projectile.GetComponent<Projectile>();
         projectileComponent.damageAmount = damageAmount;
         projectileComponent.pushForce = pushForce;
@@ -44,6 +44,8 @@ public class IceSmallEnemy : Enemy
             lastAttack = Time.time;
             GameObject projectileInstance = Instantiate(projectile, transform.position, Quaternion.identity);
             projectileInstance.GetComponent<Rigidbody2D>().velocity = (playerTransform.position - transform.position).normalized;
+            Vector3 velocity = projectileInstance.GetComponent<Rigidbody2D>().velocity;
+            projectileInstance.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg);
             Destroy(projectileInstance, range);
 
         }
