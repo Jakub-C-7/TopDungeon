@@ -7649,6 +7649,7 @@ MonoBehaviour:
   - 4
   weaponLevel: 0
   spriteRenderer: {fileID: 746197232}
+  animator: {fileID: 0}
   audioOnUse: {fileID: 1558251005}
   cooldown: 0.5
 --- !u!95 &746197235
@@ -7709,6 +7710,7 @@ MonoBehaviour:
   - 4
   weaponLevel: 0
   spriteRenderer: {fileID: 0}
+  animator: {fileID: 0}
   audioOnUse: {fileID: 0}
   cooldown: 0.5
 --- !u!1001 &751591570
