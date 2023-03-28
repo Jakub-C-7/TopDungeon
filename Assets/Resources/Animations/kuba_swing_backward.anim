@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: kuba_swing
+  m_Name: kuba_swing_backward
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 86895037, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
+      value: {fileID: -1649773494, guid: 9bdcb13a62b53bf478af65d48bd8fe74, type: 3}
+    - time: 0.2
+      value: {fileID: 1488527255, guid: 9bdcb13a62b53bf478af65d48bd8fe74, type: 3}
     - time: 0.4
-      value: {fileID: -1660915815, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
-    - time: 0.6
-      value: {fileID: -2106746005, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
+      value: {fileID: 38664550, guid: 9bdcb13a62b53bf478af65d48bd8fe74, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,15 +44,15 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 86895037, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
-    - {fileID: -1660915815, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
-    - {fileID: -2106746005, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
+    - {fileID: -1649773494, guid: 9bdcb13a62b53bf478af65d48bd8fe74, type: 3}
+    - {fileID: 1488527255, guid: 9bdcb13a62b53bf478af65d48bd8fe74, type: 3}
+    - {fileID: 38664550, guid: 9bdcb13a62b53bf478af65d48bd8fe74, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8
+    m_StopTime: 0.6
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
