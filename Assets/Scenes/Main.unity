@@ -7594,6 +7594,7 @@ GameObject:
   - component: {fileID: 746197233}
   - component: {fileID: 746197234}
   - component: {fileID: 746197235}
+  - component: {fileID: 746197236}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -7755,6 +7756,45 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &746197236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746197230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b9dd27dbdbb34343ac8a0a7d3729602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  damageAmount: 01000000020000000300000004000000050000000600000007000000
+  pushForce:
+  - 2
+  - 2.2
+  - 2.5
+  - 3
+  - 3.2
+  - 3.6
+  - 4
+  weaponLevel: 0
+  spriteRenderer: {fileID: 0}
+  audioOnUse: {fileID: 0}
+  cooldown: 0.5
 --- !u!1001 &751591570
 PrefabInstance:
   m_ObjectHideFlags: 0

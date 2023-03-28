@@ -25,14 +25,12 @@ public class Player : Mover
         ClearEquippedWeapon();
         RefreshEquippedWeapon();
         lastBattleAction = Time.time - battleModeDuration;
-        
+
 
     }
 
     private void Update()
     {
-
-        // attackController();
 
         movePlayer();
     }
@@ -43,7 +41,8 @@ public class Player : Mover
         GameManager.instance.deathMenuAnimator.SetTrigger("Show");
     }
 
-    public void RegisterBattleAction(){
+    public void RegisterBattleAction()
+    {
         lastBattleAction = Time.time;
         animator.SetBool("BattleMode", true);
         handsAnimator.SetBool("BattleMode", true);
@@ -66,11 +65,13 @@ public class Player : Mover
 
     private void movePlayer()
     {
-        if(Time.time - lastBattleAction > battleModeDuration){
+        if (Time.time - lastBattleAction > battleModeDuration)
+        {
             animator.SetBool("BattleMode", false);
             handsAnimator.SetBool("BattleMode", false);
             GameManager.instance.weapon.setAnimatorBool("BattleMode", false);
         }
+
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
@@ -81,6 +82,7 @@ public class Player : Mover
         }
 
         float timeStep = 0.1f;
+
         if (reduceLight)
         {
             if (lightOuterRadius > 0)
@@ -100,6 +102,7 @@ public class Player : Mover
             }
         }
         LightSource.pointLightOuterRadius = lightOuterRadius;
+
     }
 
     public void SwapSprite(int skinId)
@@ -244,10 +247,11 @@ public class Player : Mover
 
     }
 
-    public void Swing()
+    public void Swing(string triggerName)
     {
-        animator.SetTrigger("Swing");
-        handsAnimator.SetTrigger("Swing");
+        animator.SetTrigger(triggerName); // trigger Mover animator
+        handsAnimator.SetTrigger(triggerName); // trigger Player hands animator
+
         RegisterBattleAction();
     }
 

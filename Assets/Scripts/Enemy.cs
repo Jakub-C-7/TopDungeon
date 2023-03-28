@@ -25,7 +25,6 @@ public class Enemy : Mover
     
     public ParticleSystem explosionParticleSystem;
 
-
     //public float distanceToPlayer; 
 
     protected override void Start()

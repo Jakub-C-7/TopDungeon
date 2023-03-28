@@ -11,7 +11,7 @@ public class Weapon : Collidable
     public int weaponLevel = 0;
     public SpriteRenderer spriteRenderer;
     // Visual Feedback
-    private Animator animator;
+    public Animator animator;
     public AudioSource audioOnUse;
     // Weapon Attacks
     public float cooldown = 0.5f;
@@ -66,7 +66,7 @@ public class Weapon : Collidable
 
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                Swing();
+                Swing("SwingUp");
 
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -74,7 +74,7 @@ public class Weapon : Collidable
 
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                Swing();
+                Swing("SwingDown");
 
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -82,7 +82,7 @@ public class Weapon : Collidable
 
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                Swing();
+                Swing("Swing");
 
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -90,22 +90,23 @@ public class Weapon : Collidable
 
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                Swing();
+                Swing("Swing");
 
             }
         }
     }
 
-    private void Swing()
+    private void Swing(string triggerName)
     {
-        animator.SetTrigger("Swing");
+        animator.SetTrigger(triggerName);
         setAnimatorBool("BattleMode", true);
-        GameManager.instance.player.Swing();
+        GameManager.instance.player.Swing(triggerName); // Trigger Mover and hands animators
 
     }
 
-    public void setAnimatorBool(string name, bool value){
-        animator.SetBool(name,value);
+    public void setAnimatorBool(string name, bool value)
+    {
+        animator.SetBool(name, value);
     }
 
     // Upgrade player's weapon level
@@ -127,4 +128,5 @@ public class Weapon : Collidable
     {
         spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.textureRect, new Vector2(0.5f, 0.5f));
     }
+
 }
