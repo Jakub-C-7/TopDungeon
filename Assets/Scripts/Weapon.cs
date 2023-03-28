@@ -128,4 +128,5 @@ public class Weapon : Collidable
     {
         spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.textureRect, new Vector2(0.5f, 0.5f));
     }
+
 }
