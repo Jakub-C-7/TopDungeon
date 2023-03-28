@@ -36,67 +36,68 @@ public abstract class Mover : Fighter
             {
                 transform.Find("HealthBar").localScale = new Vector3(originalSize.x, originalSize.y, originalSize.z);
             }
+        }
 
-            else if (moveDelta.x < 0)
+        else if (moveDelta.x < 0)
+        {
+            // Flip sprite
+            transform.localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.z);
+
+            if (transform.Find("HealthBar"))
             {
-                // Flip sprite
-                transform.localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.z);
-
-                if (transform.Find("HealthBar"))
-                {
-                    transform.Find("HealthBar").localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.z);
-                }
-            }
-
-            // Setting animator values for Player
-            if (animator && this.name == "Player")
-            {
-                float horizontalMove = input.x * xSpeed;
-                float verticalMove = input.y * ySpeed;
-
-                // If the mover is moving up.
-                if (moveDelta.y > 0)
-                {
-                    SetMoverAnimators("MovingUp", true);
-
-                }
-                else
-                {
-                    SetMoverAnimators("MovingUp", false);
-
-                }
-
-                // If the mover is moving down
-                if (moveDelta.y < 0)
-                {
-                    SetMoverAnimators("MovingDown", true);
-
-                }
-                else
-                {
-                    SetMoverAnimators("MovingDown", false);
-
-                }
-
-                //Add push vector, if any
-                moveDelta += pushDirection;
-
-                // Reduce push force every frame, base off of recovery speed
-                pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushRecoverySpeed);
-
-                animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
-
-                if (handsAnimator)
-                {
-                    handsAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
-                }
-
-                if (GameManager.instance.weapon.animator)
-                {
-                    GameManager.instance.weapon.animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
-                }
+                transform.Find("HealthBar").localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.z);
             }
         }
+
+        // Setting animator values for Player
+        if (animator && this.name == "Player")
+        {
+            float horizontalMove = input.x * xSpeed;
+            float verticalMove = input.y * ySpeed;
+
+            // If the mover is moving up.
+            if (moveDelta.y > 0)
+            {
+                SetMoverAnimators("MovingUp", true);
+
+            }
+            else
+            {
+                SetMoverAnimators("MovingUp", false);
+
+            }
+
+            // If the mover is moving down
+            if (moveDelta.y < 0)
+            {
+                SetMoverAnimators("MovingDown", true);
+
+            }
+            else
+            {
+                SetMoverAnimators("MovingDown", false);
+
+            }
+
+            //Add push vector, if any
+            moveDelta += pushDirection;
+
+            // Reduce push force every frame, base off of recovery speed
+            pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushRecoverySpeed);
+
+            animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
+
+            if (handsAnimator)
+            {
+                handsAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
+            }
+
+            if (GameManager.instance.weapon.animator)
+            {
+                GameManager.instance.weapon.animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
+            }
+        }
+
 
 
         //Movement Blocking-------------
