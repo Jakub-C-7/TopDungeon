@@ -16,8 +16,6 @@ public class Weapon : Collidable
     // Weapon Attacks
     public float cooldown = 0.5f;
     protected float lastAttack;
-    // public string weaponType;
-
 
     protected override void Start()
     {
@@ -82,7 +80,19 @@ public class Weapon : Collidable
 
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                Swing("Swing");
+
+                if (PlayerDirectionX() == "right")
+                {
+
+                    Swing("SwingForward");
+
+                }
+                else
+                {
+
+                    Swing("SwingBackward");
+
+                }
 
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -90,10 +100,39 @@ public class Weapon : Collidable
 
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                Swing("Swing");
+
+                if (PlayerDirectionX() == "left")
+                {
+
+                    Swing("SwingForward");
+
+                }
+                else
+                {
+
+                    Swing("SwingBackward");
+
+                }
 
             }
         }
+    }
+
+    private string PlayerDirectionX()
+    {
+        if (GameManager.instance.player.transform.localScale.x > 0)
+        {
+            return "right";
+        }
+        else if (GameManager.instance.player.transform.localScale.x < 0)
+        {
+            return "left";
+        }
+        else
+        {
+            return "none";
+        }
+
     }
 
     private void Swing(string triggerName)
