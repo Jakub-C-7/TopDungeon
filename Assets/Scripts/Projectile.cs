@@ -12,14 +12,14 @@ public class Projectile : Collidable
     
     protected override void OnCollide(Collider2D coll)
     {
-        if(target == "Player" & coll.name == "Player"){
+        if(target == "Player" && coll.name == "Player"){
             Damage(coll);
             
         }else if(target !="Player" && coll.tag == "Fighter" && coll.name !="Player"){
             Damage(coll);
         }
       
-        if ( (coll.name != origin) && coll.name != "HitBox" )
+        if ( (coll.name != origin) && coll.name != "HitBox" && (transform.name != coll.name))
         {
             Destroy(this.gameObject);
 
@@ -38,5 +38,11 @@ public class Projectile : Collidable
             coll.SendMessage("ReceiveDamage", damage);
 
 
+    }
+    public void SetProjectileStats(int damageAmount, float pushForce, string origin, string target){
+        this.damageAmount = damageAmount;
+        this.pushForce = pushForce;
+        this.origin = origin;
+        this.target = target;
     }
 }

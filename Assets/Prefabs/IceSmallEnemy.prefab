@@ -422,6 +422,7 @@ MonoBehaviour:
   damageAmount: 1
   pushForce: 0.5
   range: 1
+  prefab: {fileID: 1189442862988889657, guid: 8dd6cd11b4242334d820468347a4d119, type: 3}
 --- !u!1 &4383704025088569181
 GameObject:
   m_ObjectHideFlags: 0
