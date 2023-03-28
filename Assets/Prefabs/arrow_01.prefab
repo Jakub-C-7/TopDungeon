@@ -160,7 +160,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damageAmount: 7
-  pushForce: 7
+  damageAmount: 1
+  pushForce: 0.5
   target: Enemy
   origin: Player
