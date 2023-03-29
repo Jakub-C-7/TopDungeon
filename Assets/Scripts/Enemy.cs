@@ -24,8 +24,17 @@ public class Enemy : Mover
     protected StateMachine stateMachine;
     
     public ParticleSystem explosionParticleSystem;
+    
+    // used by projectile launching enemeies
+    public float attackCooldown = 1.5f;
+    public float lastAttack;
+    public GameObject projectile;
+    public int damageAmount;
+    public float pushForce;
+    public float range;
 
-    //public float distanceToPlayer; 
+    public int round =0;
+    public int maxround= 4;
 
     protected override void Start()
     {
@@ -70,7 +79,6 @@ public class Enemy : Mover
         stateMachine.Update();
     }
 
-    public virtual void LaunchProjectile(){}
   
 
 }
