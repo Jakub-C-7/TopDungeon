@@ -21,13 +21,11 @@ public class LaunchWaveProjectileState : IState
                 //int numberOfProjectiles = CalculateNumberOfProjectiles(enemy.projectile, 0.6f);
 
                 float gap = (float)1/(float)numberOfProjectiles;
-                Debug.Log(numberOfProjectiles);
 
                 for(int i = 0; i <numberOfProjectiles; i++ ){
                     GameObject projectileInstance = GameObject.Instantiate(enemy.projectile, RandomCircle(gap * i, enemy.transform.position , (enemy.round + 1)/(float)10), Quaternion.identity); 
                     Projectile projectileComponent = projectileInstance.AddComponent<Projectile>();
                     projectileComponent.SetProjectileStats(enemy.damageAmount, enemy.pushForce, enemy.transform.name, "Player");
-                
                     GameObject.Destroy(projectileInstance, enemy.range);
                 }
                 enemy.round ++;
@@ -48,7 +46,6 @@ public class LaunchWaveProjectileState : IState
     }
 
     private int CalculateNumberOfProjectiles(GameObject projectile, float radius){
-        Debug.Log("radius: " + radius);
         float circumference = 2 * Mathf.PI * radius;
         float numberOfProjectiles = circumference / projectile.GetComponent<SpriteRenderer>().bounds.size.x/2;
         return Mathf.FloorToInt(numberOfProjectiles);
@@ -67,9 +64,3 @@ public class LaunchWaveProjectileState : IState
     
 }
 
-
-/* Each update create new wave on a different circumference and delete wave round before until max wave amount is reached 
-
-Must be a cooldown on launching a fresh wave but not on each wave round. Although there should be a wait between each wave.
-
-*/

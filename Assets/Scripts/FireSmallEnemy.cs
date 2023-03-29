@@ -12,7 +12,6 @@ public class FireSmallEnemy : Enemy
     {
         
         base.Start();
-        attackCooldown = 3f;
         projectile = GameManager.instance.prefabList.Find(x => x.name.Equals("flame_projectile"));
         lastAttack = Time.time - attackCooldown;
         playerTransform = GameObject.Find("Player").transform;
