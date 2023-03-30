@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class IdleState : IState
+public class IdleState : IEnemyState
 {
     Transform playerTransform;
-    public void Enter(StateMachine stateMachine, Enemy enemy)
+    public void Enter(EnemyStateMachine stateMachine, Enemy enemy)
     {
         playerTransform = GameObject.Find("Player").transform;
         enemy.healthBar.SetActive(false);
     }
 
-    public void Execute(StateMachine stateMachine, Enemy enemy)
+    public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
     {
         if (Vector3.Distance(playerTransform.position, enemy.startingPosition) < enemy.chaseLength)
         {

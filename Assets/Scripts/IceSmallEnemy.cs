@@ -11,7 +11,7 @@ public class IceSmallEnemy : Enemy
         base.Start();
         projectile = GameManager.instance.prefabList.Find(x => x.name.Equals("ice_shard"));
         lastAttack = Time.time - attackCooldown;      
-        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IState>{
+        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>{
             [EnemyStatePhases.Idle] = new IdleState(),
             [EnemyStatePhases.Pathing] = new MaintainDistanceState(),
             [EnemyStatePhases.Fighting] = new LaunchProjectileState()

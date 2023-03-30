@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaunchWaveProjectileState : IState
+public class LaunchWaveProjectileState : IEnemyState
 {
     private float waveCoolDown = 0.1f;
     private float lastWave;
-    public void Enter(StateMachine stateMachine, Enemy enemy)
+    public void Enter(EnemyStateMachine stateMachine, Enemy enemy)
     {
         lastWave = Time.time - waveCoolDown;
     }
 
-    public void Execute(StateMachine stateMachine, Enemy enemy)
+    public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
     {
         
         if(Time.time - enemy.lastAttack > enemy.attackCooldown ){

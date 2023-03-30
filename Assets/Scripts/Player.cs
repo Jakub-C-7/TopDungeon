@@ -25,12 +25,12 @@ public class Player : Mover
         ClearEquippedWeapon();
         RefreshEquippedWeapon();
         lastBattleAction = Time.time - battleModeDuration;
-
-
+       
     }
 
     private void Update()
     {
+        statusStateMachine.Update();
 
         movePlayer();
     }
