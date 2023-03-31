@@ -57,6 +57,8 @@ public class Player : Mover
 
         }
 
+        animator.SetTrigger("Hit");
+        handsAnimator.SetTrigger("Hit");
         base.ReceiveDamage(dmg);
         GameManager.instance.OnHealthChange();
         RegisterBattleAction();
