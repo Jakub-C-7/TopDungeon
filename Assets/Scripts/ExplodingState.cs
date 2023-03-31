@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplodingState : IState
+public class ExplodingState : IEnemyState
 {
     private bool exploded = false;
-    public void Enter(StateMachine stateMachine, Enemy enemy)
+    public void Enter(EnemyStateMachine stateMachine, Enemy enemy)
     {
         enemy.animator.SetBool("Exploding", true);
     }
 
-    public void Execute(StateMachine stateMachine, Enemy enemy)
+    public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
     {
         if(enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("exploded") ){
             if(!exploded){

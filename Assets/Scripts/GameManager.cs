@@ -48,6 +48,12 @@ public class GameManager : MonoBehaviour
     public GameObject inventoryMenu;
     public List<GameObject> prefabList;
 
+    public Dictionary<StatusEffectEnum, IStatusState>StatusTypeResolver = new Dictionary<StatusEffectEnum, IStatusState>{
+            [StatusEffectEnum.Burning] = new StatusBurningState(),
+            [StatusEffectEnum.None] = null,
+            [StatusEffectEnum.Poison] = null
+        };
+
 
     //Logic
     public int experience;

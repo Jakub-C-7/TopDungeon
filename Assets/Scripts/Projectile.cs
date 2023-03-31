@@ -10,6 +10,13 @@ public class Projectile : Collidable
     public string target = "Enemy";
     public string origin;
 
+
+
+    public IStatusState statusState;
+    public float statusDuration;
+
+    public StatusEffectEnum statusEffect;
+
     protected override void OnCollide(Collider2D coll)
     {
 
@@ -41,6 +48,14 @@ public class Projectile : Collidable
 
         };
         coll.SendMessage("ReceiveDamage", damage);
+
+        if(statusState != null){
+            StatusEffect statusEffect = new StatusEffect{
+               statusState = statusState,
+               duration = statusDuration 
+            }  ;
+            coll.SendMessage("RecieveStatusEffect", statusEffect);
+        }
 
 
     }

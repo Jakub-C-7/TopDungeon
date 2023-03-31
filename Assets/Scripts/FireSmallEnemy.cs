@@ -15,11 +15,12 @@ public class FireSmallEnemy : Enemy
         projectile = GameManager.instance.prefabList.Find(x => x.name.Equals("flame_projectile"));
         lastAttack = Time.time - attackCooldown;
         playerTransform = GameObject.Find("Player").transform;
+    
       
-        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IState>{
+        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>{
             [EnemyStatePhases.Idle] = new IdleState(),
             [EnemyStatePhases.Pathing] = new MaintainDistanceState(),
-            [EnemyStatePhases.Fighting] = new LaunchWaveProjectileState()
+            [EnemyStatePhases.Fighting] = new LaunchProjectileState()
         };
     }
 

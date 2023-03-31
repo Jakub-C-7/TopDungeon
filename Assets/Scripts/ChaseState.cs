@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseState : IState
+public class ChaseState : IEnemyState
 {
     Transform playerTransform;
     public ContactFilter2D filter;
     public Collider2D[] hits = new Collider2D[10];
-    public void Enter(StateMachine stateMachine, Enemy enemy)
+    public void Enter(EnemyStateMachine stateMachine, Enemy enemy)
     {
         enemy.healthBar.SetActive(true);
         playerTransform = GameObject.Find("Player").transform;
     }
 
-    public void Execute(StateMachine stateMachine, Enemy enemy)
+    public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
     {
         enemy.collidingWithPlayer = false;
 

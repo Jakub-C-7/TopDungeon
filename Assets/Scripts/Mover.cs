@@ -15,10 +15,18 @@ public abstract class Mover : Fighter
     public bool canMove = true;
     public bool staggered = false;
 
+    protected StatusStateMachine statusStateMachine;
+
     protected virtual void Start()
     {
+        statusStateMachine = new StatusStateMachine(this);
         originalSize = transform.localScale;
         boxCollider = GetComponent<BoxCollider2D>();
+    }
+
+     protected virtual void RecieveStatusEffect(StatusEffect statusEffect)
+    {
+        statusStateMachine.AddState(statusEffect.statusState, Time.time + statusEffect.duration);
     }
 
     public virtual void UpdateMotor(Vector3 input)
@@ -166,6 +174,10 @@ public abstract class Mover : Fighter
         // can attack attack
         staggered = false;
 
+    }
+    
+    void Update(){
+        statusStateMachine.Update();
     }
 
 }

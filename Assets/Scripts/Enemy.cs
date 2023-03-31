@@ -21,7 +21,7 @@ public class Enemy : Mover
     public BoxCollider2D hitBox;
    // public Collider2D[] hits = new Collider2D[10];
 
-    protected StateMachine stateMachine;
+    protected EnemyStateMachine stateMachine;
     
     public ParticleSystem explosionParticleSystem;
     
@@ -36,16 +36,17 @@ public class Enemy : Mover
     public int round =0;
     public int maxround= 4;
 
+
     protected override void Start()
     {
         base.Start();
-        stateMachine = new StateMachine(this);
+        stateMachine = new EnemyStateMachine(this);
        
         startingPosition = transform.position;
         
          
 
-        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IState>{
+        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>{
             [EnemyStatePhases.Idle] = new IdleState(),
             [EnemyStatePhases.Pathing] = new ChaseState()
         };

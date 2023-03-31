@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaintainDistanceState : IState
+public class MaintainDistanceState : IEnemyState
 {
     Transform playerTransform;
-    public void Enter(StateMachine stateMachine, Enemy enemy)
+    public void Enter(EnemyStateMachine stateMachine, Enemy enemy)
     {
         enemy.healthBar.SetActive(true);
         playerTransform = GameObject.Find("Player").transform;
     }
 
-    public void Execute(StateMachine stateMachine, Enemy enemy)
+    public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
     {
         float distanceFromPlayer = Vector3.Distance(playerTransform.position,enemy.transform.position);
 

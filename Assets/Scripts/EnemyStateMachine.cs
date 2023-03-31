@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine
+public class EnemyStateMachine
 {
-    IState currentState;
+    IEnemyState currentState;
     Enemy enemy;
 
-    public Dictionary<EnemyStatePhases, IState> stateMapper;
+    public Dictionary<EnemyStatePhases, IEnemyState> stateMapper;
 
-    public StateMachine(Enemy enemy){
+    public EnemyStateMachine(Enemy enemy){
         this.enemy = enemy;
     }
 
-    public void ChangeState(IState newState){
+    public void ChangeState(IEnemyState newState){
         if(currentState !=null){
             currentState.Exit();
         }
