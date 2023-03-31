@@ -48,5 +48,9 @@ public class CameraMotor : MonoBehaviour
         transform.position += new Vector3(delta.x, delta.y, 0); //adding on top of our current position to move the camera
     }
 
+    public void CentreOnPlayer(){
+        transform.position = new Vector3(lookAt.position.x, lookAt.position.y, transform.position.z);
+    }
+
 
 }

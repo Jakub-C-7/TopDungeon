@@ -34,7 +34,6 @@ public class StatusBurningState : IStatusState
             if(Time.time > lastBurn + cooldown){
                 mover.SendMessage("ReceiveDamage", dmg);
                 lastBurn = Time.time;
-                Debug.Log("Should call setcolour..");
                 GameManager.instance.StartCoroutine(SetColour(mover));
             }
         }else{
@@ -43,10 +42,8 @@ public class StatusBurningState : IStatusState
     }
 
     IEnumerator SetColour(Mover mover){
-        Debug.Log("chaning colour");
         mover.GetComponent<SpriteRenderer>().material.color = new Color32(255,128,0, 255);
         yield return new WaitForSeconds(0.2f);
-        Debug.Log("Changing colour back");
         mover.GetComponent<SpriteRenderer>().material.color = Color.white;
     }
 

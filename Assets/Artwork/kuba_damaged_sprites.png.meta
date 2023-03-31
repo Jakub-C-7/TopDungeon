@@ -113,7 +113,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,7 +134,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,7 +155,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,7 +168,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_3
+      name: kuba_death_0
       rect:
         serializedVersion: 2
         x: 144
@@ -176,7 +176,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,7 +189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_4
+      name: kuba_death_1
       rect:
         serializedVersion: 2
         x: 192
@@ -197,7 +197,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,7 +210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_5
+      name: kuba_death_2
       rect:
         serializedVersion: 2
         x: 240
@@ -218,7 +218,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,7 +231,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_6
+      name: kuba_death_3
       rect:
         serializedVersion: 2
         x: 288
@@ -239,7 +239,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,7 +252,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_7
+      name: kuba_death_4
       rect:
         serializedVersion: 2
         x: 336
@@ -260,7 +260,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,7 +273,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_8
+      name: kuba_death_5
       rect:
         serializedVersion: 2
         x: 384
@@ -281,7 +281,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,7 +294,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_9
+      name: kuba_death_6
       rect:
         serializedVersion: 2
         x: 432
@@ -302,7 +302,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -315,7 +315,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_10
+      name: kuba_death_7
       rect:
         serializedVersion: 2
         x: 480
@@ -323,7 +323,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,7 +344,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -365,7 +365,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -386,7 +386,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -399,7 +399,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_14
+      name: player_hands_death_0
       rect:
         serializedVersion: 2
         x: 144
@@ -407,7 +407,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -420,7 +420,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_15
+      name: player_hands_death_1
       rect:
         serializedVersion: 2
         x: 192
@@ -428,7 +428,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -441,7 +441,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_16
+      name: player_hands_death_2
       rect:
         serializedVersion: 2
         x: 240
@@ -449,7 +449,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -462,7 +462,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_17
+      name: player_hands_death_3
       rect:
         serializedVersion: 2
         x: 288
@@ -470,7 +470,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -483,7 +483,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_18
+      name: player_hands_death_4
       rect:
         serializedVersion: 2
         x: 336
@@ -491,7 +491,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -504,7 +504,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_19
+      name: player_hands_death_5
       rect:
         serializedVersion: 2
         x: 384
@@ -512,7 +512,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -525,7 +525,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_20
+      name: player_hands_death_6
       rect:
         serializedVersion: 2
         x: 432
@@ -533,7 +533,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -546,7 +546,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kuba_damaged_sprites_21
+      name: player_hands_death_7
       rect:
         serializedVersion: 2
         x: 480
@@ -554,7 +554,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -577,25 +577,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      kuba_damaged_sprites_10: -1848926708
-      kuba_damaged_sprites_14: 970755506
-      kuba_damaged_sprites_15: 2093700562
-      kuba_damaged_sprites_16: 287003821
-      kuba_damaged_sprites_17: 1662823027
-      kuba_damaged_sprites_18: 1273909363
-      kuba_damaged_sprites_19: 324083613
-      kuba_damaged_sprites_20: 449042580
-      kuba_damaged_sprites_21: -481897475
-      kuba_damaged_sprites_3: 1619013190
-      kuba_damaged_sprites_4: -939047104
-      kuba_damaged_sprites_5: 1290836555
-      kuba_damaged_sprites_6: 1743273656
-      kuba_damaged_sprites_7: 743312108
-      kuba_damaged_sprites_8: 1897284629
-      kuba_damaged_sprites_9: 1361165939
+      kuba_death_0: 1619013190
+      kuba_death_1: -939047104
+      kuba_death_2: 1290836555
+      kuba_death_3: 1743273656
+      kuba_death_4: 743312108
+      kuba_death_5: 1897284629
+      kuba_death_6: 1361165939
+      kuba_death_7: -1848926708
       kuba_onhit_0: -219383474
       kuba_onhit_1: -99248193
       kuba_onhit_2: 1954068605
+      player_hands_death_0: 970755506
+      player_hands_death_1: 2093700562
+      player_hands_death_2: 287003821
+      player_hands_death_3: 1662823027
+      player_hands_death_4: 1273909363
+      player_hands_death_5: 324083613
+      player_hands_death_6: 449042580
+      player_hands_death_7: -481897475
       player_hands_onhit_0: 777634715
       player_hands_onhit_1: -531466932
       player_hands_onhit_2: 1941708371

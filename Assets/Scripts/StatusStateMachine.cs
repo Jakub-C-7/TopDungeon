@@ -16,7 +16,6 @@ public class StatusStateMachine
 
         foreach(IStatusState state in statusList){
             if (state.GetId().Equals(newState.GetId())){
-                Debug.Log("already have status");
                 return;
             }
         }
