@@ -46,10 +46,13 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
         }
 
+        //Connect rooms with corridors
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
         floor.UnionWith(corridors);
 
+        //Paint floor tiles
         tilemapVisualiser.PaintFloorTiles(floor);
+        //Generate walls
         WallGenerator.CreateWalls(floor, tilemapVisualiser);
 
     }

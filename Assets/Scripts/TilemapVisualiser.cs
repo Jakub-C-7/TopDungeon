@@ -42,8 +42,8 @@ public class TilemapVisualiser : MonoBehaviour
 
     internal void PaintSingleBasicWall(Vector2Int position)
     {
-        // PaintSingleTile(wallTilemap, wallTop, position);
         PaintSingleTile(floorTilemap, wallTop, position);
+        PaintSingleTile(wallTilemap, wallTop, position);
 
     }
 }
