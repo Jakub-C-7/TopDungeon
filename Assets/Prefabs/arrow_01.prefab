@@ -164,3 +164,5 @@ MonoBehaviour:
   pushForce: 0.5
   target: Enemy
   origin: Player
+  statusDuration: 0
+  statusEffect: 2

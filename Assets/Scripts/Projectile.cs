@@ -10,8 +10,12 @@ public class Projectile : Collidable
     public string target = "Enemy";
     public string origin;
 
+
+
     public IStatusState statusState;
     public float statusDuration;
+
+    public StatusEffectEnum statusEffect;
 
     protected override void OnCollide(Collider2D coll)
     {

@@ -20,7 +20,7 @@ public class FireSmallEnemy : Enemy
         stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>{
             [EnemyStatePhases.Idle] = new IdleState(),
             [EnemyStatePhases.Pathing] = new MaintainDistanceState(),
-            [EnemyStatePhases.Fighting] = new LaunchBurningStatusProjectile()
+            [EnemyStatePhases.Fighting] = new LaunchProjectileState()
         };
     }
 
