@@ -13,9 +13,11 @@ public class Player : Mover
     private float verticalMove;
     private float defaultLightOuterRadius = 1.5f;
     private float lightOuterRadius = 1.5f;
+    private float defaultLightInnerRadius = 0.4f;
     private bool reduceLight = false;
     private float lastBattleAction;
     private float battleModeDuration = 10f;
+    private bool dead = false;
 
     protected override void Start()
     {
@@ -38,9 +40,23 @@ public class Player : Mover
     protected override void Death()
     {
         canMove = false;
-        GameManager.instance.deathMenuAnimator.SetTrigger("Show");
+        LightSource.pointLightOuterRadius = defaultLightInnerRadius;
+       // CameraMotor cameraMotor = FindFirstObjectByType<CameraMotor>();
+       // cameraMotor.GetComponent<Camera>().orthographicSize = 0.5f;
+        Camera.main.orthographicSize = 0.5f;
+        Camera.main.GetComponent<CameraMotor>().CentreOnPlayer();
+        animator.SetTrigger("Death");
+        handsAnimator.SetTrigger("Death");
+        GameManager.instance.weapon.animator.SetTrigger("Death");
+        dead = true;
+        Invoke("ShowDeathMenu", 3f);
+
     }
 
+    private void ShowDeathMenu(){
+        GameManager.instance.deathMenuAnimator.SetTrigger("Show");
+
+    }
     public void RegisterBattleAction()
     {
         lastBattleAction = Time.time;
@@ -57,6 +73,8 @@ public class Player : Mover
 
         }
 
+        animator.SetTrigger("Hit");
+        handsAnimator.SetTrigger("Hit");
         base.ReceiveDamage(dmg);
         GameManager.instance.OnHealthChange();
         RegisterBattleAction();
@@ -83,25 +101,29 @@ public class Player : Mover
 
         float timeStep = 0.1f;
 
-        if (reduceLight)
-        {
-            if (lightOuterRadius > 0)
+        
+        if(!dead){
+
+            if (reduceLight)
             {
-                lightOuterRadius -= timeStep;
+                if (lightOuterRadius > 0)
+                {
+                    lightOuterRadius -= timeStep;
+                }
             }
+            else
+            {
+                if (lightOuterRadius < defaultLightOuterRadius)
+                {
+                    lightOuterRadius += timeStep;
+                }
+                else if (lightOuterRadius > defaultLightOuterRadius)
+                {
+                    lightOuterRadius = defaultLightOuterRadius;
+                }
+            }
+            LightSource.pointLightOuterRadius = lightOuterRadius;
         }
-        else
-        {
-            if (lightOuterRadius < defaultLightOuterRadius)
-            {
-                lightOuterRadius += timeStep;
-            }
-            else if (lightOuterRadius > defaultLightOuterRadius)
-            {
-                lightOuterRadius = defaultLightOuterRadius;
-            }
-        }
-        LightSource.pointLightOuterRadius = lightOuterRadius;
 
     }
 
@@ -144,11 +166,20 @@ public class Player : Mover
 
     }
 
+    public void RemoveAllStatusEffects(){
+        statusStateMachine.RemoveAllStatusEffects();
+    }
+
     public void Respawn()
     {
         Heal(maxHitpoints);
         canMove = true;
+        dead = false;
+        RemoveAllStatusEffects();
         pushDirection = Vector3.zero;
+        animator.SetTrigger("Respawn");
+        handsAnimator.SetTrigger("Respawn");
+        GameManager.instance.weapon.animator.SetTrigger("Respawn");
     }
 
     public void SetReduceLight(bool reduceLight)

@@ -16,22 +16,21 @@ public class StatusStateMachine
 
         foreach(IStatusState state in statusList){
             if (state.GetId().Equals(newState.GetId())){
-                Debug.Log("already have status");
                 return;
             }
         }
         newState.Enter(this, mover, duration);
 
         statusList.Add(newState);
-    
-        Debug.Log("just added :" + statusList.Count);
     }
 
     public void RemoveState(IStatusState stateToRemove){
-        Debug.Log("Removing state");
-
         statusList.Remove(stateToRemove);
         stateToRemove.Exit();
+    }
+
+    public void RemoveAllStatusEffects(){
+        statusList = new List<IStatusState>();
     }
 
     public void Update(){
