@@ -7,15 +7,15 @@ using UnityEngine.Tilemaps;
 public class TilemapVisualiser : MonoBehaviour
 {
     [SerializeField]
-    private Tilemap floorTilemap, wallTilemap;
+    public Tilemap floorTilemap, wallTilemap;
     [SerializeField]
-    private TileBase floorTile, wallTop;
+    public TileBase floorAndWallTile;
 
     // Create array here to select random floor tile
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {
-        PaintTiles(floorPositions, floorTilemap, floorTile);
+        PaintTiles(floorPositions, floorTilemap, floorAndWallTile);
     }
 
     private void PaintTiles(IEnumerable<Vector2Int> positions, Tilemap tilemap, TileBase tile)
@@ -28,10 +28,16 @@ public class TilemapVisualiser : MonoBehaviour
 
     }
 
-    private void PaintSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position)
+    public void PaintSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position)
     {
         var tilePosition = tilemap.WorldToCell((Vector3Int)position);
         tilemap.SetTile(tilePosition, tile);
+    }
+
+    public void RemoveSingleTile(Tilemap tilemap, Vector2Int position)
+    {
+        var tilePosition = tilemap.WorldToCell((Vector3Int)position);
+        tilemap.SetTile(tilePosition, null);
     }
 
     public void Clear()
@@ -40,10 +46,16 @@ public class TilemapVisualiser : MonoBehaviour
         wallTilemap.ClearAllTiles();
     }
 
-    internal void PaintSingleBasicWall(Vector2Int position)
+    internal void PaintSingleBasicWallToFloor(Vector2Int position)
     {
-        PaintSingleTile(floorTilemap, wallTop, position);
-        PaintSingleTile(wallTilemap, wallTop, position);
+        PaintSingleTile(floorTilemap, floorAndWallTile, position);
 
     }
+
+    internal void PaintSingleBasicWallToWall(Vector2Int position)
+    {
+        PaintSingleTile(wallTilemap, floorAndWallTile, position);
+
+    }
+
 }

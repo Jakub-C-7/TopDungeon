@@ -19,7 +19,6 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     protected override void RunProceduralGeneration()
     {
         CreateRooms();
-
     }
 
     private void CreateRooms()
@@ -52,6 +51,7 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
         //Paint floor tiles
         tilemapVisualiser.PaintFloorTiles(floor);
+
         //Generate walls
         WallGenerator.CreateWalls(floor, tilemapVisualiser);
 
