@@ -22,13 +22,9 @@ public class StatusStateMachine
         newState.Enter(this, mover, duration);
 
         statusList.Add(newState);
-    
-        Debug.Log("just added :" + statusList.Count);
     }
 
     public void RemoveState(IStatusState stateToRemove){
-        Debug.Log("Removing state");
-
         statusList.Remove(stateToRemove);
         stateToRemove.Exit();
     }
