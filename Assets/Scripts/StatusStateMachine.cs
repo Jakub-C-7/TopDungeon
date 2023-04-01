@@ -33,6 +33,10 @@ public class StatusStateMachine
         stateToRemove.Exit();
     }
 
+    public void RemoveAllStatusEffects(){
+        statusList = new List<IStatusState>();
+    }
+
     public void Update(){
         List<IStatusState> tempList = new List<IStatusState>(statusList);
         foreach(IStatusState state in tempList){

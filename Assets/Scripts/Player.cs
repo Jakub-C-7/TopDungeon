@@ -17,6 +17,7 @@ public class Player : Mover
     private bool reduceLight = false;
     private float lastBattleAction;
     private float battleModeDuration = 10f;
+    private bool dead = false;
 
     protected override void Start()
     {
@@ -47,6 +48,7 @@ public class Player : Mover
         animator.SetTrigger("Death");
         handsAnimator.SetTrigger("Death");
         GameManager.instance.weapon.animator.SetTrigger("Death");
+        dead = true;
         Invoke("ShowDeathMenu", 3f);
 
     }
@@ -99,7 +101,8 @@ public class Player : Mover
 
         float timeStep = 0.1f;
 
-        if(canMove){
+        
+        if(!dead){
 
             if (reduceLight)
             {
@@ -163,11 +166,20 @@ public class Player : Mover
 
     }
 
+    public void RemoveAllStatusEffects(){
+        statusStateMachine.RemoveAllStatusEffects();
+    }
+
     public void Respawn()
     {
         Heal(maxHitpoints);
         canMove = true;
+        dead = false;
+        RemoveAllStatusEffects();
         pushDirection = Vector3.zero;
+        animator.SetTrigger("Respawn");
+        handsAnimator.SetTrigger("Respawn");
+        GameManager.instance.weapon.animator.SetTrigger("Respawn");
     }
 
     public void SetReduceLight(bool reduceLight)

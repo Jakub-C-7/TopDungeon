@@ -28,7 +28,7 @@ public class RangedWeapon : Weapon
 
         GameObject projectile = GameManager.instance.prefabList.Find(x => x.name.Equals("arrow_01"));
 
-        if (Time.time - lastAttack > cooldown)
+        if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
         {
 
             if (Input.GetKeyDown(KeyCode.UpArrow))

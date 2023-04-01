@@ -56,7 +56,7 @@ public class Weapon : Collidable
 
     protected virtual void AttackController()
     {
-        if (Time.time - lastAttack > cooldown)
+        if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
         {
 
             if (Input.GetKeyDown(KeyCode.UpArrow))
