@@ -46831,7 +46831,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   sceneNames:
-  - Dungeon1
+  - ProceduralScene1
   portalAnimator: {fileID: 1369550324}
 --- !u!1 &1390054465
 GameObject:
