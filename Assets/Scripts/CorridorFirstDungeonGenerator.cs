@@ -15,6 +15,8 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
     protected override void RunProceduralGeneration()
     {
+        tilemapVisualiser.SetRandomTileStyle(); // Get a random style for the dungeon
+
         CorridorFirstGeneration();
     }
 

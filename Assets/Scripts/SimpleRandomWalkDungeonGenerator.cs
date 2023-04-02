@@ -12,6 +12,7 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
 
     protected override void RunProceduralGeneration()
     {
+        tilemapVisualiser.SetRandomTileStyle(); // Get a random style for the dungeon
         HashSet<Vector2Int> floorPositions = RunRandomWalk(randomWalkParameters, startPosition);
         tilemapVisualiser.Clear();
         tilemapVisualiser.PaintFloorTiles(floorPositions);
