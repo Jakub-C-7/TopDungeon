@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d22a657eb0d9fff4493fe1e5c277312a, type: 2}
+  - {fileID: 2100000, guid: 35d59d08a2c5bad44887c973167b3e5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,12 +132,18 @@ MonoBehaviour:
   pushRecoverySpeed: 0.2
   onHitAudioSource: {fileID: 0}
   part: {fileID: 0}
+  boxCollider: {fileID: 0}
   ySpeed: 0.75
   xSpeed: 1
   animator: {fileID: 0}
+  handsAnimator: {fileID: 0}
+  canMove: 1
+  staggered: 0
   xpValue: 1
   triggerLength: 0.5
   chaseLength: 1.5
+  collidingWithPlayer: 0
+  startingPosition: {x: 0, y: 0, z: 0}
   health: {fileID: 3994061048693136391}
   healthBar: {fileID: 3994061049536362786}
   filter:
@@ -154,6 +160,16 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  hitBox: {fileID: 0}
+  explosionParticleSystem: {fileID: 0}
+  attackCooldown: 1.5
+  lastAttack: 0
+  projectile: {fileID: 0}
+  damageAmount: 0
+  pushForce: 0
+  range: 0
+  round: 0
+  maxround: 4
 --- !u!1 &3994061048394198014
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +457,9 @@ MonoBehaviour:
     maxNormalAngle: 0
   damageAmount: 1
   pushForce: 1
+  attackCooldown: 1.5
+  lastAttack: 0
+  enemy: {fileID: 0}
 --- !u!1 &3994061049536362786
 GameObject:
   m_ObjectHideFlags: 0

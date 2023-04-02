@@ -2137,6 +2137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceSmallEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4383704025088569183, guid: ff9e20a0635e8ba479c5ca3d8eda2ce3, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 593659818}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff9e20a0635e8ba479c5ca3d8eda2ce3, type: 3}
 --- !u!1 &247869377
@@ -6664,6 +6668,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389f149c966fe02418dd412b6e011217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &593659818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4383704024781667434, guid: ff9e20a0635e8ba479c5ca3d8eda2ce3, type: 3}
+  m_PrefabInstance: {fileID: 247852970}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6021aa47011f87f4aac0d1f644c880ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &603056188
 GameObject:
   m_ObjectHideFlags: 0
@@ -11156,6 +11171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BombSmallEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4915452646079617246, guid: 97cce4116763ae043bf8b1438edfb49a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35d59d08a2c5bad44887c973167b3e5d, type: 2}
     - target: {fileID: 4915452646079617247, guid: 97cce4116763ae043bf8b1438edfb49a, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -11459,6 +11478,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170661060}
   m_CullTransparentMesh: 1
+--- !u!114 &1179341147 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4383704024781667434, guid: ff9e20a0635e8ba479c5ca3d8eda2ce3, type: 3}
+  m_PrefabInstance: {fileID: 4383704025462453949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6021aa47011f87f4aac0d1f644c880ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1182639408
 GameObject:
   m_ObjectHideFlags: 0
@@ -11804,6 +11834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3994061047636780294, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35d59d08a2c5bad44887c973167b3e5d, type: 2}
     - target: {fileID: 3994061048489516638, guid: f972ab8be88f10c4798fe35d64838d2f, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -59263,6 +59297,10 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 559744876}
+    - target: {fileID: 146324114659389336, guid: 39652fcc61e13a54c9ea8fdf69b1fa37, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35d59d08a2c5bad44887c973167b3e5d, type: 2}
     - target: {fileID: 146324114659389337, guid: 39652fcc61e13a54c9ea8fdf69b1fa37, type: 3}
       propertyPath: m_RootOrder
       value: 33
@@ -59603,7 +59641,7 @@ PrefabInstance:
     - target: {fileID: 4383704025088569183, guid: ff9e20a0635e8ba479c5ca3d8eda2ce3, type: 3}
       propertyPath: enemy
       value: 
-      objectReference: {fileID: 559744876}
+      objectReference: {fileID: 1179341147}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff9e20a0635e8ba479c5ca3d8eda2ce3, type: 3}
 --- !u!1001 &4987140465811073299

@@ -291,7 +291,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 35d59d08a2c5bad44887c973167b3e5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -419,10 +419,12 @@ MonoBehaviour:
   explosionParticleSystem: {fileID: 0}
   attackCooldown: 1.5
   lastAttack: 0
+  projectile: {fileID: 0}
   damageAmount: 1
   pushForce: 0.5
   range: 1
-  prefab: {fileID: 1189442862988889657, guid: 8dd6cd11b4242334d820468347a4d119, type: 3}
+  round: 0
+  maxround: 4
 --- !u!1 &4383704025088569181
 GameObject:
   m_ObjectHideFlags: 0

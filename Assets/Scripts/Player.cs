@@ -23,7 +23,6 @@ public class Player : Mover
     {
         base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         ClearEquippedWeapon();
         RefreshEquippedWeapon();
         lastBattleAction = Time.time - battleModeDuration;
@@ -33,7 +32,6 @@ public class Player : Mover
     private void Update()
     {
         statusStateMachine.Update();
-
         movePlayer();
     }
 

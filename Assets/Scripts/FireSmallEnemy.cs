@@ -24,9 +24,9 @@ public class FireSmallEnemy : Enemy
         };
     }
 
-     new protected void FixedUpdate(){   
-        stateMachine.Update();
-    }
+    //  new protected void FixedUpdate(){   
+    //     stateMachine.Update();
+    // }
 
 
 }
