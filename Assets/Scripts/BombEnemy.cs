@@ -5,18 +5,23 @@ using UnityEngine;
 public class BombEnemy : Enemy
 {
 
-    new protected void FixedUpdate(){
+    // new protected void FixedUpdate(){
     
+    //     if(collidingWithPlayer){
+    //         collidingWithPlayer = false;
+    //         Debug.Log("Started exploding");
+    //         stateMachine.ChangeState(new ExplodingState());
+    //     }
+    //     stateMachine.Update();   
+    // }
+
+    new protected void Execute(){
         if(collidingWithPlayer){
             collidingWithPlayer = false;
             Debug.Log("Started exploding");
             stateMachine.ChangeState(new ExplodingState());
         }
-        stateMachine.Update();
-        
-        
-     
-        
+        stateMachine.Update(); 
     }
 
     

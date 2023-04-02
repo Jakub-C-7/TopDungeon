@@ -42,9 +42,9 @@ public class StatusBurningState : IStatusState
     }
 
     IEnumerator SetColour(Mover mover){
-        mover.GetComponent<SpriteRenderer>().material.color = new Color32(255,128,0, 255);
+        mover.GetComponent<SpriteRenderer>().material.SetVector("_GlowColour", new Color(1,0.27f,0,0) * 0.2f);
         yield return new WaitForSeconds(0.2f);
-        mover.GetComponent<SpriteRenderer>().material.color = Color.white;
+        mover.GetComponent<SpriteRenderer>().material.SetVector("_GlowColour", Color.white * 0f);
     }
 
 

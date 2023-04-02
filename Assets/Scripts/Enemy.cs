@@ -36,6 +36,8 @@ public class Enemy : Mover
     public int round =0;
     public int maxround= 4;
 
+    protected bool dead = false;
+    protected float fade = 1;
 
     protected override void Start()
     {
@@ -58,10 +60,24 @@ public class Enemy : Mover
     {
         base.ReceiveDamage(dmg);
         OnHealthChange();
+        GameManager.instance.StartCoroutine(SetGlitch());
+            
+    }
+
+    IEnumerator SetGlitch(){
+        if(this){
+            this.GetComponent<SpriteRenderer>().material.SetFloat("_Glitch", 0.9f);
+            yield return new WaitForSeconds(0.2f);
+        }
+        if(this){
+            this.GetComponent<SpriteRenderer>().material.SetFloat("_Glitch",0f);
+        }
+    }
+
 
         // Stagger(); // initiate Stagger
         // Invoke("RecoverFromStagger", 2f); // Initiate recovery from stagger
-    }
+    
 
     private void OnHealthChange()
     {
@@ -70,15 +86,37 @@ public class Enemy : Mover
     }
     protected override void Death()
     {
+        dead = true;
+        Destroy(hitBox);
+      
+    }
+
+    protected void CleanUpDeath(){
         Destroy(gameObject);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.RegisterDeath(this.gameObject.GetComponent<SpriteRenderer>().sprite);
         GameManager.instance.ShowText("+ " + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
     }
 
+
     protected void FixedUpdate(){
-        stateMachine.Update();
+        if(!dead){
+            Execute();
+        }else{
+            fade -= Time.deltaTime;
+            if(fade <= 0f){
+                CleanUpDeath();
+            }
+            this.GetComponent<SpriteRenderer>().material.SetFloat("_Fade", fade);
+
+        }
     }
+
+    protected void Execute(){
+       stateMachine.Update(); 
+    }
+
+    
 
   
 

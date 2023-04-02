@@ -18,9 +18,9 @@ public class IceSmallEnemy : Enemy
         };
     }
 
-     new protected void FixedUpdate(){
-         stateMachine.Update();        
-    }
+    //  new protected void FixedUpdate(){
+    //      stateMachine.Update();        
+    // }
 
 
     
