@@ -18,7 +18,7 @@ public class Enemy : Mover
     public GameObject healthBar;
     // Hitbox
     public ContactFilter2D filter;
-    public BoxCollider2D hitBox;
+    private BoxCollider2D hitBox;
    // public Collider2D[] hits = new Collider2D[10];
 
     protected EnemyStateMachine stateMachine;
