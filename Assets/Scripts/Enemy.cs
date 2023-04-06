@@ -8,6 +8,9 @@ public class Enemy : Mover
     // Experience
     public int xpValue = 1;
 
+    // Droppable Items
+    public DroppedItem droppedItem;
+
     // Logic
     public float triggerLength = 0.5f; //Aggro ranges
     public float chaseLength = 1.5f;
@@ -19,12 +22,11 @@ public class Enemy : Mover
     // Hitbox
     public ContactFilter2D filter;
     public BoxCollider2D hitBox;
-   // public Collider2D[] hits = new Collider2D[10];
 
     protected EnemyStateMachine stateMachine;
-    
+
     public ParticleSystem explosionParticleSystem;
-    
+
     // used by projectile launching enemeies
     public float attackCooldown = 1.5f;
     public float lastAttack;
@@ -33,8 +35,8 @@ public class Enemy : Mover
     public float pushForce;
     public float range;
 
-    public int round =0;
-    public int maxround= 4;
+    public int round = 0;
+    public int maxround = 4;
 
     protected bool dead = false;
     protected float fade = 1;
@@ -43,12 +45,13 @@ public class Enemy : Mover
     {
         base.Start();
         stateMachine = new EnemyStateMachine(this);
-       
-        startingPosition = transform.position;
-        
-         
 
-        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>{
+        startingPosition = transform.position;
+
+
+
+        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>
+        {
             [EnemyStatePhases.Idle] = new IdleState(),
             [EnemyStatePhases.Pathing] = new ChaseState()
         };
@@ -61,23 +64,26 @@ public class Enemy : Mover
         base.ReceiveDamage(dmg);
         OnHealthChange();
         GameManager.instance.StartCoroutine(SetGlitch());
-            
+
     }
 
-    IEnumerator SetGlitch(){
-        if(this){
+    IEnumerator SetGlitch()
+    {
+        if (this)
+        {
             this.GetComponent<SpriteRenderer>().material.SetFloat("_Glitch", 0.9f);
             yield return new WaitForSeconds(0.2f);
         }
-        if(this){
-            this.GetComponent<SpriteRenderer>().material.SetFloat("_Glitch",0f);
+        if (this)
+        {
+            this.GetComponent<SpriteRenderer>().material.SetFloat("_Glitch", 0f);
         }
     }
 
 
-        // Stagger(); // initiate Stagger
-        // Invoke("RecoverFromStagger", 2f); // Initiate recovery from stagger
-    
+    // Stagger(); // initiate Stagger
+    // Invoke("RecoverFromStagger", 2f); // Initiate recovery from stagger
+
 
     private void OnHealthChange()
     {
@@ -88,10 +94,12 @@ public class Enemy : Mover
     {
         dead = true;
         Destroy(hitBox);
-      
+
     }
 
-    protected void CleanUpDeath(){
+    protected void CleanUpDeath()
+    {
+        droppedItem.DropItem();
         Destroy(gameObject);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.RegisterDeath(this.gameObject.GetComponent<SpriteRenderer>().sprite);
@@ -99,12 +107,17 @@ public class Enemy : Mover
     }
 
 
-    protected void FixedUpdate(){
-        if(!dead){
+    protected void FixedUpdate()
+    {
+        if (!dead)
+        {
             Execute();
-        }else{
+        }
+        else
+        {
             fade -= Time.deltaTime;
-            if(fade <= 0f){
+            if (fade <= 0f)
+            {
                 CleanUpDeath();
             }
             this.GetComponent<SpriteRenderer>().material.SetFloat("_Fade", fade);
@@ -112,12 +125,13 @@ public class Enemy : Mover
         }
     }
 
-    protected void Execute(){
-       stateMachine.Update(); 
+    protected void Execute()
+    {
+        stateMachine.Update();
     }
 
-    
 
-  
+
+
 
 }
