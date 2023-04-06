@@ -19,6 +19,8 @@ public class DroppedItem : Collidable
     {
         base.Start();
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
 
         if (animator)
         {
@@ -43,6 +45,8 @@ public class DroppedItem : Collidable
         this.gameObject.transform.SetParent(null);
         // Make game object visible
         this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        // Make object collidable
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
 
     }
 
