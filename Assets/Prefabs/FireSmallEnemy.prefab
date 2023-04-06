@@ -589,13 +589,12 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  hitBox: {fileID: 0}
   explosionParticleSystem: {fileID: 0}
+  round: 0
+  maxround: 4
   attackCooldown: 3
   lastAttack: 0
   projectile: {fileID: 0}
   damageAmount: 1
   pushForce: 2
-  range: 0.8
-  round: 0
-  maxround: 4
+  projectileRange: 1.5

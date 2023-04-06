@@ -26,16 +26,7 @@ public class Enemy : Mover
     public ParticleSystem explosionParticleSystem;
     
     // used by projectile launching enemeies
-    public float attackCooldown = 1.5f;
-    public float lastAttack;
-    public GameObject projectile;
-    public int damageAmount;
-    public float pushForce;
-    public float range;
-
-    public int round =0;
-    public int maxround= 4;
-
+    
     protected bool dead = false;
     protected float fade = 1;
 
