@@ -47743,7 +47743,7 @@ MonoBehaviour:
   pushForce: 1
   attackCooldown: 1.5
   lastAttack: 0
-  enemy: {fileID: 559744876}
+  enemy: {fileID: 1777349416}
 --- !u!61 &1468011315
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -57090,7 +57090,7 @@ MonoBehaviour:
   pushRecoverySpeed: 0.1
   onHitAudioSource: {fileID: 0}
   part: {fileID: 0}
-  boxCollider: {fileID: 0}
+  boxCollider: {fileID: 1777349417}
   ySpeed: 0.75
   xSpeed: 1
   animator: {fileID: 1777349418}
@@ -57118,7 +57118,6 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  hitBox: {fileID: 1468011315}
   explosionParticleSystem: {fileID: 0}
   attackCooldown: 1.5
   lastAttack: 0
@@ -57195,7 +57194,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 35d59d08a2c5bad44887c973167b3e5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

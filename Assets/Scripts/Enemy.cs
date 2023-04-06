@@ -112,7 +112,7 @@ public class Enemy : Mover
         }
     }
 
-    protected void Execute(){
+    protected virtual void Execute(){
        stateMachine.Update(); 
     }
 
