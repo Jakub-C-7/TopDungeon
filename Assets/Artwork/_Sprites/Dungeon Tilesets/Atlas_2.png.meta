@@ -7434,7 +7434,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_2_382
+      name: coins_01
       rect:
         serializedVersion: 2
         x: 288
@@ -7455,7 +7455,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_2_383
+      name: coins_02
       rect:
         serializedVersion: 2
         x: 304
@@ -10769,8 +10769,6 @@ TextureImporter:
       Atlas_2_38: 611630159
       Atlas_2_380: 698399794
       Atlas_2_381: 447991388
-      Atlas_2_382: 1846592446
-      Atlas_2_383: -1507664203
       Atlas_2_384: -1836946908
       Atlas_2_385: 256402842
       Atlas_2_386: 1771267790
@@ -10970,6 +10968,8 @@ TextureImporter:
       Atlas_2_99: 1686908373
       arrow_01: -1184028530
       bow_01: -92318977
+      coins_01: 1846592446
+      coins_02: -1507664203
       javelin_01: 1930590289
       player_0: -2127929151
       player_02_1: 1745800685
