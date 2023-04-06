@@ -5,7 +5,9 @@ using UnityEngine;
 public class DroppedItem : Collidable
 {
     [SerializeField]
-    private int quantity;
+    private int minQuantity;
+    [SerializeField]
+    private int maxQuantity;
     [SerializeField]
     private string itemType;
     [SerializeField]
@@ -58,10 +60,19 @@ public class DroppedItem : Collidable
     {
         if (itemType == "coins")
         {
+            int quantity = CalculateRandomRange(minQuantity, maxQuantity);
             GameManager.instance.player.inventory.coins += quantity;
             GameManager.instance.ShowText("+ " + quantity + " coins!", 25, Color.yellow, transform.position, Vector3.up * 50, 2.0f);
         }
 
+    }
+
+    private int CalculateRandomRange(int min, int max)
+    {
+
+        int quantity = Random.Range(min, max);
+
+        return quantity;
     }
 
 

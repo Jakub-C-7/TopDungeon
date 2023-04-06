@@ -99,7 +99,12 @@ public class Enemy : Mover
 
     protected void CleanUpDeath()
     {
-        droppedItem.DropItem();
+        if (droppedItem)
+        {
+            droppedItem.DropItem();
+
+        }
+
         Destroy(gameObject);
         GameManager.instance.GrantXp(xpValue);
         GameManager.instance.RegisterDeath(this.gameObject.GetComponent<SpriteRenderer>().sprite);
