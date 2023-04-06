@@ -47292,6 +47292,7 @@ GameObject:
   - component: {fileID: 1443992285}
   - component: {fileID: 1443992284}
   - component: {fileID: 1443992287}
+  - component: {fileID: 1443992288}
   m_Layer: 0
   m_Name: ItemToDrop
   m_TagString: Untagged
@@ -47328,6 +47329,7 @@ MonoBehaviour:
   quantity: 5
   itemType: coins
   parentObject: {fileID: 229888639}
+  animator: {fileID: 1443992288}
 --- !u!212 &1443992285
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -47421,6 +47423,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16161616, y: 0.11169878}
   m_EdgeRadius: 0
+--- !u!95 &1443992288
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443992283}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54b7736ffb3c56b488d42596a893bb84, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1459923114
 GameObject:
   m_ObjectHideFlags: 0

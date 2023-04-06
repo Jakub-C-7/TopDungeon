@@ -10,16 +10,31 @@ public class DroppedItem : Collidable
     private string itemType;
     [SerializeField]
     private GameObject parentObject;
+    [SerializeField]
+    private Animator animator;
 
     protected override void Start()
     {
         base.Start();
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        if (animator)
+        {
+            this.gameObject.GetComponent<Animator>().enabled = false;
+
+        }
+
         parentObject = this.transform.parent.gameObject;
     }
 
     public void DropItem()
     {
+        if (animator)
+        {
+            this.gameObject.GetComponent<Animator>().enabled = true;
+
+        }
+
         // Move to location of enemy death
         this.gameObject.transform.position = parentObject.transform.position;
         //Set parent to main scene
