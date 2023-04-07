@@ -24,7 +24,7 @@ public abstract class Mover : Fighter
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-     protected virtual void RecieveStatusEffect(StatusEffect statusEffect)
+    protected virtual void RecieveStatusEffect(StatusEffect statusEffect)
     {
         statusStateMachine.AddState(statusEffect.statusState, Time.time + statusEffect.duration);
     }
@@ -63,7 +63,7 @@ public abstract class Mover : Fighter
         // Setting animator values for Player
         if (animator && this.name == "Player")
         {
-            
+
 
             // If the mover is moving up.
             if (moveDelta.y > 0)
@@ -89,7 +89,7 @@ public abstract class Mover : Fighter
 
             }
 
-           
+
             if (handsAnimator)
             {
                 handsAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
@@ -99,17 +99,18 @@ public abstract class Mover : Fighter
             {
                 GameManager.instance.weapon.animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
             }
-             //Add push vector, if any
-            
+            //Add push vector, if any
+
 
         }
-         //Add push vector, if any
+        //Add push vector, if any
         moveDelta += pushDirection;
 
         // Reduce push force every frame, base off of recovery speed
         pushDirection = Vector3.Lerp(pushDirection, Vector3.zero, pushRecoverySpeed);
 
-        if(animator){
+        if (animator)
+        {
 
             animator.SetFloat("Speed", Mathf.Abs(horizontalMove + verticalMove));
 
@@ -118,7 +119,7 @@ public abstract class Mover : Fighter
         //Movement Blocking-------------
         //Make sure we can move in this direction by casting a box there first. If the box returns null, we're free to move
         //Y axis Blocking
-        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+        hit = Physics2D.BoxCast(transform.position + (Vector3)boxCollider.offset, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null)
         {
             //Make this sucker move UP!
@@ -126,7 +127,7 @@ public abstract class Mover : Fighter
         }
 
         //X axis blocking
-        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+        hit = Physics2D.BoxCast(transform.position + (Vector3)boxCollider.offset, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
         if (hit.collider == null)
         {
             //Make this sucker move ACROSS!
@@ -175,8 +176,9 @@ public abstract class Mover : Fighter
         staggered = false;
 
     }
-    
-    void Update(){
+
+    void Update()
+    {
         statusStateMachine.Update();
     }
 
