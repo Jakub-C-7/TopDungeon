@@ -15,7 +15,7 @@ public class BombEnemy : Enemy
     //     stateMachine.Update();   
     // }
 
-    new protected void Execute(){
+    protected override void Execute(){
         if(collidingWithPlayer){
             collidingWithPlayer = false;
             Debug.Log("Started exploding");

@@ -6,39 +6,47 @@ public class LaunchWaveProjectileState : IEnemyState
 {
     private float waveCoolDown = 0.1f;
     private float lastWave;
+    private IWaveProjectileEnemy waveProjectileEnemy;
     public void Enter(EnemyStateMachine stateMachine, Enemy enemy)
     {
         lastWave = Time.time - waveCoolDown;
+        waveProjectileEnemy = enemy as IWaveProjectileEnemy;
+        enemy.healthBar.SetActive(true);
+        if (waveProjectileEnemy == null){
+            throw new System.Exception("Enemy assigned LaunchProjectileState does not implement IProjectileEnemy");
+        }
     }
 
     public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
     {
-        
-        if(Time.time - enemy.lastAttack > enemy.attackCooldown ){
-            if((Time.time - lastWave > waveCoolDown)){
-                lastWave = Time.time;
-                int numberOfProjectiles = CalculateNumberOfProjectiles(enemy.projectile, 0.1f * (float)(enemy.round + 1));
-                //int numberOfProjectiles = CalculateNumberOfProjectiles(enemy.projectile, 0.6f);
+        if(waveProjectileEnemy !=null){   
+            if(Time.time - waveProjectileEnemy.GetLastAttack() > waveProjectileEnemy.GetAttackCooldown() ){
+                if((Time.time - lastWave > waveCoolDown)){
+                    lastWave = Time.time;
+                    int numberOfProjectiles = CalculateNumberOfProjectiles(waveProjectileEnemy.GetProjectilePreFab(), 0.1f * (float)(waveProjectileEnemy.GetRound() + 1));
+                    //int numberOfProjectiles = CalculateNumberOfProjectiles(enemy.projectile, 0.6f);
 
-                float gap = (float)1/(float)numberOfProjectiles;
+                    float gap = (float)1/(float)numberOfProjectiles;
 
-                for(int i = 0; i <numberOfProjectiles; i++ ){
-                    GameObject projectileInstance = GameObject.Instantiate(enemy.projectile, RandomCircle(gap * i, enemy.transform.position , (enemy.round + 1)/(float)10), Quaternion.identity); 
-                    Projectile projectileComponent = projectileInstance.AddComponent<Projectile>();
-                    projectileComponent.SetProjectileStats(enemy.damageAmount, enemy.pushForce, enemy.transform.name, "Player");
-                    GameObject.Destroy(projectileInstance, enemy.range);
+                    for(int i = 0; i <numberOfProjectiles; i++ ){
+                        GameObject projectileInstance = GameObject.Instantiate(waveProjectileEnemy.GetProjectilePreFab(), RandomCircle(gap * i, enemy.transform.position , (waveProjectileEnemy.GetRound() + 1)/(float)10), Quaternion.identity); 
+                        Projectile projectileComponent = projectileInstance.GetComponent<Projectile>();
+                        Damage dmg = waveProjectileEnemy.GetProjectileDamageObject();
+                        projectileComponent.SetProjectileStats(dmg.damageAmount, dmg.pushForce, enemy.transform.name, "Player");
+                        GameObject.Destroy(projectileInstance, waveProjectileEnemy.GetRange());
+                    }
+                    waveProjectileEnemy.SetRound(waveProjectileEnemy.GetRound() + 1);
+
+                    if(waveProjectileEnemy.GetRound() >= waveProjectileEnemy.GetMaxRound()){
+                        waveProjectileEnemy.SetLastAttack(Time.time);
+                        waveProjectileEnemy.SetRound(0);
+                        stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Pathing]);
+                    }
                 }
-                enemy.round ++;
-
-                if(enemy.round >= enemy.maxround){
-                    enemy.lastAttack = Time.time;
-                    enemy.round = 0;
-                    stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Pathing]);
-                }
+            }else{
+                stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Pathing]);
             }
-     }else{
-        stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Pathing]);
-     }
+        }
     }
 
     public void Exit()
