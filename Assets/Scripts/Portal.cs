@@ -45,4 +45,21 @@ public class Portal : Collidable
 
     }
 
+    // private IEnumerator InitiateRandomDungeonCreation()
+    // {
+    //     var loadingScene = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(2, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+
+    //     yield return new WaitForEndOfFrame();
+
+    //     var newScene = UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(2);
+    //     List<GameObject> gameObjectList = new List<GameObject>();
+
+    //     gameObjectList.AddRange(newScene.GetRootGameObjects());
+
+    //     var simpleRandomWalk = gameObjectList.Find(x => x.name == "SimpleRandomWalkGenerator");
+
+    //     simpleRandomWalk.GetComponent<SimpleRandomWalkDungeonGenerator>().GenerateDungeon();
+
+    // }
+
 }

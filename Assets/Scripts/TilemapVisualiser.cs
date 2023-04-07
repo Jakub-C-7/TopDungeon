@@ -51,6 +51,12 @@ public class TilemapVisualiser : MonoBehaviour
     {
         floorTilemap.ClearAllTiles();
         wallTilemap.ClearAllTiles();
+
+        if (GameObject.Find("SpawnPoint"))
+        {
+            var spawnPoint = GameObject.Find("SpawnPoint");
+            Destroy(spawnPoint);
+        }
     }
 
     internal void PaintSingleBasicWallToFloor(Vector2 position)

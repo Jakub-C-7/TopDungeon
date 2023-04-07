@@ -17,6 +17,16 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
         tilemapVisualiser.Clear();
         tilemapVisualiser.PaintFloorTiles(floorPositions);
         WallGenerator.CreateWalls(floorPositions, tilemapVisualiser);
+        PlaceSpawnPoint(new Vector2(0, 0));
+
+    }
+
+    protected override void PlaceSpawnPoint(Vector2 position)
+    {
+        GameObject prefab = GameManager.instance.prefabList.Find(x => x.name == "SpawnPoint");
+        GameObject spawnpoint = Instantiate(prefab, position, Quaternion.identity);
+
+        spawnpoint.name = "SpawnPoint"; // Rename from 'prefabname(clone)' back to default
 
     }
 

@@ -16,4 +16,7 @@ public abstract class AbstractDungeonGenerator : MonoBehaviour
     }
 
     protected abstract void RunProceduralGeneration();
+
+    protected abstract void PlaceSpawnPoint(Vector2 position);
+
 }
