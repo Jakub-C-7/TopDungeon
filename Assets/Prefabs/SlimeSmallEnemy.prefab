@@ -247,7 +247,7 @@ MonoBehaviour:
   boxCollider: {fileID: 1810309401712669232}
   ySpeed: 0.5
   xSpeed: 1
-  animator: {fileID: 0}
+  animator: {fileID: 1810309401712669235}
   handsAnimator: {fileID: 0}
   canMove: 0
   staggered: 0
@@ -273,14 +273,6 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   explosionParticleSystem: {fileID: 0}
-  attackCooldown: 0
-  lastAttack: 0
-  projectile: {fileID: 0}
-  damageAmount: 0
-  pushForce: 0
-  range: 0
-  round: 0
-  maxround: 0
   numOfSplits: 0
 --- !u!1 &1810309402357741808
 GameObject:
