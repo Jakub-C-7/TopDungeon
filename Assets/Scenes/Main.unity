@@ -46722,6 +46722,7 @@ MonoBehaviour:
   sceneNames:
   - ProceduralScene1
   portalAnimator: {fileID: 1369550324}
+  abstractDungeonGenerator: {fileID: 0}
 --- !u!1 &1390054465
 GameObject:
   m_ObjectHideFlags: 0

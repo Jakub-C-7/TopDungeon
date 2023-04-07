@@ -48,11 +48,12 @@ public class GameManager : MonoBehaviour
     public GameObject inventoryMenu;
     public List<GameObject> prefabList;
 
-    public Dictionary<StatusEffectEnum, IStatusState>StatusTypeResolver = new Dictionary<StatusEffectEnum, IStatusState>{
-            [StatusEffectEnum.Burning] = new StatusBurningState(),
-            [StatusEffectEnum.None] = null,
-            [StatusEffectEnum.Poison] = null
-        };
+    public Dictionary<StatusEffectEnum, IStatusState> StatusTypeResolver = new Dictionary<StatusEffectEnum, IStatusState>
+    {
+        [StatusEffectEnum.Burning] = new StatusBurningState(),
+        [StatusEffectEnum.None] = null,
+        [StatusEffectEnum.Poison] = null
+    };
 
 
     //Logic
@@ -392,7 +393,19 @@ public class GameManager : MonoBehaviour
     // On Scene Loaded
     public void OnSceneLoaded(Scene s, LoadSceneMode mode)
     {
-        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+        if (s.name == "ProceduralScene1") // If entering a procedural dungeon, run generation
+        {
+            var randomWalkGen = GameObject.Find("SimpleRandomWalkGenerator").GetComponent<SimpleRandomWalkDungeonGenerator>();
+            var roomsFirst = GameObject.Find("RoomsFirstDungeonGenerator").GetComponent<RoomsFirstDungeonGenerator>();
+            var corridorFirst = GameObject.Find("CorridorFirstDungeonGenerator").GetComponent<CorridorFirstDungeonGenerator>();
+
+
+            // randomWalkGen.GenerateDungeon();
+            roomsFirst.GenerateDungeon();
+            // corridorFirst.GenerateDungeon();
+        }
+
+        // player.transform.position = GameObject.Find("SpawnPoint").transform.position;
         player.canMove = true;
 
     }
