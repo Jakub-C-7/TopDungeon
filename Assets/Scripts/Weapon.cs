@@ -17,11 +17,14 @@ public class Weapon : Collidable
     public float cooldown = 0.5f;
     protected float lastAttack;
 
+    private Dictionary<int, float> lastHitEnemyDict;
+
     protected override void Start()
     {
         base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        lastHitEnemyDict = new Dictionary<int, float>();
 
     }
 
@@ -30,6 +33,18 @@ public class Weapon : Collidable
         base.Update();
 
         AttackController();
+
+        //Find enemies that's cooldown period has run out
+        List<int> candidatesForRemoval = new List<int>();
+        foreach (var (enemyID, timeOfLastHit) in lastHitEnemyDict){
+            if(Time.time > (timeOfLastHit + cooldown)){
+                candidatesForRemoval.Add(enemyID);
+            }        
+        }
+        // Remove all enemies that's cooldown periods have run out
+        foreach(int candidate in candidatesForRemoval){
+            lastHitEnemyDict.Remove(candidate);
+        }
     }
 
     // Do damage to enemies with the sword
@@ -40,6 +55,13 @@ public class Weapon : Collidable
             if (coll.name == "Player")
             {
                 return;
+            }
+            //Check if currently in cooldown period, otherwise add new entry to cooldown
+            int collId = coll.GetInstanceID();
+            if(lastHitEnemyDict.ContainsKey(collId)){
+                return;
+            }else{
+                lastHitEnemyDict[collId] = Time.time;
             }
             //Create new damage object, send it to the fighter that we've hit
             Damage damage = new Damage
