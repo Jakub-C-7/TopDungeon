@@ -76,6 +76,8 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     {
         HashSet<Vector2> roomPositions = new HashSet<Vector2>();
 
+        bool spawnPlaced = false;
+
         // Calculate the number of rooms we want to create
         int roomToCreateCount = Mathf.RoundToInt(potentialRoomPositions.Count * roomPercent);
 
@@ -84,6 +86,12 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
         foreach (var roomPosition in roomsToCreate)
         {
+            if (spawnPlaced == false)
+            {
+                PlaceSpawnPoint(new Vector2(roomPosition.x, roomPosition.y));
+                spawnPlaced = true;
+            }
+
             var roomFloor = RunRandomWalk(randomWalkParameters, roomPosition);
             roomPositions.UnionWith(roomFloor);
         }

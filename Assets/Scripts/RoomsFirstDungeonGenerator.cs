@@ -151,8 +151,16 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     {
         HashSet<Vector2> floor = new HashSet<Vector2>();
 
+        bool spawnPlaced = false;
+
         foreach (var room in roomList)
         {
+            if (spawnPlaced == false)
+            {
+                PlaceSpawnPoint(new Vector2(room.center.x, room.center.y));
+                spawnPlaced = true;
+            }
+
             for (float column = offset; column < room.size.x - offset; column += 0.16f)
             {
                 for (float row = offset; row < room.size.y - offset; row += 0.16f)
@@ -171,11 +179,18 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private HashSet<Vector2> CreateRandomSimpleWalkRooms(List<Bounds> roomList)
     {
         HashSet<Vector2> floor = new HashSet<Vector2>();
+        bool spawnPlaced = false;
 
         for (int i = 0; i < roomList.Count; i++)
         {
             var roomBounds = roomList[i];
             var roomCenter = new Vector2(roomBounds.center.x, roomBounds.center.y);
+
+            if (spawnPlaced == false)
+            {
+                PlaceSpawnPoint(roomCenter);
+                spawnPlaced = true;
+            }
 
             var roomFloor = RunRandomWalk(randomWalkParameters, roomCenter);
 

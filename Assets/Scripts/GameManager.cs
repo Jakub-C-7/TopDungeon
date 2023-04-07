@@ -405,7 +405,7 @@ public class GameManager : MonoBehaviour
             // corridorFirst.GenerateDungeon();
         }
 
-        // player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
         player.canMove = true;
 
     }
