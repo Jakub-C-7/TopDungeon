@@ -6,25 +6,30 @@ public class SlimeSmallEnemy : Enemy, ISplitEnemy
 {
     public int numOfSplits;
     GameObject clonePrefab;
-    SlimeSmallEnemy(int numOfSplits){
+    SlimeSmallEnemy(int numOfSplits)
+    {
         this.numOfSplits = numOfSplits;
     }
 
     protected override void Start()
     {
-        
+
         base.Start();
         clonePrefab = GameManager.instance.prefabList.Find(x => x.name.Equals("SlimeSmallEnemy"));
-          
-        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>{
+
+        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>
+        {
             [EnemyStatePhases.Idle] = new IdleState(),
+            [EnemyStatePhases.Retreating] = new RetreatingState(),
             [EnemyStatePhases.Pathing] = new ChaseState()
-       };
-       
+        };
+
     }
 
-    protected override void Execute(){
-        if(hitPoints <= maxHitpoints/2 && numOfSplits > 0){
+    protected override void Execute()
+    {
+        if (hitPoints <= maxHitpoints / 2 && numOfSplits > 0)
+        {
             // GameObject duplicateInstance = GameObject.Instantiate(creaturePrefab, transform.position, Quaternion.identity); 
             // SlimeSmallEnemy duplicateComponent = duplicateInstance.GetComponent<SlimeSmallEnemy>();
             // duplicateComponent.startingPosition = this.startingPosition + new Vector3 (0.32f, 0,0); 
@@ -33,7 +38,7 @@ public class SlimeSmallEnemy : Enemy, ISplitEnemy
             // Debug.Log("I have split");
             stateMachine.ChangeState(new SplitEnemyState());
         }
-        stateMachine.Update(); 
+        stateMachine.Update();
     }
 
     public int GetNumberOfSplits()

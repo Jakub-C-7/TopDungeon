@@ -19,7 +19,8 @@ public class IceSmallEnemy : Enemy, IProjectileEnemy
 
     public Damage GetProjectileDamageObject()
     {
-        return new Damage{
+        return new Damage
+        {
             origin = transform.position,
             damageAmount = damageAmount,
             pushForce = pushForce
@@ -40,7 +41,7 @@ public class IceSmallEnemy : Enemy, IProjectileEnemy
     {
         lastAttack = time;
     }
-     public float GetAttackCooldown()
+    public float GetAttackCooldown()
     {
         return attackCooldown;
     }
@@ -51,15 +52,17 @@ public class IceSmallEnemy : Enemy, IProjectileEnemy
     {
         base.Start();
         projectile = GameManager.instance.prefabList.Find(x => x.name.Equals("ice_shard"));
-        lastAttack = Time.time - attackCooldown;      
-        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>{
+        lastAttack = Time.time - attackCooldown;
+        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>
+        {
             [EnemyStatePhases.Idle] = new IdleState(),
             [EnemyStatePhases.Pathing] = new MaintainDistanceState(),
+            [EnemyStatePhases.Retreating] = new RetreatingState(),
             [EnemyStatePhases.Fighting] = new LaunchProjectileState()
         };
     }
 
-   
+
     //  new protected void FixedUpdate(){
     //      stateMachine.Update();        
     // }
