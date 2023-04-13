@@ -186,8 +186,8 @@ public class RoomDataExtractor : MonoBehaviour
 
         }
 
-        //OnFinishedRoomProcessing?.Invoke();
-        Invoke("RunEvent", 1);
+        OnFinishedRoomProcessing?.Invoke();
+        // Invoke("RunEvent", 1);
     }
 
     public void RunEvent()

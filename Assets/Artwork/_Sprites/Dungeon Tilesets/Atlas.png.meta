@@ -642,34 +642,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crate_03
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 144
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 969552b3c3b9edd4f98bca0c50f4df32
-      internalID: 2105240903
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crate_04
+      name: stacked_crate_0
       rect:
         serializedVersion: 2
         x: 96
         y: 128
         width: 16
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -684,55 +663,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pillar_01
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 192
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 62987943ce369434ea1e14b7e8a6f758
-      internalID: -891693142
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pillar_02
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ccb560e34f8b1d4592c78da7b24ef5b
-      internalID: -1965745100
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pillar_03
+      name: pillar_red_0
       rect:
         serializedVersion: 2
         x: 96
         y: 160
         width: 16
-        height: 16
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6351,7 +6288,6 @@ TextureImporter:
       crate_01: -977540162
       crate_02: 182000583
       crate_03: 2105240903
-      crate_04: -1641229142
       door_01_1: 72498609
       door_01_2: 1596345267
       door_01_3: -1081834451
@@ -6380,7 +6316,7 @@ TextureImporter:
       npc_4: -890395621
       pillar_01: -891693142
       pillar_02: -1965745100
-      pillar_03: -2138943621
+      pillar_red_0: -2138943621
       side_wall_left_0: -1594462313
       side_wall_left_01: -702569143
       side_wall_left_02: -2005127792
@@ -6392,6 +6328,7 @@ TextureImporter:
       side_wall_top_0: -631191577
       side_wall_top_01: 273483182
       skull_0: -1768584451
+      stacked_crate_0: -1641229142
       stairs_01: -561385277
       stairs_02: 671149502
       stairs_03: -1544773644
