@@ -9,21 +9,26 @@ public class EnemyStateMachine
 
     public Dictionary<EnemyStatePhases, IEnemyState> stateMapper;
 
-    public EnemyStateMachine(Enemy enemy){
+    public EnemyStateMachine(Enemy enemy)
+    {
         this.enemy = enemy;
     }
 
-    public void ChangeState(IEnemyState newState){
-        if(currentState !=null){
-            currentState.Exit();
+    public void ChangeState(IEnemyState newState)
+    {
+        if (currentState != null)
+        {
+            currentState.Exit(this, enemy);
         }
 
         currentState = newState;
         currentState.Enter(this, enemy);
     }
 
-    public void Update(){
-        if (currentState != null){
+    public void Update()
+    {
+        if (currentState != null)
+        {
             currentState.Execute(this, enemy);
         }
     }

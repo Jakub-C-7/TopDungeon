@@ -9,6 +9,6 @@ public interface IEnemyState
 
     public void Enter(EnemyStateMachine stateMachine, Enemy enemy);
     public void Execute(EnemyStateMachine stateMachine, Enemy enemy);
-    public void Exit();
+    public void Exit(EnemyStateMachine stateMachine, Enemy enemy);
 
 }

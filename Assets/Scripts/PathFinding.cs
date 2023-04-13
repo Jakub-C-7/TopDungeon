@@ -52,7 +52,7 @@ public class PathFinding
                     closedList.Add(neighbourNode);
                     continue;
                 }
-                //Debug.Log(neighbourNode.x + " : " + neighbourNode.y);
+
 
                 int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
                 if (tentativeGCost < neighbourNode.gCost)
@@ -70,8 +70,6 @@ public class PathFinding
 
             }
         }
-        Debug.Log("no path");
-
         return null;
 
 
@@ -84,7 +82,13 @@ public class PathFinding
 
 
         neighbourList.Add(CheckAndReturnNode((Mathf.RoundToInt(currentNode.x * 100) + 16) / 100f, currentNode.y));
+        neighbourList.Add(CheckAndReturnNode((Mathf.RoundToInt(currentNode.x * 100) + 16) / 100f, (Mathf.RoundToInt(currentNode.y * 100) - 16) / 100f));
+        neighbourList.Add(CheckAndReturnNode((Mathf.RoundToInt(currentNode.x * 100) + 16) / 100f, (Mathf.RoundToInt(currentNode.y * 100) + 16) / 100f));
+
+        neighbourList.Add(CheckAndReturnNode((Mathf.RoundToInt(currentNode.x * 100) - 16) / 100f, (Mathf.RoundToInt(currentNode.y * 100) - 16) / 100f));
+        neighbourList.Add(CheckAndReturnNode((Mathf.RoundToInt(currentNode.x * 100) - 16) / 100f, (Mathf.RoundToInt(currentNode.y * 100) + 16) / 100f));
         neighbourList.Add(CheckAndReturnNode((Mathf.RoundToInt(currentNode.x * 100) - 16) / 100f, currentNode.y));
+
         neighbourList.Add(CheckAndReturnNode(currentNode.x, (Mathf.RoundToInt(currentNode.y * 100) - 16) / 100f));
         neighbourList.Add(CheckAndReturnNode(currentNode.x, (Mathf.RoundToInt(currentNode.y * 100) + 16) / 100f));
 

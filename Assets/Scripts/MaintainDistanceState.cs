@@ -35,7 +35,7 @@ public class MaintainDistanceState : IEnemyState
         }
     }
 
-    public void Exit()
+    public void Exit(EnemyStateMachine stateMachine, Enemy enemy)
     {
         //throw new System.NotImplementedException();
     }

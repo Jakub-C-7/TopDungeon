@@ -12,12 +12,17 @@ public class ExplodingState : IEnemyState
 
     public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
     {
-        if(enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("exploded") ){
-            if(!exploded){
-                enemy.explosionParticleSystem.Play(); 
+        if (enemy.animator.GetCurrentAnimatorStateInfo(0).IsName("exploded"))
+        {
+            if (!exploded)
+            {
+                enemy.explosionParticleSystem.Play();
                 exploded = true;
-            }else{
-                if(!enemy.explosionParticleSystem){
+            }
+            else
+            {
+                if (!enemy.explosionParticleSystem)
+                {
                     GameManager.Destroy(enemy.gameObject);
                 }
             }
@@ -26,9 +31,9 @@ public class ExplodingState : IEnemyState
 
     }
 
-    public void Exit()
+    public void Exit(EnemyStateMachine stateMachine, Enemy enemy)
     {
     }
 
-    
+
 }

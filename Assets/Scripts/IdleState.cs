@@ -8,7 +8,10 @@ public class IdleState : IEnemyState
     {
         enemy.healthBar.SetActive(false);
         playerTransform = GameObject.Find("Player").transform;
-
+        if (enemy.animator)
+        {
+            enemy.animator.SetFloat("Speed", 0f);
+        }
     }
 
     public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
@@ -26,7 +29,7 @@ public class IdleState : IEnemyState
 
     }
 
-    public void Exit()
+    public void Exit(EnemyStateMachine stateMachine, Enemy enemy)
     {
     }
 
