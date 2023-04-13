@@ -40,9 +40,9 @@ public class PatrolState : IEnemyState
 
     public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
     {
-        if (Vector3.Distance(playerTransform.position, enemy.startingPosition) < enemy.chaseLength)
+        if (Vector3.Distance(playerTransform.position, enemy.transform.position) < enemy.chaseLength)
         {
-            if (Vector3.Distance(playerTransform.position, enemy.startingPosition) < enemy.triggerLength)
+            if (Vector3.Distance(playerTransform.position, enemy.transform.position) < enemy.triggerLength)
             {
                 stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Pathing]);
 
@@ -103,7 +103,7 @@ public class PatrolState : IEnemyState
                 }
             }
         }
-        enemy.UpdateMotor(new Vector3(patrolWayPoints[nextPatrolIndex].x, patrolWayPoints[nextPatrolIndex].y, 0) - enemy.transform.position);
+        enemy.UpdateMotor((new Vector3(patrolWayPoints[nextPatrolIndex].x, patrolWayPoints[nextPatrolIndex].y, 0) - enemy.transform.position).normalized);
 
 
 
