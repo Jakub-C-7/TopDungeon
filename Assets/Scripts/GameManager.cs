@@ -400,8 +400,8 @@ public class GameManager : MonoBehaviour
             var corridorFirst = GameObject.Find("CorridorFirstDungeonGenerator").GetComponent<CorridorFirstDungeonGenerator>();
 
 
-            // randomWalkGen.GenerateDungeon();
-            roomsFirst.GenerateDungeon();
+            randomWalkGen.GenerateDungeon();
+            // roomsFirst.GenerateDungeon();
             // corridorFirst.GenerateDungeon();
         }
 

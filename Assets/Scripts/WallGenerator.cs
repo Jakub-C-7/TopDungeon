@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class WallGenerator
 {
-    public static void CreateWalls(HashSet<Vector2> floorPositions, TilemapVisualiser tilemapVisualiser)
+    public static HashSet<Vector2> CreateWalls(HashSet<Vector2> floorPositions, TilemapVisualiser tilemapVisualiser)
     {
         var initialWallPositions = FindWallsInDirections(floorPositions, Direction2D.eightDirectionsList);
 
@@ -19,18 +19,37 @@ public static class WallGenerator
 
         }
 
+        HashSet<Vector2> capturedFloorPositions = new();
+        capturedFloorPositions.UnionWith(floorPositions);
+
         tilemapVisualiser.wallTilemap.ClearAllTiles(); // Clear the entire wall tilemap
 
-        // Find positions of new, cleaned rooms
-        // var newWallPositions = FindWallsInDirectionThin(floorPositions, Direction2D.eightDirectionsList);
+        var newWallPositions = FindWallsInDirections(floorPositions, Direction2D.eightDirectionsList);
+
+        foreach (var position in newWallPositions)
+        {
+            tilemapVisualiser.PaintSingleBasicWallToWall(position);
+            tilemapVisualiser.PaintSingleBasicWallToFloor(position); // add to floor tilemap
+            floorPositions.Add(position); // add to floor pos list
+
+        }
+
+        return capturedFloorPositions;
+
+    }
+
+    public static void GenerateDungeonCollider(HashSet<Vector2> floorPositions, TilemapVisualiser tilemapVisualiser)
+    {
+        tilemapVisualiser.wallTilemap.ClearAllTiles(); // Clear the entire wall tilemap
+
+        var initialWallPositions = FindWallsInDirectionThin(floorPositions, Direction2D.eightDirectionsList);
 
         // Paint new wall positions to the wall tilemap
-        foreach (var position in floorPositions)
+        foreach (var position in initialWallPositions)
         {
             tilemapVisualiser.PaintSingleBasicWallToWall(position);
 
         }
-
     }
 
     public static HashSet<Vector2> FindWallsInDirections(HashSet<Vector2> floorPositions, List<Vector2> directionList)
@@ -47,6 +66,25 @@ public static class WallGenerator
                 if (floorPositions.Contains(neighbourPosition) == false)
                 {
                     wallPositions.Add(neighbourPosition);
+                }
+            }
+        }
+        return wallPositions;
+    }
+
+    public static HashSet<Vector2> FindWallsInDirectionThin(HashSet<Vector2> floorPositions, List<Vector2> directionList)
+    {
+        HashSet<Vector2> wallPositions = new HashSet<Vector2>();
+
+        foreach (var position in floorPositions)
+        {
+            foreach (var direction in directionList)
+            {
+                var neighbourPosition = position + direction;
+
+                if (floorPositions.Contains(neighbourPosition) == false)
+                {
+                    wallPositions.Add(position);
                 }
             }
         }
