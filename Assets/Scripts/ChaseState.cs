@@ -33,26 +33,27 @@ public class ChaseState : IEnemyState
             }
 
             //Cleaning up the array
-        hits[i] = null;
+            hits[i] = null;
 
         }
-       // enemy.distanceToPlayer = Vector3.Distance(playerTransform.position, enemy.startingPosition);
+        // enemy.distanceToPlayer = Vector3.Distance(playerTransform.position, enemy.startingPosition);
 
-         
-        
-        if(!enemy.collidingWithPlayer){
+
+
+        if (!enemy.collidingWithPlayer)
+        {
             enemy.UpdateMotor((playerTransform.position - enemy.transform.position).normalized); // Run towards the player
         }
-    
+
         if (Vector3.Distance(playerTransform.position, enemy.startingPosition) > enemy.chaseLength)
         {
-               stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Idle]);      
+            stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Retreating]);
         }
-        
+
     }
 
     public void Exit()
     {
-        
+
     }
 }

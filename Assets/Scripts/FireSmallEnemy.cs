@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FireSmallEnemy : Enemy, IWaveProjectileEnemy
-{    
+{
     Transform playerTransform;
     public float attackCooldown = 1.5f;
     public float lastAttack;
@@ -23,7 +23,8 @@ public class FireSmallEnemy : Enemy, IWaveProjectileEnemy
 
     public Damage GetProjectileDamageObject()
     {
-        return new Damage{
+        return new Damage
+        {
             origin = transform.position,
             damageAmount = damageAmount,
             pushForce = pushForce
@@ -57,7 +58,7 @@ public class FireSmallEnemy : Enemy, IWaveProjectileEnemy
     public void SetRound(int round)
     {
         this.round = round;
-        
+
     }
 
     public int GetMaxRound()
@@ -67,20 +68,22 @@ public class FireSmallEnemy : Enemy, IWaveProjectileEnemy
 
     protected override void Start()
     {
-        
+
         base.Start();
         lastAttack = Time.time - attackCooldown;
         projectile = GameManager.instance.prefabList.Find(x => x.name.Equals("flame_projectile"));
         lastAttack = Time.time - attackCooldown;
         playerTransform = GameObject.Find("Player").transform;
-    
-      
-        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>{
+
+
+        stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>
+        {
             [EnemyStatePhases.Idle] = new IdleState(),
+            [EnemyStatePhases.Retreating] = new RetreatingState(),
             [EnemyStatePhases.Pathing] = new MaintainDistanceState(),
             [EnemyStatePhases.Fighting] = new LaunchWaveProjectileState()
         };
     }
 
-    
+
 }

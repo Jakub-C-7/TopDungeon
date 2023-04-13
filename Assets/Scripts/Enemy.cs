@@ -23,7 +23,7 @@ public class Enemy : Mover
     public ContactFilter2D filter;
 
     private BoxCollider2D hitBox;
-   // public Collider2D[] hits = new Collider2D[10];
+    // public Collider2D[] hits = new Collider2D[10];
 
     protected EnemyStateMachine stateMachine;
 
@@ -45,6 +45,7 @@ public class Enemy : Mover
         stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>
         {
             [EnemyStatePhases.Idle] = new IdleState(),
+            [EnemyStatePhases.Retreating] = new RetreatingState(),
             [EnemyStatePhases.Pathing] = new ChaseState()
         };
         stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Idle]);
@@ -122,8 +123,9 @@ public class Enemy : Mover
         }
     }
 
-    protected virtual void Execute(){
-       stateMachine.Update(); 
+    protected virtual void Execute()
+    {
+        stateMachine.Update();
     }
 
 

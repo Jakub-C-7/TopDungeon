@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class IdleState : IEnemyState
+
+public class RetreatingState : IEnemyState
+
 {
     Transform playerTransform;
     public void Enter(EnemyStateMachine stateMachine, Enemy enemy)
     {
-        enemy.healthBar.SetActive(false);
         playerTransform = GameObject.Find("Player").transform;
-
+        enemy.healthBar.SetActive(false);
     }
 
     public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
@@ -20,8 +21,27 @@ public class IdleState : IEnemyState
                 stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Pathing]);
 
             }
+            else
+            {
+                enemy.UpdateMotor(enemy.startingPosition - enemy.transform.position);
+            }
 
         }
+        else // The player is out of range
+        {
+            enemy.UpdateMotor(enemy.startingPosition - enemy.transform.position);
+
+
+        }
+
+        if (enemy.transform.position.x > enemy.startingPosition.x - 0.01f && enemy.transform.position.x < enemy.startingPosition.x + 0.01f)
+        {
+            if (enemy.transform.position.y > enemy.startingPosition.y - 0.01f && enemy.transform.position.y < enemy.startingPosition.y + 0.01f)
+            {
+                stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Idle]);
+            }
+        }
+
         //Check for overlaps
 
     }
@@ -31,6 +51,4 @@ public class IdleState : IEnemyState
     }
 
     // Start is called before the first frame update
-
-
 }
