@@ -260,11 +260,14 @@ public class PropPlacementManager : MonoBehaviour
     private void PlaceCornerProps(Room room, List<Prop> cornerProps)
     {
         float tempChance = cornerPropPlacementChance;
+        float originalChance = cornerPropPlacementChance;
 
         foreach (Vector2 cornerTile in room.CornerTiles)
         {
             if (UnityEngine.Random.value < tempChance)
             {
+                tempChance = originalChance; // Reset the chance
+
                 Prop propToPlace
                     = cornerProps[UnityEngine.Random.Range(0, cornerProps.Count)];
 

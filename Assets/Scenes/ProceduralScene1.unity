@@ -5563,7 +5563,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b40ceb1ad108f994c9ee3985a8e097bb, type: 2}
   - {fileID: 11400000, guid: b81e491e108d8a742b89084824804432, type: 2}
   - {fileID: 11400000, guid: 0446df682ae6f7146a6171ddb4abd284, type: 2}
-  cornerPropPlacementChance: 0.33
+  cornerPropPlacementChance: 0.14
   propPrefab: {fileID: 1093790968484300432, guid: a7761abf4f12e7445be4b6e826f92d72, type: 3}
   OnFinished:
     m_PersistentCalls:
