@@ -15,9 +15,11 @@ public class BatSmallEnemy : Enemy, IPatrolEnemy
 
         base.Start();
         patrolPoints = new List<Vector3>();
-        patrolPoints.Add(new Vector3(startingPosition.x - 0.2f, startingPosition.y, 0f));
-        patrolPoints.Add(new Vector3(startingPosition.x + 0.2f, startingPosition.y, 0f));
-        patrolPoints.Add(new Vector3(startingPosition.x, startingPosition.y + 0.1f, 0f));
+        patrolPoints.Add(new Vector3(startingPosition.x, startingPosition.y, 0f));
+        patrolPoints.Add(new Vector3(1.2f, startingPosition.y, 0f));
+
+        // patrolPoints.Add(new Vector3(startingPosition.x + 0.2f, startingPosition.y, 0f));
+        patrolPoints.Add(new Vector3(-0.30f, 0.662f, 0f));
 
 
         stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>

@@ -57,7 +57,7 @@ public class LaunchWaveProjectileState : IEnemyState
         }
     }
 
-    public void Exit()
+    public void Exit(EnemyStateMachine stateMachine, Enemy enemy)
     {
     }
 

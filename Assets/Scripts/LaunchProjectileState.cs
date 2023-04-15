@@ -11,21 +11,24 @@ public class LaunchProjectileState : IEnemyState
         projectileEnemy = enemy as IProjectileEnemy;
         playerTransform = GameObject.Find("Player").transform;
         enemy.healthBar.SetActive(true);
-        if (projectileEnemy == null){
+        if (projectileEnemy == null)
+        {
             throw new System.Exception("Enemy assigned LaunchProjectileState does not implement IProjectileEnemy");
         }
     }
 
     public void Execute(EnemyStateMachine stateMachine, Enemy enemy)
     {
-       if (projectileEnemy != null){
-        if(Time.time - projectileEnemy.GetLastAttack() > projectileEnemy.GetAttackCooldown()){
-               projectileEnemy.SetLastAttack(Time.time);
-            // GameObject projectileInstance = Instantiate(projectile, transform.position, Quaternion.identity);
+        if (projectileEnemy != null)
+        {
+            if (Time.time - projectileEnemy.GetLastAttack() > projectileEnemy.GetAttackCooldown())
+            {
+                projectileEnemy.SetLastAttack(Time.time);
+                // GameObject projectileInstance = Instantiate(projectile, transform.position, Quaternion.identity);
                 GameObject projectileInstance = GameObject.Instantiate(projectileEnemy.GetProjectilePreFab(), enemy.transform.position, Quaternion.identity) as GameObject;
-            // Projectile projectileComponent =  projectileInstance.AddComponent<Projectile>();
+                // Projectile projectileComponent =  projectileInstance.AddComponent<Projectile>();
                 Projectile projectileComponent = projectileInstance.GetComponent<Projectile>();
-            //  projectileComponent.transform.position = enemy.transform.position;
+                //  projectileComponent.transform.position = enemy.transform.position;
                 Damage dmg = projectileEnemy.GetProjectileDamageObject();
                 projectileComponent.SetProjectileStats(dmg.damageAmount, dmg.pushForce, enemy.transform.name, "Player");
                 projectileComponent.statusState = GameManager.instance.StatusTypeResolver[projectileComponent.statusEffect];
@@ -35,15 +38,15 @@ public class LaunchProjectileState : IEnemyState
                 GameObject.Destroy(projectileInstance, projectileEnemy.GetRange());
 
             }
-       
-        stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Pathing]);
-       }
-        
+
+            stateMachine.ChangeState(stateMachine.stateMapper[EnemyStatePhases.Pathing]);
+        }
+
     }
 
-    public void Exit()
+    public void Exit(EnemyStateMachine stateMachine, Enemy enemy)
     {
     }
 
-  
+
 }
