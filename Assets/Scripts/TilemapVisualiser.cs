@@ -56,6 +56,8 @@ public class TilemapVisualiser : MonoBehaviour
         {
             var spawnPoint = GameObject.Find("SpawnPoint");
             Destroy(spawnPoint);
+            // DestroyImmediate(spawnPoint);
+
         }
     }
 

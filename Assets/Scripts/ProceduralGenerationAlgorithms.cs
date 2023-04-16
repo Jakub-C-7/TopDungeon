@@ -14,8 +14,8 @@ public static class ProceduralGenerationAlgorithms
 
         for (int i = 0; i < walkLength; i++)
         {
-            // var newPosition = ((previousPosition * 100) + (Direction2D.GetRandomCardinalDirection() * 100)) / 100;
-            var newPosition = previousPosition + Direction2D.GetRandomCardinalDirection();
+            var cardDir = Direction2D.GetRandomCardinalDirection();
+            var newPosition = new Vector2((Mathf.RoundToInt(previousPosition.x * 100) + Mathf.RoundToInt(cardDir.x * 100)) / 100f, (Mathf.RoundToInt(previousPosition.y * 100) + Mathf.RoundToInt(cardDir.y * 100)) / 100f);
 
             path.Add(newPosition);
             previousPosition = newPosition;
@@ -32,7 +32,8 @@ public static class ProceduralGenerationAlgorithms
 
         for (int i = 0; i < corridorLength; i++)
         {
-            currentPosition += direction;
+            currentPosition = new Vector2((Mathf.RoundToInt(currentPosition.x * 100) + Mathf.RoundToInt(direction.x * 100)) / 100f, (Mathf.RoundToInt(currentPosition.y * 100) + Mathf.RoundToInt(direction.y * 100)) / 100f);
+
             corridor.Add(currentPosition);
         }
         return corridor;
@@ -97,16 +98,18 @@ public static class ProceduralGenerationAlgorithms
         return roomsList;
     }
 
+    public static Vector3 CalculateDivisibleBy(Vector3 makeDivisible, float divisibleBy)
+    {
+        return new Vector3(Mathf.RoundToInt(makeDivisible.x / divisibleBy) * divisibleBy, Mathf.RoundToInt(makeDivisible.y / divisibleBy) * divisibleBy, 0);
+    }
+
     private static void SplitVertically(float minWidth, Queue<Bounds> roomsQueue, Bounds room)
     {
         var xSplit = Random.Range(0.16f, room.size.x);
 
-        // Bounds room1 = new Bounds(room.min, new Vector3(xSplit, room.size.y, room.size.z));
-        // Bounds room2 = new Bounds(new Vector3(room.min.x + xSplit, room.min.y, room.min.z), new Vector3(room.size.x - xSplit, room.size.y, room.size.z));
-
         // Bounds adapted to find the center as the first parameter instead of position in BoundsInt
-        Bounds room1 = new Bounds(new Vector3(room.min.x + (xSplit / 2), room.min.y + room.size.y / 2, 0), new Vector3(xSplit, room.size.y, room.size.z));
-        Bounds room2 = new Bounds(new Vector3(room.min.x + xSplit + (room.size.x - xSplit) / 2, room.min.y + room.size.y / 2, 0), new Vector3(room.size.x - xSplit, room.size.y, room.size.z));
+        Bounds room1 = new Bounds(CalculateDivisibleBy(new Vector3(room.min.x + (xSplit / 2), room.min.y + room.size.y / 2, 0), 0.16f), new Vector3(xSplit, room.size.y, room.size.z));
+        Bounds room2 = new Bounds(CalculateDivisibleBy(new Vector3(room.min.x + xSplit + (room.size.x - xSplit) / 2, room.min.y + room.size.y / 2, 0), 0.16f), new Vector3(room.size.x - xSplit, room.size.y, room.size.z));
 
         roomsQueue.Enqueue(room1);
         roomsQueue.Enqueue(room2);
@@ -116,12 +119,10 @@ public static class ProceduralGenerationAlgorithms
     private static void SplitHorizontally(float minHeight, Queue<Bounds> roomsQueue, Bounds room)
     {
         var ySplit = Random.Range(0.16f, room.size.y); // (minHeight, room.size.y - minheight) - for a grid like structure
-        //Bounds room1 = new Bounds(room.min, new Vector3(room.size.x, ySplit, room.size.z));
-        //Bounds room2 = new Bounds(new Vector3(room.min.x, room.min.y + ySplit, room.min.z), new Vector3(room.size.x, room.size.y - ySplit, room.size.z));
 
         // Bounds adapted to find the center as the first parameter instead of position in BoundsInt
-        Bounds room1 = new Bounds(new Vector3(room.min.x + (room.size.x / 2), room.min.y + ySplit / 2, 0), new Vector3(room.size.x, ySplit, room.size.z));
-        Bounds room2 = new Bounds(new Vector3(room.min.x + room.size.x / 2, room.min.y + ySplit + (room.size.y - ySplit) / 2, room.min.z), new Vector3(room.size.x, room.size.y - ySplit, room.size.z));
+        Bounds room1 = new Bounds(CalculateDivisibleBy(new Vector3(room.min.x + (room.size.x / 2), room.min.y + ySplit / 2, 0), 0.16f), new Vector3(room.size.x, ySplit, room.size.z));
+        Bounds room2 = new Bounds(CalculateDivisibleBy(new Vector3(room.min.x + room.size.x / 2, room.min.y + ySplit + (room.size.y - ySplit) / 2, room.min.z), 0.16f), new Vector3(room.size.x, room.size.y - ySplit, room.size.z));
 
         roomsQueue.Enqueue(room1);
         roomsQueue.Enqueue(room2);

@@ -2079,27 +2079,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_2_112
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 416
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e64844353fb00b5468356c2e8a43350d
-      internalID: -907520301
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Atlas_2_113
       rect:
         serializedVersion: 2
@@ -2646,27 +2625,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_2_139
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 400
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c7b4c1f4237be54ab89323af7e86ed3
-      internalID: 1152290314
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Atlas_2_140
       rect:
         serializedVersion: 2
@@ -3024,13 +2982,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_2_158
+      name: pillar_grey_0
       rect:
         serializedVersion: 2
         x: 80
         y: 384
         width: 16
-        height: 16
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -10533,7 +10491,6 @@ TextureImporter:
       Atlas_2_155: -1460501155
       Atlas_2_156: -287029171
       Atlas_2_157: 119204963
-      Atlas_2_158: -1723600280
       Atlas_2_159: -501652461
       Atlas_2_16: -1184434702
       Atlas_2_160: 1988645482
@@ -10971,6 +10928,7 @@ TextureImporter:
       coins_01: 1846592446
       coins_02: -1507664203
       javelin_01: 1930590289
+      pillar_grey_0: -1723600280
       player_0: -2127929151
       player_02_1: 1745800685
       player_02_2: -869026427

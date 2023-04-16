@@ -15,12 +15,28 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private float offset = 0.16f; // Space between rooms
     [SerializeField]
     private bool randomWalkRooms = false;
+    private DungeonData dungeonData;
 
     protected override void RunProceduralGeneration()
     {
+        // Do routine reset and get of DungeonData
+        dungeonData = FindObjectOfType<DungeonData>();
+
+        if (dungeonData == null)
+        {
+            dungeonData = gameObject.AddComponent<DungeonData>();
+            return;
+        }
+
+        dungeonData.Reset();
+
+        // Get a random style for the dungeon
         tilemapVisualiser.SetRandomTileStyle(); // Get a random style for the dungeon
 
         CreateRooms();
+
+        OnFinishedRoomGeneration?.Invoke();
+
     }
 
     private void CreateRooms()
@@ -29,6 +45,15 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         var roomList = ProceduralGenerationAlgorithms.BinarySpacePartitioning(new Bounds(new Vector3(dungeonWidth / 2, dungeonHeight / 2, 0), new Vector3(dungeonWidth, dungeonHeight, 0)), minRoomWidth, minRoomHeight);
 
         HashSet<Vector2> floor = new HashSet<Vector2>();
+
+        // Get centers of all rooms
+        List<Vector2> roomCenters = new List<Vector2>();
+        foreach (var room in roomList)
+        {
+            // Scaling the center of the room to be divisible by standard tile size of 0.16
+            roomCenters.Add((Vector2)room.center);
+
+        }
 
         if (randomWalkRooms)
         {
@@ -40,27 +65,27 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
         }
 
-        // Get centers of all rooms
-        List<Vector2> roomCenters = new List<Vector2>();
-        foreach (var room in roomList)
-        {
-            // Scaling the center of the room to be divisible by standard tile size of 0.16
-            var divisibleCenter = new Vector2(Mathf.RoundToInt(room.center.x / 0.16f) * 0.16f, Mathf.RoundToInt(room.center.y / 0.16f) * 0.16f);
-            roomCenters.Add(divisibleCenter);
-
-            // roomCenters.Add((Vector2)room.center);
-
-        }
-
         //Connect rooms with corridors
         HashSet<Vector2> corridors = ConnectRooms(roomCenters);
+        dungeonData.Path.UnionWith(corridors);
         floor.UnionWith(corridors);
 
         //Paint floor tiles
         tilemapVisualiser.PaintFloorTiles(floor);
 
-        //Generate walls
-        WallGenerator.CreateWalls(floor, tilemapVisualiser);
+        //Generate walls ---
+
+        // Combine the floor and wall positions into floor
+        var wallPositions = WallGenerator.GenerateRoomColliders(dungeonData, tilemapVisualiser);
+
+        // Update floor positions with the old wall positions
+        floor.UnionWith(wallPositions);
+
+        // Generate walls again for the clean rooms - Thin
+        var cleanWallPositions = WallGenerator.GenerateCleanDungeonColliderThin(floor, tilemapVisualiser);
+
+        floor.ExceptWith(cleanWallPositions); // Floor except the single layer of wall around
+        dungeonData.DungeonFloor.UnionWith(floor);
 
     }
 
@@ -98,13 +123,13 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
             if (destination.y > position.y)
             {
-                position = new Vector2(position.x, ((position.y * 100 + 16f) / 100));
+                position = new Vector2(position.x, (Mathf.RoundToInt(position.y * 100) + 16) / 100f);
 
             }
             else if (destination.y < position.y)
             {
 
-                position = new Vector2(position.x, ((position.y * 100 + -16f) / 100));
+                position = new Vector2(position.x, (Mathf.RoundToInt(position.y * 100) + -16) / 100f);
 
             }
             corridor.Add(position);
@@ -115,12 +140,12 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
             if (destination.x > position.x)
             {
-                position = new Vector2((position.x * 100 + 16f) / 100, position.y);
+                position = new Vector2((Mathf.RoundToInt(position.x * 100) + 16) / 100f, position.y);
 
             }
             else if (destination.x < position.x)
             {
-                position = new Vector2((position.x * 100 + -16f) / 100, position.y);
+                position = new Vector2((Mathf.RoundToInt(position.x * 100) + -16) / 100f, position.y);
 
             }
             corridor.Add(position);
@@ -150,11 +175,13 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private HashSet<Vector2> CreateSimpleRooms(List<Bounds> roomList)
     {
         HashSet<Vector2> floor = new HashSet<Vector2>();
+        HashSet<Vector2> currentRoomFloor = new HashSet<Vector2>();
 
         bool spawnPlaced = false;
 
         foreach (var room in roomList)
         {
+            currentRoomFloor.Clear();
             if (spawnPlaced == false)
             {
                 PlaceSpawnPoint(new Vector2(room.center.x, room.center.y));
@@ -165,12 +192,14 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             {
                 for (float row = offset; row < room.size.y - offset; row += 0.16f)
                 {
-                    Vector2 position = (Vector2)room.min + new Vector2(column, row);
-                    // Vector2 position = new Vector2((column * 100 + room.min.x * 100) / 100, (row * 100 + room.min.y * 100) / 100);
-
+                    Vector2 position = new Vector2((Mathf.RoundToInt(column * 100) + Mathf.RoundToInt(room.min.x * 100)) / 100f, (Mathf.RoundToInt(row * 100) + Mathf.RoundToInt(room.min.y * 100f)) / 100f);
+                    currentRoomFloor.Add(position);
                     floor.Add(position);
                 }
             }
+
+            // Add new room details into Room list
+            dungeonData.Rooms.Add(new Room(new Vector2(room.center.x, room.center.y), currentRoomFloor));
         }
         return floor;
 
@@ -202,6 +231,9 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                     floor.Add(position);
                 }
             }
+
+            // Add new room details into Room list
+            dungeonData.Rooms.Add(new Room(roomCenter, roomFloor));
         }
 
         return floor;

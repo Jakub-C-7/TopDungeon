@@ -401,8 +401,8 @@ public class GameManager : MonoBehaviour
 
 
             // randomWalkGen.GenerateDungeon();
-            roomsFirst.GenerateDungeon();
-            // corridorFirst.GenerateDungeon();
+            // roomsFirst.GenerateDungeon();
+            corridorFirst.GenerateDungeon();
         }
 
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;

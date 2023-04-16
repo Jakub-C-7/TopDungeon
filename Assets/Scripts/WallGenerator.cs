@@ -6,31 +6,75 @@ using UnityEngine;
 
 public static class WallGenerator
 {
-    public static void CreateWalls(HashSet<Vector2> floorPositions, TilemapVisualiser tilemapVisualiser)
+    public static HashSet<Vector2> CreateWalls(HashSet<Vector2> floorPositions, TilemapVisualiser tilemapVisualiser)
     {
-        var initialWallPositions = FindWallsInDirections(floorPositions, Direction2D.eightDirectionsList);
+        tilemapVisualiser.wallTilemap.ClearAllTiles(); // Clear the entire wall tilemap
+
+        var wallPositions = FindWallsInDirections(floorPositions, Direction2D.eightDirectionsList);
 
         // Create the first set of walls around the room
-        foreach (var position in initialWallPositions)
+        foreach (var position in wallPositions)
         {
             tilemapVisualiser.PaintSingleBasicWallToWall(position); // add to wall tilemap
             tilemapVisualiser.PaintSingleBasicWallToFloor(position); // add to floor tilemap
-            floorPositions.Add(position); // add to floor pos list
 
         }
+        return wallPositions;
 
+    }
+
+    public static HashSet<Vector2> GenerateRoomColliders(DungeonData dungeonData, TilemapVisualiser tilemapVisualiser)
+    {
+        tilemapVisualiser.wallTilemap.ClearAllTiles();
+
+        //create a hashset that contains all the tiles that represent the dungeon
+        HashSet<Vector2> dungeonTiles = new HashSet<Vector2>();
+        foreach (Room room in dungeonData.Rooms)
+        {
+            dungeonTiles.UnionWith(room.FloorTiles);
+        }
+        dungeonTiles.UnionWith(dungeonData.Path);
+
+        //Find the outline of the dungeon that will be our walls / collider around the dungeon
+        HashSet<Vector2> colliderTiles = new HashSet<Vector2>();
+        foreach (Vector2 tilePosition in dungeonTiles)
+        {
+            foreach (Vector2 direction in Direction2D.eightDirectionsList)
+            {
+                Vector2 newPosition = new Vector2((Mathf.RoundToInt(tilePosition.x * 100) + Mathf.RoundToInt(direction.x * 100)) / 100f, (Mathf.RoundToInt(tilePosition.y * 100) + Mathf.RoundToInt(direction.y * 100)) / 100f);
+                if (dungeonTiles.Contains(newPosition) == false)
+                {
+                    colliderTiles.Add(newPosition);
+                    continue;
+                }
+            }
+        }
+
+        foreach (Vector2 pos in colliderTiles)
+        {
+            tilemapVisualiser.PaintSingleBasicWallToWall(pos);
+            tilemapVisualiser.PaintSingleBasicWallToFloor(pos);
+
+        }
+        return colliderTiles;
+
+    }
+
+    public static HashSet<Vector2> GenerateCleanDungeonColliderThin(HashSet<Vector2> floorPositions, TilemapVisualiser tilemapVisualiser)
+    {
         tilemapVisualiser.wallTilemap.ClearAllTiles(); // Clear the entire wall tilemap
 
-        // Find positions of new, cleaned rooms
-        // var newWallPositions = FindWallsInDirectionThin(floorPositions, Direction2D.eightDirectionsList);
+        var wallPositions = FindWallsInDirectionThin(floorPositions, Direction2D.eightDirectionsList);
+
+        //TODO: Remove the path from all generated wall positions
 
         // Paint new wall positions to the wall tilemap
-        foreach (var position in floorPositions)
+        foreach (var position in wallPositions)
         {
             tilemapVisualiser.PaintSingleBasicWallToWall(position);
 
         }
-
+        return wallPositions;
     }
 
     public static HashSet<Vector2> FindWallsInDirections(HashSet<Vector2> floorPositions, List<Vector2> directionList)
@@ -41,8 +85,7 @@ public static class WallGenerator
         {
             foreach (var direction in directionList)
             {
-                // var neighbourPosition = ((position * 100) + (direction * 100)) / 100;
-                var neighbourPosition = position + direction;
+                var neighbourPosition = new Vector2(((Mathf.RoundToInt(position.x * 100) + Mathf.RoundToInt(direction.x * 100)) / 100f), ((Mathf.RoundToInt(position.y * 100) + Mathf.RoundToInt(direction.y * 100)) / 100f));
 
                 if (floorPositions.Contains(neighbourPosition) == false)
                 {
@@ -53,31 +96,24 @@ public static class WallGenerator
         return wallPositions;
     }
 
-    // Finds the positions of the outer-most tile layer of the room to create a thin wall.
-    // public static HashSet<Vector2> FindWallsInDirectionThin(HashSet<Vector2> floorPositions, List<Vector2> directionList)
-    // {
-    //     HashSet<Vector2> wallPositions = new HashSet<Vector2>();
+    public static HashSet<Vector2> FindWallsInDirectionThin(HashSet<Vector2> floorPositions, List<Vector2> directionList)
+    {
+        HashSet<Vector2> wallPositions = new HashSet<Vector2>();
 
-    //     foreach (var position in floorPositions)
-    //     {
-    //         wallPositions.Add(position);
-    //         // foreach (var direction in directionList)
-    //         // {
-    //         //     // var neighbourPosition = (position * 100) + (direction * 100) / 100;
-    //         //     // var neighbourPosition = ((position * 100) + (direction * 100)) / 100;
+        foreach (var position in floorPositions)
+        {
+            foreach (var direction in directionList)
+            {
+                var neighbourPosition = new Vector2(((Mathf.RoundToInt(position.x * 100) + Mathf.RoundToInt(direction.x * 100)) / 100f), ((Mathf.RoundToInt(position.y * 100) + Mathf.RoundToInt(direction.y * 100)) / 100f));
 
-
-    //         //     // if (floorPositions.Contains(neighbourPosition, new Vector2Comparer()) == false)
-    //         //     // {
-    //         //     wallPositions.Add(position); // The position of the tile becomes the wall
-    //         //                                  // Debug.Log(position + " Position being added of neighbour: " + neighbourPosition);
-
-    //         //     // }
-    //         // }
-    //     }
-    //     return wallPositions;
-    // }
-
+                if (floorPositions.Contains(neighbourPosition) == false)
+                {
+                    wallPositions.Add(position);
+                }
+            }
+        }
+        return wallPositions;
+    }
 
     // Override for comparer of two vectors
     // public class Vector2Comparer : IEqualityComparer<Vector2>
