@@ -17,108 +17,6 @@ public class RoomDataExtractor : MonoBehaviour
         dungeonData = FindObjectOfType<DungeonData>();
     }
 
-    // public void ProcessRooms()
-    // {
-    //     if (dungeonData == null)
-    //         return;
-
-    //     var cardinalDirections = Direction2D.cardinalDirectionsList;
-
-    //     HashSet<Vector2> wallList = new();
-
-    //     foreach (Room room in dungeonData.Rooms)
-    //     {
-    //         //find corner, near wall and inner tiles
-    //         foreach (Vector2 tilePosition in room.FloorTiles)
-    //         {
-    //             int neighboursCount = 4;
-
-    //             if (room.FloorTiles.Contains(tilePosition + cardinalDirections[0]) == false)
-    //             {
-    //                 // Debug.Log("Adding near wall tile up");
-    //                 room.NearWallTilesUp.Add(tilePosition - cardinalDirections[0]);
-    //                 neighboursCount--;
-    //                 wallList.Add(tilePosition);
-    //             }
-    //             if (room.FloorTiles.Contains(tilePosition + cardinalDirections[2]) == false)
-    //             {
-    //                 // Debug.Log("Adding near wall tile down");
-    //                 room.NearWallTilesDown.Add(tilePosition - cardinalDirections[2]);
-    //                 neighboursCount--;
-    //                 wallList.Add(tilePosition);
-
-    //             }
-    //             if (room.FloorTiles.Contains(tilePosition + cardinalDirections[1]) == false)
-    //             {
-    //                 // Debug.Log("Adding near wall tile right");
-    //                 room.NearWallTilesRight.Add(tilePosition - cardinalDirections[1]);
-    //                 neighboursCount--;
-    //                 wallList.Add(tilePosition);
-
-    //             }
-    //             if (room.FloorTiles.Contains(tilePosition + cardinalDirections[3]) == false)
-    //             {
-    //                 // Debug.Log("Adding near wall tile left");
-    //                 room.NearWallTilesLeft.Add(tilePosition - cardinalDirections[3]);
-    //                 neighboursCount--;
-    //                 wallList.Add(tilePosition);
-
-    //             }
-
-    //             //find corners
-    //             // if (neighboursCount <= 2)
-    //             // {
-    //             //     // Debug.Log("Adding corner tile");
-    //             //     room.CornerTiles.Add(tilePosition);
-    //             // }
-
-    //             if (neighboursCount == 4)
-    //                 room.InnerTiles.Add(tilePosition);
-    //         }
-
-    //         HashSet<Vector2> wallTilesUpLeft = new HashSet<Vector2>(room.NearWallTilesUp);
-    //         wallTilesUpLeft.IntersectWith(room.NearWallTilesLeft);
-
-    //         HashSet<Vector2> wallTilesUpRight = new HashSet<Vector2>(room.NearWallTilesUp);
-    //         wallTilesUpRight.IntersectWith(room.NearWallTilesRight);
-
-    //         HashSet<Vector2> wallTilesDownLeft = new HashSet<Vector2>(room.NearWallTilesDown);
-    //         wallTilesDownLeft.IntersectWith(room.NearWallTilesLeft);
-
-    //         HashSet<Vector2> wallTilesDownRight = new HashSet<Vector2>(room.NearWallTilesDown);
-    //         wallTilesDownRight.IntersectWith(room.NearWallTilesRight);
-
-    //         wallTilesUpLeft.UnionWith(wallTilesUpRight);
-    //         wallTilesUpLeft.UnionWith(wallTilesDownLeft);
-    //         wallTilesUpLeft.UnionWith(wallTilesDownRight);
-
-    //         room.CornerTiles.UnionWith(wallTilesUpLeft);
-
-    //         room.NearWallTilesUp.ExceptWith(room.CornerTiles);
-    //         room.NearWallTilesDown.ExceptWith(room.CornerTiles);
-    //         room.NearWallTilesLeft.ExceptWith(room.CornerTiles);
-    //         room.NearWallTilesRight.ExceptWith(room.CornerTiles);
-
-    //         // Except the known wall tiles
-    //         room.NearWallTilesUp.ExceptWith(wallList);
-    //         room.NearWallTilesDown.ExceptWith(wallList);
-    //         room.NearWallTilesLeft.ExceptWith(wallList);
-    //         room.NearWallTilesRight.ExceptWith(wallList);
-    //         room.CornerTiles.ExceptWith(wallList);
-
-    //         Debug.Log("nearwalltilesup: " + room.NearWallTilesUp.Count);
-    //         Debug.Log("nearwalltilesdown: " + room.NearWallTilesDown.Count);
-    //         Debug.Log("nearwalltilesleft: " + room.NearWallTilesLeft.Count);
-    //         Debug.Log("nearwalltilesright: " + room.NearWallTilesRight.Count);
-    //         Debug.Log("corners: " + room.CornerTiles.Count);
-    //         Debug.Log("inner: " + room.InnerTiles.Count);
-
-    //     }
-
-    //     //OnFinishedRoomProcessing?.Invoke();
-    //     Invoke("RunEvent", 1);
-    // }
-
     public void ProcessRooms()
     {
         if (dungeonData == null)
@@ -130,30 +28,35 @@ public class RoomDataExtractor : MonoBehaviour
         {
             //find corner, near wall and inner tiles
             foreach (Vector2 tilePosition in room.FloorTiles)
+            // foreach (Vector2 tilePosition in dungeonData.DungeonFloor)
             {
                 int neighboursCount = 4;
 
-                if (room.FloorTiles.Contains(tilePosition + cardinalDirections[0]) == false)
+                // if (room.FloorTiles.Contains(CalculateVectors(tilePosition, cardinalDirections[0])) == false)
+                if (dungeonData.DungeonFloor.Contains(CalculateVectors(tilePosition, cardinalDirections[0])) == false)
                 {
                     // Debug.Log("Adding near wall tile up");
                     room.NearWallTilesUp.Add(tilePosition);
                     neighboursCount--;
                 }
-                if (room.FloorTiles.Contains(tilePosition + cardinalDirections[2]) == false)
+                // if (room.FloorTiles.Contains(CalculateVectors(tilePosition, cardinalDirections[2])) == false)
+                if (dungeonData.DungeonFloor.Contains(CalculateVectors(tilePosition, cardinalDirections[2])) == false)
                 {
                     // Debug.Log("Adding near wall tile down");
                     room.NearWallTilesDown.Add(tilePosition);
                     neighboursCount--;
 
                 }
-                if (room.FloorTiles.Contains(tilePosition + cardinalDirections[1]) == false)
+                // if (room.FloorTiles.Contains(CalculateVectors(tilePosition, cardinalDirections[1])) == false)
+                if (dungeonData.DungeonFloor.Contains(CalculateVectors(tilePosition, cardinalDirections[1])) == false)
                 {
                     // Debug.Log("Adding near wall tile right");
                     room.NearWallTilesRight.Add(tilePosition);
                     neighboursCount--;
 
                 }
-                if (room.FloorTiles.Contains(tilePosition + cardinalDirections[3]) == false)
+                // if (room.FloorTiles.Contains(CalculateVectors(tilePosition, cardinalDirections[3])) == false)
+                if (dungeonData.DungeonFloor.Contains(CalculateVectors(tilePosition, cardinalDirections[3])) == false)
                 {
                     // Debug.Log("Adding near wall tile left");
                     room.NearWallTilesLeft.Add(tilePosition);
@@ -177,17 +80,22 @@ public class RoomDataExtractor : MonoBehaviour
             room.NearWallTilesLeft.ExceptWith(room.CornerTiles);
             room.NearWallTilesRight.ExceptWith(room.CornerTiles);
 
-            Debug.Log("nearwalltilesup: " + room.NearWallTilesUp.Count);
-            Debug.Log("nearwalltilesdown: " + room.NearWallTilesDown.Count);
-            Debug.Log("nearwalltilesleft: " + room.NearWallTilesLeft.Count);
-            Debug.Log("nearwalltilesright: " + room.NearWallTilesRight.Count);
-            Debug.Log("corners: " + room.CornerTiles.Count);
-            Debug.Log("inner: " + room.InnerTiles.Count);
+            room.NearWallTilesUp.ExceptWith(dungeonData.Path);
+            room.NearWallTilesDown.ExceptWith(dungeonData.Path);
+            room.NearWallTilesLeft.ExceptWith(dungeonData.Path);
+            room.NearWallTilesRight.ExceptWith(dungeonData.Path);
+            room.CornerTiles.ExceptWith(dungeonData.Path);
+            room.InnerTiles.ExceptWith(dungeonData.Path);
 
         }
 
         OnFinishedRoomProcessing?.Invoke();
         // Invoke("RunEvent", 1);
+    }
+
+    public Vector2 CalculateVectors(Vector2 a, Vector2 b)
+    {
+        return new Vector2(Mathf.RoundToInt((a.x * 100) + (b.x * 100)) / 100f, Mathf.RoundToInt((a.y * 100) + (b.y * 100)) / 100f);
     }
 
     public void RunEvent()

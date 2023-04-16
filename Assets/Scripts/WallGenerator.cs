@@ -66,6 +66,8 @@ public static class WallGenerator
 
         var wallPositions = FindWallsInDirectionThin(floorPositions, Direction2D.eightDirectionsList);
 
+        //TODO: Remove the path from all generated wall positions
+
         // Paint new wall positions to the wall tilemap
         foreach (var position in wallPositions)
         {

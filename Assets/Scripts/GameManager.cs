@@ -400,9 +400,9 @@ public class GameManager : MonoBehaviour
             var corridorFirst = GameObject.Find("CorridorFirstDungeonGenerator").GetComponent<CorridorFirstDungeonGenerator>();
 
 
-            randomWalkGen.GenerateDungeon();
+            // randomWalkGen.GenerateDungeon();
             // roomsFirst.GenerateDungeon();
-            // corridorFirst.GenerateDungeon();
+            corridorFirst.GenerateDungeon();
         }
 
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;

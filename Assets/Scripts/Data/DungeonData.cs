@@ -11,6 +11,8 @@ public class DungeonData : MonoBehaviour
 {
     public List<Room> Rooms { get; set; } = new List<Room>();
     public HashSet<Vector2> Path { get; set; } = new HashSet<Vector2>();
+    public HashSet<Vector2> DungeonFloor { get; set; } = new HashSet<Vector2>();
+
 
     public GameObject PlayerReference { get; set; }
     public void Reset()
@@ -28,6 +30,7 @@ public class DungeonData : MonoBehaviour
         }
         Rooms = new();
         Path = new();
+        DungeonFloor = new();
         // Destroy(PlayerReference);
     }
 

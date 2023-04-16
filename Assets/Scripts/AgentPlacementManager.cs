@@ -33,9 +33,20 @@ public class AgentPlacementManager : MonoBehaviour
         if (dungeonData == null)
             return;
 
-        //Loop for each room
-        for (int i = 0; i < dungeonData.Rooms.Count; i++)
+
+
+        // If there is only one room, fill it with actors, else, skip it and let it be a safe room
+        int count = 0;
+        if (dungeonData.Rooms.Count > 1)
         {
+            count = 1;
+        }
+
+        //Loop for each room
+        for (int i = 0 + count; i < dungeonData.Rooms.Count; i++)
+        {
+            count = 0;
+
             //To place enemies we need to analyse the room tiles to find those accesible from the path
             Room room = dungeonData.Rooms[i];
             RoomGraph roomGraph = new RoomGraph(room.FloorTiles);
@@ -121,7 +132,8 @@ public class RoomGraph
             List<Vector2> neighbours = new List<Vector2>();
             foreach (Vector2 direction in Direction2D.cardinalDirectionsList)
             {
-                Vector2 newPos = pos + direction;
+                Vector2 newPos = new Vector2(((Mathf.RoundToInt(pos.x * 100) + Mathf.RoundToInt(direction.x * 100)) / 100f), ((Mathf.RoundToInt(pos.y * 100) + Mathf.RoundToInt(direction.y * 100)) / 100f));
+
                 if (roomFloor.Contains(newPos))
                 {
                     neighbours.Add(newPos);
