@@ -15,6 +15,7 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
 
     protected override void RunProceduralGeneration()
     {
+        // Do routine reset and get of DungeonData
         dungeonData = FindObjectOfType<DungeonData>();
 
         if (dungeonData == null)
@@ -29,25 +30,36 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
         tilemapVisualiser.SetRandomTileStyle();
 
         // Generate random walk room 
-        HashSet<Vector2> floorPositions = RunRandomWalk(randomWalkParameters, startPosition);
-
+        HashSet<Vector2> floor = RunRandomWalk(randomWalkParameters, startPosition);
+        dungeonData.DungeonFloor.UnionWith(floor);
+        dungeonData.Rooms.Add(new Room(startPosition, floor));
 
         // Paint new room onto the tilemap
         tilemapVisualiser.Clear();
-        tilemapVisualiser.PaintFloorTiles(floorPositions);
+        tilemapVisualiser.PaintFloorTiles(floor);
 
-        HashSet<Vector2> newFloorPositions = WallGenerator.CreateWalls(floorPositions, tilemapVisualiser);
+        //Generate walls ---
+        // Combine the floor and wall positions into floor
+        var wallPositions = WallGenerator.GenerateRoomColliders(dungeonData, tilemapVisualiser);
+
+        // Update floor positions with the old wall positions
+        floor.UnionWith(wallPositions);
+        dungeonData.DungeonFloor.UnionWith(floor);
+
+        // Generate another layer of walls for cleanup - works better with bigger rooms with lots of holes
+        var secondLayerWallPositions = WallGenerator.CreateWalls(floor, tilemapVisualiser);
+        floor.UnionWith(secondLayerWallPositions);
+
+        // Generate walls again for the clean rooms - Thin
+        var cleanWallPositions = WallGenerator.GenerateCleanDungeonColliderThin(floor, tilemapVisualiser);
+
+        floor.ExceptWith(cleanWallPositions); // Floor except the single layer of wall around
+        dungeonData.DungeonFloor.UnionWith(floor);
 
         PlaceSpawnPoint(new Vector2(0, 0));
 
-        // Add new room details into Room list
-        dungeonData.Rooms.Add(new Room(startPosition, newFloorPositions));
-
         // Invoke finished event
         OnFinishedRoomGeneration?.Invoke();
-
-        WallGenerator.GenerateDungeonCollider(floorPositions, tilemapVisualiser);
-        // WallGenerator.CreateWallsThin(floorPositions, tilemapVisualiser);
 
     }
 
