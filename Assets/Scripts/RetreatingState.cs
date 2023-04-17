@@ -56,12 +56,11 @@ public class RetreatingState : IEnemyState
         if (retreatWayPoints == null)
         {
             retreatWayPoints = pathFinding.FindPath(enemy.transform.position.x, enemy.transform.position.y, enemy.startingPosition.x, enemy.startingPosition.y);
-
             return;
         }
-        if (enemy.transform.position.x > retreatWayPoints[nextStepIndex].x - 0.01f && enemy.transform.position.x < retreatWayPoints[nextStepIndex].x + 0.01f)
+        if (enemy.transform.position.x > retreatWayPoints[nextStepIndex].x - 0.08f && enemy.transform.position.x < retreatWayPoints[nextStepIndex].x + 0.08f)
         {
-            if (enemy.transform.position.y > retreatWayPoints[nextStepIndex].y - 0.01f && enemy.transform.position.y < retreatWayPoints[nextStepIndex].y + 0.01f)
+            if (enemy.transform.position.y > retreatWayPoints[nextStepIndex].y - 0.08f && enemy.transform.position.y < retreatWayPoints[nextStepIndex].y + 0.08f)
             {
                 if (nextStepIndex + 1 < retreatWayPoints.Count)
                 {

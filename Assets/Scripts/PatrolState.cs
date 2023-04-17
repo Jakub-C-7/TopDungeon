@@ -9,6 +9,8 @@ public class PatrolState : IEnemyState
     List<PathNode> patrolWayPoints;
     IPatrolEnemy patrolEnemy;
     PathFinding pathFinding;
+    (float, float) patrolSpeed;
+    (float, float) originalSpeed;
     int currentLocation;
     int nextLocation;
 
@@ -33,6 +35,8 @@ public class PatrolState : IEnemyState
         {
             pathFinding = new PathFinding();
             patrolPoints = patrolEnemy.GetPatrolPoints();
+            patrolSpeed = patrolEnemy.GetPatrolSpeed();
+            originalSpeed = (enemy.xSpeed, enemy.ySpeed);
             CalculateWayPoints();
         }
     }
@@ -106,7 +110,12 @@ public class PatrolState : IEnemyState
         }
         if (patrolWayPoints != null)
         {
+            enemy.xSpeed = patrolSpeed.Item1;
+            enemy.ySpeed = patrolSpeed.Item2;
+
             enemy.UpdateMotor((new Vector3(patrolWayPoints[nextPatrolIndex].x, patrolWayPoints[nextPatrolIndex].y, 0) - enemy.transform.position).normalized);
+            enemy.xSpeed = originalSpeed.Item1;
+            enemy.ySpeed = originalSpeed.Item2;
         }
 
 

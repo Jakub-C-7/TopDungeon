@@ -10,6 +10,11 @@ public class BatSmallEnemy : Enemy, IPatrolEnemy
         return patrolPoints;
     }
 
+    public (float, float) GetPatrolSpeed()
+    {
+        return (xSpeed / 2f, ySpeed / 2f);
+    }
+
     protected override void Start()
     {
 
