@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,9 +13,14 @@ public class RoomDataExtractor : MonoBehaviour
 
     public UnityEvent OnFinishedRoomProcessing;
 
+    [SerializeField]
+    private PathFinding pathFinding;
+
     private void Awake()
     {
         dungeonData = FindObjectOfType<DungeonData>();
+        pathFinding = new PathFinding();
+
     }
 
     public void ProcessRooms()
@@ -89,8 +95,40 @@ public class RoomDataExtractor : MonoBehaviour
 
         }
 
+        CalculateRoomDistances();
+
         OnFinishedRoomProcessing?.Invoke();
         // Invoke("RunEvent", 1);
+    }
+
+    public Dictionary<Vector2, int> CalculateRoomDistances()
+    {
+
+        Dictionary<Vector2, int> roomDistances = new();
+
+        foreach (var room in dungeonData.Rooms)
+        {
+
+            if (dungeonData.SpawnPoint == room.RoomCenterPos)
+            {
+                continue;
+            }
+
+            List<PathNode> pathNodes = pathFinding.FindPath(dungeonData.SpawnPoint.x, dungeonData.SpawnPoint.y, room.RoomCenterPos.x, room.RoomCenterPos.y, dungeonData.DungeonFloor);
+
+            roomDistances.Add(room.RoomCenterPos, pathNodes[pathNodes.Count - 1].gCost);
+
+        }
+
+        roomDistances.OrderBy(i => i.Key);
+
+        foreach (var item in roomDistances)
+        {
+            Debug.Log(item.Key + "is the key. Is the value: " + item.Value);
+        }
+
+        return roomDistances;
+
     }
 
     public Vector2 CalculateVectors(Vector2 a, Vector2 b)

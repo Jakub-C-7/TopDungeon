@@ -133,6 +133,7 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             if (spawnPlaced == false)
             {
                 PlaceSpawnPoint(new Vector2(roomPosition.x, roomPosition.y));
+                dungeonData.SpawnPoint = new Vector2(roomPosition.x, roomPosition.y);
                 spawnPlaced = true;
             }
 

@@ -57,6 +57,7 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
         dungeonData.DungeonFloor.UnionWith(floor);
 
         PlaceSpawnPoint(new Vector2(0, 0));
+        dungeonData.SpawnPoint = new Vector2(0, 0);
 
         // Invoke finished event
         OnFinishedRoomGeneration?.Invoke();
