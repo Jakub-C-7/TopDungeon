@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class PathFinding
+public class PathFinding : MonoBehaviour
 {
     private List<PathNode> openList;
     private List<PathNode> closedList;
 
-
     private const int MOVE_STRAIGHT_COST = 10;
     private const int MOVE_DIAGONAL_COST = 14;
 
+    [SerializeField]
+    private bool showGizmo = false;
 
-    public List<PathNode> FindPath(float startX, float startY, float endX, float endY)
+    List<PathNode> closedListPublic = new List<PathNode>();
+
+    public List<PathNode> FindPath(float startX, float startY, float endX, float endY, HashSet<Vector2> movableTiles = null)
     {
         startX = makeDivisibleBy(startX, 0.16f);//Make sure co-ordinates are a multiple of 0.16;
         startY = makeDivisibleBy(startY, 0.16f);
@@ -33,13 +36,15 @@ public class PathFinding
         while (openList.Count > 0)
         {
             PathNode currentNode = GetLowestFCostNode(openList);
-            if (currentNode.x == endNode.x && currentNode.y == endNode.y)
+
+            if (Mathf.RoundToInt(currentNode.x * 100) == Mathf.RoundToInt(endNode.x * 100) && Mathf.RoundToInt(currentNode.y * 100) == Mathf.RoundToInt(endNode.y * 100))
             {
                 return CalculatePath(currentNode);
             }
 
             openList.Remove(currentNode);
             closedList.Add(currentNode);
+            closedListPublic.Add(currentNode);
 
             foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
             {
@@ -47,9 +52,19 @@ public class PathFinding
                 {
                     continue;
                 }
-                if (Physics2D.OverlapBox(new Vector2(neighbourNode.x, neighbourNode.y), new Vector2(0.16f, 0.16f), 0, LayerMask.GetMask("Actor", "Blocking")) != null)
+                if (movableTiles != null)
+                {
+                    if (!movableTiles.Any(node => node.x == neighbourNode.x && node.y == neighbourNode.y))
+                    {
+                        closedList.Add(neighbourNode);
+                        closedListPublic.Add(neighbourNode);
+                        continue;
+                    }
+                }
+                else if (Physics2D.OverlapBox(new Vector2(neighbourNode.x, neighbourNode.y), new Vector2(0.08f, 0.08f), 0, LayerMask.GetMask("Actor", "Blocking")) != null)
                 {
                     closedList.Add(neighbourNode);
+                    closedListPublic.Add(neighbourNode);
                     continue;
                 }
 
@@ -72,14 +87,25 @@ public class PathFinding
         }
         return null;
 
+    }
 
+    private void OnDrawGizmosSelected()
+    {
+        if (showGizmo == false)
+            return;
+        foreach (PathNode pathNode in closedListPublic)
+        {
+            //Draw inner tiles
+            Gizmos.color = Color.yellow;
+
+            Gizmos.DrawCube(new Vector2(pathNode.x, pathNode.y) + new Vector2(0.16f, 0.16f) * 0.5f, new Vector2(0.16f, 0.16f));
+
+        }
     }
 
     private List<PathNode> GetNeighbourList(PathNode currentNode)
     {
         List<PathNode> neighbourList = new List<PathNode>();
-
-
 
         neighbourList.Add(CheckAndReturnNode((Mathf.RoundToInt(currentNode.x * 100) + 16) / 100f, currentNode.y));
         neighbourList.Add(CheckAndReturnNode((Mathf.RoundToInt(currentNode.x * 100) + 16) / 100f, (Mathf.RoundToInt(currentNode.y * 100) - 16) / 100f));
