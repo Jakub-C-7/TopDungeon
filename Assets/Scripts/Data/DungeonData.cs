@@ -12,7 +12,9 @@ public class DungeonData : MonoBehaviour
     public List<Room> Rooms { get; set; } = new List<Room>();
     public HashSet<Vector2> Path { get; set; } = new HashSet<Vector2>();
     public HashSet<Vector2> DungeonFloor { get; set; } = new HashSet<Vector2>();
+    public HashSet<Vector2> DungeonWalls { get; set; } = new HashSet<Vector2>();
 
+    public Vector2 SpawnPoint { get; set; } = new Vector2();
 
     public GameObject PlayerReference { get; set; }
     public void Reset()

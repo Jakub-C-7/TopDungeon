@@ -86,6 +86,7 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 
         floor.ExceptWith(cleanWallPositions); // Floor except the single layer of wall around
         dungeonData.DungeonFloor.UnionWith(floor);
+        dungeonData.DungeonWalls.UnionWith(cleanWallPositions);
 
     }
 
@@ -185,6 +186,7 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             if (spawnPlaced == false)
             {
                 PlaceSpawnPoint(new Vector2(room.center.x, room.center.y));
+                dungeonData.SpawnPoint = new Vector2(room.center.x, room.center.y);
                 spawnPlaced = true;
             }
 
@@ -218,6 +220,7 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             if (spawnPlaced == false)
             {
                 PlaceSpawnPoint(roomCenter);
+                dungeonData.SpawnPoint = new Vector2(roomCenter.x, roomCenter.y);
                 spawnPlaced = true;
             }
 
