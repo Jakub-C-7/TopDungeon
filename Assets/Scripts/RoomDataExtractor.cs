@@ -19,7 +19,7 @@ public class RoomDataExtractor : MonoBehaviour
     private void Awake()
     {
         dungeonData = FindObjectOfType<DungeonData>();
-        // pathFinding = new PathFinding(); 
+        pathFinding = new PathFinding();
 
     }
 
@@ -95,7 +95,7 @@ public class RoomDataExtractor : MonoBehaviour
 
         }
 
-        Debug.Log(CalculateRoomDistances());
+        CalculateRoomDistances();
 
         OnFinishedRoomProcessing?.Invoke();
         // Invoke("RunEvent", 1);

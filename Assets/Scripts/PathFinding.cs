@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class PathFinding : MonoBehaviour
+public class PathFinding
 {
     private List<PathNode> openList;
     private List<PathNode> closedList;
@@ -14,10 +14,12 @@ public class PathFinding : MonoBehaviour
     [SerializeField]
     private bool showGizmo = false;
 
-    List<PathNode> closedListPublic = new List<PathNode>();
+    List<PathNode> closedListPublic;
 
     public List<PathNode> FindPath(float startX, float startY, float endX, float endY, HashSet<Vector2> movableTiles = null)
     {
+        closedListPublic = new List<PathNode>();
+
         startX = makeDivisibleBy(startX, 0.16f);//Make sure co-ordinates are a multiple of 0.16;
         startY = makeDivisibleBy(startY, 0.16f);
         endX = makeDivisibleBy(endX, 0.16f);
@@ -61,7 +63,7 @@ public class PathFinding : MonoBehaviour
                         continue;
                     }
                 }
-                else if (Physics2D.OverlapBox(new Vector2(neighbourNode.x, neighbourNode.y), new Vector2(0.08f, 0.08f), 0, LayerMask.GetMask("Actor", "Blocking")) != null)
+                else if (Physics2D.OverlapBox(new Vector2(neighbourNode.x, neighbourNode.y), new Vector2(0.16f, 0.16f), 0, LayerMask.GetMask("Actor", "Blocking")) != null)
                 {
                     closedList.Add(neighbourNode);
                     closedListPublic.Add(neighbourNode);
