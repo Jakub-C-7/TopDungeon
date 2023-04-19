@@ -12,6 +12,7 @@ public class TilemapVisualiser : MonoBehaviour
     [SerializeField]
     public List<TileBase> ruleTileList;
     public TileBase currentlySelectedTile;
+    public int selectedStyle = 1;
 
     public void PaintFloorTiles(IEnumerable<Vector2> floorPositions)
     {
@@ -21,6 +22,8 @@ public class TilemapVisualiser : MonoBehaviour
     public void SetRandomTileStyle()
     {
         int randomSelection = Random.Range(1, ruleTileList.Count + 1);
+
+        selectedStyle = randomSelection - 1;
 
         currentlySelectedTile = ruleTileList[randomSelection - 1];
     }
