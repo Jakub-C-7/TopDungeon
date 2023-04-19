@@ -10,6 +10,12 @@ public class PropPlacementManager : MonoBehaviour
     DungeonData dungeonData;
 
     [SerializeField]
+    private TilemapVisualiser tilemapVisualiser;
+
+    [SerializeField]
+    private List<PropSets> propSets;
+
+    [SerializeField]
     private List<Prop> propsToPlace;
 
     [SerializeField, Range(0, 1)]
@@ -23,12 +29,34 @@ public class PropPlacementManager : MonoBehaviour
     private void Awake()
     {
         dungeonData = FindObjectOfType<DungeonData>();
+
+    }
+
+    // Function finds the currently selected dungeon style and populates the list of props to use
+    public void SelectPropStyles()
+    {
+        propsToPlace.Clear();
+
+        if (tilemapVisualiser == null)
+        {
+            return;
+        }
+
+        PropSets propsToUse = propSets[tilemapVisualiser.selectedStyle];
+
+        foreach (var prop in propsToUse.propList)
+        {
+            propsToPlace.Add(prop);
+        }
     }
 
     public void ProcessRooms()
     {
         if (dungeonData == null)
             return;
+
+        SelectPropStyles();
+
         foreach (Room room in dungeonData.Rooms)
         {
 
@@ -388,4 +416,10 @@ public enum PlacementOriginCorner
     BottomRight,
     TopLeft,
     TopRight
+}
+
+[System.Serializable]
+public class PropSets
+{
+    public List<Prop> propList;
 }

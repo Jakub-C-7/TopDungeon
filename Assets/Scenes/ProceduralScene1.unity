@@ -8989,10 +8989,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1574694137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2dd65ab2aae0424b84cc871fa14f4ad, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  showGizmo: 0
 --- !u!4 &1574694139
 Transform:
   m_ObjectHideFlags: 0
@@ -28146,6 +28145,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b1e8fd91375724099145040268eec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemapVisualiser: {fileID: 1828572992}
+  propSets:
+  - propList:
+    - {fileID: 11400000, guid: b81e491e108d8a742b89084824804432, type: 2}
+  - propList:
+    - {fileID: 11400000, guid: b40ceb1ad108f994c9ee3985a8e097bb, type: 2}
+    - {fileID: 11400000, guid: b81e491e108d8a742b89084824804432, type: 2}
+    - {fileID: 11400000, guid: 0446df682ae6f7146a6171ddb4abd284, type: 2}
   propsToPlace:
   - {fileID: 11400000, guid: b40ceb1ad108f994c9ee3985a8e097bb, type: 2}
   - {fileID: 11400000, guid: b81e491e108d8a742b89084824804432, type: 2}
@@ -28675,8 +28682,12 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: efca9c830c45a7e48b8d0f890f3eeb1b, type: 2}
     - target: {fileID: 8212920698572793419, guid: 6a5b10849c4f4964cafc1ae98eb5b0a7, type: 3}
       propertyPath: ruleTileList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8212920698572793419, guid: 6a5b10849c4f4964cafc1ae98eb5b0a7, type: 3}
+      propertyPath: ruleTileList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: efca9c830c45a7e48b8d0f890f3eeb1b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a5b10849c4f4964cafc1ae98eb5b0a7, type: 3}
 --- !u!1001 &8894179236696494118
