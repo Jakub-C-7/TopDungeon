@@ -148,7 +148,6 @@ public class PathFinding
         path.Reverse();
         return path;
 
-
     }
 
 
@@ -164,7 +163,6 @@ public class PathFinding
 
         int remaining = Mathf.Abs(xDistance - yDistance);
         return MOVE_DIAGONAL_COST * Mathf.Min(xDistance, yDistance) + MOVE_STRAIGHT_COST * remaining;
-
 
     }
 
