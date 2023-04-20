@@ -120,11 +120,12 @@ public class RoomDataExtractor : MonoBehaviour
 
         }
 
-        roomDistances.OrderBy(i => i.Key);
 
-        foreach (var item in roomDistances)
+        // Populate room distance ranking variables for each room
+        foreach (var room in dungeonData.Rooms)
         {
-            Debug.Log(item.Key + "is the key. Is the value: " + item.Value);
+            var roomDistance = roomDistances.FirstOrDefault(x => x.Key == room.RoomCenterPos);
+            room.RoomDistanceRanking = roomDistances.OrderBy(i => i.Value).ToList().IndexOf(roomDistance) + 1;
         }
 
         return roomDistances;

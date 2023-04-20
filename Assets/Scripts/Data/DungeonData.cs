@@ -67,6 +67,8 @@ public class Room
 
     public List<GameObject> EnemiesInTheRoom { get; set; } = new List<GameObject>();
 
+    public int RoomDistanceRanking { get; set; } // 1 being the lowest and count of dungeon rooms being the highest
+
     public Room(Vector2 roomCenterPos, HashSet<Vector2> floorTiles)
     {
         this.RoomCenterPos = roomCenterPos;
