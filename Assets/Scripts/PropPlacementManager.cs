@@ -60,6 +60,14 @@ public class PropPlacementManager : MonoBehaviour
         foreach (Room room in dungeonData.Rooms)
         {
 
+            if (room.RoomDistanceRanking == dungeonData.Rooms.Count - 1)
+            {
+                //Place dungeon door
+                List<Prop> door = propsToPlace.Where(x => x.SpecialTrait == "Portal").ToList();
+                PlaceProps(room, door, room.InnerTiles, PlacementOriginCorner.BottomLeft);
+
+            }
+
             //Place props in the corners
             List<Prop> cornerProps = propsToPlace.Where(x => x.Corner).ToList();
             PlaceCornerProps(room, cornerProps);
@@ -122,7 +130,7 @@ public class PropPlacementManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Places props near walls. We need to specify the props anw the placement start point
+    /// Places props near walls. We need to specify the props and the placement start point
     /// </summary>
     /// <param name="room"></param>
     /// <param name="wallProps">Props that we should try to place</param>
@@ -392,6 +400,25 @@ public class PropPlacementManager : MonoBehaviour
                 = new Vector2(propToPlace.PropSize.x * 0.8f, propToPlace.PropSize.y * 0.8f);
             collider.size = size;
 
+        }
+
+        if (propToPlace.SpecialTrait == "Portal")
+        {
+            prop.name = "LadderPortal"; // Set GameObject name
+
+            // Creating portal collider
+            BoxCollider2D collider = prop.AddComponent<BoxCollider2D>();
+
+            Vector2 size = new Vector2(propToPlace.PropSize.x * 0.8f, propToPlace.PropSize.y * 0.8f);
+            collider.size = size;
+
+            collider.offset = new Vector2(0.08f, 0.08f);
+
+            Portal portal = prop.AddComponent<Portal>();
+
+            // Setting destination of portal
+            portal.sceneNames = new String[1];
+            portal.sceneNames[0] = "Main";
         }
 
         prop.transform.localPosition = (Vector2)placementPostion;
