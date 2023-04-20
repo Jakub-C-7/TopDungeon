@@ -3792,7 +3792,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Atlas_154
+      name: floor_ladder_01
       rect:
         serializedVersion: 2
         x: 288
@@ -6108,7 +6108,6 @@ TextureImporter:
       Atlas_151: -549378289
       Atlas_152: -402534592
       Atlas_153: 1878792550
-      Atlas_154: 557986261
       Atlas_155: -1600692514
       Atlas_156: 2075526448
       Atlas_157: 1766914462
@@ -6306,6 +6305,7 @@ TextureImporter:
       floor_02: 987422053
       floor_03: 1407045005
       floor_04: -62458247
+      floor_ladder_01: 557986261
       healingfountain_0: 1052779869
       healingfountain_01: 1870259393
       healingfountain_03: -1964070510
