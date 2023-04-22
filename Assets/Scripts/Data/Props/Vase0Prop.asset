@@ -17,16 +17,16 @@ MonoBehaviour:
   Corner: 0
   NearWallUP: 0
   NearWallDown: 0
-  NearWallRight: 0
-  NearWallLeft: 0
-  Inner: 1
+  NearWallRight: 1
+  NearWallLeft: 1
+  Inner: 0
   PlacementQuantityMin: 1
-  PlacementQuantityMax: 1
+  PlacementQuantityMax: 2
   PlaceAsGroup: 0
   GroupMinCount: 1
   GroupMaxCount: 1
   Collidable: 1
-  SpecialTrait: Destructable
+  SpecialTrait: Destructible
   sortingLayer: Decorative
   relativeCoordX: 0
   relativeCoordY: 0

@@ -362,7 +362,6 @@ public class PropPlacementManager : MonoBehaviour
                 PropGroup propGroup = propToPlace as PropGroup;
                 if (propGroup)
                 {
-                    Debug.Log("This is a prop group in the PlaceCornerProps");
                     foreach (Prop prop in propGroup.propsInGroup)
                     {
                         PlacePropGameObjectAt(room, cornerTile + new Vector2(prop.relativeCoordX, prop.relativeCoordY), prop);
@@ -484,14 +483,15 @@ public class PropPlacementManager : MonoBehaviour
             portal.sceneNames = new String[1];
             portal.sceneNames[0] = "Main";
         }
-        else if (propToPlace.SpecialTrait == "Destructable")
+        else if (propToPlace.SpecialTrait == "Destructible")
         {
-            Destructable destructable = prop.transform.GetChild(0).gameObject.AddComponent<Destructable>();
+            Destructible destructible = prop.transform.GetChild(0).gameObject.AddComponent<Destructible>();
             //AddComponent<Destructable>();
-            destructable.animator = prop.transform.GetChild(0).gameObject.AddComponent<Animator>();
+            destructible.hitPoints = new System.Random().Next(1, 5);
+            destructible.animator = prop.transform.GetChild(0).gameObject.AddComponent<Animator>();
             prop.transform.GetChild(0).tag = "Fighter";
 
-            destructable.animator.runtimeAnimatorController = Resources.Load("Animations/GothicVase0") as RuntimeAnimatorController;
+            destructible.animator.runtimeAnimatorController = Resources.Load("Animations/" + propToPlace.nameOfAnimator) as RuntimeAnimatorController;
 
         }
 
