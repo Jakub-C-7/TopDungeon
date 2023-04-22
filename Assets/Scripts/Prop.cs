@@ -39,5 +39,7 @@ public class Prop : ScriptableObject
 
     public float relativeCoordX = 0f;
     public float relativeCoordY = 0f;
+    public string nameOfAnimator = "";
+
 
 }

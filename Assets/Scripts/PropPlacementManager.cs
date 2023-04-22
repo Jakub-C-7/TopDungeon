@@ -484,6 +484,16 @@ public class PropPlacementManager : MonoBehaviour
             portal.sceneNames = new String[1];
             portal.sceneNames[0] = "Main";
         }
+        else if (propToPlace.SpecialTrait == "Destructable")
+        {
+            Destructable destructable = prop.transform.GetChild(0).gameObject.AddComponent<Destructable>();
+            //AddComponent<Destructable>();
+            destructable.animator = prop.transform.GetChild(0).gameObject.AddComponent<Animator>();
+            prop.transform.GetChild(0).tag = "Fighter";
+
+            destructable.animator.runtimeAnimatorController = Resources.Load("Animations/GothicVase0") as RuntimeAnimatorController;
+
+        }
 
         prop.transform.localPosition = (Vector2)placementPostion;
 

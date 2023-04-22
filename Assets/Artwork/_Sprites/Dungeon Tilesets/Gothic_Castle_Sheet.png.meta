@@ -1680,7 +1680,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gothic_Castle_Sheet_75
+      name: Gothic_Vase_0_0
       rect:
         serializedVersion: 2
         x: 1216
@@ -2436,7 +2436,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gothic_Castle_Sheet_111
+      name: Gothic_Vase_0_1
       rect:
         serializedVersion: 2
         x: 1792
@@ -2457,7 +2457,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gothic_Castle_Sheet_112
+      name: Gothic_Vase_0_2
       rect:
         serializedVersion: 2
         x: 1808
@@ -2478,7 +2478,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gothic_Castle_Sheet_113
+      name: Gothic_Vase_0_3
       rect:
         serializedVersion: 2
         x: 1824
@@ -2499,7 +2499,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gothic_Castle_Sheet_114
+      name: Gothic_Vase_0_4
       rect:
         serializedVersion: 2
         x: 1840
@@ -2811,10 +2811,6 @@ TextureImporter:
       Gothic_Castle_Sheet_103: 1843228064
       Gothic_Castle_Sheet_109: 1356333957
       Gothic_Castle_Sheet_110: -370446772
-      Gothic_Castle_Sheet_111: -1318639446
-      Gothic_Castle_Sheet_112: -1549226170
-      Gothic_Castle_Sheet_113: 334466296
-      Gothic_Castle_Sheet_114: -1888630341
       Gothic_Castle_Sheet_115: -373136647
       Gothic_Castle_Sheet_116: 971211084
       Gothic_Castle_Sheet_117: -1922210717
@@ -2884,7 +2880,6 @@ TextureImporter:
       Gothic_Castle_Sheet_72: -1369776260
       Gothic_Castle_Sheet_73: -1591753026
       Gothic_Castle_Sheet_74: 769540291
-      Gothic_Castle_Sheet_75: -1400910061
       Gothic_Castle_Sheet_76: -1557174574
       Gothic_Castle_Sheet_77: -808596820
       Gothic_Castle_Sheet_78: 782475444
@@ -2921,6 +2916,11 @@ TextureImporter:
       Gothic_Normal_Floor_6: -657538573
       Gothic_Normal_Floor_7: 1692130632
       Gothic_Normal_Floor_8: 1788604675
+      Gothic_Vase_0_0: -1400910061
+      Gothic_Vase_0_1: -1318639446
+      Gothic_Vase_0_2: -1549226170
+      Gothic_Vase_0_3: 334466296
+      Gothic_Vase_0_4: -1888630341
       Gothic_Wall_Bottom_Left: 1216393848
       Gothic_Wall_Bottom_Right: -666970806
       Gothic_Wall_Inner_Left: -999409982
