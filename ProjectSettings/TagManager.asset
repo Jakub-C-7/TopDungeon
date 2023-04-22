@@ -60,3 +60,6 @@ TagManager:
   - name: Weapon
     uniqueID: 1707544413
     locked: 0
+  - name: DecorativeInfront
+    uniqueID: 2265470993
+    locked: 0

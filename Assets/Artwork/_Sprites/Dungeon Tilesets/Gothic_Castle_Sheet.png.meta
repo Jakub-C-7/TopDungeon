@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -2331,7 +2331,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gothic_Castle_Sheet_106
+      name: Gothic_Column_Bottom
       rect:
         serializedVersion: 2
         x: 1712
@@ -2352,7 +2352,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gothic_Castle_Sheet_107
+      name: Gothic_Column_Top_Fixed
       rect:
         serializedVersion: 2
         x: 1728
@@ -2373,7 +2373,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gothic_Castle_Sheet_108
+      name: Gothic_Column_Top_Broken
       rect:
         serializedVersion: 2
         x: 1744
@@ -2738,7 +2738,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2759,7 +2759,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2780,7 +2780,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2809,9 +2809,6 @@ TextureImporter:
       Gothic_Castle_Sheet_101: -1435046251
       Gothic_Castle_Sheet_102: -903989726
       Gothic_Castle_Sheet_103: 1843228064
-      Gothic_Castle_Sheet_106: 912366377
-      Gothic_Castle_Sheet_107: -2134835873
-      Gothic_Castle_Sheet_108: -43217631
       Gothic_Castle_Sheet_109: 1356333957
       Gothic_Castle_Sheet_110: -370446772
       Gothic_Castle_Sheet_111: -1318639446
@@ -2912,6 +2909,9 @@ TextureImporter:
       Gothic_Castle_Sheet_97: 1729441199
       Gothic_Castle_Sheet_98: 1887799435
       Gothic_Castle_Sheet_99: -125579309
+      Gothic_Column_Bottom: 912366377
+      Gothic_Column_Top_Broken: -43217631
+      Gothic_Column_Top_Fixed: -2134835873
       Gothic_Normal_Floor_0: -2015386069
       Gothic_Normal_Floor_1: 1215672323
       Gothic_Normal_Floor_2: -1403185054

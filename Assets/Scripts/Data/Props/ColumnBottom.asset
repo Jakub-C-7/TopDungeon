@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e9e59b0aa71d44d8fdfa914286ae90, type: 3}
+  m_Name: ColumnBottom
+  m_EditorClassIdentifier: 
+  PropSprite: {fileID: 912366377, guid: bd551b3fcc8b6004fa8f96bff6f99170, type: 3}
+  PropSize: {x: 0.16, y: 0.16}
+  Corner: 1
+  NearWallUP: 0
+  NearWallDown: 0
+  NearWallRight: 0
+  NearWallLeft: 0
+  Inner: 0
+  PlacementQuantityMin: 1
+  PlacementQuantityMax: 1
+  PlaceAsGroup: 0
+  GroupMinCount: 1
+  GroupMaxCount: 1
+  Collidable: 1
+  SpecialTrait: None
