@@ -26,7 +26,7 @@ public class Player : Mover
         ClearEquippedWeapon();
         RefreshEquippedWeapon();
         lastBattleAction = Time.time - battleModeDuration;
-       
+
     }
 
     private void Update()
@@ -39,8 +39,8 @@ public class Player : Mover
     {
         canMove = false;
         LightSource.pointLightOuterRadius = defaultLightInnerRadius;
-       // CameraMotor cameraMotor = FindFirstObjectByType<CameraMotor>();
-       // cameraMotor.GetComponent<Camera>().orthographicSize = 0.5f;
+        // CameraMotor cameraMotor = FindFirstObjectByType<CameraMotor>();
+        // cameraMotor.GetComponent<Camera>().orthographicSize = 0.5f;
         Camera.main.orthographicSize = 0.5f;
         Camera.main.GetComponent<CameraMotor>().CentreOnPlayer();
         animator.SetTrigger("Death");
@@ -51,7 +51,8 @@ public class Player : Mover
 
     }
 
-    private void ShowDeathMenu(){
+    private void ShowDeathMenu()
+    {
         GameManager.instance.deathMenuAnimator.SetTrigger("Show");
 
     }
@@ -99,8 +100,9 @@ public class Player : Mover
 
         float timeStep = 0.1f;
 
-        
-        if(!dead){
+
+        if (!dead)
+        {
 
             if (reduceLight)
             {
@@ -129,7 +131,7 @@ public class Player : Mover
     {
         GameManager.instance.currentCharacterSelection = skinId; //Set the current skin ID
         spriteRenderer.sprite = GameManager.instance.playerSprites[skinId];
-        Animator animator = GameManager.instance.player.transform.gameObject.GetComponent<Animator>(); //Change the animation
+        Animator animator = GameManager.instance.player.transform.gameObject.GetComponent<Animator>(); //Change the animation    
         animator.runtimeAnimatorController = Resources.Load("Animations/Player_" + skinId) as RuntimeAnimatorController;
     }
 
@@ -164,7 +166,8 @@ public class Player : Mover
 
     }
 
-    public void RemoveAllStatusEffects(){
+    public void RemoveAllStatusEffects()
+    {
         statusStateMachine.RemoveAllStatusEffects();
     }
 

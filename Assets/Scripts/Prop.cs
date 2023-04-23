@@ -35,4 +35,11 @@ public class Prop : ScriptableObject
     public bool Collidable = true;
     public string SpecialTrait = "None";
 
+    public string sortingLayer = "Decorative";
+
+    public float relativeCoordX = 0f;
+    public float relativeCoordY = 0f;
+    public string nameOfAnimator = "";
+
+
 }

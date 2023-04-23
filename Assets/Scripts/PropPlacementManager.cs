@@ -146,6 +146,7 @@ public class PropPlacementManager : MonoBehaviour
         //We will try to place all the props
         foreach (Prop propToPlace in wallProps)
         {
+
             //We want to place only certain quantity of each prop
             int quantity
                 = UnityEngine.Random.Range(propToPlace.PlacementQuantityMin, propToPlace.PlacementQuantityMax + 1);
@@ -157,13 +158,65 @@ public class PropPlacementManager : MonoBehaviour
                 //shuffle the positions
                 List<Vector2> availablePositions = tempPositons.OrderBy(x => Guid.NewGuid()).ToList();
                 //If placement has failed there is no point in trying to place the same prop again
-                if (TryPlacingPropBruteForce(room, propToPlace, availablePositions, placement) == false)
-                    break;
+                PropGroup propGroup = propToPlace as PropGroup;
+                if (propGroup)
+                {
+                    if (TryPlacingMultiplePropBruteForce(room, propGroup, availablePositions, placement) == false)
+                        break;
+
+                }
+                else
+                {
+                    if (TryPlacingPropBruteForce(room, propToPlace, availablePositions, placement) == false)
+                        break;
+                }
             }
+
 
         }
     }
 
+
+    private bool TryPlacingMultiplePropBruteForce(Room room, PropGroup propGroupToPlace, List<Vector2> availablePositions, PlacementOriginCorner placement)
+    {
+        for (int i = 0; i < availablePositions.Count; i++)
+        {
+            //select the specified position (but it can be already taken after placing the corner props as a group)
+            Vector2 position = availablePositions[i];
+            if (room.PropPositions.Contains(position))
+                continue;
+
+            //check if there is enough space around to fit the prop
+            List<Vector2> freePositionsAround
+                = TryToFitProp(propGroupToPlace, availablePositions, position, placement);
+
+            //If we have enough spaces place the prop
+            if (freePositionsAround.Count == (propGroupToPlace.PropSize.x / 0.16f) * (propGroupToPlace.PropSize.y / 0.16f))
+            {
+                foreach (Prop propToPlace in propGroupToPlace.propsInGroup)
+                {
+                    //Place the gameobject
+                    PlacePropGameObjectAt(room, position, propToPlace);
+                }
+
+                //Lock all the positions recquired by the prop (based on its size)
+                foreach (Vector2 pos in freePositionsAround)
+                {
+                    //Hashest will ignore duplicate positions
+                    room.PropPositions.Add(pos);
+                }
+
+                //Deal with groups
+                if (propGroupToPlace.PlaceAsGroup)
+                {
+                    PlaceGroupObject(room, position, propGroupToPlace, 0.16f);
+                }
+                return true;
+            }
+        }
+
+        return false;
+    }
     /// <summary>
     /// Tries to place the Prop using brute force (trying each available tile position)
     /// </summary>
@@ -306,8 +359,18 @@ public class PropPlacementManager : MonoBehaviour
 
                 Prop propToPlace
                     = cornerProps[UnityEngine.Random.Range(0, cornerProps.Count)];
-
-                PlacePropGameObjectAt(room, cornerTile, propToPlace);
+                PropGroup propGroup = propToPlace as PropGroup; //will return null if not of type PropGroup
+                if (propGroup)
+                {
+                    foreach (Prop prop in propGroup.propsInGroup)
+                    {
+                        PlacePropGameObjectAt(room, cornerTile + new Vector2(prop.relativeCoordX, prop.relativeCoordY), prop);
+                    }
+                }
+                else
+                {
+                    PlacePropGameObjectAt(room, cornerTile, propToPlace);
+                }
                 if (propToPlace.PlaceAsGroup)
                 {
                     PlaceGroupObject(room, cornerTile, propToPlace, 0.32f);
@@ -420,11 +483,23 @@ public class PropPlacementManager : MonoBehaviour
             portal.sceneNames = new String[1];
             portal.sceneNames[0] = "Main";
         }
+        else if (propToPlace.SpecialTrait == "Destructible")
+        {
+            Destructible destructible = prop.transform.GetChild(0).gameObject.AddComponent<Destructible>();
+            //AddComponent<Destructable>();
+            destructible.hitPoints = new System.Random().Next(1, 5);
+            destructible.animator = prop.transform.GetChild(0).gameObject.AddComponent<Animator>();
+            prop.transform.GetChild(0).tag = "Fighter";
+
+            destructible.animator.runtimeAnimatorController = Resources.Load("Animations/" + propToPlace.nameOfAnimator) as RuntimeAnimatorController;
+
+        }
 
         prop.transform.localPosition = (Vector2)placementPostion;
 
         //adjust the position to the sprite
         propSpriteRenderer.transform.localPosition = (Vector2)propToPlace.PropSize * 0.5f;
+        propSpriteRenderer.sortingLayerName = propToPlace.sortingLayer;
 
         //Save the prop in the room data (dungeon data)
         room.PropPositions.Add(placementPostion);
