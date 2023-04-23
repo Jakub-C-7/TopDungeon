@@ -359,7 +359,7 @@ public class PropPlacementManager : MonoBehaviour
 
                 Prop propToPlace
                     = cornerProps[UnityEngine.Random.Range(0, cornerProps.Count)];
-                PropGroup propGroup = propToPlace as PropGroup;
+                PropGroup propGroup = propToPlace as PropGroup; //will return null if not of type PropGroup
                 if (propGroup)
                 {
                     foreach (Prop prop in propGroup.propsInGroup)
