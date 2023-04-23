@@ -287,11 +287,8 @@ public class PropPlacementManager : MonoBehaviour
 
                 for (float yOffset = 0; yOffset < prop.PropSize.y; yOffset = yOffset + 0.16f)
                 {
-                    // Vector2 tempPos = originPosition + new Vector2(xOffset, yOffset);
-                    Vector2 tempPos = new Vector2(((xOffset * 100) + (originPosition.x * 100)) / 100, ((yOffset * 100) + (originPosition.y * 100)) / 100);
+                    CheckAvailablePositions(xOffset, yOffset, originPosition, availablePositions, freePositions);
 
-                    if (availablePositions.Contains(tempPos))
-                        freePositions.Add(tempPos);
                 }
             }
         }
@@ -301,11 +298,8 @@ public class PropPlacementManager : MonoBehaviour
             {
                 for (float yOffset = 0; yOffset < prop.PropSize.y; yOffset = yOffset + 0.16f)
                 {
-                    // Vector2 tempPos = originPosition + new Vector2(xOffset, yOffset);
-                    Vector2 tempPos = new Vector2(((xOffset * 100) + (originPosition.x * 100)) / 100, ((yOffset * 100) + (originPosition.y * 100)) / 100);
+                    CheckAvailablePositions(xOffset, yOffset, originPosition, availablePositions, freePositions);
 
-                    if (availablePositions.Contains(tempPos))
-                        freePositions.Add(tempPos);
                 }
             }
         }
@@ -315,11 +309,8 @@ public class PropPlacementManager : MonoBehaviour
             {
                 for (float yOffset = -prop.PropSize.y + 0.16f; yOffset <= 0; yOffset = yOffset + 0.16f)
                 {
-                    // Vector2 tempPos = originPosition + new Vector2(xOffset, yOffset);
-                    Vector2 tempPos = new Vector2(((xOffset * 100) + (originPosition.x * 100)) / 100, ((yOffset * 100) + (originPosition.y * 100)) / 100);
+                    CheckAvailablePositions(xOffset, yOffset, originPosition, availablePositions, freePositions);
 
-                    if (availablePositions.Contains(tempPos))
-                        freePositions.Add(tempPos);
                 }
             }
         }
@@ -329,16 +320,20 @@ public class PropPlacementManager : MonoBehaviour
             {
                 for (float yOffset = -prop.PropSize.y + 0.16f; yOffset <= 0; yOffset = yOffset + 0.16f)
                 {
-                    // Vector2 tempPos = originPosition + new Vector2(xOffset, yOffset);
-                    Vector2 tempPos = new Vector2(((xOffset * 100) + (originPosition.x * 100)) / 100, ((yOffset * 100) + (originPosition.y * 100)) / 100);
-
-                    if (availablePositions.Contains(tempPos))
-                        freePositions.Add(tempPos);
+                    CheckAvailablePositions(xOffset, yOffset, originPosition, availablePositions, freePositions);
                 }
             }
         }
 
         return freePositions;
+    }
+
+    private void CheckAvailablePositions(float xOffset, float yOffset, Vector2 originPosition, List<Vector2> availablePositions, List<Vector2> freePositions)
+    {
+        Vector2 tempPos = new Vector2(((xOffset * 100) + (originPosition.x * 100)) / 100, ((yOffset * 100) + (originPosition.y * 100)) / 100);
+
+        if (availablePositions.Contains(tempPos))
+            freePositions.Add(tempPos);
     }
 
     /// <summary>
@@ -481,7 +476,7 @@ public class PropPlacementManager : MonoBehaviour
 
             // Setting destination of portal
             portal.sceneNames = new String[1];
-            portal.sceneNames[0] = "Main";
+            portal.sceneNames[0] = "ProceduralScene1";
         }
         else if (propToPlace.SpecialTrait == "Destructible")
         {
