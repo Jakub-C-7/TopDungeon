@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class PropGroup : Prop
+public class CompositeProp : Prop
 {
     public List<Prop> propsInGroup;
 }

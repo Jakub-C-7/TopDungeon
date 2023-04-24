@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0424559b7bc2a142beee704cf70949b, type: 3}
-  m_Name: ColumnGroup
+  m_Script: {fileID: 11500000, guid: d56b094d9eeea1046b2e0a00edb7394c, type: 3}
+  m_Name: ColumnComposite
   m_EditorClassIdentifier: 
   PropSprite: {fileID: 0}
   PropSize: {x: 0.16, y: 0.32}
-  Corner: 1
+  Corner: 0
   NearWallUP: 0
-  NearWallDown: 0
+  NearWallDown: 1
   NearWallRight: 0
   NearWallLeft: 0
   Inner: 0
@@ -25,8 +25,12 @@ MonoBehaviour:
   PlaceAsGroup: 0
   GroupMinCount: 1
   GroupMaxCount: 1
-  Collidable: 0
+  Collidable: 1
   SpecialTrait: None
+  sortingLayer: Decorative
+  relativeCoordX: 0
+  relativeCoordY: 0
+  nameOfAnimator: 
   propsInGroup:
   - {fileID: 11400000, guid: a707b77db61a53440a3fe3ac1080e628, type: 2}
   - {fileID: 11400000, guid: c1d4e3e1720ab8242913283bfb8e438d, type: 2}
