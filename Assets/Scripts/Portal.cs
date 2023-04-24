@@ -7,15 +7,47 @@ public class Portal : Collidable
 {
     public string[] sceneNames;
     public Animator portalAnimator;
+    public string interactionPrompt = "E";
+    public float interactionPromptDelay = 0.5f;
+    private float firstCollide;
+    private bool firstCollideSaved = false;
+
+    protected override void Update()
+    {
+        base.Update();
+
+        Vector3 distanceFromOriginator = GameManager.instance.player.transform.position - transform.position;
+
+        //If player stops colliding with portal, clear last collide time
+        if (distanceFromOriginator.magnitude > (0.16 * 1f) && firstCollideSaved == true)
+        {
+            firstCollideSaved = false;
+            firstCollide = 0f;
+
+        }
+    }
 
     protected override void OnCollide(Collider2D coll)
     {
 
         if (coll.name == "Player")
         {
-            GameManager.instance.ShowText("E", 25, Color.white, transform.position + new Vector3(0, 0.08f, 0), Vector3.zero, 0);
+            //Save first collide time
+            if (firstCollideSaved == false)
+            {
+                firstCollideSaved = true;
+                firstCollide = Time.time;
 
-            if (coll.name == "Player" && Input.GetKeyDown(KeyCode.E))
+            }
+
+            //Show interaction prompt after a delay
+            if (Time.time - interactionPromptDelay > firstCollide)
+            {
+                GameManager.instance.ShowText(interactionPrompt, 25, Color.white, transform.position + new Vector3(0, 0.08f, 0), Vector3.zero, 0);
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 if (portalAnimator)
                 {
