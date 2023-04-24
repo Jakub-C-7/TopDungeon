@@ -642,13 +642,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stacked_crate_0
+      name: stacked_crate_bottom
       rect:
         serializedVersion: 2
         x: 96
         y: 128
         width: 16
-        height: 32
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6038,6 +6038,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: stacked_crate_top
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3562a756a81f4f47bafcbd70b99ef5a
+      internalID: 870539111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -6328,7 +6349,8 @@ TextureImporter:
       side_wall_top_0: -631191577
       side_wall_top_01: 273483182
       skull_0: -1768584451
-      stacked_crate_0: -1641229142
+      stacked_crate_bottom: -1641229142
+      stacked_crate_top: 870539111
       stairs_01: -561385277
       stairs_02: 671149502
       stairs_03: -1544773644
