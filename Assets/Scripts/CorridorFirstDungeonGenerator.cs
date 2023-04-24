@@ -65,7 +65,7 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         floorPositions.UnionWith(wallPositions);
 
         // Generate walls again for the clean rooms - Thin
-        var cleanWallPositions = WallGenerator.GenerateCleanDungeonColliderThin(floorPositions, tilemapVisualiser);
+        var cleanWallPositions = WallGenerator.GenerateCleanDungeonColliderThin(floorPositions, tilemapVisualiser, dungeonData);
 
         floorPositions.ExceptWith(cleanWallPositions); // Floor except the single layer of wall around
         dungeonData.DungeonFloor.UnionWith(floorPositions);

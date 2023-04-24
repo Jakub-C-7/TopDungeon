@@ -60,13 +60,37 @@ public static class WallGenerator
 
     }
 
-    public static HashSet<Vector2> GenerateCleanDungeonColliderThin(HashSet<Vector2> floorPositions, TilemapVisualiser tilemapVisualiser)
+    public static HashSet<Vector2> GenerateCleanDungeonColliderThin(HashSet<Vector2> floorPositions, TilemapVisualiser tilemapVisualiser, DungeonData dungeonData)
     {
         tilemapVisualiser.wallTilemap.ClearAllTiles(); // Clear the entire wall tilemap
 
         var wallPositions = FindWallsInDirectionThin(floorPositions, Direction2D.eightDirectionsList);
 
-        //TODO: Remove the path from all generated wall positions
+        // Remove the path from all generated wall positions
+        wallPositions.ExceptWith(dungeonData.Path);
+
+        foreach (var room in dungeonData.Rooms)
+        {
+            wallPositions.ExceptWith(room.FloorTiles);
+
+        }
+
+        wallPositions.ExceptWith(dungeonData.DungeonFloor);
+
+        // Paint new wall positions to the wall tilemap
+        foreach (var position in wallPositions)
+        {
+            tilemapVisualiser.PaintSingleBasicWallToWall(position);
+
+        }
+        return wallPositions;
+    }
+
+    public static HashSet<Vector2> GenerateCleanDungeonColliderThinBasic(HashSet<Vector2> floorPositions, TilemapVisualiser tilemapVisualiser, DungeonData dungeonData)
+    {
+        tilemapVisualiser.wallTilemap.ClearAllTiles(); // Clear the entire wall tilemap
+
+        var wallPositions = FindWallsInDirectionThin(floorPositions, Direction2D.eightDirectionsList);
 
         // Paint new wall positions to the wall tilemap
         foreach (var position in wallPositions)

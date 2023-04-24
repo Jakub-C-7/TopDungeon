@@ -12,7 +12,7 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     private float dungeonWidth = 20, dungeonHeight = 20; // Needs to remain divisible by 0.16
     [SerializeField]
     [Range(0, 10)]
-    private float offset = 0.16f; // Space between rooms
+    private float offset = 0.16f; // Minimum space between rooms
     [SerializeField]
     private bool randomWalkRooms = false;
     private DungeonData dungeonData;
@@ -81,10 +81,21 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         // Update floor positions with the old wall positions
         floor.UnionWith(wallPositions);
 
-        // Generate walls again for the clean rooms - Thin
-        var cleanWallPositions = WallGenerator.GenerateCleanDungeonColliderThin(floor, tilemapVisualiser);
+        // Room floors are not consistant with overall dungeon floor, combine them before wall creation
+        foreach (var room in dungeonData.Rooms)
+        {
 
+            tilemapVisualiser.PaintFloorTiles(room.FloorTiles);
+            floor.UnionWith(room.FloorTiles);
+
+        }
+
+        // Generate walls again for the clean rooms - Thin
+        var cleanWallPositions = WallGenerator.GenerateCleanDungeonColliderThin(floor, tilemapVisualiser, dungeonData);
+
+        tilemapVisualiser.PaintFloorTiles(floor);
         floor.ExceptWith(cleanWallPositions); // Floor except the single layer of wall around
+
         dungeonData.DungeonFloor.UnionWith(floor);
         dungeonData.DungeonWalls.UnionWith(cleanWallPositions);
 
@@ -183,6 +194,8 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         foreach (var room in roomList)
         {
             currentRoomFloor.Clear();
+
+            // Place spawn point
             if (spawnPlaced == false)
             {
                 PlaceSpawnPoint(new Vector2(room.center.x, room.center.y));
@@ -217,6 +230,7 @@ public class RoomsFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
             var roomBounds = roomList[i];
             var roomCenter = new Vector2(roomBounds.center.x, roomBounds.center.y);
 
+            // Place spawn point
             if (spawnPlaced == false)
             {
                 PlaceSpawnPoint(roomCenter);
