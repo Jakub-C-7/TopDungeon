@@ -15,13 +15,19 @@ MonoBehaviour:
   PropSprite: {fileID: -1641229142, guid: aa40b52018f7965418ae443c6a30912a, type: 3}
   PropSize: {x: 0.16, y: 0.32}
   Corner: 0
-  NearWallUP: 1
+  NearWallUP: 0
   NearWallDown: 1
   NearWallRight: 0
   NearWallLeft: 0
-  Inner: 1
-  PlacementQuantityMin: 1
-  PlacementQuantityMax: 1
-  PlaceAsGroup: 1
+  Inner: 0
+  PlacementQuantityMin: 5
+  PlacementQuantityMax: 5
+  PlaceAsGroup: 0
   GroupMinCount: 1
   GroupMaxCount: 2
+  Collidable: 1
+  SpecialTrait: None
+  sortingLayer: Decorative
+  relativeCoordX: 0
+  relativeCoordY: 0
+  nameOfAnimator: 

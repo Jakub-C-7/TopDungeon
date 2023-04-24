@@ -158,10 +158,10 @@ public class PropPlacementManager : MonoBehaviour
                 //shuffle the positions
                 List<Vector2> availablePositions = tempPositons.OrderBy(x => Guid.NewGuid()).ToList();
                 //If placement has failed there is no point in trying to place the same prop again
-                PropGroup propGroup = propToPlace as PropGroup;
-                if (propGroup)
+                CompositeProp compositeProp = propToPlace as CompositeProp;
+                if (compositeProp)
                 {
-                    if (TryPlacingMultiplePropBruteForce(room, propGroup, availablePositions, placement) == false)
+                    if (TryPlacingCompositePropBruteForce(room, compositeProp, availablePositions, placement) == false)
                         break;
 
                 }
@@ -177,7 +177,7 @@ public class PropPlacementManager : MonoBehaviour
     }
 
 
-    private bool TryPlacingMultiplePropBruteForce(Room room, PropGroup propGroupToPlace, List<Vector2> availablePositions, PlacementOriginCorner placement)
+    private bool TryPlacingCompositePropBruteForce(Room room, CompositeProp propGroupToPlace, List<Vector2> availablePositions, PlacementOriginCorner placement)
     {
         for (int i = 0; i < availablePositions.Count; i++)
         {
@@ -186,25 +186,20 @@ public class PropPlacementManager : MonoBehaviour
             if (room.PropPositions.Contains(position))
                 continue;
 
-            //check if there is enough space around to fit the prop
-            List<Vector2> freePositionsAround
-                = TryToFitProp(propGroupToPlace, availablePositions, position, placement);
+            //check if there is enough space around to fit the compositeGroup
+            bool available
+                = TryToFitCompositeProp(propGroupToPlace, availablePositions, position, placement);
 
             //If we have enough spaces place the prop
-            if (freePositionsAround.Count == (propGroupToPlace.PropSize.x / 0.16f) * (propGroupToPlace.PropSize.y / 0.16f))
+            if (available)
             {
                 foreach (Prop propToPlace in propGroupToPlace.propsInGroup)
                 {
                     //Place the gameobject
-                    PlacePropGameObjectAt(room, position, propToPlace);
+                    PlacePropGameObjectAt(room, position + new Vector2(propToPlace.relativeCoordX, propToPlace.relativeCoordY), propToPlace);
+                    room.PropPositions.Add(position + new Vector2(propToPlace.relativeCoordX, propToPlace.relativeCoordY));
                 }
 
-                //Lock all the positions recquired by the prop (based on its size)
-                foreach (Vector2 pos in freePositionsAround)
-                {
-                    //Hashest will ignore duplicate positions
-                    room.PropPositions.Add(pos);
-                }
 
                 //Deal with groups
                 if (propGroupToPlace.PlaceAsGroup)
@@ -263,6 +258,31 @@ public class PropPlacementManager : MonoBehaviour
         return false;
     }
 
+
+    /// Only check to see if props with colliders have space.
+    private bool TryToFitCompositeProp(CompositeProp compositeProp,
+        List<Vector2> availablePositions,
+        Vector2 originPosition,
+        PlacementOriginCorner placement)
+    {
+        List<Vector2> freePositions = new();
+        Boolean available = true;
+        foreach (Prop prop in compositeProp.propsInGroup)
+        {
+            if (prop.Collidable)
+            {
+                Vector2 tempPos = new Vector2(((prop.relativeCoordX * 100) + (originPosition.x * 100)) / 100, ((prop.relativeCoordY * 100) + (originPosition.y * 100)) / 100);
+
+                if (!availablePositions.Contains(tempPos))
+                {
+                    available = false;
+                }
+            }
+
+        }
+
+        return available;
+    }
     /// <summary>
     /// Checks if the prop will fit (accordig to it size)
     /// </summary>
@@ -345,6 +365,10 @@ public class PropPlacementManager : MonoBehaviour
     {
         float tempChance = cornerPropPlacementChance;
         float originalChance = cornerPropPlacementChance;
+        if (cornerProps.Count == 0)
+        {
+            return;
+        }
 
         foreach (Vector2 cornerTile in room.CornerTiles)
         {
@@ -354,10 +378,10 @@ public class PropPlacementManager : MonoBehaviour
 
                 Prop propToPlace
                     = cornerProps[UnityEngine.Random.Range(0, cornerProps.Count)];
-                PropGroup propGroup = propToPlace as PropGroup; //will return null if not of type PropGroup
-                if (propGroup)
+                CompositeProp compositeProp = propToPlace as CompositeProp; //will return null if not of type PropGroup
+                if (compositeProp)
                 {
-                    foreach (Prop prop in propGroup.propsInGroup)
+                    foreach (Prop prop in compositeProp.propsInGroup)
                     {
                         PlacePropGameObjectAt(room, cornerTile + new Vector2(prop.relativeCoordX, prop.relativeCoordY), prop);
                     }
@@ -413,12 +437,29 @@ public class PropPlacementManager : MonoBehaviour
 
         //shuffle the list
         availableSpaces.OrderBy(x => Guid.NewGuid());
-
-        //place the props (as many as we want or if there is less space fill all the available spaces)
         int tempCount = count < availableSpaces.Count ? count : availableSpaces.Count;
-        for (int i = 0; i < tempCount; i++)
+
+
+        CompositeProp compositeProp = propToPlace as CompositeProp;
+        if (compositeProp)
         {
-            PlacePropGameObjectAt(room, availableSpaces[i], propToPlace);
+            for (int i = 0; i < tempCount; i++)
+            {
+                foreach (Prop prop in compositeProp.propsInGroup)
+                {
+                    PlacePropGameObjectAt(room, availableSpaces[i] + new Vector2(prop.relativeCoordX, prop.relativeCoordY), prop);
+                }
+
+            }
+
+        }
+        else
+        {
+            //place the props (as many as we want or if there is less space fill all the available spaces)
+            for (int i = 0; i < tempCount; i++)
+            {
+                PlacePropGameObjectAt(room, availableSpaces[i], propToPlace);
+            }
         }
 
     }
