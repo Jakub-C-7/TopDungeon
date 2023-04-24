@@ -50,8 +50,8 @@ public class SimpleRandomWalkDungeonGenerator : AbstractDungeonGenerator
         var secondLayerWallPositions = WallGenerator.CreateWalls(floor, tilemapVisualiser);
         floor.UnionWith(secondLayerWallPositions);
 
-        // Generate walls again for the clean rooms - Thin
-        var cleanWallPositions = WallGenerator.GenerateCleanDungeonColliderThin(floor, tilemapVisualiser);
+        // Generate walls again for the clean rooms - Thin Basic
+        var cleanWallPositions = WallGenerator.GenerateCleanDungeonColliderThinBasic(floor, tilemapVisualiser, dungeonData);
 
         floor.ExceptWith(cleanWallPositions); // Floor except the single layer of wall around
         dungeonData.DungeonFloor.UnionWith(floor);

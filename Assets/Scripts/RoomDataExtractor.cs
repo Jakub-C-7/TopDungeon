@@ -103,7 +103,6 @@ public class RoomDataExtractor : MonoBehaviour
 
     public Dictionary<Vector2, int> CalculateRoomDistances()
     {
-
         Dictionary<Vector2, int> roomDistances = new();
 
         foreach (var room in dungeonData.Rooms)
@@ -119,7 +118,6 @@ public class RoomDataExtractor : MonoBehaviour
             roomDistances.Add(room.RoomCenterPos, pathNodes[pathNodes.Count - 1].gCost);
 
         }
-
 
         // Populate room distance ranking variables for each room
         foreach (var room in dungeonData.Rooms)
