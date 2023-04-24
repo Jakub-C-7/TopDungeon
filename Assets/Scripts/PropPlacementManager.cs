@@ -477,6 +477,10 @@ public class PropPlacementManager : MonoBehaviour
             // Setting destination of portal
             portal.sceneNames = new String[1];
             portal.sceneNames[0] = "ProceduralScene1";
+
+            // Set interaction prompt and delay
+            portal.interactionPrompt = "Press E to leave this dungeon";
+            portal.interactionPromptDelay = 1.5f;
         }
         else if (propToPlace.SpecialTrait == "Destructible")
         {
