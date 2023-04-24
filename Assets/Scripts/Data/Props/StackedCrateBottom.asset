@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7e9e59b0aa71d44d8fdfa914286ae90, type: 3}
-  m_Name: StackedCrate1
+  m_Name: StackedCrateBottom
   m_EditorClassIdentifier: 
   PropSprite: {fileID: -1641229142, guid: aa40b52018f7965418ae443c6a30912a, type: 3}
-  PropSize: {x: 0.16, y: 0.32}
+  PropSize: {x: 0.16, y: 0.16}
   Corner: 0
   NearWallUP: 0
-  NearWallDown: 1
+  NearWallDown: 0
   NearWallRight: 0
   NearWallLeft: 0
   Inner: 0
-  PlacementQuantityMin: 5
-  PlacementQuantityMax: 5
+  PlacementQuantityMin: 1
+  PlacementQuantityMax: 1
   PlaceAsGroup: 0
   GroupMinCount: 1
-  GroupMaxCount: 2
+  GroupMaxCount: 1
   Collidable: 1
   SpecialTrait: None
   sortingLayer: Decorative

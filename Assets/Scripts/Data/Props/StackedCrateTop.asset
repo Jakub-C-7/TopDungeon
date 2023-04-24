@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7e9e59b0aa71d44d8fdfa914286ae90, type: 3}
-  m_Name: ColumnTop
+  m_Name: StackedCrateTop
   m_EditorClassIdentifier: 
-  PropSprite: {fileID: -2134835873, guid: bd551b3fcc8b6004fa8f96bff6f99170, type: 3}
+  PropSprite: {fileID: 870539111, guid: aa40b52018f7965418ae443c6a30912a, type: 3}
   PropSize: {x: 0.16, y: 0.16}
-  Corner: 1
+  Corner: 0
   NearWallUP: 0
   NearWallDown: 0
   NearWallRight: 0
