@@ -18,6 +18,10 @@ public class Player : Mover
     private float lastBattleAction;
     private float battleModeDuration = 10f;
     private bool dead = false;
+    private float dashDuration = 0.1f;
+    private float lastDash;
+    private float originalXSpeed;
+    private float originalYSpeed;
 
     protected override void Start()
     {
@@ -26,6 +30,9 @@ public class Player : Mover
         ClearEquippedWeapon();
         RefreshEquippedWeapon();
         lastBattleAction = Time.time - battleModeDuration;
+        lastDash = Time.time - dashDuration;
+        originalXSpeed = xSpeed;
+        originalYSpeed = ySpeed;
 
     }
 
@@ -78,8 +85,6 @@ public class Player : Mover
         GameManager.instance.OnHealthChange();
         RegisterBattleAction();
     }
-
-
     private void movePlayer()
     {
         if (Time.time - lastBattleAction > battleModeDuration)
@@ -94,7 +99,29 @@ public class Player : Mover
 
         if (canMove)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                lastDash = Time.time;
+                animator.SetBool("Dash", true);
+            }
+
+            if (Time.time - lastDash < dashDuration)
+            {
+                xSpeed = 4f;
+                ySpeed = 3.5f;
+
+            }
+            else
+            {
+                animator.SetBool("Dash", false);
+                xSpeed = originalXSpeed;
+                ySpeed = originalYSpeed;
+
+
+            }
+
             UpdateMotor(new Vector3(x, y, 0));
+
 
         }
 
