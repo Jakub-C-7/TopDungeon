@@ -10,6 +10,12 @@ public class AgentPlacementManager : MonoBehaviour
     private GameObject enemyPrefab, bossPrefab, playerPrefab;
 
     [SerializeField]
+    private List<GameObject> enemyList;
+
+    [SerializeField]
+    private List<GameObject> bossList;
+
+    [SerializeField]
     private int playerRoomIndex;
 
     // [SerializeField]
@@ -60,14 +66,16 @@ public class AgentPlacementManager : MonoBehaviour
             //Positions that we can reach + path == positions where we can place enemies
             room.PositionsAccessibleFromPath = roomMap.Keys.OrderBy(x => Guid.NewGuid()).ToList();
 
+            // --- Placing enemies ---
+
             // Max number of enemies to place in the room
             int maxEnemyCount = room.PositionsAccessibleFromPath.Count;
 
             //If the room is the second furthest away from spawn, make it a boss room
             if (room.RoomDistanceRanking == dungeonData.Rooms.Count - 2)
             {
-                // Place Boss enemy
-                PlaceEnemies(room, 1, bossPrefab);
+                // Place Boss enemy randomly from the available boss list
+                PlaceEnemies(room, 1, PickRandomGameObject(bossList));
             }
             else if (maxEnemyCount > 0) // Normal enemy room
             {
@@ -79,7 +87,9 @@ public class AgentPlacementManager : MonoBehaviour
                     enemyCount = maxEnemyCount;
                 }
 
-                PlaceEnemies(room, enemyCount, enemyPrefab); // Place
+                // PlaceEnemies(room, enemyCount, enemyPrefab);
+                PlaceEnemies(room, enemyCount, PickRandomGameObject(enemyList)); // Place a random enemy type in each room
+
             }
 
             // Spawn the player / Camera - Optional
@@ -113,6 +123,12 @@ public class AgentPlacementManager : MonoBehaviour
             enemy.transform.localPosition = (Vector2)room.PositionsAccessibleFromPath[k] + new Vector2(0.16f, 0.16f) * 0.5f;
             room.EnemiesInTheRoom.Add(enemy);
         }
+    }
+
+    // Picks a random GameObject from the List of GameObjects and returns it
+    private GameObject PickRandomGameObject(List<GameObject> gameObjects)
+    {
+        return gameObjects[UnityEngine.Random.Range(0, gameObjects.Count)];
     }
 
     private void OnDrawGizmosSelected()
