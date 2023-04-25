@@ -85,35 +85,6 @@ public class Player : Mover
         GameManager.instance.OnHealthChange();
         RegisterBattleAction();
     }
-
-    private void Dash(Vector3 input)
-    {
-        //Movement Blocking-------------
-        //Make sure we can move in this direction by casting a box there first. If the box returns null, we're free to move
-        //Y axis Blocking
-        moveDelta = new Vector3(input.x * xSpeed * 20, input.y * ySpeed * 20, 0);
-        Debug.Log(moveDelta);
-
-        hit = Physics2D.BoxCast(transform.position + (Vector3)boxCollider.offset, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
-        if (hit.collider == null)
-        {
-            //Make this sucker move UP!
-            transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
-            Debug.Log("moved up");
-        }
-
-        //X axis blocking
-        hit = Physics2D.BoxCast(transform.position + (Vector3)boxCollider.offset, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
-        if (hit.collider == null)
-        {
-            //Make this sucker move ACROSS!
-            transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
-            Debug.Log("moved across");
-
-        }
-    }
-
-
     private void movePlayer()
     {
         if (Time.time - lastBattleAction > battleModeDuration)
