@@ -7,16 +7,13 @@ using UnityEngine;
 public class AgentPlacementManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject enemyPrefab, playerPrefab;
+    private GameObject enemyPrefab, bossPrefab, playerPrefab;
 
     [SerializeField]
     private int playerRoomIndex;
 
     // [SerializeField]
-    // private CinemachineVirtualCamera vCamera;
-
-    [SerializeField]
-    private List<int> roomEnemiesCount;
+    // private List<int> roomEnemiesCount;
 
     DungeonData dungeonData;
 
@@ -26,14 +23,14 @@ public class AgentPlacementManager : MonoBehaviour
     private void Awake()
     {
         dungeonData = FindObjectOfType<DungeonData>();
+        playerPrefab = FindObjectOfType<Player>().gameObject;
+
     }
 
     public void PlaceAgents()
     {
         if (dungeonData == null)
             return;
-
-
 
         // If there is only one room, fill it with actors, else, skip it and let it be a safe room
         int count = 0;
@@ -63,10 +60,26 @@ public class AgentPlacementManager : MonoBehaviour
             //Positions that we can reach + path == positions where we can place enemies
             room.PositionsAccessibleFromPath = roomMap.Keys.OrderBy(x => Guid.NewGuid()).ToList();
 
-            // If the current room's enemy count has been specified
-            if (roomEnemiesCount.Count > i)
+            // Max number of enemies to place in the room
+            int maxEnemyCount = room.PositionsAccessibleFromPath.Count;
+
+            //If the room is the second furthest away from spawn, make it a boss room
+            if (room.RoomDistanceRanking == dungeonData.Rooms.Count - 2)
             {
-                PlaceEnemies(room, roomEnemiesCount[i]); // Place
+                // Place Boss enemy
+                PlaceEnemies(room, 1, bossPrefab);
+            }
+            else if (maxEnemyCount > 0) // Normal enemy room
+            {
+                int enemyCount = UnityEngine.Random.Range(1, 10);
+
+                //If enemy count is greater than the max number of enemies we can place in the room, cap it at that number
+                if (enemyCount > maxEnemyCount)
+                {
+                    enemyCount = maxEnemyCount;
+                }
+
+                PlaceEnemies(room, enemyCount, enemyPrefab); // Place
             }
 
             // Spawn the player / Camera - Optional
@@ -87,7 +100,7 @@ public class AgentPlacementManager : MonoBehaviour
     /// </summary>
     /// <param name="room"></param>
     /// <param name="enemyCount"></param>
-    private void PlaceEnemies(Room room, int enemyCount)
+    private void PlaceEnemies(Room room, int enemyCount, GameObject enemyToPlace)
     {
         for (int k = 0; k < enemyCount; k++)
         {
@@ -96,7 +109,7 @@ public class AgentPlacementManager : MonoBehaviour
             {
                 return;
             }
-            GameObject enemy = Instantiate(enemyPrefab);
+            GameObject enemy = Instantiate(enemyToPlace);
             enemy.transform.localPosition = (Vector2)room.PositionsAccessibleFromPath[k] + new Vector2(0.16f, 0.16f) * 0.5f;
             room.EnemiesInTheRoom.Add(enemy);
         }

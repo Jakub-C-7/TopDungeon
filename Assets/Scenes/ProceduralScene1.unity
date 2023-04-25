@@ -8750,9 +8750,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1810309401712669246, guid: cadce51e1e8a50a41a84b4226a7870a7, type: 3}
+  bossPrefab: {fileID: 1373954531902748384, guid: 45b3801feb7e8de4ab6f4acd37a392ca, type: 3}
   playerPrefab: {fileID: 0}
   playerRoomIndex: 0
-  roomEnemiesCount: 0100000005000000030000000200000001000000
   showGizmo: 0
 --- !u!4 &1492848808
 Transform:

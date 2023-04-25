@@ -60,9 +60,10 @@ public class PropPlacementManager : MonoBehaviour
         foreach (Room room in dungeonData.Rooms)
         {
 
+            //If the room is the furthest away
             if (room.RoomDistanceRanking == dungeonData.Rooms.Count - 1)
             {
-                //Place dungeon door
+                //Place portal to exit
                 List<Prop> door = propsToPlace.Where(x => x.SpecialTrait == "Portal").ToList();
                 PlaceProps(room, door, room.InnerTiles, PlacementOriginCorner.BottomLeft);
 
