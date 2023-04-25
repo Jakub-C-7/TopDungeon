@@ -509,12 +509,12 @@ public class PropPlacementManager : MonoBehaviour
             // Creating portal collider
             BoxCollider2D collider = prop.AddComponent<BoxCollider2D>();
 
-            Vector2 size = new Vector2(propToPlace.PropSize.x * 0.8f, propToPlace.PropSize.y * 0.8f);
+            Vector2 size = new Vector2(propToPlace.PropSize.x, propToPlace.PropSize.y);
             collider.size = size;
 
             collider.offset = new Vector2(0.08f, 0.08f);
 
-            Portal portal = prop.AddComponent<Portal>();
+            KeyLockedPortal portal = prop.AddComponent<KeyLockedPortal>();
 
             // Setting destination of portal
             portal.sceneNames = new String[1];
@@ -522,7 +522,7 @@ public class PropPlacementManager : MonoBehaviour
 
             // Set interaction prompt and delay
             portal.interactionPrompt = "Press E to leave this dungeon";
-            portal.interactionPromptDelay = 1.5f;
+            portal.interactionPromptDelay = 0.2f;
         }
         else if (propToPlace.SpecialTrait == "Destructible")
         {

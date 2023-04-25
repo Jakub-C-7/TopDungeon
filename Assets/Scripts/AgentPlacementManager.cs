@@ -79,7 +79,7 @@ public class AgentPlacementManager : MonoBehaviour
             }
             else if (maxEnemyCount > 0) // Normal enemy room
             {
-                int enemyCount = UnityEngine.Random.Range(1, 10);
+                int enemyCount = UnityEngine.Random.Range(4, 10);
 
                 //If enemy count is greater than the max number of enemies we can place in the room, cap it at that number
                 if (enemyCount > maxEnemyCount)

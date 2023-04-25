@@ -2580,7 +2580,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_88
+      name: key_silver_1
       rect:
         serializedVersion: 2
         x: 128
@@ -2811,7 +2811,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dungeon_Tileset_99
+      name: key_gold_1
       rect:
         serializedVersion: 2
         x: 144
@@ -2995,7 +2995,6 @@ TextureImporter:
       Dungeon_Tileset_85: 5719594033305679040
       Dungeon_Tileset_86: 3136550281646277714
       Dungeon_Tileset_87: 5550302956442217801
-      Dungeon_Tileset_88: -357649465742773655
       Dungeon_Tileset_89: -3679828817949995438
       Dungeon_Tileset_9: -778764822399169897
       Dungeon_Tileset_90: -7443312225144014202
@@ -3006,8 +3005,9 @@ TextureImporter:
       Dungeon_Tileset_96: -4218565217482104407
       Dungeon_Tileset_97: -6821306102546672784
       Dungeon_Tileset_98: -8258698053525156362
-      Dungeon_Tileset_99: -2978260595890351725
       brazier_0: 5860325458425312261
+      key_gold_1: -2978260595890351725
+      key_silver_1: -357649465742773655
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -8750,7 +8750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1810309401712669246, guid: cadce51e1e8a50a41a84b4226a7870a7, type: 3}
-  bossPrefab: {fileID: 1373954531902748384, guid: 45b3801feb7e8de4ab6f4acd37a392ca, type: 3}
+  bossPrefab: {fileID: 3099058828414284387, guid: 45b3801feb7e8de4ab6f4acd37a392ca, type: 3}
   playerPrefab: {fileID: 0}
   enemyList:
   - {fileID: 5516270152969648556, guid: b732e057711345044874017eac9e4fb0, type: 3}
@@ -8760,7 +8760,7 @@ MonoBehaviour:
   - {fileID: 2030974675349754056, guid: 39652fcc61e13a54c9ea8fdf69b1fa37, type: 3}
   - {fileID: 6870943358502446538, guid: 97cce4116763ae043bf8b1438edfb49a, type: 3}
   bossList:
-  - {fileID: 1373954531902748384, guid: 45b3801feb7e8de4ab6f4acd37a392ca, type: 3}
+  - {fileID: 3099058828414284387, guid: 45b3801feb7e8de4ab6f4acd37a392ca, type: 3}
   playerRoomIndex: 0
   showGizmo: 0
 --- !u!4 &1492848808
