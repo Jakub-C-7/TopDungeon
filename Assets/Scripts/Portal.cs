@@ -9,8 +9,8 @@ public class Portal : Collidable
     public Animator portalAnimator;
     public string interactionPrompt = "E";
     public float interactionPromptDelay = 0.5f;
-    private float firstCollide;
-    private bool firstCollideSaved = false;
+    protected float firstCollide;
+    protected bool firstCollideSaved = false;
 
     protected override void Update()
     {
@@ -52,6 +52,12 @@ public class Portal : Collidable
                 if (portalAnimator)
                 {
                     portalAnimator.SetTrigger("Open");
+                }
+
+                // If a dungeon key has been collected, reset by removing it from the player's inventory
+                if (GameManager.instance.player.inventory.transform.Find("Dungeon Key"))
+                {
+                    Destroy(GameManager.instance.player.inventory.transform.Find("Dungeon Key").gameObject);
                 }
 
                 GameManager.instance.player.SetReduceLight(true);

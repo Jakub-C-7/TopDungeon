@@ -68,6 +68,24 @@ public class DroppedItem : Collidable
             GameManager.instance.player.inventory.coins += quantity;
             GameManager.instance.ShowText("+ " + quantity + " coins!", 25, Color.yellow, transform.position, Vector3.up * 50, 2.0f);
         }
+        else if (itemType == "key")
+        {
+
+            // Set properties of key into a CollectableItem object
+            GameObject keyObject = new GameObject();
+            CollectableItem keyItem = keyObject.AddComponent<CollectableItem>();
+
+            keyItem.itemName = "Dungeon Key";
+            keyItem.itemType = "key";
+            keyItem.itemImage = this.gameObject.GetComponent<SpriteRenderer>().sprite;
+
+            // Move the key into the player's inventory
+            keyObject.transform.parent = GameManager.instance.player.inventory.transform; //Transfer ownership of item to player's inventory
+            keyObject.name = keyItem.itemName;
+
+            // Visual text prompt for obtaining key
+            GameManager.instance.ShowText(keyItem.name + " obtained!", 25, Color.cyan, transform.position, Vector3.up * 50, 2.0f);
+        }
 
     }
 
