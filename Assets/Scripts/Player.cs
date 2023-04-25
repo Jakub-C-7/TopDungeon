@@ -18,6 +18,10 @@ public class Player : Mover
     private float lastBattleAction;
     private float battleModeDuration = 10f;
     private bool dead = false;
+    private float dashDuration = 0.1f;
+    private float lastDash;
+    private float originalXSpeed;
+    private float originalYSpeed;
 
     protected override void Start()
     {
@@ -26,6 +30,9 @@ public class Player : Mover
         ClearEquippedWeapon();
         RefreshEquippedWeapon();
         lastBattleAction = Time.time - battleModeDuration;
+        lastDash = Time.time - dashDuration;
+        originalXSpeed = xSpeed;
+        originalYSpeed = ySpeed;
 
     }
 
@@ -79,6 +86,33 @@ public class Player : Mover
         RegisterBattleAction();
     }
 
+    private void Dash(Vector3 input)
+    {
+        //Movement Blocking-------------
+        //Make sure we can move in this direction by casting a box there first. If the box returns null, we're free to move
+        //Y axis Blocking
+        moveDelta = new Vector3(input.x * xSpeed * 20, input.y * ySpeed * 20, 0);
+        Debug.Log(moveDelta);
+
+        hit = Physics2D.BoxCast(transform.position + (Vector3)boxCollider.offset, boxCollider.size, 0, new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+        if (hit.collider == null)
+        {
+            //Make this sucker move UP!
+            transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
+            Debug.Log("moved up");
+        }
+
+        //X axis blocking
+        hit = Physics2D.BoxCast(transform.position + (Vector3)boxCollider.offset, boxCollider.size, 0, new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Blocking"));
+        if (hit.collider == null)
+        {
+            //Make this sucker move ACROSS!
+            transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
+            Debug.Log("moved across");
+
+        }
+    }
+
 
     private void movePlayer()
     {
@@ -94,7 +128,29 @@ public class Player : Mover
 
         if (canMove)
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                lastDash = Time.time;
+                animator.SetBool("Dash", true);
+            }
+
+            if (Time.time - lastDash < dashDuration)
+            {
+                xSpeed = 4f;
+                ySpeed = 3.5f;
+
+            }
+            else
+            {
+                animator.SetBool("Dash", false);
+                xSpeed = originalXSpeed;
+                ySpeed = originalYSpeed;
+
+
+            }
+
             UpdateMotor(new Vector3(x, y, 0));
+
 
         }
 
