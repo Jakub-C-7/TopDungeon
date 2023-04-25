@@ -45,11 +45,13 @@ public class Player : Mover
     protected override void Death()
     {
         canMove = false;
+
         LightSource.pointLightOuterRadius = defaultLightInnerRadius;
         // CameraMotor cameraMotor = FindFirstObjectByType<CameraMotor>();
         // cameraMotor.GetComponent<Camera>().orthographicSize = 0.5f;
         Camera.main.orthographicSize = 0.5f;
         Camera.main.GetComponent<CameraMotor>().CentreOnPlayer();
+        animator.SetBool("Dash", false); //Dash doesn't have an exit time so have to manually change to false
         animator.SetTrigger("Death");
         handsAnimator.SetTrigger("Death");
         GameManager.instance.weapon.animator.SetTrigger("Death");
