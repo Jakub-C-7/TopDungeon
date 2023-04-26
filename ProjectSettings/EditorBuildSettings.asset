@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProceduralScene1.unity
     guid: 3e15af1c3719c994098da2209018aa2a
+  - enabled: 1
+    path: Assets/Scenes/Checkpoint1.unity
+    guid: f5377dbfe36bc284cbd07baa16f475a1
   m_configObjects: {}
