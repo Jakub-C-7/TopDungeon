@@ -515,6 +515,10 @@ public class PropPlacementManager : MonoBehaviour
             collider.offset = new Vector2(0.08f, 0.08f);
 
             KeyLockedPortal portal = prop.AddComponent<KeyLockedPortal>();
+            portal.portalAnimator = prop.transform.GetChild(0).gameObject.AddComponent<Animator>();
+
+            portal.portalAnimator.runtimeAnimatorController = Resources.Load("Animations/" + propToPlace.nameOfAnimator) as RuntimeAnimatorController;
+
 
             // Setting destination of portal
             portal.sceneNames = new String[1];

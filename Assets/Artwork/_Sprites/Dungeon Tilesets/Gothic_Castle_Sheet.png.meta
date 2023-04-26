@@ -2792,6 +2792,132 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Gothic_Castle_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 2064
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d17f26868ef044ba76fcc26382d94c
+      internalID: -357228247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gothic_Castle_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba3872e75fd12fc42939744b6c5c323e
+      internalID: -1893373114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gothic_Hatch_Locked
+      rect:
+        serializedVersion: 2
+        x: 2096
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30428da04e2a92346a836a0aedaabbb9
+      internalID: 1257814803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gothic_Hatch_Open_0
+      rect:
+        serializedVersion: 2
+        x: 2112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 125ff5bf6d22bc94b9e33ccaba579874
+      internalID: 708899583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gothic_Hatch_Open_1
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1332900e0511a854ba3d2c1ef2da77fa
+      internalID: 1680610133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gothic_Hatch_Open_2
+      rect:
+        serializedVersion: 2
+        x: 2144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cea9cfbbb0f42514d93de77b51f03b7d
+      internalID: -181027957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2804,6 +2930,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Gothic_Castle_Sheet_0: 1330188111
+      Gothic_Castle_Sheet_1: -357228247
       Gothic_Castle_Sheet_10: 1285783158
       Gothic_Castle_Sheet_100: -1319929331
       Gothic_Castle_Sheet_101: -1435046251
@@ -2820,6 +2947,7 @@ TextureImporter:
       Gothic_Castle_Sheet_121: -990485158
       Gothic_Castle_Sheet_122: 58563650
       Gothic_Castle_Sheet_13: 803359229
+      Gothic_Castle_Sheet_2: -1893373114
       Gothic_Castle_Sheet_20: 1552505665
       Gothic_Castle_Sheet_21: 1467004080
       Gothic_Castle_Sheet_22: 424254431
@@ -2907,6 +3035,10 @@ TextureImporter:
       Gothic_Column_Bottom: 912366377
       Gothic_Column_Top_Broken: -43217631
       Gothic_Column_Top_Fixed: -2134835873
+      Gothic_Hatch_Locked: 1257814803
+      Gothic_Hatch_Open_0: 708899583
+      Gothic_Hatch_Open_1: 1680610133
+      Gothic_Hatch_Open_2: -181027957
       Gothic_Normal_Floor_0: -2015386069
       Gothic_Normal_Floor_1: 1215672323
       Gothic_Normal_Floor_2: -1403185054

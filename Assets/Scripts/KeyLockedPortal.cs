@@ -5,13 +5,32 @@ using UnityEngine;
 public class KeyLockedPortal : Portal
 {
     bool keyAcquired = false;
+    Transform playerTransform;
 
+    protected void Awake()
+    {
+        playerTransform = GameManager.instance.player.transform;
+
+    }
     protected override void Update()
     {
         base.Update();
 
-        keyAcquired = GameManager.instance.player.inventory.transform.Find("Dungeon Key") != null;
+        if (Vector3.Distance(playerTransform.position, this.transform.position) < 0.5f)
+        {
+            keyAcquired = GameManager.instance.player.inventory.transform.Find("Dungeon Key") != null;
+            if (keyAcquired)
+            {
+                portalAnimator.SetBool("Unlocked", true);
+
+            }
+
+
+        }
+
     }
+
+
 
     protected override void OnCollide(Collider2D coll)
     {
