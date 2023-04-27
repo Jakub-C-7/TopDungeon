@@ -983,10 +983,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharacterMenu, Assembly-CSharp
-        m_MethodName: OnArrowClick
-        m_Mode: 6
+      - m_Target: {fileID: 1318976836}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: PlayGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1122,72 +1122,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1318976835}
-  - component: {fileID: 1318976834}
-  - component: {fileID: 1318976833}
+  - component: {fileID: 1318976836}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: MainMenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1318976833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318976832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91dcfa3fe4791434cacdebe9d8044c70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1318976834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318976832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02137e7d3fe8c764d88591f67748a394, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSprites:
-  - {fileID: -2127929151, guid: c3f981aea827bce428fb95c870409bc0, type: 3}
-  - {fileID: 1616727666, guid: c3f981aea827bce428fb95c870409bc0, type: 3}
-  - {fileID: 780227126, guid: 7a8398f6299e93149b99471e38c9e0cd, type: 3}
-  weaponSprites:
-  - {fileID: 343679953, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
-  - {fileID: 343679953, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
-  - {fileID: 724459946, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
-  - {fileID: 724459946, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
-  - {fileID: 724459946, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
-  - {fileID: 724459946, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
-  - {fileID: -1942962493, guid: 2609d6ab8a4ddbc41be829acddbaf790, type: 3}
-  weaponPrices: 1e000000320000004b000000640000009600000090010000
-  xpTable: 050000000a00000014000000230000003c0000005500000082000000b4000000fa00000090010000
-  player: {fileID: 0}
-  weapon: {fileID: 0}
-  weaponObject: {fileID: 0}
-  floatingTextManager: {fileID: 0}
-  healthBar: {fileID: 0}
-  deathMenuAnimator: {fileID: 0}
-  hud: {fileID: 0}
-  menu: {fileID: 0}
-  speechBanner: {fileID: 0}
-  adventurerDiary: {fileID: 0}
-  inventoryMenu: {fileID: 0}
-  prefabList:
-  - {fileID: 8687593053797168862, guid: 00173c89e301fdc40a3c08834576e704, type: 3}
-  - {fileID: 1189442862988889657, guid: 988926b31033f7c41a87d09efdcb678a, type: 3}
-  - {fileID: 3967886733507596515, guid: 20c603f6873ac874aa53ae7004964619, type: 3}
-  - {fileID: 1810309401712669246, guid: cadce51e1e8a50a41a84b4226a7870a7, type: 3}
-  - {fileID: 7828987936143882510, guid: b4addbe3671a0a64ba63aa95fa294e5f, type: 3}
-  experience: 0
-  currentCharacterSelection: 2
 --- !u!4 &1318976835
 Transform:
   m_ObjectHideFlags: 0
@@ -1203,6 +1145,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1318976836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318976832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986505de052572d4ca4a04b6c6986019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1463450102
 GameObject:
   m_ObjectHideFlags: 0
