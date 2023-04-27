@@ -706,8 +706,8 @@ MonoBehaviour:
   onHitAudioSource: {fileID: 0}
   part: {fileID: 0}
   boxCollider: {fileID: 0}
-  ySpeed: 0.75
-  xSpeed: 1
+  ySpeed: 0.375
+  xSpeed: 0.5
   animator: {fileID: 0}
   handsAnimator: {fileID: 0}
   canMove: 1
@@ -734,13 +734,4 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  hitBox: {fileID: 0}
   explosionParticleSystem: {fileID: 0}
-  attackCooldown: 1.5
-  lastAttack: 0
-  projectile: {fileID: 0}
-  damageAmount: 0
-  pushForce: 0
-  range: 0
-  round: 0
-  maxround: 4

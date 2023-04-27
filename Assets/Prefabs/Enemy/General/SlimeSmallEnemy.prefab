@@ -239,19 +239,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379b522676a337c41a2e5330e920ae0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 20
-  maxHitpoints: 20
-  pushRecoverySpeed: 0.1
+  hitPoints: 5
+  maxHitpoints: 5
+  pushRecoverySpeed: 0.5
   onHitAudioSource: {fileID: 0}
   part: {fileID: 0}
   boxCollider: {fileID: 1810309401712669232}
   ySpeed: 0.5
-  xSpeed: 1
+  xSpeed: 0.6666667
   animator: {fileID: 1810309401712669235}
   handsAnimator: {fileID: 0}
   canMove: 0
   staggered: 0
   xpValue: 1
+  droppedItem: {fileID: 0}
   triggerLength: 0.5
   chaseLength: 1
   collidingWithPlayer: 0
@@ -273,7 +274,7 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   explosionParticleSystem: {fileID: 0}
-  numOfSplits: 0
+  numOfSplits: 3
 --- !u!1 &1810309402357741808
 GameObject:
   m_ObjectHideFlags: 0

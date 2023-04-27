@@ -722,14 +722,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d99ad51b081ff74fb94bdf8fac5152a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 10
-  maxHitpoints: 10
-  pushRecoverySpeed: 0.1
+  hitPoints: 3
+  maxHitpoints: 3
+  pushRecoverySpeed: 0.5
   onHitAudioSource: {fileID: 0}
   part: {fileID: 0}
   boxCollider: {fileID: 2030974675349754070}
-  ySpeed: 0.75
-  xSpeed: 1
+  ySpeed: 0.375
+  xSpeed: 0.5
   animator: {fileID: 2030974675349754071}
   handsAnimator: {fileID: 0}
   canMove: 1
@@ -757,11 +757,10 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   explosionParticleSystem: {fileID: 0}
-  round: 0
-  maxround: 4
   attackCooldown: 3
   lastAttack: 0
   projectile: {fileID: 0}
   damageAmount: 1
   pushForce: 2
   projectileRange: 1.5
+  maxRound: 4

@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 5516270152833048849}
   - component: {fileID: 5516270152833048850}
   - component: {fileID: 5516270152833048851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ItemToDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,9 +411,9 @@ GameObject:
   - component: {fileID: 5516270152969648530}
   - component: {fileID: 5516270152969648535}
   - component: {fileID: 5516270152969648534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BatSmallEnemy
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -548,14 +548,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1c942f86b801c4aafb7106298f88c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 10
-  maxHitpoints: 10
-  pushRecoverySpeed: 0.1
+  hitPoints: 4
+  maxHitpoints: 4
+  pushRecoverySpeed: 0.5
   onHitAudioSource: {fileID: 0}
   part: {fileID: 0}
   boxCollider: {fileID: 0}
-  ySpeed: 0.75
-  xSpeed: 1
+  ySpeed: 0.3
+  xSpeed: 0.3
   animator: {fileID: 5516270152969648530}
   handsAnimator: {fileID: 0}
   canMove: 1
@@ -594,7 +594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5516270153599403312}
   - component: {fileID: 5516270153599403319}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: MinimapIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 5516270153705638864}
   - component: {fileID: 5516270153705638870}
   - component: {fileID: 5516270153705638871}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
