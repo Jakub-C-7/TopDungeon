@@ -26,4 +26,9 @@ MonoBehaviour:
   GroupMinCount: 1
   GroupMaxCount: 1
   Collidable: 0
+  Destructible: 0
   SpecialTrait: Portal
+  sortingLayer: Decorative
+  relativeCoordX: 0
+  relativeCoordY: 0
+  nameOfAnimator: 

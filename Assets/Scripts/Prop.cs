@@ -33,6 +33,8 @@ public class Prop : ScriptableObject
 
     [Space, Header("Prop type:")]
     public bool Collidable = true;
+    public bool Destructible = true;
+
     public string SpecialTrait = "None";
 
     public string sortingLayer = "Decorative";

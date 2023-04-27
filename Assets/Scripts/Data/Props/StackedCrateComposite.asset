@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d56b094d9eeea1046b2e0a00edb7394c, type: 3}
-  m_Name: StackedCrate
+  m_Name: StackedCrateComposite
   m_EditorClassIdentifier: 
   PropSprite: {fileID: 0}
   PropSize: {x: 0.16, y: 0.32}

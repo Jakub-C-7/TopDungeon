@@ -178,7 +178,7 @@ public class PropPlacementManager : MonoBehaviour
     }
 
 
-    private bool TryPlacingCompositePropBruteForce(Room room, CompositeProp propGroupToPlace, List<Vector2> availablePositions, PlacementOriginCorner placement)
+    private bool TryPlacingCompositePropBruteForce(Room room, CompositeProp compositePropToPlace, List<Vector2> availablePositions, PlacementOriginCorner placement)
     {
         for (int i = 0; i < availablePositions.Count; i++)
         {
@@ -189,23 +189,28 @@ public class PropPlacementManager : MonoBehaviour
 
             //check if there is enough space around to fit the compositeGroup
             bool available
-                = TryToFitCompositeProp(propGroupToPlace, availablePositions, position, placement);
+                = TryToFitCompositeProp(compositePropToPlace, availablePositions, position, placement);
 
             //If we have enough spaces place the prop
             if (available)
             {
-                foreach (Prop propToPlace in propGroupToPlace.propsInGroup)
+                // Create new parent gameobject
+                GameObject parent = new GameObject();
+                parent.name = "CompositePropMainParent";
+
+                foreach (Prop propToPlace in compositePropToPlace.propsInGroup)
                 {
                     //Place the gameobject
-                    PlacePropGameObjectAt(room, position + new Vector2(propToPlace.relativeCoordX, propToPlace.relativeCoordY), propToPlace);
+                    var prop = PlacePropGameObjectAt(room, position + new Vector2(propToPlace.relativeCoordX, propToPlace.relativeCoordY), propToPlace);
                     room.PropPositions.Add(position + new Vector2(propToPlace.relativeCoordX, propToPlace.relativeCoordY));
+                    prop.transform.SetParent(parent.transform); // Add prop to overall parent
                 }
 
 
                 //Deal with groups
-                if (propGroupToPlace.PlaceAsGroup)
+                if (compositePropToPlace.PlaceAsGroup)
                 {
-                    PlaceGroupObject(room, position, propGroupToPlace, 0.16f);
+                    PlaceGroupObject(room, position, compositePropToPlace, 0.16f);
                 }
                 return true;
             }
@@ -502,6 +507,24 @@ public class PropPlacementManager : MonoBehaviour
 
         }
 
+        //Make destructible
+        if (propToPlace.Destructible)
+        {
+            Destructible destructible = prop.transform.GetChild(0).gameObject.AddComponent<Destructible>();
+            destructible.hitPoints = new System.Random().Next(1, 5);
+            prop.transform.GetChild(0).tag = "Fighter";
+
+            if (propToPlace.SpecialTrait == "AnimatedDestructible")
+            {
+
+                destructible.animator = prop.transform.GetChild(0).gameObject.AddComponent<Animator>();
+
+                destructible.animator.runtimeAnimatorController = Resources.Load("Animations/" + propToPlace.nameOfAnimator) as RuntimeAnimatorController;
+
+            }
+
+        }
+
         if (propToPlace.SpecialTrait == "Portal")
         {
             prop.name = "LadderPortal"; // Set GameObject name
@@ -528,17 +551,7 @@ public class PropPlacementManager : MonoBehaviour
             portal.interactionPrompt = "Press E to leave this dungeon";
             portal.interactionPromptDelay = 0.2f;
         }
-        else if (propToPlace.SpecialTrait == "Destructible")
-        {
-            Destructible destructible = prop.transform.GetChild(0).gameObject.AddComponent<Destructible>();
-            //AddComponent<Destructable>();
-            destructible.hitPoints = new System.Random().Next(1, 5);
-            destructible.animator = prop.transform.GetChild(0).gameObject.AddComponent<Animator>();
-            prop.transform.GetChild(0).tag = "Fighter";
 
-            destructible.animator.runtimeAnimatorController = Resources.Load("Animations/" + propToPlace.nameOfAnimator) as RuntimeAnimatorController;
-
-        }
 
         prop.transform.localPosition = (Vector2)placementPostion;
 

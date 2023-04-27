@@ -11,8 +11,24 @@ public class Destructible : Fighter
 
     protected override void Death()
     {
-        animator.SetBool("Destructed", true);
-        Destroy(GetComponent<CapsuleCollider2D>());
+        if (animator)
+        {
+            animator.SetBool("Destructed", true);
+            Destroy(GetComponent<CapsuleCollider2D>());
+        }
+        else
+        {
+            if (this.gameObject.transform.parent.gameObject.transform.parent.name == "CompositePropMainParent")
+            {
+                Destroy(this.gameObject.transform.parent.gameObject.transform.parent.gameObject);
+
+            }
+            else
+            {
+                Destroy(this.gameObject.transform.parent.gameObject);
+
+            }
+        }
 
     }
 }

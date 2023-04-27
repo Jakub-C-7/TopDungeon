@@ -110,6 +110,7 @@ public class PatrolState : IEnemyState
         }
         if (patrolWayPoints != null)
         {
+            //TODO: Enemy speed always set to original speed. Even when patrolling
             enemy.xSpeed = patrolSpeed.Item1;
             enemy.ySpeed = patrolSpeed.Item2;
 

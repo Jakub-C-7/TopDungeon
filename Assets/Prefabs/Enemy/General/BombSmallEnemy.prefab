@@ -5243,7 +5243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5363,9 +5363,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af1ab9c2f0fcf64ea7f2c8de2c2c15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 10
-  maxHitpoints: 10
-  pushRecoverySpeed: 0.1
+  hitPoints: 6
+  maxHitpoints: 6
+  pushRecoverySpeed: 0.5
   onHitAudioSource: {fileID: 0}
   part: {fileID: 4987140466367960939, guid: 027d08b1561bb4b46840959f434e149f, type: 3}
   boxCollider: {fileID: 0}
@@ -5397,16 +5397,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  hitBox: {fileID: 0}
   explosionParticleSystem: {fileID: 6870943358265842019}
-  attackCooldown: 1.5
-  lastAttack: 0
-  projectile: {fileID: 0}
-  damageAmount: 0
-  pushForce: 0
-  range: 0
-  round: 0
-  maxround: 4
 --- !u!61 &6870943358502446532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5553,7 +5544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19604743, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

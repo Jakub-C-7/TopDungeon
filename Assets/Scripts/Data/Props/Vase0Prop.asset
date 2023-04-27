@@ -26,7 +26,8 @@ MonoBehaviour:
   GroupMinCount: 1
   GroupMaxCount: 1
   Collidable: 1
-  SpecialTrait: Destructible
+  Destructible: 1
+  SpecialTrait: AnimatedDestructible
   sortingLayer: Decorative
   relativeCoordX: 0
   relativeCoordY: 0

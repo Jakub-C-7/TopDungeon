@@ -19,6 +19,7 @@ public class Enemy : Mover
     public Vector3 startingPosition;
     public Image health;
     public GameObject healthBar;
+
     // Hitbox
     public ContactFilter2D filter;
 
@@ -28,8 +29,6 @@ public class Enemy : Mover
     protected EnemyStateMachine stateMachine;
 
     public ParticleSystem explosionParticleSystem;
-
-
     protected bool dead = false;
     protected float fade = 1;
 
@@ -40,7 +39,11 @@ public class Enemy : Mover
 
         startingPosition = transform.position;
 
+        if (this.gameObject.transform.Find("HitBox"))
+        {
+            hitBox = this.gameObject.transform.Find("HitBox").GetComponent<BoxCollider2D>();
 
+        }
 
         stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>
         {
@@ -86,7 +89,7 @@ public class Enemy : Mover
     protected override void Death()
     {
         dead = true;
-        Destroy(hitBox);
+        hitBox.gameObject.SetActive(false);
 
     }
 
