@@ -59868,5 +59868,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorPortal
       objectReference: {fileID: 0}
+    - target: {fileID: 8662982528868977485, guid: 2f9900a2917192d4189b90d74af27b79, type: 3}
+      propertyPath: interactionPromptDelay
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f9900a2917192d4189b90d74af27b79, type: 3}

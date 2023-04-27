@@ -26,4 +26,9 @@ MonoBehaviour:
   GroupMinCount: 1
   GroupMaxCount: 1
   Collidable: 1
+  Destructible: 0
   SpecialTrait: None
+  sortingLayer: Decorative
+  relativeCoordX: 0
+  relativeCoordY: 0
+  nameOfAnimator: 
