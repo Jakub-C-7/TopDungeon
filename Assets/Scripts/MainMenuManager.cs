@@ -12,4 +12,9 @@ public class MainMenuManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
 
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
