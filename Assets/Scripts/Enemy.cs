@@ -39,7 +39,11 @@ public class Enemy : Mover
 
         startingPosition = transform.position;
 
-        hitBox = this.gameObject.transform.Find("HitBox").GetComponent<BoxCollider2D>();
+        if (this.gameObject.transform.Find("HitBox"))
+        {
+            hitBox = this.gameObject.transform.Find("HitBox").GetComponent<BoxCollider2D>();
+
+        }
 
         stateMachine.stateMapper = new Dictionary<EnemyStatePhases, IEnemyState>
         {

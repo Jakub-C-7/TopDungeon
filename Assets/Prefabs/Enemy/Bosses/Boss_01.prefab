@@ -289,9 +289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3e9d5f66f12b14b937617b953ccd90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 1
-  maxHitpoints: 1
-  pushRecoverySpeed: 0.3
+  hitPoints: 30
+  maxHitpoints: 30
+  pushRecoverySpeed: 0.8
   onHitAudioSource: {fileID: 0}
   part: {fileID: 0}
   boxCollider: {fileID: 0}
@@ -304,7 +304,7 @@ MonoBehaviour:
   xpValue: 10
   droppedItem: {fileID: 6555220299402126218}
   triggerLength: 0.8
-  chaseLength: 1.75
+  chaseLength: 2
   collidingWithPlayer: 0
   startingPosition: {x: 0, y: 0, z: 0}
   health: {fileID: 7273558243437676923}
@@ -327,7 +327,7 @@ MonoBehaviour:
   projectileSpeeds:
   - 2
   - -2
-  distance: 0.2
+  distance: 0.3
   projectiles:
   - {fileID: 4063287601558356615}
   - {fileID: 7607564318320591017}
@@ -446,7 +446,7 @@ MonoBehaviour:
   pushForce: 3
   attackCooldown: 1.5
   lastAttack: 0
-  enemy: {fileID: 0}
+  enemy: {fileID: 8226588027181803526}
 --- !u!1 &5449428551499147080
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +563,7 @@ MonoBehaviour:
   pushForce: 2
   attackCooldown: 1.5
   lastAttack: 0
-  enemy: {fileID: 0}
+  enemy: {fileID: 8226588027181803526}
 --- !u!61 &1755987718918572284
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19604743, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -822,7 +822,7 @@ MonoBehaviour:
   pushForce: 2
   attackCooldown: 1.5
   lastAttack: 0
-  enemy: {fileID: 0}
+  enemy: {fileID: 8226588027181803526}
 --- !u!61 &9116665023254245571
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.19607843, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
