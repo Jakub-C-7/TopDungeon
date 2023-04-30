@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_0
+      name: kuba-combo-swipe-right_1_1
       rect:
         serializedVersion: 2
         x: 0
@@ -113,7 +113,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,7 +126,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_1
+      name: kuba-combo-swipe-right_1_2
       rect:
         serializedVersion: 2
         x: 48
@@ -134,7 +134,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,7 +147,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_2
+      name: kuba-combo-swipe-right_2_1
       rect:
         serializedVersion: 2
         x: 96
@@ -155,7 +155,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,7 +168,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_3
+      name: kuba-combo-swipe-right_2_2
       rect:
         serializedVersion: 2
         x: 144
@@ -176,7 +176,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,7 +189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_4
+      name: kuba-combo-swipe-down-1_1
       rect:
         serializedVersion: 2
         x: 192
@@ -197,7 +197,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,7 +210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_5
+      name: kuba-combo-swipe-down-1_2
       rect:
         serializedVersion: 2
         x: 240
@@ -218,7 +218,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,7 +231,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_6
+      name: kuba-combo-swipe-down-2_1
       rect:
         serializedVersion: 2
         x: 288
@@ -239,7 +239,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -252,7 +252,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_7
+      name: kuba-combo-swipe-down-2_2
       rect:
         serializedVersion: 2
         x: 336
@@ -260,7 +260,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,7 +273,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_8
+      name: kuba-combo-swipe-up-1_1
       rect:
         serializedVersion: 2
         x: 384
@@ -281,7 +281,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,7 +294,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_9
+      name: kuba-combo-swipe-up-1_2
       rect:
         serializedVersion: 2
         x: 432
@@ -302,7 +302,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -315,7 +315,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_10
+      name: kuba-combo-swipe-up-2_1
       rect:
         serializedVersion: 2
         x: 480
@@ -323,7 +323,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -336,7 +336,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_11
+      name: kuba-combo-swipe-up-2_2
       rect:
         serializedVersion: 2
         x: 528
@@ -344,7 +344,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,7 +357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_12
+      name: kuba-combo-swipe-left_1_1
       rect:
         serializedVersion: 2
         x: 576
@@ -365,7 +365,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -378,7 +378,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_13
+      name: kuba-combo-swipe-left_1_2
       rect:
         serializedVersion: 2
         x: 624
@@ -386,7 +386,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -399,7 +399,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_14
+      name: kuba-combo-swipe-left_2_1
       rect:
         serializedVersion: 2
         x: 672
@@ -407,7 +407,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -420,7 +420,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_15
+      name: kuba-combo-swipe-left_2_2
       rect:
         serializedVersion: 2
         x: 720
@@ -428,7 +428,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -441,7 +441,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_16
+      name: hands-combo-swipe-right_1_1
       rect:
         serializedVersion: 2
         x: 0
@@ -449,7 +449,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -462,7 +462,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_17
+      name: hands-combo-swipe-right_1_2
       rect:
         serializedVersion: 2
         x: 48
@@ -470,7 +470,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -483,7 +483,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_18
+      name: hands-combo-swipe-right_2_1
       rect:
         serializedVersion: 2
         x: 96
@@ -491,7 +491,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -504,7 +504,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_19
+      name: hands-combo-swipe-right_2_2
       rect:
         serializedVersion: 2
         x: 144
@@ -512,7 +512,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -525,7 +525,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_20
+      name: hands-combo-swipe-down-1_1
       rect:
         serializedVersion: 2
         x: 192
@@ -533,7 +533,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -546,7 +546,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_21
+      name: hands-combo-swipe-down-1_2
       rect:
         serializedVersion: 2
         x: 240
@@ -554,7 +554,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -567,7 +567,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_22
+      name: hands-combo-swipe-down-2_1
       rect:
         serializedVersion: 2
         x: 288
@@ -575,7 +575,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -588,7 +588,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_23
+      name: hands-combo-swipe-down-2_2
       rect:
         serializedVersion: 2
         x: 336
@@ -596,7 +596,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -609,7 +609,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_24
+      name: hands-combo-swipe-up-1_1
       rect:
         serializedVersion: 2
         x: 384
@@ -617,7 +617,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -630,7 +630,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_25
+      name: hands-combo-swipe-up-1_2
       rect:
         serializedVersion: 2
         x: 432
@@ -638,7 +638,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -651,7 +651,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_26
+      name: hands-combo-swipe-up-2_1
       rect:
         serializedVersion: 2
         x: 480
@@ -659,7 +659,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -672,7 +672,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_27
+      name: hands-combo-swipe-up-2_2
       rect:
         serializedVersion: 2
         x: 528
@@ -680,7 +680,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -693,7 +693,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_28
+      name: hands-combo-swipe-left_1_1
       rect:
         serializedVersion: 2
         x: 576
@@ -701,7 +701,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -714,7 +714,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_29
+      name: hands-combo-swipe-left_1_2
       rect:
         serializedVersion: 2
         x: 624
@@ -722,7 +722,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -735,7 +735,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_30
+      name: hands-combo-swipe-left_2_1
       rect:
         serializedVersion: 2
         x: 672
@@ -743,7 +743,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -756,7 +756,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kuba-Combo-Swipe-Sheet_31
+      name: hands-combo-swipe-left_2_2
       rect:
         serializedVersion: 2
         x: 720
@@ -764,7 +764,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -787,38 +787,38 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Kuba-Combo-Swipe-Sheet_0: 2052148288
-      Kuba-Combo-Swipe-Sheet_1: -2027635166
-      Kuba-Combo-Swipe-Sheet_10: 826684670
-      Kuba-Combo-Swipe-Sheet_11: -1674759455
-      Kuba-Combo-Swipe-Sheet_12: -1042631251
-      Kuba-Combo-Swipe-Sheet_13: -1339327628
-      Kuba-Combo-Swipe-Sheet_14: -1420211989
-      Kuba-Combo-Swipe-Sheet_15: 1824292196
-      Kuba-Combo-Swipe-Sheet_16: -954472044
-      Kuba-Combo-Swipe-Sheet_17: -692772180
-      Kuba-Combo-Swipe-Sheet_18: -194902945
-      Kuba-Combo-Swipe-Sheet_19: 90671612
-      Kuba-Combo-Swipe-Sheet_2: -720529217
-      Kuba-Combo-Swipe-Sheet_20: 732323617
-      Kuba-Combo-Swipe-Sheet_21: 1427829640
-      Kuba-Combo-Swipe-Sheet_22: 1579958313
-      Kuba-Combo-Swipe-Sheet_23: -135525303
-      Kuba-Combo-Swipe-Sheet_24: -1238883827
-      Kuba-Combo-Swipe-Sheet_25: 1650998743
-      Kuba-Combo-Swipe-Sheet_26: -993043478
-      Kuba-Combo-Swipe-Sheet_27: 1858833628
-      Kuba-Combo-Swipe-Sheet_28: -353029556
-      Kuba-Combo-Swipe-Sheet_29: -529468085
-      Kuba-Combo-Swipe-Sheet_3: -853579197
-      Kuba-Combo-Swipe-Sheet_30: -1358645019
-      Kuba-Combo-Swipe-Sheet_31: 615053314
-      Kuba-Combo-Swipe-Sheet_4: 1046917825
-      Kuba-Combo-Swipe-Sheet_5: -1439657551
-      Kuba-Combo-Swipe-Sheet_6: 1331721514
-      Kuba-Combo-Swipe-Sheet_7: -1802375721
-      Kuba-Combo-Swipe-Sheet_8: 725265107
-      Kuba-Combo-Swipe-Sheet_9: 2039894513
+      hands-combo-swipe-down-1_1: 732323617
+      hands-combo-swipe-down-1_2: 1427829640
+      hands-combo-swipe-down-2_1: 1579958313
+      hands-combo-swipe-down-2_2: -135525303
+      hands-combo-swipe-left_1_1: -353029556
+      hands-combo-swipe-left_1_2: -529468085
+      hands-combo-swipe-left_2_1: -1358645019
+      hands-combo-swipe-left_2_2: 615053314
+      hands-combo-swipe-right_1_1: -954472044
+      hands-combo-swipe-right_1_2: -692772180
+      hands-combo-swipe-right_2_1: -194902945
+      hands-combo-swipe-right_2_2: 90671612
+      hands-combo-swipe-up-1_1: -1238883827
+      hands-combo-swipe-up-1_2: 1650998743
+      hands-combo-swipe-up-2_1: -993043478
+      hands-combo-swipe-up-2_2: 1858833628
+      kuba-combo-swipe-down-1_1: 1046917825
+      kuba-combo-swipe-down-1_2: -1439657551
+      kuba-combo-swipe-down-2_1: 1331721514
+      kuba-combo-swipe-down-2_2: -1802375721
+      kuba-combo-swipe-left_1_1: -1339327628
+      kuba-combo-swipe-left_1_2: -1420211989
+      kuba-combo-swipe-left_2_1: 1824292196
+      kuba-combo-swipe-left_2_2: 2052148288
+      kuba-combo-swipe-right_1_1: -2027635166
+      kuba-combo-swipe-right_1_2: -720529217
+      kuba-combo-swipe-right_2_1: -853579197
+      kuba-combo-swipe-right_2_2: -1042631251
+      kuba-combo-swipe-up-1_1: 725265107
+      kuba-combo-swipe-up-1_2: 2039894513
+      kuba-combo-swipe-up-2_1: 826684670
+      kuba-combo-swipe-up-2_2: -1674759455
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
