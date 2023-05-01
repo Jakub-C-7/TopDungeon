@@ -36,15 +36,19 @@ public class Weapon : Collidable
 
         //Find enemies that's cooldown period has run out
         List<int> candidatesForRemoval = new List<int>();
-        foreach (var (enemyID, timeOfLastHit) in lastHitEnemyDict){
-            if(Time.time > (timeOfLastHit + cooldown)){
+        foreach (var (enemyID, timeOfLastHit) in lastHitEnemyDict)
+        {
+            if (Time.time > (timeOfLastHit + cooldown))
+            {
                 candidatesForRemoval.Add(enemyID);
-            }        
+            }
         }
         // Remove all enemies that's cooldown periods have run out
-        foreach(int candidate in candidatesForRemoval){
+        foreach (int candidate in candidatesForRemoval)
+        {
             lastHitEnemyDict.Remove(candidate);
         }
+
     }
 
     // Do damage to enemies with the sword
@@ -58,9 +62,12 @@ public class Weapon : Collidable
             }
             //Check if currently in cooldown period, otherwise add new entry to cooldown
             int collId = coll.GetInstanceID();
-            if(lastHitEnemyDict.ContainsKey(collId)){
+            if (lastHitEnemyDict.ContainsKey(collId))
+            {
                 return;
-            }else{
+            }
+            else
+            {
                 lastHitEnemyDict[collId] = Time.time;
             }
             //Create new damage object, send it to the fighter that we've hit
@@ -78,66 +85,75 @@ public class Weapon : Collidable
 
     protected virtual void AttackController()
     {
-        if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+        // if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+        // {
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
 
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
+            audioOnUse.Play();
+            lastAttack = Time.time;
+            Swing("SwingUp");
+            ToggleCombo(true);
 
-                audioOnUse.Play();
-                lastAttack = Time.time;
-                Swing("SwingUp");
 
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-
-                audioOnUse.Play();
-                lastAttack = Time.time;
-                Swing("SwingDown");
-
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-
-                audioOnUse.Play();
-                lastAttack = Time.time;
-
-                if (PlayerDirectionX() == "right")
-                {
-
-                    Swing("SwingForward");
-
-                }
-                else
-                {
-
-                    Swing("SwingBackward");
-
-                }
-
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-
-                audioOnUse.Play();
-                lastAttack = Time.time;
-
-                if (PlayerDirectionX() == "left")
-                {
-
-                    Swing("SwingForward");
-
-                }
-                else
-                {
-
-                    Swing("SwingBackward");
-
-                }
-
-            }
         }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+
+            audioOnUse.Play();
+            lastAttack = Time.time;
+            Swing("SwingDown");
+            ToggleCombo(true);
+
+
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+
+            audioOnUse.Play();
+            lastAttack = Time.time;
+
+            if (PlayerDirectionX() == "right")
+            {
+
+                Swing("SwingForward");
+
+            }
+            else
+            {
+
+                Swing("SwingBackward");
+
+            }
+
+            ToggleCombo(true);
+
+
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+
+            audioOnUse.Play();
+            lastAttack = Time.time;
+
+            if (PlayerDirectionX() == "left")
+            {
+
+                Swing("SwingForward");
+
+            }
+            else
+            {
+
+                Swing("SwingBackward");
+
+            }
+
+            ToggleCombo(true);
+
+        }
+        // }
     }
 
     private string PlayerDirectionX()
@@ -160,8 +176,14 @@ public class Weapon : Collidable
     private void Swing(string triggerName)
     {
         animator.SetTrigger(triggerName);
-        setAnimatorBool("BattleMode", true);
         GameManager.instance.player.Swing(triggerName); // Trigger Mover and hands animators
+
+    }
+
+    private void ToggleCombo(bool status)
+    {
+        // setAnimatorBool("InCombo", status);
+        GameManager.instance.player.ToggleCombo(status); // Trigger Mover and hands animators
 
     }
 

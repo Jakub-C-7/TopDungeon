@@ -40,6 +40,13 @@ public class Player : Mover
     {
         statusStateMachine.Update();
         movePlayer();
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("kuba_battle_idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("kuba_battle_walk"))
+        {
+            ToggleCombo(false);
+
+
+        }
     }
 
     protected override void Death()
@@ -314,6 +321,17 @@ public class Player : Mover
         handsAnimator.SetTrigger(triggerName); // trigger Player hands animator
 
         RegisterBattleAction();
+    }
+
+    public void ToggleCombo(bool status)
+    {
+        setAnimatorBool("InCombo", status);
+
+    }
+
+    public void setAnimatorBool(string name, bool value)
+    {
+        animator.SetBool(name, value);
     }
 
 
