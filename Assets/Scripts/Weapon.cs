@@ -90,29 +90,37 @@ public class Weapon : Collidable
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-
-            audioOnUse.Play();
-            lastAttack = Time.time;
-            Swing("SwingUp");
+            if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+            {
+                audioOnUse.Play();
+                lastAttack = Time.time;
+            }
             ToggleCombo(true);
 
+            Swing("SwingUp");
 
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
 
-            audioOnUse.Play();
-            lastAttack = Time.time;
-            Swing("SwingDown");
+            if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+            {
+                audioOnUse.Play();
+                lastAttack = Time.time;
+            }
             ToggleCombo(true);
 
+            Swing("SwingDown");
 
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-
-            audioOnUse.Play();
-            lastAttack = Time.time;
+            if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+            {
+                audioOnUse.Play();
+                lastAttack = Time.time;
+            }
+            ToggleCombo(true);
 
             if (PlayerDirectionX() == "right")
             {
@@ -127,15 +135,16 @@ public class Weapon : Collidable
 
             }
 
-            ToggleCombo(true);
-
-
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
 
-            audioOnUse.Play();
-            lastAttack = Time.time;
+            if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+            {
+                audioOnUse.Play();
+                lastAttack = Time.time;
+            }
+            ToggleCombo(true);
 
             if (PlayerDirectionX() == "left")
             {
@@ -150,10 +159,7 @@ public class Weapon : Collidable
 
             }
 
-            ToggleCombo(true);
-
         }
-        // }
     }
 
     private string PlayerDirectionX()
