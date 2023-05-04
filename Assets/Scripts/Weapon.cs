@@ -90,48 +90,56 @@ public class Weapon : Collidable
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+            // if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+            if (GameManager.instance.player.handsAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.4f)
             {
                 audioOnUse.Play();
                 lastAttack = Time.time;
-            }
-            ToggleCombo(true);
+                ToggleCombo(true);
 
-            Swing("SwingUp");
+                Swing("SwingUp");
+            }
 
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
 
-            if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+            // if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+
+            if (GameManager.instance.player.handsAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.4f)
             {
                 audioOnUse.Play();
                 lastAttack = Time.time;
-            }
-            ToggleCombo(true);
+                ToggleCombo(true);
 
-            Swing("SwingDown");
+                Swing("SwingDown");
+            }
+
 
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+
+            if (GameManager.instance.player.handsAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.4f)
             {
+
+                // if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+                // {
                 audioOnUse.Play();
                 lastAttack = Time.time;
-            }
-            ToggleCombo(true);
+                ToggleCombo(true);
 
-            if (PlayerDirectionX() == "right")
-            {
+                if (PlayerDirectionX() == "right")
+                {
 
-                Swing("SwingForward");
+                    Swing("SwingForward");
 
-            }
-            else
-            {
+                }
+                else
+                {
 
-                Swing("SwingBackward");
+                    Swing("SwingBackward");
+                }
 
             }
 
@@ -139,24 +147,25 @@ public class Weapon : Collidable
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
 
-            if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+            // if (Time.time - lastAttack > cooldown && GameManager.instance.player.canMove)
+            if (GameManager.instance.player.handsAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.4f)
             {
                 audioOnUse.Play();
                 lastAttack = Time.time;
-            }
-            ToggleCombo(true);
+                ToggleCombo(true);
 
-            if (PlayerDirectionX() == "left")
-            {
+                if (PlayerDirectionX() == "left")
+                {
 
-                Swing("SwingForward");
+                    Swing("SwingForward");
 
-            }
-            else
-            {
+                }
+                else
+                {
 
-                Swing("SwingBackward");
+                    Swing("SwingBackward");
 
+                }
             }
 
         }
@@ -189,7 +198,7 @@ public class Weapon : Collidable
     private void ToggleCombo(bool status)
     {
         // setAnimatorBool("InCombo", status);
-        GameManager.instance.player.ToggleCombo(status); // Trigger Mover and hands animators
+        GameManager.instance.player.ToggleCombo(status);
 
     }
 

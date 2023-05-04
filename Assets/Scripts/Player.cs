@@ -45,7 +45,6 @@ public class Player : Mover
         {
             ToggleCombo(false);
 
-
         }
     }
 
@@ -332,6 +331,8 @@ public class Player : Mover
     public void setAnimatorBool(string name, bool value)
     {
         animator.SetBool(name, value);
+        handsAnimator.SetBool(name, value);
+
     }
 
 
