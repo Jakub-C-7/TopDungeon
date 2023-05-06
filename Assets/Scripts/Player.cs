@@ -22,6 +22,7 @@ public class Player : Mover
     private float lastDash;
     private float originalXSpeed;
     private float originalYSpeed;
+    public Animator weaponAnimator;
 
     protected override void Start()
     {
@@ -76,6 +77,7 @@ public class Player : Mover
         lastBattleAction = Time.time;
         animator.SetBool("BattleMode", true);
         handsAnimator.SetBool("BattleMode", true);
+        weaponAnimator.SetBool("BattleMode", true);
 
     }
 
@@ -99,7 +101,8 @@ public class Player : Mover
         {
             animator.SetBool("BattleMode", false);
             handsAnimator.SetBool("BattleMode", false);
-            GameManager.instance.weapon.setAnimatorBool("BattleMode", false);
+            weaponAnimator.SetBool("BattleMode", false);
+
         }
 
         float x = Input.GetAxisRaw("Horizontal");
@@ -318,6 +321,7 @@ public class Player : Mover
     {
         animator.SetTrigger(triggerName); // trigger Mover animator
         handsAnimator.SetTrigger(triggerName); // trigger Player hands animator
+        weaponAnimator.SetTrigger(triggerName); // trigger Weapon hands animator
 
         RegisterBattleAction();
     }
@@ -332,6 +336,7 @@ public class Player : Mover
     {
         animator.SetBool(name, value);
         handsAnimator.SetBool(name, value);
+        weaponAnimator.SetBool(name, value);
 
     }
 

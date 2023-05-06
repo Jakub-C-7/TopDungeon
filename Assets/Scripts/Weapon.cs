@@ -49,6 +49,12 @@ public class Weapon : Collidable
             lastHitEnemyDict.Remove(candidate);
         }
 
+        // if (GameManager.instance.player.animator.GetCurrentAnimatorStateInfo(0).IsName("kuba_battle_idle") || GameManager.instance.player.animator.GetCurrentAnimatorStateInfo(0).IsName("kuba_battle_walk"))
+        // {
+        //     ToggleCombo(false);
+
+        // }
+
     }
 
     // Do damage to enemies with the sword
@@ -95,9 +101,9 @@ public class Weapon : Collidable
             {
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                ToggleCombo(true);
 
-                Swing("SwingUp");
+                GameManager.instance.player.ToggleCombo(true);
+                GameManager.instance.player.Swing("SwingUp");
             }
 
         }
@@ -110,9 +116,9 @@ public class Weapon : Collidable
             {
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                ToggleCombo(true);
 
-                Swing("SwingDown");
+                GameManager.instance.player.ToggleCombo(true);
+                GameManager.instance.player.Swing("SwingDown");
             }
 
 
@@ -127,18 +133,18 @@ public class Weapon : Collidable
                 // {
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                ToggleCombo(true);
+                GameManager.instance.player.ToggleCombo(true);
 
                 if (PlayerDirectionX() == "right")
                 {
 
-                    Swing("SwingForward");
+                    GameManager.instance.player.Swing("SwingForward");
 
                 }
                 else
                 {
 
-                    Swing("SwingBackward");
+                    GameManager.instance.player.Swing("SwingBackward");
                 }
 
             }
@@ -152,18 +158,18 @@ public class Weapon : Collidable
             {
                 audioOnUse.Play();
                 lastAttack = Time.time;
-                ToggleCombo(true);
+                GameManager.instance.player.ToggleCombo(true);
 
                 if (PlayerDirectionX() == "left")
                 {
 
-                    Swing("SwingForward");
+                    GameManager.instance.player.Swing("SwingForward");
 
                 }
                 else
                 {
 
-                    Swing("SwingBackward");
+                    GameManager.instance.player.Swing("SwingBackward");
 
                 }
             }
@@ -188,24 +194,24 @@ public class Weapon : Collidable
 
     }
 
-    private void Swing(string triggerName)
-    {
-        animator.SetTrigger(triggerName);
-        GameManager.instance.player.Swing(triggerName); // Trigger Mover and hands animators
+    // private void Swing(string triggerName)
+    // {
+    //     animator.SetTrigger(triggerName);
+    //     GameManager.instance.player.Swing(triggerName); // Trigger Mover and hands animators
 
-    }
+    // }
 
-    private void ToggleCombo(bool status)
-    {
-        // setAnimatorBool("InCombo", status);
-        GameManager.instance.player.ToggleCombo(status);
+    // private void ToggleCombo(bool status)
+    // {
+    //     setAnimatorBool("InCombo", status);
+    //     GameManager.instance.player.ToggleCombo(status);
 
-    }
+    // }
 
-    public void setAnimatorBool(string name, bool value)
-    {
-        animator.SetBool(name, value);
-    }
+    // public void setAnimatorBool(string name, bool value)
+    // {
+    //     animator.SetBool(name, value);
+    // }
 
     // Upgrade player's weapon level
     public void UpgradeWeapon()

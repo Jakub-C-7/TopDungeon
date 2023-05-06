@@ -150,9 +150,11 @@ public abstract class Mover : Fighter
 
         }
 
-        if (GameManager.instance.weapon.animator)
+        if (GameManager.instance.player.weaponAnimator)
         {
-            GameManager.instance.weapon.setAnimatorBool(paramName, toggled);
+            // GameManager.instance.weapon.setAnimatorBool(paramName, toggled);
+            GameManager.instance.player.weaponAnimator.SetBool(paramName, toggled);
+
         }
 
     }
