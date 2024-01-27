@@ -101,7 +101,11 @@ public class Player : Mover
         {
             animator.SetBool("BattleMode", false);
             handsAnimator.SetBool("BattleMode", false);
-            weaponAnimator.SetBool("BattleMode", false);
+            
+            if (weaponAnimator)
+            {
+                weaponAnimator.SetBool("BattleMode", false);
+            }
 
         }
 

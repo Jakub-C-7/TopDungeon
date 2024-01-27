@@ -55590,6 +55590,7 @@ MonoBehaviour:
   LightSource: {fileID: 311375429}
   inventory: {fileID: 956309670}
   equippedInventory: {fileID: 737021898}
+  weaponAnimator: {fileID: 746197235}
 --- !u!212 &1683999404
 SpriteRenderer:
   m_ObjectHideFlags: 0
